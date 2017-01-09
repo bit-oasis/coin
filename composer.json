@@ -11,9 +11,13 @@
 	],
 	"require": {
 		"php": ">=5.6.0",
-		"zendframework/zend-math": "^3.0"
+		"zendframework/zend-math": "^3.0",
+		"linusu/bitcoin-address-validator": "dev-master"
 	},
 	"require-dev": {
+		"kdyby/doctrine": "~3.0@dev|~2.3@dev",
+		"nette/di": "~2.2@dev",
+		"nette/utils": "*",
 		"codeception/codeception": "*"
 	},
 	"autoload": {

@@ -7,6 +7,10 @@ namespace BitOasis\Coin;
  */
 class Cryptocurrency {
 
+	const BTC = 'BTC';
+	const TBTC = 'TBTC';
+	const ETH = 'ETH';
+
 	/** @var string */
 	protected $code;
 

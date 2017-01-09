@@ -31,6 +31,20 @@ class Coin extends BigInteger {
 	}
 
 	/**
+	 * @return Cryptocurrency
+	 */
+	public function getCurrency() {
+		return $this->currency;
+	}
+
+	/**
+	 * @return Cryptocurrency
+	 */
+	public function getCryptocurrency() {
+		return $this->currency;
+	}
+
+	/**
 	 * @param $amount
 	 * @param Cryptocurrency $currency
 	 * @return static
@@ -39,7 +53,7 @@ class Coin extends BigInteger {
 	public static function fromFloat($amount, Cryptocurrency $currency) {
 		if(is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
 			$stringAmount = $amount;
-		} else if((!is_string($amount) && is_numeric($amount)) || (is_string($amount) && preg_match('#^([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount))) {
+		} else if((!is_string($amount) && is_numeric($amount)) || (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount))) {
 			$stringAmount = sprintf('%.' . $currency->getDecimals() . 'F', $amount);
 		} else {
 			throw new InvalidNumberException('Amount is not valid float number!');
@@ -58,6 +72,14 @@ class Coin extends BigInteger {
 			throw new InvalidNumberException('Initial value is not an integer value!');
 		}
 		return new static(self::getDefaultAdapter()->init($amount, 10), $currency);
+	}
+
+	/**
+	 * @param Cryptocurrency $currency
+	 * @return static
+	 */
+	public static function zero(Cryptocurrency $currency) {
+		return new static(self::getDefaultAdapter()->init(0, 10), $currency);
 	}
 
 	/**
@@ -90,7 +112,15 @@ class Coin extends BigInteger {
 	 * Return value as float string
 	 * @return string
 	 */
-	public function toFloatString() {
+	public function toDecimalString() {
+		return $this->toFloatString();
+	}
+
+	/**
+	 * Return value as float string
+	 * @return string
+	 */
+	protected function toFloatString() {
 		$sign = (strpos($this->amount, '-') === 0) ? '-' : '';
 		$absAmount = ltrim($this->amount, '-+');
 		$paddedAmount = $sign . str_pad($absAmount, $this->currency->getDecimals() + 1, '0', STR_PAD_LEFT);

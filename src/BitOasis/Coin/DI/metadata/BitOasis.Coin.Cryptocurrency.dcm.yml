@@ -1,0 +1,14 @@
+BitOasis\Coin\Cryptocurrency:
+  type: entity
+  table: cryptocurrency
+  readOnly: false
+  id:
+    code:
+      type: string
+      length: 15
+  fields:
+    name:
+      type: string
+      length: 100
+    decimals:
+      type: integer
