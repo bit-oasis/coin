@@ -47,6 +47,13 @@ class Cryptocurrency {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getSubunitsInUnit() {
+	    return '1' . str_repeat('0', $this->decimals);
+	}
+	
+	/**
 	 * @return null|string
 	 */
 	public function getName() {

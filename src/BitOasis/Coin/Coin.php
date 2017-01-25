@@ -58,7 +58,7 @@ class Coin extends BigInteger {
 		} else {
 			throw new InvalidNumberException('Amount is not valid float number!');
 		}
-		return new static(self::getDefaultAdapter()->mul(self::getDefaultAdapter()->init($stringAmount, 10), self::getSubunitsInUnit($currency)), $currency);
+		return new static(self::getDefaultAdapter()->mul(self::getDefaultAdapter()->init($stringAmount, 10), $currency->getSubunitsInUnit()), $currency);
 	}
 
 	/**
@@ -317,14 +317,6 @@ class Coin extends BigInteger {
 	 */
 	protected function copyWithAmount($value) {
 		return new static($value, $this->currency);
-	}
-
-	/**
-	 * @param Cryptocurrency $currency
-	 * @return string
-	 */
-	protected static function getSubunitsInUnit(Cryptocurrency $currency) {
-	    return self::getDefaultAdapter()->pow(self::getDefaultAdapter()->init(10, 10), $currency->getDecimals());
 	}
 
 	/**
