@@ -192,6 +192,28 @@ class Coin extends BigInteger {
 	public function abs() {
 		return $this->copyWithAmount($this->getAdapter()->abs($this->amount));
 	}
+	
+	/**
+	 * @param int $decimals
+	 * @return Coin
+	 * @throws InvalidNumberException
+	 */
+	public function floor($decimals = 0) {
+		if ($decimals >= $this->currency->getDecimals()) {
+			return $this->copyWithAmount($this->amount);
+		}
+		
+		$trimLength = $this->currency->getDecimals() - $decimals;
+		$amount = $this->toIntString();
+		$originalLength = strlen($amount);
+		if ($originalLength <= $trimLength) {
+			return $this->copyWithAmount(0);
+		}
+		
+		$trimmed = substr_replace($amount, '', -$trimLength);
+		$padded = str_pad($trimmed, $originalLength, '0');
+		return $this->copyWithAmount($padded);
+	}
 
 	/**
 	 * @return bool

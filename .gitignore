@@ -2,3 +2,4 @@
 vendor
 composer.lock
 tests/_output/*
+nbproject
