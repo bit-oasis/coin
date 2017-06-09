@@ -30,15 +30,15 @@ class CoinFloorTest extends UnitTest {
 	 */
 	public function testFloor($amount, $decimals, $result) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromInt($amount, $currency);
-	    $this->assertEquals($result, $coin->floor($decimals)->toIntString());
+		$coin = Coin::fromInt($amount, $currency);
+		$this->assertEquals($result, $coin->floor($decimals)->toIntString());
 	}
 	
 	public function testNegativeDecimals() {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromInt('1', $currency);
-	    $this->tester->expectException(InvalidNumberException::class, function() use($coin) {
-		    $coin->floor(-1);
+		$coin = Coin::fromInt('1', $currency);
+		$this->tester->expectException(InvalidNumberException::class, function() use($coin) {
+			$coin->floor(-1);
 	    });
 	}
 }
