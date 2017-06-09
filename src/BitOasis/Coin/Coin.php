@@ -199,9 +199,6 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	public function floor($decimals = 0) {
-		if ($decimals < 0) {
-			throw new InvalidNumberException('$decimals value has to be equal or greater than zero!');
-		}
 		if ($decimals >= $this->currency->getDecimals()) {
 			return $this->copyWithAmount($this->amount);
 		}
