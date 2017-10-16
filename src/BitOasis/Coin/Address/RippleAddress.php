@@ -61,6 +61,20 @@ class RippleAddress implements CryptocurrencyAddress {
 		return new static($address, $cryptocurrency, $tag);
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getTag() {
+		return $this->tag;
+	}
+
 	private function isValid($address) {
 		return Strings::match($address, '/^r[1-9A-HJ-NP-Za-km-z]{25,34}$/');
 	}
