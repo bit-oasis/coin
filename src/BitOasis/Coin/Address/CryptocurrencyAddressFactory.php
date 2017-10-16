@@ -34,9 +34,9 @@ class CryptocurrencyAddressFactory {
 	 * @throws InvalidAddressException
 	 */
 	public function create($value, Cryptocurrency $currency) {
-		if ($currency === Cryptocurrency::XRP) {
+		if ($currency->getCode() === Cryptocurrency::XRP) {
 			$this->validateCryptocurrencyAddress($currency);
-			$args = array_slice(func_get_args(), 0, 2);
+			$args = array_slice(func_get_args(), 2);
 			return new RippleAddress($value, $currency, count($args) > 0 ? $args[0] : null);
 		}
 		return $this->deserialize($value, $currency);
