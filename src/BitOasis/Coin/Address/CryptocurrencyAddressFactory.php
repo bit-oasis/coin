@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
+use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidCurrencyException;
 
@@ -27,11 +28,17 @@ class CryptocurrencyAddressFactory {
 	/**
 	 * @param string $value
 	 * @param Cryptocurrency $currency
+	 * @param array $params other optional parameters
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidCurrencyException
 	 * @throws InvalidAddressException
 	 */
 	public function create($value, Cryptocurrency $currency) {
+		if ($currency->getCode() === Cryptocurrency::XRP) {
+			$this->validateCryptocurrencyAddress($currency);
+			$args = array_slice(func_get_args(), 2);
+			return new RippleAddress($value, $currency, count($args) > 0 ? $args[0] : null);
+		}
 		return $this->deserialize($value, $currency);
 	}
 
@@ -46,11 +53,20 @@ class CryptocurrencyAddressFactory {
 		if($value === null) {
 			return null;
 		}
-	    if(!isset($this->types[$currency->getCode()])) {
-	    	throw new InvalidCurrencyException('Address handler for currency ' . $currency->getCode() . ' not found!');
-	    }
+		$this->validateCryptocurrencyAddress($currency);
 	    $cryptocurrencyAddressClass = $this->types[$currency->getCode()];
 	    return $cryptocurrencyAddressClass::deserialize($value, $currency);
+	}
+
+	/**
+	 * @param Cryptocurrency $currency
+	 * @return CryptocurrencyAddress
+	 * @throws InvalidCurrencyException
+	 */
+	protected function validateCryptocurrencyAddress(Cryptocurrency $currency) {
+		if(!isset($this->types[$currency->getCode()])) {
+	    	throw new InvalidCurrencyException('Address handler for currency ' . $currency->getCode() . ' not found!');
+	    }
 	}
 
 }
