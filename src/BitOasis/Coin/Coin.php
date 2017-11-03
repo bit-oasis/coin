@@ -216,6 +216,38 @@ class Coin extends BigInteger {
 	}
 
 	/**
+	 * @param int $decimals
+	 * @return Coin
+	 */
+	public function round($decimals = 0) {
+		if ($decimals >= $this->currency->getDecimals()) {
+			return $this->copyWithAmount($this->amount);
+		}
+		
+		$sign = (strpos($this->amount, '-') === 0) ? '-' : '';
+		$absAmount = ltrim($this->amount, '-+');
+		$originalLength = strlen($absAmount);
+		$trimLength = $this->currency->getDecimals() - $decimals;
+		if ($originalLength < $trimLength) {
+			return $this->copyWithAmount(0);
+		}
+		
+		$trimmed = substr_replace($absAmount, '', -$trimLength);
+		if ((int)substr($absAmount, -$trimLength, 1) >= 5) {
+			$trimmedLength = strlen($trimmed);
+			$trimmed = (string)$this->getAdapter()->add($trimmed, 1);
+			if ($trimmedLength !== strlen($trimmed)) {
+				$originalLength++;
+			}
+		}
+		if (strlen($trimmed) === 0) {
+			return $this->copyWithAmount(0);
+		}
+		$padded = $sign . str_pad($trimmed, $originalLength, '0');
+		return $this->copyWithAmount($padded);
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isPositive() {
