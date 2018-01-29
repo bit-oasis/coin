@@ -5,7 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use LinusU\Bitcoin\AddressValidator;
+use Murich\PhpCryptocurrencyAddressValidation\Validation\BTC as BTCValidator;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -73,7 +73,7 @@ class BitcoinAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address) {
-		return AddressValidator::isValid($address, AddressValidator::MAINNET);
+		return (new BTCValidator($address))->validate();
 	}
 
 }
