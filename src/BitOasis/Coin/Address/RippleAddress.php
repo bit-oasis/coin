@@ -37,7 +37,7 @@ class RippleAddress implements CryptocurrencyAddress {
 		}
 		$this->address = $address;
 		$this->currency = $currency;
-		$this->tag = (int)$tag;
+		$this->tag = $tag === null ? null : (int)$tag;
 	}
 
 	public function toString() {
