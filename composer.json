@@ -1,7 +1,7 @@
 {
 	"name": "bit-oasis/coin",
 	"description": "Virtual currency library",
-	"minimum-stability": "stable",
+	"minimum-stability": "dev",
 	"license": "MIT",
 	"authors": [
 		{
