@@ -32,7 +32,7 @@ class RippleAddress implements CryptocurrencyAddress {
 		if (!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid ripple address - ' . $address);
 		}
-		if ($tag !== null || !is_numeric($tag) || (int)$tag != $tag || (int)$tag < 0 || (int)$tag > 4294967295) {
+		if ($tag !== null && (!is_numeric($tag) || (int)$tag != $tag || (int)$tag < 0 || (int)$tag > 4294967295)) {
 			throw new InvalidAddressException('This is not valid ripple tag - ' . $tag);
 		}
 		$this->address = $address;
