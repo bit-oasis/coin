@@ -5,7 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
+use Nette\Utils\Strings;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -82,7 +82,7 @@ class RippleAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address) {
-		return (new ETHValidator($address))->validate();
+		return Strings::match($address, '/^r[1-9A-HJ-NP-Za-km-z]{25,34}$/');
 	}
 
 }
