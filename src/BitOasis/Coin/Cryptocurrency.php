@@ -11,6 +11,7 @@ class Cryptocurrency {
 	const TBTC = 'TBTC';
 	const ETH = 'ETH';
 	const XRP = 'XRP';
+	const LTC = 'LTC';
 
 	/** @var string */
 	protected $code;
