@@ -1,7 +1,6 @@
 {
 	"name": "bit-oasis/coin",
 	"description": "Virtual currency library",
-	"minimum-stability": "dev",
 	"license": "MIT",
 	"authors": [
 		{
@@ -12,8 +11,8 @@
 	"require": {
 		"php": ">=5.6.0",
 		"zendframework/zend-math": "^3.0",
-		"linusu/bitcoin-address-validator": "dev-master",
-		"murich/php-cryptocurrency-address-validation": "dev-master"
+		"linusu/bitcoin-address-validator": "dev-master@dev",
+		"murich/php-cryptocurrency-address-validation": "dev-master@dev"
 	},
 	"require-dev": {
 		"kdyby/doctrine": "~3.0@dev|~2.3@dev",
