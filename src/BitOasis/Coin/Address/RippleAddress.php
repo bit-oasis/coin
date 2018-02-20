@@ -45,6 +45,13 @@ class RippleAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return int|null
+	 */
+	public function getTag() {
+	    return $this->tag;
+	}
+
+	/**
 	 * @return Cryptocurrency
 	 */
 	public function getCurrency() {
