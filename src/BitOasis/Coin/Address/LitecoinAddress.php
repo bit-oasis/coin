@@ -22,10 +22,11 @@ class LitecoinAddress implements CryptocurrencyAddress {
 	 * BitcoinAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param bool $oldFormatAllowed
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
-		if(!$this->isValid($address)) {
+	public function __construct($address, Cryptocurrency $currency, $oldFormatAllowed = true) {
+		if(!$this->isValid($address, $oldFormatAllowed)) {
 			throw new InvalidAddressException('This is not valid litecoin address - ' . $address);
 		}
 		$this->address = $address;
@@ -70,10 +71,13 @@ class LitecoinAddress implements CryptocurrencyAddress {
 
 	/**
 	 * @param $address
+	 * @param bool $oldFormatAllowed
 	 * @return bool
 	 */
-	private function isValid($address) {
-		return (new LTCValidator($address))->validate();
+	private function isValid($address, $oldFormatAllowed = true) {
+		$validator = new LTCValidator($address);
+		$validator->setDeprecatedAllowed($oldFormatAllowed);
+		return $validator->validate();
 	}
 
 }
