@@ -13,7 +13,10 @@ class CryptocurrencyGetSubunitsInUnitTest extends UnitTest {
 	    return [
 	    	[new Cryptocurrency('NVM', 0, ''), '1'],
 	    	[new Cryptocurrency('BTC', 8, ''), '100000000'],
+	    	[new Cryptocurrency('BCH', 8, ''), '100000000'],
 	    	[new Cryptocurrency('ETH', 18, ''), '1000000000000000000'],
+	    	[new Cryptocurrency('XRP', 6, ''), '1000000'],
+	    	[new Cryptocurrency('ETH', 8, ''), '100000000'],
 	    ];
 	}
 
