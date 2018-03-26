@@ -9,9 +9,10 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\LTC;
  */
 class LitecoinAddressValidator extends LTC {
 
-	public function validate() {
-		$this->base58PrefixToHexVersion['M'] = '32';
-		return parent::validate();
-	}
+	protected $base58PrefixToHexVersion = [
+		'L' => '30',
+		'M' => '32',
+		'3' => self::DEPRECATED_ADDRESS_VERSION // deprecated for litecoin, should not be allowed for new user's inputs
+	];
 
 }
