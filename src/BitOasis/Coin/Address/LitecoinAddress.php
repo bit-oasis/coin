@@ -5,7 +5,6 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use Murich\PhpCryptocurrencyAddressValidation\Validation\LTC as LTCValidator;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -75,7 +74,7 @@ class LitecoinAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address, $oldFormatAllowed = true) {
-		$validator = new LTCValidator($address);
+		$validator = new LitecoinAddressValidator($address);
 		$validator->setDeprecatedAllowed($oldFormatAllowed);
 		return $validator->validate();
 	}
