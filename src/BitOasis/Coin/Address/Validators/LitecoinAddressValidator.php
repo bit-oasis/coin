@@ -1,6 +1,6 @@
 <?php
 
-namespace BitOasis\Coin\Address;
+namespace BitOasis\Coin\Address\Validators;
 
 use Murich\PhpCryptocurrencyAddressValidation\Validation\LTC;
 
