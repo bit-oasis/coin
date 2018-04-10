@@ -10,10 +10,12 @@
 	],
 	"require": {
 		"php": ">=5.6.0",
+		"ext-gmp": "*",
 		"zendframework/zend-math": "^3.0",
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",
-		"btccom/cashaddress": "dev-master@dev"
+		"btccom/cashaddress": "dev-master@dev",
+		"stephenhill/base58": "^1.1.4"
 	},
 	"require-dev": {
 		"kdyby/doctrine": "~3.0@dev|~2.3@dev",

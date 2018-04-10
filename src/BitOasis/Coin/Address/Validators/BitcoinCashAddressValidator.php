@@ -72,32 +72,7 @@ class BitcoinCashAddressValidator implements ValidationInterface {
 			return true;
 		}
 		
-		$prefix = $this->expectedPrefix . self::BASE32_SEPARATOR;
-		$address = $this->address;
-		$addressChunks = explode(self::BASE32_SEPARATOR, $this->address);
-		$addressChunksCount = count($addressChunks);
-
-		if ($addressChunksCount === 2) {
-			if ($addressChunks[0] === $this->expectedPrefix) {
-				//Correct full length address
-				$address = $addressChunks[1];
-			} else {
-				//Full length address, but prefix does not match
-				throw new InvalidAddressPrefixException('This is not valid bitcoin cash prefix - ' . $this->address);
-			}
-		} else if ($addressChunksCount !== 1) {
-			//More than one separator (or something else => explode returns always at least one item)
-			$this->throwGeneralException();
-		}
-		
-		$lowercaseHash = mb_strtolower($address, 'UTF-8');
-		if ($lowercaseHash !== $address && mb_strtoupper($address, 'UTF-8') !== $address) {
-			throw new AddressMixedCaseException('Address has to be only lower or upper case - ' . $this->address);
-		} else {
-			//preferred style
-			$address = $lowercaseHash;
-		}
-		$address = $prefix . $address;
+		$address = $this->fixPrefix($this->address);
 		
 		if ($this->isCashAddressValid($address)) {
 			return true;
@@ -120,6 +95,28 @@ class BitcoinCashAddressValidator implements ValidationInterface {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isBase58Address() {
+		return $this->btcValidator->validate();
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isCashAddress() {
+		try {
+			if (!$this->isBase58Address()) {
+				$address = $this->fixPrefix($this->address);
+				return $this->isCashAddressValid($address, false);
+			}
+		} catch (InvalidAddressException $e) {
+		}
+		
+		return false;
+	}
+
+	/**
 	 * @param $prefix
 	 * @return bool
 	 */
@@ -129,12 +126,55 @@ class BitcoinCashAddressValidator implements ValidationInterface {
 
 	/**
 	 * @param string $address
+	 * @param string $expectedPrefix
+	 * @return string
+	 * @throws InvalidAddressException
+	 * @throws InvalidAddressPrefixException
+	 * @throws AddressMixedCaseException
+	 */
+	protected function fixPrefix($address, $expectedPrefix = null) {
+		$expectedPrefix = $expectedPrefix === null ? $this->expectedPrefix : $expectedPrefix;
+		
+		$prefix = $expectedPrefix . self::BASE32_SEPARATOR;
+		$addressChunks = explode(self::BASE32_SEPARATOR, $this->address);
+		$addressChunksCount = count($addressChunks);
+
+		if ($addressChunksCount === 2) {
+			if ($addressChunks[0] === $expectedPrefix) {
+				//Correct full length address
+				$address = $addressChunks[1];
+			} else {
+				//Full length address, but prefix does not match
+				throw new InvalidAddressPrefixException('This is not valid bitcoin cash prefix - ' . $this->address);
+			}
+		} else if ($addressChunksCount !== 1) {
+			//More than one separator (or something else => explode returns always at least one item)
+			$this->throwGeneralException();
+		}
+		
+		$lowercaseHash = mb_strtolower($address, 'UTF-8');
+		if ($lowercaseHash !== $address && mb_strtoupper($address, 'UTF-8') !== $address) {
+			throw new AddressMixedCaseException('Address has to be only lower or upper case - ' . $this->address);
+		} else {
+			//preferred style
+			$address = $lowercaseHash;
+		}
+		
+		return $prefix . $address;
+	}
+
+	/**
+	 * @param string $address
+	 * @param bool $validatePrefix
+	 * @param string $expectedPrefix
 	 * @return bool
 	 */
-	protected function isCashAddressValid($address) {
+	protected function isCashAddressValid($address, $validatePrefix = true, $expectedPrefix = null) {
+		$expectedPrefix = $expectedPrefix === null ? $this->expectedPrefix : $expectedPrefix;
+		
 		try {
 			$decodedAddress = CashAddress::decode($address);
-			return $decodedAddress[0] === $this->expectedPrefix;
+			return $validatePrefix ? $decodedAddress[0] === $this->expectedPrefix : true;
 		} catch (CashAddressException $e) {
 		} catch (Base32Exception $e) {
 		}

@@ -143,4 +143,39 @@ class BitcoinCashAddressValidatorTest extends UnitTest {
 		});
 	}
 
+	public function providerIsBase58Address() {
+		return [
+			['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', BitcoinCashAddressValidator::PREFIX_MAINNET, true],
+			['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', BitcoinCashAddressValidator::PREFIX_MAINNET, true],
+			['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', BitcoinCashAddressValidator::PREFIX_MAINNET, true],
+			['qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', BitcoinCashAddressValidator::PREFIX_MAINNET, false],
+			['bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', BitcoinCashAddressValidator::PREFIX_MAINNET, false],
+			['bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', BitcoinCashAddressValidator::PREFIX_MAINNET, false],
+			['bchtest:ppm2qsznhks23z7629mms6s4cwef74vcwvhanqgjxu', BitcoinCashAddressValidator::PREFIX_TESTNET, false],
+			['bchreg:pqzg22ty3m437frzk4y0gvvyqj02jpfv7udqugqkne', BitcoinCashAddressValidator::PREFIX_REGTEST, false],
+		];
+	}
+
+	/**
+	 * @param string $address
+	 * @param string $prefix
+	 * @param bool $expectedValue
+	 * @dataProvider providerIsBase58Address
+	 */
+	public function testIsBase58Address($address, $prefix, $expectedValue) {
+		$validator = new BitcoinCashAddressValidator($address, $prefix);
+		$this->assertEquals($validator->isBase58Address(), $expectedValue);
+	}
+
+	/**
+	 * @param string $address
+	 * @param string $prefix
+	 * @param bool $expectedValue
+	 * @dataProvider providerIsBase58Address
+	 */
+	public function testIsCashAddressAddress($address, $prefix, $expectedValue) {
+		$validator = new BitcoinCashAddressValidator($address, $prefix);
+		$this->assertNotEquals($validator->isCashAddress(), $expectedValue);
+	}
+
 }
