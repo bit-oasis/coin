@@ -93,7 +93,7 @@ class BitcoinCashAddress implements CryptocurrencyAddress {
 		}
 		
 		try {
-			list($prefix, $scriptType, $binaryHash) = CashAddress::decode($this->address);
+			list($prefix, $scriptType, $binaryHash) = CashAddress::decode($this->toFullAddressString());
 			if ($prefix !== BitcoinCashAddressValidator::PREFIX_MAINNET) {
 				throw new InvalidAddressPrefixException("Cannot convert CashAddress with prefix '$prefix'");
 			}
@@ -131,6 +131,39 @@ class BitcoinCashAddress implements CryptocurrencyAddress {
 		$cashAddress = CashAddress::encode(BitcoinCashAddressValidator::PREFIX_MAINNET, $base58ToCashAddressPrefixes[reset($version)], $hash);
 		
 		return new static($cashAddress, $this->currency);
+	}
+
+	/**
+	 * Force prefix for CashAddress. If address is not CassAddress same as {@see toString}.
+	 * @return string
+	 */
+	public function toFullAddressString() {
+		$prefix = $this->getCashAddressPrefixWithSeparator();
+		if ($this->validator->isCashAddress() && substr($this->address, 0, strlen($prefix)) !== $prefix) {
+			return $prefix . $this->address;
+		}
+		
+		return $this->toString();
+	}
+
+	/**
+	 * Force CashAddress without prefix. If address is not CassAddress same as {@see toString}.
+	 * @return string
+	 */
+	public function toShortAddressString() {
+		$prefix = $this->getCashAddressPrefixWithSeparator();
+		if ($this->validator->isCashAddress()) {
+			return str_replace($prefix, '', $this->address);
+		}
+		
+		return $this->toString();
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getCashAddressPrefixWithSeparator() {
+		return BitcoinCashAddressValidator::PREFIX_MAINNET . BitcoinCashAddressValidator::BASE32_SEPARATOR;
 	}
 
 	/**

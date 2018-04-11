@@ -32,33 +32,115 @@ class BitcoinCashAddressTest extends UnitTest {
 	}
 
 	/**
-	 * @param string $expectedAddress
+	 * @param string $base58Address
 	 * @param string $cashAddress
 	 * @dataProvider providerBase58ToCashAddress
 	 */
-	public function testToBase58($expectedAddress, $cashAddress) {
+	public function testToBase58Same($base58Address) {
+		$address = new BitcoinCashAddress($base58Address, self::getCurrency());
+		$this->assertEquals($address->toBase58()->toString(), $base58Address);
+	}
+
+	public function providerCashAddressToBase58() {
+		return [
+			['bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+			['bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+			['bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+			['bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+			['bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+			['bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+			['qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+			['qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+			['qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+			['ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+			['pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+			['pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+		];
+	}
+
+	/**
+	 * @param string $cashAddress
+	 * @param string $expectedAddress
+	 * @dataProvider providerCashAddressToBase58
+	 */
+	public function testToBase58($cashAddress, $expectedAddress) {
 		$address = new BitcoinCashAddress($cashAddress, self::getCurrency());
 		$this->assertEquals($address->toBase58()->toString(), $expectedAddress);
 	}
 
 	/**
-	 * @param string $base58Address
 	 * @param string $cashAddress
-	 * @dataProvider providerBase58ToCashAddress
+	 * @dataProvider providerCashAddressToBase58
 	 */
-	public function testToCashAddressSame($base58Address, $cashAddress) {
+	public function testToCashAddressSame($cashAddress) {
 		$address = new BitcoinCashAddress($cashAddress, self::getCurrency());
 		$this->assertEquals($address->toCashAddress()->toString(), $cashAddress);
 	}
 
+	public function providerToFullAddressString() {
+		return [
+			['bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', 'bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'],
+			['bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', 'bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy'],
+			['bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', 'bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r'],
+			['bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
+			['bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
+			['bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
+			['qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', 'bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'],
+			['qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', 'bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy'],
+			['qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', 'bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r'],
+			['ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
+			['pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
+			['pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
+            ['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+            ['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+            ['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+            ['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+            ['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+            ['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+		];
+	}
+
 	/**
-	 * @param string $base58Address
-	 * @param string $cashAddress
-	 * @dataProvider providerBase58ToCashAddress
+	 * @param type $inputAddress
+	 * @param type $expectedAddress
+	 * @dataProvider providerToFullAddressString
 	 */
-	public function testToBase58Same($base58Address, $cashAddress) {
-		$address = new BitcoinCashAddress($base58Address, self::getCurrency());
-		$this->assertEquals($address->toBase58()->toString(), $base58Address);
+	public function testToFullAddressString($inputAddress, $expectedAddress) {
+		$address = new BitcoinCashAddress($inputAddress, self::getCurrency());
+		$this->assertEquals($address->toFullAddressString(), $expectedAddress);
+	}
+
+	public function providerToShortAddressString() {
+		return [
+			['bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', 'qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'],
+			['bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', 'qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy'],
+			['bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', 'qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r'],
+			['bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
+			['bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
+			['bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
+			['qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a', 'qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'],
+			['qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy', 'qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy'],
+			['qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r', 'qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r'],
+			['ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
+			['pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
+			['pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
+            ['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+            ['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+            ['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+            ['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+            ['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+            ['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+		];
+	}
+
+	/**
+	 * @param type $inputAddress
+	 * @param type $expectedAddress
+	 * @dataProvider providerToShortAddressString
+	 */
+	public function testToShortAddressString($inputAddress, $expectedAddress) {
+		$address = new BitcoinCashAddress($inputAddress, self::getCurrency());
+		$this->assertEquals($address->toShortAddressString(), $expectedAddress);
 	}
 
 	/**
