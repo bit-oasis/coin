@@ -18,12 +18,13 @@ class Base58Check {
 
 	/**
 	 * @param string $address base58 encoded address
+	 * @param string $charset if null default Bitcoin charset is used
 	 * @return Base58DecodedAddress
 	 * @throws InvalidArgumentException
 	 * @throws InvalidChecksumException
 	 */
-	public static function decodeAddress($address) {
-		$payload  = self::decode($address);
+	public static function decodeAddress($address, $charset = null) {
+		$payload  = self::decode($address, $charset);
 		
 		try {
 			return Base58DecodedAddress::fromPayload($payload);
@@ -34,32 +35,35 @@ class Base58Check {
 
 	/**
 	 * @param Base58DecodedAddress
+	 * @param string $charset if null default Bitcoin charset is used
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public static function encodeAddress(Base58DecodedAddress $address) {
-		return self::encodeHash($address->getHash(), $address->getVersion());
+	public static function encodeAddress(Base58DecodedAddress $address, $charset = null) {
+		return self::encodeHash($address->getHash(), $address->getVersion(), $charset);
 	}
 
 	/**
 	 * @param string $hash as binary string
 	 * @param string $version as binary string
+	 * @param string $charset if null default Bitcoin charset is used
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public function encodeHash($hash, $version) {
-		return self::encode($version . $hash);
+	public function encodeHash($hash, $version, $charset = null) {
+		return self::encode($version . $hash, $charset);
 	}
 
 	/**
 	 * @param string $value base58 encoded string
+	 * @param string $charset if null default Bitcoin charset is used
 	 * @return string binary string
 	 * @throws InvalidArgumentException
 	 * @throws InvalidChecksumException
 	 */
-	public static function decode($value) {
+	public static function decode($value, $charset = null) {
 		try {
-			$base58 = new Base58();
+			$base58 = new Base58($charset);
 			$decodedValue = $base58->decode($value);
 
 			$payload = substr($decodedValue, 0, -4);
@@ -79,14 +83,15 @@ class Base58Check {
 
 	/**
 	 * @param string $value as binary string
+	 * @param string $charset if null default Bitcoin charset is used
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public static function encode($value) {
+	public static function encode($value, $charset = null) {
 		try {
 			$checksum = substr(self::sha256x2hash($value), 0, 4);
 			
-			$base58 = new Base58();
+			$base58 = new Base58($charset);
 			return $base58->encode($value . $checksum);
 		} catch (\InvalidArgumentException $e) {
 			throw new InvalidArgumentException($e->getMessage(), 0, $e);

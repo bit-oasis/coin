@@ -5,7 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use Nette\Utils\Strings;
+use BitOasis\Coin\Address\Validators\RippleAddressValidator;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -29,12 +29,8 @@ class RippleAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, $tag = null) {
-		if (!$this->isValid($address)) {
-			throw new InvalidAddressException('This is not valid ripple address - ' . $address);
-		}
-		if ($tag !== null && (!is_numeric($tag) || (int)$tag != $tag || (int)$tag < 0 || (int)$tag > 4294967295)) {
-			throw new InvalidAddressException('This is not valid ripple tag - ' . $tag);
-		}
+		$this->validateAddress($address, $tag);
+		
 		$this->address = $address;
 		$this->currency = $currency;
 		$this->tag = $tag === null ? null : (int)$tag;
@@ -101,11 +97,34 @@ class RippleAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @param $address
+	 * @param string $address
+	 * @param $tag
 	 * @return bool
 	 */
-	private function isValid($address) {
-		return Strings::match($address, '/^r[1-9A-HJ-NP-Za-km-z]{25,34}$/');
+	private function isValid($address, $tag = null) {
+		return $this->createValidator($address, $tag)
+			->validate();
+	}
+
+	/**
+	 * 
+	 * @param string $address
+	 * @param $tag
+	 * @return bool
+	 * @throws InvalidAddressException
+	 */
+	private function validateAddress($address, $tag = null) {
+		return $this->createValidator($address, $tag)
+			->validateWithExceptions();
+	}
+
+	/**
+	 * @param string $address
+	 * @param $tag
+	 * @return RippleAddressValidator
+	 */
+	private function createValidator($address, $tag = null) {
+		return new RippleAddressValidator($address, $tag);
 	}
 
 }
