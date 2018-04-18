@@ -10,7 +10,6 @@
 	],
 	"require": {
 		"php": ">=5.6.0",
-		"ext-gmp": "*",
 		"zendframework/zend-math": "^3.0",
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",

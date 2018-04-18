@@ -7,7 +7,7 @@ use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
-use StephenHill\Base58;
+use BitOasis\Coin\Utils\Base58Check;
 use CashAddr\CashAddress;
 use CashAddr\Exception\CashAddressException;
 use CashAddr\Exception\Base32Exception;
@@ -95,17 +95,13 @@ class BitcoinCashAddress implements CryptocurrencyAddress {
 		try {
 			list($prefix, $scriptType, $binaryHash) = CashAddress::decode($this->toFullAddressString());
 			if ($prefix !== BitcoinCashAddressValidator::PREFIX_MAINNET) {
-				throw new InvalidAddressPrefixException("Cannot convert CashAddress with prefix '$prefix'");
+				throw new InvalidAddressPrefixException("Cannot convert CashAddress with prefix '$prefix'!");
+			}
+			if (!isset($this->cashAddressToBase58Prefixes[$scriptType])) {
+				throw new InvalidAddressPrefixException("Cannot convert CashAddress version '$scriptType'!");
 			}
 			
-			$payload = pack('C', $this->cashAddressToBase58Prefixes[$scriptType]) . $binaryHash;
-			$hash = hash('sha256', $payload, true);
-			$hash = hash('sha256', $hash, true);
-			$hash = $payload . substr($hash, 0, 4);
-			
-			$base58 = new Base58();
-			$base58BHash = $base58->encode($hash);
-			
+			$base58BHash = Base58Check::encodeHash($binaryHash, Base58Check::convertDecimalToBinaryString($this->cashAddressToBase58Prefixes[$scriptType]));
 			return new static($base58BHash, $this->currency, false);
 		} catch (CashAddressException $e) {
 			$this->throwInvalidAddressException($e);
@@ -116,20 +112,22 @@ class BitcoinCashAddress implements CryptocurrencyAddress {
 
 	/**
 	 * @return \static
+	 * @throws InvalidAddressPrefixException
 	 */
 	public function toCashAddress() {
 		if ($this->validator->isCashAddress()) {
 			return $this;
 		}
 		
-		$base58 = new Base58();
-		$payload = $base58->decode($this->address);
+		$decodedAddress = Base58Check::decodeAddress($this->address);
 		
-		$version = unpack('C', substr($payload, 0, 1));
-		$hash = substr($payload, 1, -4);
-		$base58ToCashAddressPrefixes = array_flip($this->cashAddressToBase58Prefixes);
-		$cashAddress = CashAddress::encode(BitcoinCashAddressValidator::PREFIX_MAINNET, $base58ToCashAddressPrefixes[reset($version)], $hash);
+		$version = $decodedAddress->getDecimalVersion();
+		$hashVersion = array_search($version, $this->cashAddressToBase58Prefixes, true);
+		if ($hashVersion === false) {
+			throw new InvalidAddressPrefixException("Cannot convert base58 address with prefix '$version'!");
+		}
 		
+		$cashAddress = CashAddress::encode(BitcoinCashAddressValidator::PREFIX_MAINNET, $hashVersion, $decodedAddress->getHash());
 		return new static($cashAddress, $this->currency);
 	}
 

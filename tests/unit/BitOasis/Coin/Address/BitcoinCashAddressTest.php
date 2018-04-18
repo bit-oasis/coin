@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use UnitTestUtils;
 use UnitTest;
 
 /**
@@ -147,7 +148,7 @@ class BitcoinCashAddressTest extends UnitTest {
 	 * @return Cryptocurrency
 	 */
 	protected static function getCurrency() {
-		return new Cryptocurrency(Cryptocurrency::BCH, 8, 'Bitcoin cash');
+		return UnitTestUtils::getCryptocurrency(Cryptocurrency::BCH);
 	}
 
 }
