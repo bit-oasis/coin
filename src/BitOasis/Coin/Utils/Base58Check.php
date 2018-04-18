@@ -15,6 +15,8 @@ class Base58Check {
 	const LTC_ADDRESS = 'ltc';
 	const XRP_ADDRESS = 'xrp';
 	const BCH_LEGACY_ADDRESS = 'bchl';
+	const ZEC_TRANSPARENT_ADDRESS = 'zect';
+	const ZEC_SHIELDED_ADDRESS = 'zecz';
 	
 	const SHA256 = 'sha256';
 	const VERSION_LENGTH = 'versionLength';
@@ -26,6 +28,16 @@ class Base58Check {
 		self::BTC_ADDRESS => [
 			self::VERSION_LENGTH => 1,
 			self::HASH_LENGTH => 20,
+			self::CHECKSUM_HASH => 'sha256x2hash',
+		],
+		self::ZEC_TRANSPARENT_ADDRESS => [
+			self::VERSION_LENGTH => 2,
+			self::HASH_LENGTH => 20,
+			self::CHECKSUM_HASH => 'sha256x2hash',
+		],
+		self::ZEC_SHIELDED_ADDRESS => [
+			self::VERSION_LENGTH => 2,
+			self::HASH_LENGTH => 64,
 			self::CHECKSUM_HASH => 'sha256x2hash',
 		],
 	];

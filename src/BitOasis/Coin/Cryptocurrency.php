@@ -13,6 +13,7 @@ class Cryptocurrency {
 	const XRP = 'XRP';
 	const LTC = 'LTC';
 	const BCH = 'BCH';
+	const ZEC = 'ZEC';
 
 	/** @var string */
 	protected $code;

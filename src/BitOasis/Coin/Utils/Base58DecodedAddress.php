@@ -74,6 +74,22 @@ class Base58DecodedAddress {
 	}
 
 	/**
+	 * @return string in hex string
+	 */
+	
+	public function getHexVersionLower() {
+		return strtolower($this->getHexVersion());
+	}
+
+	/**
+	 * @return string in hex string
+	 */
+	
+	public function getHexVersionUpper() {
+		return strtoupper($this->getHexVersion());
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getDecimalVersion() {
