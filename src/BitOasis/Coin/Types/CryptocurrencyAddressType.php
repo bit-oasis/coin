@@ -13,7 +13,7 @@ use Doctrine\DBAL\Types\Type;
 class CryptocurrencyAddressType extends Type {
 
 	const CRYPTOCURRENCY_ADDRESS = 'cryptocurrencyAddress';
-	const FIELD_LENGTH = 64;
+	const FIELD_LENGTH = 256;
 
 	/**
 	 * {@inheritdoc}
