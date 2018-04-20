@@ -14,6 +14,7 @@ class Cryptocurrency {
 	const LTC = 'LTC';
 	const BCH = 'BCH';
 	const ZEC = 'ZEC';
+	const XMR = 'XMR';
 
 	/** @var string */
 	protected $code;

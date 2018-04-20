@@ -14,7 +14,8 @@
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",
 		"btccom/cashaddress": "dev-master@dev",
-		"stephenhill/base58": "^1.1.4"
+		"stephenhill/base58": "^1.1.4",
+		"olegabr/keccak": "^1.0.3"
 	},
 	"require-dev": {
 		"kdyby/doctrine": "~3.0@dev|~2.3@dev",

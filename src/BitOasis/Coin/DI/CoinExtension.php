@@ -10,6 +10,7 @@ use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\ZcashAddress;
+use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
 use BitOasis\Coin\Types\CoinType;
@@ -39,6 +40,7 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 			Cryptocurrency::LTC => LitecoinAddress::class,
 			Cryptocurrency::BCH => BitcoinCashAddress::class,
 			Cryptocurrency::ZEC => ZcashAddress::class,
+			Cryptocurrency::XMR => MoneroAddress::class,
 		],
 	];
 

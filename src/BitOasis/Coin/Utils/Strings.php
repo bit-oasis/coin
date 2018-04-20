@@ -2,6 +2,8 @@
 
 namespace BitOasis\Coin\Utils;
 
+use kornrunner\Keccak;
+
 /**
  * @author David Fiedor <davefu@seznam.cz>
  */
@@ -20,6 +22,16 @@ class Strings {
 	 */
 	public static function sha256x2hash($value, $rawOutput = true) {
 		return hash(self::SHA256, hash(self::SHA256, $value, $rawOutput), $rawOutput);
+	}
+
+	/**
+	 * @todo Use original kornrunner\Keccak package after move min. PHP version to 7.1
+	 * @param string $value
+	 * @param bool $rawOutput if true returned value is in binary string
+	 * @return string
+	 */
+	public static function keccak256Hash($value, $rawOutput = true) {
+		return Keccak::hash($value, 256, $rawOutput);
 	}
 
 	/**
