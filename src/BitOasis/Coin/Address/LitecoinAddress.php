@@ -7,7 +7,7 @@ use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\LitecoinAddressValidator;
-use BitOasis\Coin\Utils\Base58Check;
+use BitOasis\Coin\Utils\Base58Check\Base58Check;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>

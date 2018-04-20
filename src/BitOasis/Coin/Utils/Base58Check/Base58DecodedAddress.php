@@ -1,7 +1,8 @@
 <?php
 
-namespace BitOasis\Coin\Utils;
+namespace BitOasis\Coin\Utils\Base58Check;
 
+use BitOasis\Coin\Utils\Strings;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
 
 /**
@@ -70,7 +71,7 @@ class Base58DecodedAddress {
 	 * @return string in hex string
 	 */
 	public function getHexVersion() {
-		return Base58Check::convertBinaryStringToHex($this->version);
+		return Strings::convertBinaryStringToHex($this->version);
 	}
 
 	/**
@@ -93,7 +94,7 @@ class Base58DecodedAddress {
 	 * @return int
 	 */
 	public function getDecimalVersion() {
-		return Base58Check::convertBinaryStringToDecimal($this->version);
+		return Strings::convertBinaryStringToDecimal($this->version);
 	}
 
 	/**
@@ -107,14 +108,14 @@ class Base58DecodedAddress {
 	 * @param string $version in hex format
 	 */
 	public function setHexVersion($version) {
-		$this->version = Base58Check::convertHexToBinaryString($version);
+		$this->version = Strings::convertHexToBinaryString($version);
 	}
 
 	/**
 	 * @param int $version
 	 */
 	public function setDecimalVersion($version) {
-		$this->version = Base58Check::convertDecimalToBinaryString($version);
+		$this->version = Strings::convertDecimalToBinaryString($version);
 	}
 
 	/**

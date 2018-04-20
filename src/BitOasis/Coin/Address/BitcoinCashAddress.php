@@ -7,7 +7,8 @@ use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
-use BitOasis\Coin\Utils\Base58Check;
+use BitOasis\Coin\Utils\Strings;
+use BitOasis\Coin\Utils\Base58Check\Base58Check;
 use CashAddr\CashAddress;
 use CashAddr\Exception\CashAddressException;
 use CashAddr\Exception\Base32Exception;
@@ -101,7 +102,7 @@ class BitcoinCashAddress implements CryptocurrencyAddress {
 				throw new InvalidAddressPrefixException("Cannot convert CashAddress version '$scriptType'!");
 			}
 			
-			$base58BHash = Base58Check::encodeHash($binaryHash, Base58Check::convertDecimalToBinaryString($this->cashAddressToBase58Prefixes[$scriptType]));
+			$base58BHash = Base58Check::encodeHash($binaryHash, Strings::convertDecimalToBinaryString($this->cashAddressToBase58Prefixes[$scriptType]));
 			return new static($base58BHash, $this->currency, false);
 		} catch (CashAddressException $e) {
 			$this->throwInvalidAddressException($e);

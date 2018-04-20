@@ -1,7 +1,8 @@
 <?php
 
-namespace BitOasis\Coin\Utils;
+namespace BitOasis\Coin\Utils\Base58Check;
 
+use BitOasis\Coin\Utils\Strings;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
 
 /**
@@ -29,7 +30,7 @@ class Base58CheckOptions {
 		
 		$this->versionLength = $versionLength;
 		$this->hashLength = $hashLength;
-		$this->checksumHashFunction = $checksumHashFunction === null ? [Base58Check::class, 'sha256x2hash'] : $checksumHashFunction;
+		$this->checksumHashFunction = $checksumHashFunction === null ? [Strings::class, 'sha256x2hash'] : $checksumHashFunction;
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace BitOasis\Coin\Address\Validators;
 
-use BitOasis\Coin\Utils\Base58Check;
+use BitOasis\Coin\Utils\Base58Check\Base58Check;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
