@@ -87,7 +87,7 @@ class MoneroAddress implements CryptocurrencyAddress {
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
 		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, isset($addressParts[1]) ? (int)$addressParts[1] : null);
+		return new static($addressParts[0], $cryptocurrency, isset($addressParts[1]) ? $addressParts[1] : null);
 	}
 
 	/**
