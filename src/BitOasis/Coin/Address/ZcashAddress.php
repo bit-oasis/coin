@@ -60,6 +60,22 @@ class ZcashAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isTransparentAddress() {
+		return $this->createValidator($this->address)
+			->isTransparentAddress();
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isShieldedAddress() {
+		return $this->createValidator($this->address)
+			->isShieldedAddress();
+	}
+
+	/**
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
 	 * @return \static
@@ -74,8 +90,8 @@ class ZcashAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address) {
-		$validator = new ZcashAddressValidator($address);
-		return $validator->validate();
+		return $this->createValidator($address)
+			->validate();
 	}
 
 	/**
@@ -84,8 +100,16 @@ class ZcashAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	private function validate($address) {
-		$validator = new ZcashAddressValidator($address);
-		return $validator->validateWithExceptions();
+		return $this->createValidator($address)
+			->validateWithExceptions();
+	}
+
+	/**
+	 * @param string $address
+	 * @return ZcashAddressValidator
+	 */
+	private function createValidator($address) {
+		return new ZcashAddressValidator($address);
 	}
 
 }

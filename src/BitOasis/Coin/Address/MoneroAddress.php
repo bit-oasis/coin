@@ -99,6 +99,22 @@ class MoneroAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isBaseAddress() {
+		return $this->createValidator($this->address, $this->paymentId)
+			->isBaseAddress();
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isIntegratedAddress() {
+		return $this->createValidator($this->address, $this->paymentId)
+			->isIntegratedAddress();
+	}
+
+	/**
 	 * @param string $address
 	 * @param $paymentId
 	 * @return bool
