@@ -15,6 +15,9 @@ class Cryptocurrency {
 	const BCH = 'BCH';
 	const ZEC = 'ZEC';
 	const XMR = 'XMR';
+	
+	const USD = 'USD';
+	const AED = 'AED';
 
 	/** @var string */
 	protected $code;
