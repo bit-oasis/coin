@@ -12,3 +12,5 @@ BitOasis\Coin\Cryptocurrency:
       length: 100
     decimals:
       type: integer
+    isFiat:
+      type: boolean

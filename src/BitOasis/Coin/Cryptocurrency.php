@@ -28,16 +28,21 @@ class Cryptocurrency {
 	/** @var string|null */
 	protected $name;
 
+	/** @var bool */
+	protected $isFiat;
+
 	/**
 	 * Cryptocurrency constructor.
 	 * @param string $code
 	 * @param int $decimals
 	 * @param string|null $name
+	 * @param bool $isFiat
 	 */
-	public function __construct($code, $decimals, $name = null) {
+	public function __construct($code, $decimals, $name = null, $isFiat = false) {
 		$this->code = $code;
 		$this->decimals = $decimals;
 		$this->name = $name;
+		$this->isFiat = $isFiat;
 	}
 
 	/**
@@ -66,6 +71,20 @@ class Cryptocurrency {
 	 */
 	public function getName() {
 		return $this->name;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isFiat() {
+		return $this->isFiat;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isCrypto() {
+		return !$this->isFiat;
 	}
 
 	/**
