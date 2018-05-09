@@ -32,16 +32,7 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 	public $defaults = [
 		'cache' => 'default',
 		'entityNamespaces' => null,
-		'addressHandlers' => [
-			Cryptocurrency::BTC => BitcoinAddress::class,
-			Cryptocurrency::TBTC => BitcoinTestnetAddress::class,
-			Cryptocurrency::ETH => EthereumAddress::class,
-			Cryptocurrency::XRP => RippleAddress::class,
-			Cryptocurrency::LTC => LitecoinAddress::class,
-			Cryptocurrency::BCH => BitcoinCashAddress::class,
-			Cryptocurrency::ZEC => ZcashAddress::class,
-			Cryptocurrency::XMR => MoneroAddress::class,
-		],
+		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES,
 	];
 
 	public function loadConfiguration() {
