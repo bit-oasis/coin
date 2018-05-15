@@ -85,7 +85,7 @@ class Base58Check {
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public function encodeHash($hash, $version, $charset = null, $options = self::BTC_ADDRESS) {
+	public static function encodeHash($hash, $version, $charset = null, $options = self::BTC_ADDRESS) {
 		$options = self::getOptions($options);
 		return self::encode($version . $hash, $charset, $options->getChecksumHashFunction());
 	}

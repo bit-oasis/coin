@@ -53,7 +53,7 @@ class CryptoNote {
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public function encodeHashParts($spendKey, $viewKey, $version, $paymentId = null) {
+	public static function encodeHashParts($spendKey, $viewKey, $version, $paymentId = null) {
 		return self::encode($version . $spendKey . $viewKey . $paymentId);
 	}
 
