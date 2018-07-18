@@ -10,6 +10,7 @@ class Cryptocurrency {
 	const BTC = 'BTC';
 	const TBTC = 'TBTC';
 	const ETH = 'ETH';
+	const ETC = 'ETC';
 	const XRP = 'XRP';
 	const LTC = 'LTC';
 	const BCH = 'BCH';
