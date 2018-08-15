@@ -15,8 +15,9 @@ class Cryptocurrency {
 	const LTC = 'LTC';
 	const BCH = 'BCH';
 	const ZEC = 'ZEC';
+	const XLM = 'XLM';
 	const XMR = 'XMR';
-	
+
 	const USD = 'USD';
 	const AED = 'AED';
 	const KWD = 'KWD';

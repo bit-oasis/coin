@@ -10,6 +10,7 @@ use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\StellarAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Cryptocurrency;
 
@@ -27,6 +28,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::LTC => LitecoinAddress::class,
 		Cryptocurrency::BCH => BitcoinCashAddress::class,
 		Cryptocurrency::ZEC => ZcashAddress::class,
+		Cryptocurrency::XLM => StellarAddress::class,
 		Cryptocurrency::XMR => MoneroAddress::class,
 	];
 

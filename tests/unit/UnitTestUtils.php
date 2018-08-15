@@ -24,6 +24,8 @@ class UnitTestUtils {
 				return new Cryptocurrency($code, 18, 'Ethereum');
 			case Cryptocurrency::XRP:
 				return new Cryptocurrency($code, 6, 'Ripple');
+			case Cryptocurrency::XLM:
+				return new Cryptocurrency($code, 7, 'Stellar Lumen');
 			default:
 				throw new \InvalidArgumentException("'$code' is not supported!");
 		}
