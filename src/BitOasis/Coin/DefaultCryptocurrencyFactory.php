@@ -43,6 +43,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ETH] = new Cryptocurrency(Cryptocurrency::ETH, 18, 'Ethereum');
 		$this->cryptocurrencies[Cryptocurrency::ETC] = new Cryptocurrency(Cryptocurrency::ETC, 18, 'Ethereum Classic');
 		$this->cryptocurrencies[Cryptocurrency::LTC] = new Cryptocurrency(Cryptocurrency::LTC, 8, 'Litecoin');
+		$this->cryptocurrencies[Cryptocurrency::XLM] = new Cryptocurrency(Cryptocurrency::XLM, 7, 'Stellar Lumen');
 		$this->cryptocurrencies[Cryptocurrency::XMR] = new Cryptocurrency(Cryptocurrency::XMR, 12, 'Monero');
 		$this->cryptocurrencies[Cryptocurrency::XRP] = new Cryptocurrency(Cryptocurrency::XRP, 6, 'Ripple');
 		$this->cryptocurrencies[Cryptocurrency::ZEC] = new Cryptocurrency(Cryptocurrency::ZEC, 8, 'Zcash');
