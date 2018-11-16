@@ -4,25 +4,24 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
+use BitOasis\Coin\Address\Validators\BitcoinSvAddressValidator;
 
 /**
- * Bitcoin Cash (Bitcoin ABC) address
+ * Bitcoin SV (Satoshi Vision) address
  * @author David Fiedor <davefu@seznam.cz>
- * @author Daniel Robenek <daniel.robenek@me.com>
  */
-class BitcoinCashAddress extends BaseBitcoinCashAddress {
+class BitcoinSvAddress extends BaseBitcoinCashAddress {
 
 	/**
-	 * BitcoinCashAddress constructor.
+	 * BitcoinSvAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
 	 * @param bool $cashAddressAllowed
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, $cashAddressAllowed = true) {
-		if ($currency->getCode() !== Cryptocurrency::BCH) {
-			throw new InvalidAddressException($currency->getCode() . ' is not valid currency for Bitcoin Cash address!');
+		if ($currency->getCode() !== Cryptocurrency::BSV) {
+			throw new InvalidAddressException($currency->getCode() . ' is not valid currency for Bitcoin SV address!');
 		}
 		parent::__construct($address, $currency, $cashAddressAllowed);
 	}
@@ -31,7 +30,7 @@ class BitcoinCashAddress extends BaseBitcoinCashAddress {
 	 * @inheritDoc
 	 */
 	protected function createValidator($address, $cashAddressAllowed = true) {
-		$validator = new BitcoinCashAddressValidator($address);
+		$validator = new BitcoinSvAddressValidator($address);
 		$validator->setCashAddressAllowed($cashAddressAllowed);
 		return $validator;
 	}

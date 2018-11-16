@@ -2,6 +2,9 @@
 
 use BitOasis\Coin\Cryptocurrency;
 
+use BitOasis\Coin\DefaultCryptocurrencyFactory;
+use BitOasis\Coin\Exception\InvalidCurrencyException;
+
 /**
  * @author David Fiedor <davefu@seznam.cz>
  */
@@ -13,21 +16,11 @@ class UnitTestUtils {
 	 * @throws \InvalidArgumentException
 	 */
 	public static function getCryptocurrency($code) {
-		switch($code) {
-			case Cryptocurrency::BTC:
-				return new Cryptocurrency($code, 8, 'Bitcoin');
-			case Cryptocurrency::BCH:
-				return new Cryptocurrency($code, 8, 'Bitcoin Cash');
-			case Cryptocurrency::LTC:
-				return new Cryptocurrency($code, 8, 'Litecoin');
-			case Cryptocurrency::ETH:
-				return new Cryptocurrency($code, 18, 'Ethereum');
-			case Cryptocurrency::XRP:
-				return new Cryptocurrency($code, 6, 'Ripple');
-			case Cryptocurrency::XLM:
-				return new Cryptocurrency($code, 7, 'Stellar Lumen');
-			default:
-				throw new \InvalidArgumentException("'$code' is not supported!");
+		$factory = new DefaultCryptocurrencyFactory();
+		try {
+			return $factory->create($code);
+		} catch (InvalidCurrencyException $e) {
+			throw new \InvalidArgumentException($e->getMessage(), 0, $e);
 		}
 	}
 

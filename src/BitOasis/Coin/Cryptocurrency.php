@@ -17,6 +17,7 @@ class Cryptocurrency {
 	const ZEC = 'ZEC';
 	const XLM = 'XLM';
 	const XMR = 'XMR';
+	const BSV = 'BSV';
 
 	const USD = 'USD';
 	const AED = 'AED';

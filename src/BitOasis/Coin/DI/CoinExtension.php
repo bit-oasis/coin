@@ -2,22 +2,12 @@
 
 namespace BitOasis\Coin\DI;
 
-use BitOasis\Coin\Address\BitcoinAddress;
-use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\CryptocurrencyAddressFactory;
-use BitOasis\Coin\Address\EthereumAddress;
-use BitOasis\Coin\Address\LitecoinAddress;
-use BitOasis\Coin\Address\RippleAddress;
-use BitOasis\Coin\Address\BitcoinCashAddress;
-use BitOasis\Coin\Address\ZcashAddress;
-use BitOasis\Coin\Address\MoneroAddress;
-use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
 use BitOasis\Coin\Types\CoinType;
 use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
-use Nette\PhpGenerator as Code;
 use Kdyby\Doctrine\DI\IDatabaseTypeProvider;
 use Kdyby\Doctrine\DI\IEntityProvider;
 use Nette\DI\CompilerExtension;
