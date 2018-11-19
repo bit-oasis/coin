@@ -76,4 +76,25 @@ class BitcoinAddress implements CryptocurrencyAddress {
 		return (new BTCValidator($address))->validate();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return false;
+	}
+
 }

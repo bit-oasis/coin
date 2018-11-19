@@ -48,6 +48,20 @@ class RippleAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return $this->getTag();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return true;
+	}
+
+	/**
 	 * @return int|null
 	 */
 	public function getTag() {

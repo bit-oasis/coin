@@ -112,4 +112,25 @@ class ZcashAddress implements CryptocurrencyAddress {
 		return new ZcashAddressValidator($address);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return false;
+	}
+
 }

@@ -48,6 +48,20 @@ class StellarAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return $this->getMemo();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return true;
+	}
+
+	/**
 	 * @return string|null
 	 */
 	public function getMemo() {

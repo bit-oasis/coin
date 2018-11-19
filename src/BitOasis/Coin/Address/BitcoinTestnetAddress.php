@@ -76,4 +76,25 @@ class BitcoinTestnetAddress implements CryptocurrencyAddress {
 		return AddressValidator::isValid($address, AddressValidator::TESTNET);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return false;
+	}
+
 }

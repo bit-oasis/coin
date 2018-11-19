@@ -50,6 +50,20 @@ class MoneroAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalId() {
+		return $this->getPaymentId();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supportsAdditionalId() {
+		return true;
+	}
+
+	/**
 	 * @return string|null
 	 */
 	public function getPaymentId() {

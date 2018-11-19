@@ -143,6 +143,16 @@ abstract class BaseBitcoinCashAddressTest extends UnitTest {
 	}
 
 	/**
+	 * @param string $base58Address
+	 * @dataProvider providerBase58ToCashAddress
+	 */
+	public function testAdditionalId($base58Address) {
+		$address = $this->createAddress($base58Address);
+		$this->assertFalse($address->supportsAdditionalId());
+		$this->assertNull($address->getAdditionalId());
+	}
+
+	/**
 	 * @param $address string
 	 * @return BaseBitcoinCashAddress
 	 */

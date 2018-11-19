@@ -8,6 +8,11 @@ use BitOasis\Coin\Exception\InvalidAddressException;
 interface CryptocurrencyAddress {
 
 	/**
+	 * @return string simple address without additional ID
+	 */
+	public function getAddress();
+
+	/**
 	 * @return string
 	 */
 	public function toString();
@@ -21,6 +26,18 @@ interface CryptocurrencyAddress {
 	 * @return Cryptocurrency
 	 */
 	public function getCurrency();
+
+	/**
+	 * Supports address additional ID (e.g. tag, memo, paymentId, etc.)?
+	 * @return bool if TRUE, ID could be NULL anyway
+	 */
+	public function supportsAdditionalId();
+
+	/**
+	 * Get additional address identifier (e.g. tag, memo, paymentId, etc.)
+	 * @return mixed
+	 */
+	public function getAdditionalId();
 
 	/**
 	 * @param CryptocurrencyAddress $address

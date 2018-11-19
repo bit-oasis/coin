@@ -43,6 +43,16 @@ class LitecoinAddressTest extends UnitTest {
 	}
 
 	/**
+	 * @param string $address
+	 * @dataProvider providerToNewAddressFormat
+	 */
+	public function testAdditionalId($address) {
+		$litecoinAddress = new LitecoinAddress($address, self::getCurrency());
+		$this->assertFalse($litecoinAddress->supportsAdditionalId());
+		$this->assertNull($litecoinAddress->getAdditionalId());
+	}
+
+	/**
 	 * @return Cryptocurrency
 	 */
 	protected static function getCurrency() {
