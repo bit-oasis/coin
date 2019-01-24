@@ -2,7 +2,7 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\StellarAddressValidator;
+use BitOasis\Coin\Address\Validators\EosAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
