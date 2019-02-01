@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
@@ -32,6 +33,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::XLM => StellarAddress::class,
 		Cryptocurrency::XMR => MoneroAddress::class,
 		Cryptocurrency::BSV => BitcoinSvAddress::class,
+		Cryptocurrency::EOS => EosAddress::class,
 	];
 
 }

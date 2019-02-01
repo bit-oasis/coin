@@ -16,6 +16,7 @@ class Cryptocurrency {
 	const BCH = 'BCH';
 	const ZEC = 'ZEC';
 	const XLM = 'XLM';
+	const EOS = 'EOS';
 	const XMR = 'XMR';
 	const BSV = 'BSV';
 
