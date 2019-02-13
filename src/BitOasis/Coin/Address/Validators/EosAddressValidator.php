@@ -13,11 +13,16 @@ class EosAddressValidator implements ValidationInterface {
 	/** @var string */
 	protected $address;
 
+	/** @var string */
+	protected $memo;
+
 	/**
 	 * @param string $address
+	 * @param string $memo
 	 */
-	public function __construct($address) {
+	public function __construct($address, $memo = null) {
 		$this->address = $address;
+		$this->memo = $memo;
 	}
 
 	/**
@@ -40,10 +45,13 @@ class EosAddressValidator implements ValidationInterface {
 		if (strlen($this->address) !== 12) {
 			throw new InvalidAddressException('Address has invalid length');
 		}
-
-		// returns 1 if the <i>pattern</i>
-		// matches given <i>subject</i>, 0 if it does not, or <b>FALSE</b>
-		// if an error occurred.
+		if ($this->memo !== null && !mb_check_encoding($this->memo, 'UTF-8')) {
+			throw new InvalidAddressException('Memo is not valid UTF-8 string');
+		}
+		if (strlen($this->memo) > 256) {
+			throw new InvalidAddressException('Memo is too long');
+		}
+		/** Less strict comparison is intentional here */
 		if (preg_match('/[a-z12345.]{12}/', $this->address) == 0) {
 			throw new InvalidAddressException('This is not valid EOS address - ' . $this->address, 0);
 		}
