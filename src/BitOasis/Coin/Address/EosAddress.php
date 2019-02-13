@@ -104,7 +104,7 @@ class EosAddress implements CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
-	 * @return StellarAddress
+	 * @return EosAddress
 	 * @throws InvalidAddressException
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
@@ -125,7 +125,7 @@ class EosAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	private function validateAddress($address, $memo = null) {
-		$validator = new EosAddressValidator($address, $memo);;
+		$validator = new EosAddressValidator($address, $memo);
 		$validator->validateWithExceptions();
 	}
 
