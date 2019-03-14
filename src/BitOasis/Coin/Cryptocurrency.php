@@ -23,6 +23,7 @@ class Cryptocurrency {
 	const USD = 'USD';
 	const AED = 'AED';
 	const KWD = 'KWD';
+	const EUR = 'EUR';
 
 	/** @var string */
 	protected $code;
