@@ -121,7 +121,7 @@ class LitecoinAddress implements CryptocurrencyAddress, LegacyAddress {
 			return new static(Base58Check::encodeAddress($decodedAddress), $this->currency);
 		}
 		
-		return $this;
+		return null;
 	}
 
 	/**
@@ -156,7 +156,8 @@ class LitecoinAddress implements CryptocurrencyAddress, LegacyAddress {
 	 * @inheritDoc
 	 */
 	public function getLegacyAddress() {
-		return $this->toLegacyAddressFormat()->getAddress();
+		$legacyAddress = $this->toLegacyAddressFormat();
+		return $legacyAddress === null ? null : $legacyAddress->getAddress();
 	}
 
 }

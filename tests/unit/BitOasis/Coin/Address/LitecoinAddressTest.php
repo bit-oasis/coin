@@ -39,7 +39,10 @@ class LitecoinAddressTest extends UnitTest {
 	 */
 	public function testToLegacyAddressFormat($expectedFormat, $newFormat) {
 		$address = new LitecoinAddress($newFormat, self::getCurrency());
-		$this->assertEquals($address->toLegacyAddressFormat()->toString(), $expectedFormat);
+		$legacyAddress = $address->toLegacyAddressFormat();
+		if ($legacyAddress !== null) {
+			$this->assertEquals($legacyAddress->toString(), $expectedFormat);
+		}
 	}
 
 	/**
@@ -66,7 +69,11 @@ class LitecoinAddressTest extends UnitTest {
 	 */
 	public function testLegacyAddress($legacyFormat, $newFormat) {
 		$litecoinAddress = new LitecoinAddress($newFormat, self::getCurrency());
-		$this->assertEquals($litecoinAddress->getLegacyAddress(), $legacyFormat);
+		$legacyAddress = $litecoinAddress->getLegacyAddress();
+		if ($legacyAddress !== null) {
+			$this->assertEquals($legacyAddress, $legacyFormat);
+		}
+
 	}
 
 }
