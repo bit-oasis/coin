@@ -59,4 +59,14 @@ class LitecoinAddressTest extends UnitTest {
 		return UnitTestUtils::getCryptocurrency(Cryptocurrency::LTC);
 	}
 
+	/**
+	 * @param string $legacyFormat
+	 * @param string $newFormat
+	 * @dataProvider providerToNewAddressFormat
+	 */
+	public function testLegacyAddress($legacyFormat, $newFormat) {
+		$litecoinAddress = new LitecoinAddress($newFormat, self::getCurrency());
+		$this->assertEquals($litecoinAddress->getLegacyAddress(), $legacyFormat);
+	}
+
 }

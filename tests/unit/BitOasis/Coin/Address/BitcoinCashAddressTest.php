@@ -40,4 +40,14 @@ class BitcoinCashAddressTest extends BaseBitcoinCashAddressTest {
 		return new BitcoinCashAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BCH));
 	}
 
+	/**
+	 * @param string $legacyFormat
+	 * @param string $newFormat
+	 * @dataProvider providerBase58ToCashAddress
+	 */
+	public function testLegacyAddress($legacyFormat, $newFormat) {
+		$newFormatAddress = $this->createAddress($newFormat);
+		$this->assertEquals($newFormatAddress->getLegacyAddress(), $legacyFormat);
+	}
+
 }
