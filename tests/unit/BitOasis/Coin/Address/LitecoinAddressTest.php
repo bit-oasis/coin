@@ -50,8 +50,7 @@ class LitecoinAddressTest extends UnitTest {
 	 */
 	public function testToLegacyAddressFormat($expectedFormat, $newFormat) {
 		$address = new LitecoinAddress($newFormat, self::getCurrency());
-		$legacyAddress = $address->toLegacyAddressFormat();
-		$this->assertEquals($legacyAddress->toString(), $expectedFormat);
+		$this->assertEquals($address->toLegacyAddressFormat()->toString(), $expectedFormat);
 	}
 
 	/**
