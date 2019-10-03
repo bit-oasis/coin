@@ -7,12 +7,13 @@ use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\LitecoinAddressValidator;
+use BitOasis\Coin\LegacyAddress;
 use BitOasis\Coin\Utils\Base58Check\Base58Check;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
  */
-class LitecoinAddress implements CryptocurrencyAddress {
+class LitecoinAddress implements CryptocurrencyAddress, LegacyAddress {
 
 	/** @var array */
 	protected $legacyToNewAddressHexPrefix = [
@@ -149,6 +150,14 @@ class LitecoinAddress implements CryptocurrencyAddress {
 	 */
 	public function supportsAdditionalId() {
 		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getLegacyAddress() {
+		$legacyAddress = $this->toLegacyAddressFormat();
+		return $legacyAddress->toString() === $this->toString() ? null : $legacyAddress->getAddress();
 	}
 
 }
