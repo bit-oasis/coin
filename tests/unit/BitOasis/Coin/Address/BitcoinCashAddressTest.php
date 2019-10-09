@@ -41,13 +41,23 @@ class BitcoinCashAddressTest extends BaseBitcoinCashAddressTest {
 	}
 
 	/**
-	 * @param string $legacyFormat
+	 * @param string $oldFormat
 	 * @param string $newFormat
 	 * @dataProvider providerBase58ToCashAddress
 	 */
-	public function testLegacyAddress($legacyFormat, $newFormat) {
+	public function testOldFormatAddress($oldFormat, $newFormat) {
 		$newFormatAddress = $this->createAddress($newFormat);
-		$this->assertEquals($newFormatAddress->getLegacyAddress(), $legacyFormat);
+		$this->assertEquals($newFormatAddress->getOldFormatAddress(), $oldFormat);
+	}
+
+	/**
+	 * @param string $oldFormat
+	 * @param string $newFormat
+	 * @dataProvider providerBase58ToCashAddress
+	 */
+	public function testNewFormatAddress($oldFormat, $newFormat) {
+		$oldFormatAddress = $this->createAddress($oldFormat);
+		$this->assertEquals($oldFormatAddress->getNewFormatAddress(), $newFormat);
 	}
 
 }

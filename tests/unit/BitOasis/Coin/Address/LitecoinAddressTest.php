@@ -22,7 +22,7 @@ class LitecoinAddressTest extends UnitTest {
 		];
 	}
 
-	public function providerLegacyAddress() {
+	public function providerOldFormatAddress() {
 		return [
 			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx', 'MFWg1wVLhorAwDEtCTGtjHvCBvQZpEv6dm'],
 			['3A2rCJHyoMuYnowLHkvuvMgU7WLSRwZKL9', 'MGEzWBhwkUkybKDEPdvFjzvsSCvtSubGwa'],
@@ -30,6 +30,15 @@ class LitecoinAddressTest extends UnitTest {
 			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
 			[null, 'LP8A3cjNAXsMBQvy9s4ptavo7owhS2XPr1'],
 			[null, 'Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm'],
+		];
+	}
+
+	public function providerNewFormatAddress() {
+		return [
+			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx', 'MFWg1wVLhorAwDEtCTGtjHvCBvQZpEv6dm'],
+			['3A2rCJHyoMuYnowLHkvuvMgU7WLSRwZKL9', 'MGEzWBhwkUkybKDEPdvFjzvsSCvtSubGwa'],
+			['37qvZetB6pbbZYTdWV6hYn4MX3P5E6UjUh', 'ME44sYJ93wT2N3jXcN63NRJkqjyXFwtvj9'],
+			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
 		];
 	}
 
@@ -71,14 +80,25 @@ class LitecoinAddressTest extends UnitTest {
 	}
 
 	/**
-	 * @param string $legacyFormat
+	 * @param string $oldFormat
 	 * @param string $newFormat
-	 * @dataProvider providerLegacyAddress
+	 * @dataProvider providerOldFormatAddress
 	 */
-	public function testLegacyAddress($legacyFormat, $newFormat) {
+	public function testOldFormatAddress($oldFormat, $newFormat) {
 		$litecoinAddress = new LitecoinAddress($newFormat, self::getCurrency());
-		$legacyAddress = $litecoinAddress->getLegacyAddress();
-		$this->assertEquals($legacyAddress, $legacyFormat);
+		$oldFormatAddress = $litecoinAddress->getOldFormatAddress();
+		$this->assertEquals($oldFormatAddress, $oldFormat);
+	}
+
+	/**
+	 * @param string $oldFormat
+	 * @param string $newFormat
+	 * @dataProvider providerNewFormatAddress
+	 */
+	public function testNewFormatAddress($oldFormat, $newFormat) {
+		$litecoinAddress = new LitecoinAddress($oldFormat, self::getCurrency());
+		$newFormatAddress = $litecoinAddress->getNewFormatAddress();
+		$this->assertEquals($newFormatAddress, $newFormat);
 	}
 
 }

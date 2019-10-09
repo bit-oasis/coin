@@ -5,14 +5,14 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
-use BitOasis\Coin\LegacyAddress;
+use BitOasis\Coin\MultiFormatAddress;
 
 /**
  * Bitcoin Cash (Bitcoin ABC) address
  * @author David Fiedor <davefu@seznam.cz>
  * @author Daniel Robenek <daniel.robenek@me.com>
  */
-class BitcoinCashAddress extends BaseBitcoinCashAddress implements LegacyAddress {
+class BitcoinCashAddress extends BaseBitcoinCashAddress implements MultiFormatAddress {
 
 	/**
 	 * BitcoinCashAddress constructor.
@@ -40,8 +40,15 @@ class BitcoinCashAddress extends BaseBitcoinCashAddress implements LegacyAddress
 	/**
 	 * @inheritDoc
 	 */
-	public function getLegacyAddress() {
+	public function getOldFormatAddress() {
 		return $this->toBase58()->getAddress();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getNewFormatAddress() {
+		return $this->toCashAddress()->getAddress();
 	}
 
 }
