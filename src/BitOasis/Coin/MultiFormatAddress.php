@@ -8,7 +8,7 @@ namespace BitOasis\Coin;
 interface MultiFormatAddress {
 
 	/**
-	 * @return string simple address without additional ID
+	 * @return string|null simple address without additional ID
 	 */
 	public function getOldFormatAddress();
 
