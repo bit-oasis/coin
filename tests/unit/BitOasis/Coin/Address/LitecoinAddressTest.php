@@ -40,6 +40,8 @@ class LitecoinAddressTest extends UnitTest {
 			['3A2rCJHyoMuYnowLHkvuvMgU7WLSRwZKL9', 'MGEzWBhwkUkybKDEPdvFjzvsSCvtSubGwa'],
 			['37qvZetB6pbbZYTdWV6hYn4MX3P5E6UjUh', 'ME44sYJ93wT2N3jXcN63NRJkqjyXFwtvj9'],
 			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
+			['MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
+			['Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm', 'Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm'],
 		];
 	}
 

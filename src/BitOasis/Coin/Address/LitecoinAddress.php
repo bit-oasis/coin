@@ -166,8 +166,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	 */
 	public function getNewFormatAddress() {
 		$oldFormatAddress = $this->toLegacyAddressFormat()->address;
-		$newFormatAddress = $this->toNewAddressFormat()->address;
-		return $this->address === $oldFormatAddress ? $newFormatAddress : $this->address;
+		return $this->address === $oldFormatAddress ? $this->toNewAddressFormat()->address : $this->address;
 	}
 
 }
