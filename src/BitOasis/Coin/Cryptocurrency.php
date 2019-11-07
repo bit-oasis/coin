@@ -20,6 +20,7 @@ class Cryptocurrency {
 	const XMR = 'XMR';
 	const BSV = 'BSV';
 	const OMG = 'OMG';
+	const ZRX = 'ZRX';
 
 	const USD = 'USD';
 	const AED = 'AED';
