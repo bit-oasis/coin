@@ -72,7 +72,7 @@ class EthereumAddress implements CryptocurrencyAddress {
 	 * @param $address
 	 * @return bool
 	 */
-	private function isValid($address) {
+	protected function isValid($address) {
 		return (new ETHValidator($address))->validate();
 	}
 
