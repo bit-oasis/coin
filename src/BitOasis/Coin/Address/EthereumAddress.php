@@ -19,15 +19,12 @@ class EthereumAddress implements CryptocurrencyAddress {
 	protected $currency;
 
 	/**
-	 * EthereumAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency) {
-		if(!$this->isValid($address)) {
-			throw new InvalidAddressException('This is not valid ethereum address - ' . $address);
-		}
+		$this->validateAddress($address, $currency);
 		$this->address = $address;
 		$this->currency = $currency;
 	}
@@ -69,7 +66,7 @@ class EthereumAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @param $address
+	 * @param string $address
 	 * @return bool
 	 */
 	protected function isValid($address) {
@@ -95,6 +92,17 @@ class EthereumAddress implements CryptocurrencyAddress {
 	 */
 	public function supportsAdditionalId() {
 		return false;
+	}
+
+	/**
+	 * @param string $address
+	 * @param Cryptocurrency $currency
+	 * @throws InvalidAddressException
+	 */
+	protected function validateAddress($address, Cryptocurrency $currency) {
+		if (!$this->isValid($address)) {
+			throw new InvalidAddressException("This address '{$address}' is not valid for {$currency->getCode()} cryptocurrency");
+		}
 	}
 
 }

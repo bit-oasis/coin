@@ -25,7 +25,6 @@ class AlgorandAddress implements CryptocurrencyAddress {
 	 */
 	public function __construct($address, Cryptocurrency $currency) {
 		$this->validateAddress($address);
-		
 		$this->address = $address;
 		$this->currency = $currency;
 	}
