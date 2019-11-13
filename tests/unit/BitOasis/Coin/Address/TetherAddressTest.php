@@ -8,9 +8,9 @@ use UnitTestUtils;
 use UnitTest;
 
 /**
- * @author Stanislav Fukala <stanislav.fukala@gmail.com>
+ * @author Daniel Robenek <daniel.robenek@me.com>
  */
-class OmiseGoAddressTest extends UnitTest {
+class TetherAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -43,18 +43,18 @@ class OmiseGoAddressTest extends UnitTest {
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$omiseGoAddress = $this->createAddress($address);
-		$this->assertFalse($omiseGoAddress->supportsAdditionalId());
-		$this->assertNull($omiseGoAddress->getAdditionalId());
+		$tetherAddress = $this->createAddress($address);
+		$this->assertFalse($tetherAddress->supportsAdditionalId());
+		$this->assertNull($tetherAddress->getAdditionalId());
 	}
 
 	/**
 	 * @param string $address
-	 * @return OmiseGoAddress
+	 * @return TetherAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new OmiseGoAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::OMG));
+		return new TetherAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::USDT));
 	}
 
 }

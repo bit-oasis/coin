@@ -101,7 +101,7 @@ class EthereumAddress implements CryptocurrencyAddress {
 	 */
 	protected function validateAddress($address, Cryptocurrency $currency) {
 		if (!$this->isValid($address)) {
-			throw new InvalidAddressException("This address '{$address}' is not valid for {$currency->getCode()} cryptocurrency");
+			throw new InvalidAddressException("'{$address}' is not valid {$currency->getName()} address");
 		}
 	}
 

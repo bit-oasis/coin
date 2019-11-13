@@ -5,18 +5,23 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use Nette\NotImplementedException;
 
 class TetherAddress implements CryptocurrencyAddress {
-
-	/** @var string */
-	protected $address;
 
 	/** @var CryptocurrencyAddress */
 	protected $cryptocurrencyAddress;
 
-	public function __construct($address) {
-		$this->validateAddress($address);
+	/** @var Cryptocurrency */
+	protected $currency;
+
+	/**
+	 * @param $address
+	 * @param Cryptocurrency $currency
+	 * @throws InvalidAddressException
+	 */
+	public function __construct($address, Cryptocurrency $currency) {
+		$this->currency = $currency;
+		$this->createUnderlyingProtocolAddress($address, $currency);
 	}
 
 	/**
@@ -72,40 +77,29 @@ class TetherAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		throw new NotImplementedException();
+		return new static($string, $cryptocurrency);
 	}
 
 	/**
 	 * @param $address
+	 * @param Cryptocurrency $cryptocurrency
 	 * @throws InvalidAddressException
 	 */
-	public function validateAddress($address) {
-		if ($this->isEthereumAddress($address)) {
-			$this->cryptocurrencyAddress = $this->createEthereumAddress($address);
+	public function createUnderlyingProtocolAddress($address, Cryptocurrency $cryptocurrency) {
+		try {
+			$this->cryptocurrencyAddress = new EthereumAddress($address, $cryptocurrency);
+		} catch (InvalidAddressException $e) {
 		}
-		throw new InvalidAddressException("Address '{$address}' is not valid for Tether");
+		if ($this->cryptocurrencyAddress === null) {
+			throw new InvalidAddressException("$address is not valid/supported Tether address, only ECR20 layer is supported.");
+		}
 	}
 
 	/**
-	 * @param string $address
-	 * @return EthereumAddress
-	 * @throws InvalidAddressException
-	 */
-	protected function createEthereumAddress($address) {
-		return new EthereumAddress($address, new Cryptocurrency(Cryptocurrency::ETH, 18, 'Ethereum'));
-	}
-
-	/**
-	 * @param $address
 	 * @return bool
 	 */
-	public function isEthereumAddress($address) {
-		try {
-			$this->createEthereumAddress($address);
-			return true;
-		} catch (InvalidAddressException $e) {
-			return false;
-		}
+	public function isEthereumAddress() {
+		return $this->cryptocurrencyAddress instanceof EthereumAddress;
 	}
 
 }
