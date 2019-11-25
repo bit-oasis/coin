@@ -2,6 +2,8 @@
 
 namespace BitOasis\Coin\DI;
 
+use BitOasis\Coin\Address\AlgorandAddress;
+use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
@@ -11,9 +13,12 @@ use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
+use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\StellarAddress;
+use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\ZcashAddress;
+use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
 
 /**
@@ -34,6 +39,11 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::XMR => MoneroAddress::class,
 		Cryptocurrency::BSV => BitcoinSvAddress::class,
 		Cryptocurrency::EOS => EosAddress::class,
+		Cryptocurrency::OMG => OmiseGoAddress::class,
+		Cryptocurrency::ZRX => ZeroXAddress::class,
+		Cryptocurrency::BAT => BasicAttentionTokenAddress::class,
+		Cryptocurrency::ALG => AlgorandAddress::class,
+		Cryptocurrency::USDT => TetherAddress::class,
 	];
 
 }
