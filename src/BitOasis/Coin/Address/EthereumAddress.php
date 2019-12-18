@@ -91,7 +91,21 @@ class EthereumAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function supportsAdditionalId() {
-		return false;
+		return self::hasAdditionalId();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function hasAdditionalId() {
+		return self::getAdditionalIdName() !== null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getAdditionalIdName() {
+		return null;
 	}
 
 	/**

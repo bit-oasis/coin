@@ -58,7 +58,21 @@ class StellarAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function supportsAdditionalId() {
-		return true;
+		return self::hasAdditionalId();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function hasAdditionalId() {
+		return self::getAdditionalIdName() !== null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getAdditionalIdName() {
+		return 'memo';
 	}
 
 	/**

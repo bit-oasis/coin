@@ -62,6 +62,23 @@ class TetherAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
+	public static function hasAdditionalId() {
+		return self::getAdditionalIdName() !== null;
+	}
+
+	/**
+	 * Tether does not utilize additional ID since Bitcoin or Ethereum addresses
+	 * are the only valid as underlying protocols addresses so far
+	 *
+	 * @inheritDoc
+	 */
+	public static function getAdditionalIdName() {
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function getAdditionalId() {
 		return $this->cryptocurrencyAddress->getAdditionalId();
 	}
