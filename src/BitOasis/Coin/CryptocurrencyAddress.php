@@ -36,7 +36,7 @@ interface CryptocurrencyAddress {
 	/**
 	 * @return bool
 	 */
-	public static function hasAdditionalId();
+	public static function supportsClassAdditionalId();
 
 	/**
 	 * @return string|null
