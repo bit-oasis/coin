@@ -149,6 +149,7 @@ abstract class BaseBitcoinCashAddressTest extends UnitTest {
 	public function testAdditionalId($base58Address) {
 		$address = $this->createAddress($base58Address);
 		$this->assertFalse($address->supportsAdditionalId());
+		$this->assertNull($address->getAdditionalIdName());
 		$this->assertNull($address->getAdditionalId());
 	}
 

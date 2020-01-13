@@ -38,9 +38,11 @@ class StellarAddressTest extends UnitTest {
 	 * @param string $serializedAddress
 	 * @dataProvider providerDeserialize
 	 */
-	public function testAdditionalId($serializedAddress) {
+	public function testAdditionalId($serializedAddress, $expectedAddress, $expectedMemo) {
 		$stellarAddress = StellarAddress::deserialize($serializedAddress, $this->getCurrency());
 		$this->assertTrue($stellarAddress->supportsAdditionalId());
+		$this->assertNotNull($stellarAddress->getAdditionalIdName());
+		$this->assertEquals($expectedMemo, $stellarAddress->getAdditionalId());
 		$this->assertEquals($stellarAddress->getMemo(), $stellarAddress->getAdditionalId());
 	}
 

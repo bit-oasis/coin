@@ -34,6 +34,11 @@ interface CryptocurrencyAddress {
 	public function supportsAdditionalId();
 
 	/**
+	 * @return string|null
+	 */
+	public function getAdditionalIdName();
+
+	/**
 	 * @return bool
 	 */
 	public static function supportsClassAdditionalId();
@@ -41,7 +46,7 @@ interface CryptocurrencyAddress {
 	/**
 	 * @return string|null
 	 */
-	public static function getAdditionalIdName();
+	public static function getClassAdditionalIdName();
 
 	/**
 	 * Get additional address identifier (e.g. tag, memo, paymentId, etc.)

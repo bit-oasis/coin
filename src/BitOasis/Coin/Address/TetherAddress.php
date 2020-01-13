@@ -62,8 +62,15 @@ class TetherAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
+	public function getAdditionalIdName() {
+		return $this->cryptocurrencyAddress->getAdditionalIdName();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public static function supportsClassAdditionalId() {
-		return self::getAdditionalIdName() !== null;
+		return false;
 	}
 
 	/**
@@ -72,7 +79,7 @@ class TetherAddress implements CryptocurrencyAddress {
 	 *
 	 * @inheritDoc
 	 */
-	public static function getAdditionalIdName() {
+	public static function getClassAdditionalIdName() {
 		return null;
 	}
 
