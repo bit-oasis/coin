@@ -28,6 +28,8 @@ class RippleAddressTest extends UnitTest {
 	public function testAdditionalId($address, $tag) {
 		$rippleAddress = new RippleAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XRP), $tag);
 		$this->assertTrue($rippleAddress->supportsAdditionalId());
+		$this->assertNotNull($rippleAddress->getAdditionalIdName());
+		$this->assertEquals($tag, $rippleAddress->getAdditionalId());
 		$this->assertEquals($rippleAddress->getTag(), $rippleAddress->getAdditionalId());
 	}
 

@@ -33,6 +33,7 @@ class BitcoinAddressTest extends UnitTest {
 	public function testAdditionalId($address) {
 		$bitcoinAddress = new BitcoinAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BTC));
 		$this->assertFalse($bitcoinAddress->supportsAdditionalId());
+		$this->assertNull($bitcoinAddress->getAdditionalIdName());
 		$this->assertNull($bitcoinAddress->getAdditionalId());
 	}
 

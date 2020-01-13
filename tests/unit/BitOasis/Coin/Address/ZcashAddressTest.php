@@ -31,6 +31,7 @@ class ZcashAddressTest extends UnitTest {
 	public function testAdditionalId($address) {
 		$zCashAddress = new ZcashAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ZEC));
 		$this->assertFalse($zCashAddress->supportsAdditionalId());
+		$this->assertNull($zCashAddress->getAdditionalIdName());
 		$this->assertNull($zCashAddress->getAdditionalId());
 	}
 

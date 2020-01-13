@@ -47,6 +47,7 @@ class AlgorandAddressTest extends UnitTest {
 	public function testAdditionalId($address) {
 		$omiseGoAddress = $this->createAddress($address);
 		$this->assertFalse($omiseGoAddress->supportsAdditionalId());
+		$this->assertNull($omiseGoAddress->getAdditionalIdName());
 		$this->assertNull($omiseGoAddress->getAdditionalId());
 	}
 

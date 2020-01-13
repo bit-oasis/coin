@@ -45,6 +45,7 @@ class TetherAddressTest extends UnitTest {
 	public function testAdditionalId($address) {
 		$tetherAddress = $this->createAddress($address);
 		$this->assertFalse($tetherAddress->supportsAdditionalId());
+		$this->assertNull($tetherAddress->getAdditionalIdName());
 		$this->assertNull($tetherAddress->getAdditionalId());
 	}
 

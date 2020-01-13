@@ -72,6 +72,7 @@ class LitecoinAddressTest extends UnitTest {
 	public function testAdditionalId($address) {
 		$litecoinAddress = new LitecoinAddress($address, self::getCurrency());
 		$this->assertFalse($litecoinAddress->supportsAdditionalId());
+		$this->assertNull($litecoinAddress->getAdditionalIdName());
 		$this->assertNull($litecoinAddress->getAdditionalId());
 	}
 

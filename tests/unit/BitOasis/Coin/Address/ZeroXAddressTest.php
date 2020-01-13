@@ -43,9 +43,10 @@ class ZeroXAddressTest extends UnitTest {
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$omiseGoAddress = $this->createAddress($address);
-		$this->assertFalse($omiseGoAddress->supportsAdditionalId());
-		$this->assertNull($omiseGoAddress->getAdditionalId());
+		$zeroXAddress = $this->createAddress($address);
+		$this->assertFalse($zeroXAddress->supportsAdditionalId());
+		$this->assertNull($zeroXAddress->getAdditionalIdName());
+		$this->assertNull($zeroXAddress->getAdditionalId());
 	}
 
 	/**

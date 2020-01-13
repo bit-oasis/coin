@@ -46,6 +46,8 @@ class MoneroAddressTest extends UnitTest {
 	public function testValidate($address, $paymentId) {
 		$moneroAddress = new MoneroAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XMR), $paymentId);
 		$this->assertTrue($moneroAddress->supportsAdditionalId());
+		$this->assertNotNull($moneroAddress->getAdditionalIdName());
+		$this->assertEquals($paymentId, $moneroAddress->getAdditionalId());
 		$this->assertEquals($moneroAddress->getPaymentId(), $moneroAddress->getAdditionalId());
 	}
 

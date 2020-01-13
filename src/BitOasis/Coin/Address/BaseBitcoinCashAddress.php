@@ -219,7 +219,29 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function supportsAdditionalId() {
-		return false;
+		return static::supportsClassAdditionalId();
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalIdName() {
+		return static::getClassAdditionalIdName();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function supportsClassAdditionalId() {
+		return static::getAdditionalIdName() !== null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getClassAdditionalIdName() {
+		return null;
+	}
+
 
 }

@@ -60,7 +60,28 @@ class MoneroAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function supportsAdditionalId() {
+		return static::supportsClassAdditionalId();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getAdditionalIdName() {
+		return static::getClassAdditionalIdName();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function supportsClassAdditionalId() {
 		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getClassAdditionalIdName() {
+		return 'paymentId';
 	}
 
 	/**
@@ -148,8 +169,6 @@ class MoneroAddress implements CryptocurrencyAddress {
 		return $this->createValidator($address, $paymentId)
 			->validateWithExceptions();
 	}
-
-	
 
 	/**
 	 * @param string $address
