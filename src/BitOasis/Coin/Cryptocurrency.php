@@ -22,7 +22,7 @@ class Cryptocurrency {
 	const OMG = 'OMG';
 	const ZRX = 'ZRX';
 	const BAT = 'BAT';
-	const ALG = 'ALG';
+	const ALGO = 'ALGO';
 	const USDT = 'USDT';
 
 	const USD = 'USD';

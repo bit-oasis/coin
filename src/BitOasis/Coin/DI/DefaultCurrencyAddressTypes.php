@@ -42,7 +42,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::OMG => OmiseGoAddress::class,
 		Cryptocurrency::ZRX => ZeroXAddress::class,
 		Cryptocurrency::BAT => BasicAttentionTokenAddress::class,
-		Cryptocurrency::ALG => AlgorandAddress::class,
+		Cryptocurrency::ALGO => AlgorandAddress::class,
 		Cryptocurrency::USDT => TetherAddress::class,
 	];
 
