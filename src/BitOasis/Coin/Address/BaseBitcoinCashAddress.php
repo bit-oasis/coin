@@ -233,7 +233,7 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public static function supportsClassAdditionalId() {
-		return static::getAdditionalIdName() !== null;
+		return static::getClassAdditionalIdName() !== null;
 	}
 
 	/**
