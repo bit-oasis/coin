@@ -2,10 +2,10 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Cryptocurrency;
-use BitOasis\Coin\Exception\InvalidAddressException;
-
-class TetherAddress extends BaseMultiProtocolAddress {
+/**
+ * @author David Fiedor <davefu@seznam.cz>
+ */
+class LeoAddress extends BaseMultiProtocolAddress {
 
 	/**
 	 * @inheritDoc
@@ -15,8 +15,8 @@ class TetherAddress extends BaseMultiProtocolAddress {
 	}
 
 	/**
-	 * Tether does not utilize additional ID since Bitcoin or Ethereum addresses
-	 * are the only valid as underlying protocols addresses so far
+	 * LEO does not utilize additional ID since Ethereum address
+	 * is the only valid as underlying protocols addresses so far
 	 *
 	 * @inheritDoc
 	 */
@@ -33,7 +33,7 @@ class TetherAddress extends BaseMultiProtocolAddress {
 		} catch (InvalidAddressException $e) {
 		}
 		if ($this->cryptocurrencyAddress === null) {
-			throw new InvalidAddressException("$address is not valid/supported Tether address, only ECR20 layer is supported.");
+			throw new InvalidAddressException("$address is not valid/supported LEO token address, only ECR20 layer is supported.");
 		}
 	}
 }
