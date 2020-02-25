@@ -33,7 +33,7 @@ class LeoAddress extends BaseMultiProtocolAddress {
 		} catch (InvalidAddressException $e) {
 		}
 		if ($this->cryptocurrencyAddress === null) {
-			throw new InvalidAddressException("$address is not valid/supported Tether address, only ECR20 layer is supported.");
+			throw new InvalidAddressException("$address is not valid/supported LEO token address, only ECR20 layer is supported.");
 		}
 	}
 }
