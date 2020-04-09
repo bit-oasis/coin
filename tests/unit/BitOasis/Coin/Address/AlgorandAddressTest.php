@@ -57,7 +57,7 @@ class AlgorandAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AlgorandAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ALG));
+		return new AlgorandAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ALGO));
 	}
 
 }
