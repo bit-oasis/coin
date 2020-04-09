@@ -25,6 +25,8 @@ class Cryptocurrency {
 	const LEO = 'LEO';
 	const ALGO = 'ALGO';
 	const USDT = 'USDT';
+	const NEO = 'NEO';
+	const XTZ = 'XTZ';
 
 	const USD = 'USD';
 	const AED = 'AED';
