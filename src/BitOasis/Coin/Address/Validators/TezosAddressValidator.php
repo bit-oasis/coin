@@ -47,7 +47,7 @@ class TezosAddressValidator extends Validation {
 		$check = pack('H*', $check);
 		$check = strtoupper(hash('sha256', hash('sha256', $check, true)));
 		$check = substr($check, 0, 8);
-		return $check === substr($hexAddress, strlen($hexAddress) - 8);
+		return $check === substr($hexAddress, -8);
 	}
 
 }
