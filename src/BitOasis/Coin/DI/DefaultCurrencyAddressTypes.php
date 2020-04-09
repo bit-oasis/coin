@@ -13,10 +13,12 @@ use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
+use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\StellarAddress;
 use BitOasis\Coin\Address\TetherAddress;
+use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
@@ -44,6 +46,8 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::BAT => BasicAttentionTokenAddress::class,
 		Cryptocurrency::ALGO => AlgorandAddress::class,
 		Cryptocurrency::USDT => TetherAddress::class,
+		Cryptocurrency::NEO => NeoAddress::class,
+		Cryptocurrency::XTZ => TezosAddress::class,
 	];
 
 }
