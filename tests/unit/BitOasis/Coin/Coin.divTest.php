@@ -12,14 +12,14 @@ use UnitTest;
 class CoinDivTest extends UnitTest {
 
 	public function providerDiv() {
-	    return [
-	    	['1000', '100', '10'],
-	    	['-321', '321', '-1'],
-	    	['9', '10', '0'],
-	    	['10', '3.3', '3'],
-	    	['10', '3.4', '2'],
-	    	[PHP_INT_MAX . '990', PHP_INT_MAX . '99', '10'],
-	    ];
+		return [
+			['1000', '100', '10'],
+			['-321', '321', '-1'],
+			['9', '10', '0'],
+			['10', '3.3', '3'],
+			['10', '3.4', '2'],
+			[PHP_INT_MAX . '990', PHP_INT_MAX . '99', '10'],
+		];
 	}
 
 	/**
@@ -30,8 +30,8 @@ class CoinDivTest extends UnitTest {
 	 */
 	public function testDiv($amount1, $amount2, $result) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromInt($amount1, $currency);
-	    $this->assertEquals($result, $coin->div($amount2)->toIntString());
+		$coin = Coin::fromInt($amount1, $currency);
+		$this->assertEquals($result, $coin->div($amount2)->toIntString());
 	}
 
 	public function testDivisionByZero() {
@@ -57,10 +57,10 @@ class CoinDivTest extends UnitTest {
 	 */
 	public function testDivNotNumber($divisor) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromInt('1', $currency);
-	    $this->tester->expectException(InvalidNumberException::class, function() use($coin, $divisor) {
-		    $coin->div($divisor);
-	    });
+		$coin = Coin::fromInt('1', $currency);
+		$this->tester->expectException(InvalidNumberException::class, function() use($coin, $divisor) {
+			$coin->div($divisor);
+		});
 	}
 
 }

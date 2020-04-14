@@ -10,13 +10,13 @@ use UnitTest;
 class CoinIsZeroTest extends UnitTest {
 
 	public function providerIsZero() {
-	    return [
-	    	['1', false],
-	    	['-1', false],
-	    	[PHP_INT_MAX . '999', false],
-	    	['-' . PHP_INT_MAX . '999', false],
-		    ['0', true],
-	    ];
+		return [
+			['1', false],
+			['-1', false],
+			[PHP_INT_MAX . '999', false],
+			['-' . PHP_INT_MAX . '999', false],
+			['0', true],
+		];
 	}
 
 	/**
@@ -26,8 +26,8 @@ class CoinIsZeroTest extends UnitTest {
 	 */
 	public function testIsZero($amount, $result) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromInt($amount, $currency);
-	    $this->assertEquals($result, $coin->isZero());
+		$coin = Coin::fromInt($amount, $currency);
+		$this->assertEquals($result, $coin->isZero());
 	}
 
 }

@@ -17,7 +17,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 	}
 
 	public function addCryptocurrency(Cryptocurrency $cryptocurrency) {
-	    $this->cryptocurrencies[$cryptocurrency->getCode()] = $cryptocurrency;
+		$this->cryptocurrencies[$cryptocurrency->getCode()] = $cryptocurrency;
 	}
 
 	public function setCryptocurrencies(array $cryptocurrencies) {

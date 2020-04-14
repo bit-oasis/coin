@@ -11,13 +11,13 @@ use UnitTest;
 class CoinLessThanTest extends UnitTest {
 
 	public function providerLessThan() {
-	    return [
-	    	['1', '2', true],
-	    	['1', '1', false],
-	    	['50000000000', '20000000000', false],
-		    ['1' . PHP_INT_MAX . '1', '1' . PHP_INT_MAX . '2', true],
-		    ['1' . PHP_INT_MAX . '5', '1' . PHP_INT_MAX . '2', false],
-	    ];
+		return [
+			['1', '2', true],
+			['1', '1', false],
+			['50000000000', '20000000000', false],
+			['1' . PHP_INT_MAX . '1', '1' . PHP_INT_MAX . '2', true],
+			['1' . PHP_INT_MAX . '5', '1' . PHP_INT_MAX . '2', false],
+		];
 	}
 
 	/**
@@ -28,29 +28,29 @@ class CoinLessThanTest extends UnitTest {
 	 */
 	public function testLessThan($amount1, $amount2, $result) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin1 = Coin::fromInt($amount1, $currency);
-	    $coin2 = Coin::fromInt($amount2, $currency);
-	    $this->assertEquals($result, $coin1->lessThan($coin2));
+		$coin1 = Coin::fromInt($amount1, $currency);
+		$coin2 = Coin::fromInt($amount2, $currency);
+		$this->assertEquals($result, $coin1->lessThan($coin2));
 	}
 
 	public function testLessThanInvalidCurrencyCode() {
 		$currency1 = new Cryptocurrency('CUR', 10);
 		$currency2 = new Cryptocurrency('XXX', 10);
-	    $coin1 = Coin::fromInt('1', $currency1);
-	    $coin2 = Coin::fromInt('2', $currency2);
-	    $this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
-		    $coin1->lessThan($coin2);
-	    });
+		$coin1 = Coin::fromInt('1', $currency1);
+		$coin2 = Coin::fromInt('2', $currency2);
+		$this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
+			$coin1->lessThan($coin2);
+		});
 	}
 
 	public function testLessThanInvalidCurrencyDecimals() {
 		$currency1 = new Cryptocurrency('CUR', 9);
 		$currency2 = new Cryptocurrency('CUR', 10);
-	    $coin1 = Coin::fromInt('1', $currency1);
-	    $coin2 = Coin::fromInt('2', $currency2);
-	    $this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
-		    $coin1->lessThan($coin2);
-	    });
+		$coin1 = Coin::fromInt('1', $currency1);
+		$coin2 = Coin::fromInt('2', $currency2);
+		$this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
+			$coin1->lessThan($coin2);
+		});
 	}
 
 }

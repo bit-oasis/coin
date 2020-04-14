@@ -33,14 +33,14 @@ class AlgorandAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function toString() {
-	    return $this->address;
+		return $this->address;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getAddress() {
-	    return $this->address;
+		return $this->address;
 	}
 
 	/**

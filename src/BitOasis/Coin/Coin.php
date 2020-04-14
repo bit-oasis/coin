@@ -105,7 +105,7 @@ class Coin extends BigInteger {
 				throw new InvalidNumberException('Amount is too large to be converted to int (' . $this->toIntString() . ')');
 			}
 		}
-	    return (int)$this->amount;
+		return (int)$this->amount;
 	}
 
 	/**
@@ -136,7 +136,7 @@ class Coin extends BigInteger {
 	 * @return string
 	 */
 	public function toIntString() {
-	    return $this->amount;
+		return $this->amount;
 	}
 
 	/**
@@ -146,7 +146,7 @@ class Coin extends BigInteger {
 	 */
 	public function add(Coin $amount) {
 		$this->validateCurrency($amount->currency);
-	    return $this->copyWithAmount($this->getAdapter()->add($this->amount, $amount->amount));
+		return $this->copyWithAmount($this->getAdapter()->add($this->amount, $amount->amount));
 	}
 
 	/**
@@ -156,7 +156,7 @@ class Coin extends BigInteger {
 	 */
 	public function sub(Coin $amount) {
 		$this->validateCurrency($amount->currency);
-	    return $this->copyWithAmount($this->getAdapter()->sub($this->amount, $amount->amount));
+		return $this->copyWithAmount($this->getAdapter()->sub($this->amount, $amount->amount));
 	}
 
 	/**
@@ -165,7 +165,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	public function mul($amount) {
-	    return $this->copyWithAmount($this->getAdapter()->mul($this->amount, $this->initializeNumericAmount($amount)));
+		return $this->copyWithAmount($this->getAdapter()->mul($this->amount, $this->initializeNumericAmount($amount)));
 	}
 
 	/**
@@ -289,7 +289,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function greaterThan(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) > 0;
 	}
 
@@ -299,7 +299,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function lessThan(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) < 0;
 	}
 
@@ -309,7 +309,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function greaterOrEquals(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) >= 0;
 	}
 
@@ -319,7 +319,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function lessOrEquals(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) <= 0;
 	}
 
@@ -329,7 +329,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function min(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) < 0 ? $this : $coin;
 	}
 
@@ -339,7 +339,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidCurrencyException
 	 */
 	public function max(Coin $coin) {
-	    $this->validateCurrency($coin->currency);
+		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) > 0 ? $this : $coin;
 	}
 
@@ -380,7 +380,7 @@ class Coin extends BigInteger {
 	 * @return \Zend\Math\BigInteger\Adapter\AdapterInterface
 	 */
 	public function getAdapter() {
-	    return self::getDefaultAdapter();
+		return self::getDefaultAdapter();
 	}
 
 	/**

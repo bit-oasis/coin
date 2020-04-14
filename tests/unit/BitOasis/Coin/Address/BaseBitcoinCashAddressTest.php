@@ -90,12 +90,12 @@ abstract class BaseBitcoinCashAddressTest extends UnitTest {
 			['ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
 			['pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
 			['pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
-            ['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
-            ['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
-            ['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
-            ['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
-            ['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
-            ['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+			['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+			['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+			['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+			['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+			['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+			['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
 		];
 	}
 
@@ -123,12 +123,12 @@ abstract class BaseBitcoinCashAddressTest extends UnitTest {
 			['ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq', 'ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'],
 			['pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e', 'pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'],
 			['pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37', 'pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'],
-            ['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
-            ['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
-            ['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
-            ['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
-            ['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
-            ['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+			['1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu', '1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu'],
+			['1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR', '1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR'],
+			['16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb', '16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb'],
+			['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC', '3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
+			['3LDsS579y7sruadqu11beEJoTjdFiFCdX4', '3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
+			['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw', '31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
 		];
 	}
 

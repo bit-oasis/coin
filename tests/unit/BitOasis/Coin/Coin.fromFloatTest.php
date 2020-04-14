@@ -11,29 +11,29 @@ use UnitTest;
 class CoinFromFloatTest extends UnitTest {
 
 	public function providerFromFloat() {
-	    return [
-	    	[1, '10000000000'],
-	    	['-1', '-10000000000'],
-	    	[PHP_INT_MAX . '999', PHP_INT_MAX . '9990000000000'],
-	    	[PHP_INT_MAX . '999.9999999999', PHP_INT_MAX . '9999999999999'],
-		    [0, '0'],
-		    [0.0, '0'],
-		    ['0', '0'],
-		    ['1000', '10000000000000'],
-		    [1000, '10000000000000'],
-		    ['-.1', '-1000000000'],
-		    ['.0123456789', '123456789'],
-		    ['.01234567899', '123456789'],
-		    [0xF, '150000000000'],
-		    [1.23e-8, '123'],
-		    ['1.23e-8', '123'],
-		    ['+1.23e-8', '123'],
-		    ['1.23e1', '123000000000'],
-		    ['-1.23e-8', '-123'],
-		    ['1.230000000019e1', '123000000002'],
-		    ['-1.230000000019e1', '-123000000002'],
-		    ['090', '900000000000'], // restrict leading zero?
-	    ];
+		return [
+			[1, '10000000000'],
+			['-1', '-10000000000'],
+			[PHP_INT_MAX . '999', PHP_INT_MAX . '9990000000000'],
+			[PHP_INT_MAX . '999.9999999999', PHP_INT_MAX . '9999999999999'],
+			[0, '0'],
+			[0.0, '0'],
+			['0', '0'],
+			['1000', '10000000000000'],
+			[1000, '10000000000000'],
+			['-.1', '-1000000000'],
+			['.0123456789', '123456789'],
+			['.01234567899', '123456789'],
+			[0xF, '150000000000'],
+			[1.23e-8, '123'],
+			['1.23e-8', '123'],
+			['+1.23e-8', '123'],
+			['1.23e1', '123000000000'],
+			['-1.23e-8', '-123'],
+			['1.230000000019e1', '123000000002'],
+			['-1.230000000019e1', '-123000000002'],
+			['090', '900000000000'], // restrict leading zero?
+		];
 	}
 
 	/**
@@ -43,14 +43,14 @@ class CoinFromFloatTest extends UnitTest {
 	 */
 	public function testFromFloat($amount, $result) {
 		$currency = new Cryptocurrency('CUR', 10);
-	    $coin = Coin::fromFloat($amount, $currency);
-	    $this->assertEquals($result, $coin->toIntString());
+		$coin = Coin::fromFloat($amount, $currency);
+		$this->assertEquals($result, $coin->toIntString());
 	}
 
 	public function testFromFloatZeroDecimals() {
 		$currency = new Cryptocurrency('ZER', 0);
-	    $coin = Coin::fromFloat('1.0', $currency);
-	    $this->assertEquals('1', $coin->toIntString());
+		$coin = Coin::fromFloat('1.0', $currency);
+		$this->assertEquals('1', $coin->toIntString());
 	}
 
 	public function providerFromFloatNotNumber() {

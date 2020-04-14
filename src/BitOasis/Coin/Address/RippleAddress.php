@@ -37,14 +37,14 @@ class RippleAddress implements CryptocurrencyAddress {
 	}
 
 	public function toString() {
-	    return 'Address: ' . $this->address . ($this->tag === null ? '' : (', Tag: ' . $this->tag));
+		return 'Address: ' . $this->address . ($this->tag === null ? '' : (', Tag: ' . $this->tag));
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getAddress() {
-	    return $this->address;
+		return $this->address;
 	}
 
 	/**
@@ -86,7 +86,7 @@ class RippleAddress implements CryptocurrencyAddress {
 	 * @return int|null
 	 */
 	public function getTag() {
-	    return $this->tag;
+		return $this->tag;
 	}
 
 	/**

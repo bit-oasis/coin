@@ -23,8 +23,8 @@ class ZcashAddressValidatorTest extends UnitTest {
 			['t1gRHW5AYgLsNwKRTLXGcXU2wWdP3C3bEtP', false],
 			['t3eF9X6X2dSo7MCvTjfZEzwWrVzquxRLNeC', false],
 			['1QLbGuc3WGKKKpLs4pBp9H6jiQ2MgPkXRp', false],
-            ['3CDJNfdWX8m2NwuGUV3nhXHXEeLygMXoAj', false],
-            ['LbTjMGN7gELw4KbeyQf6cTCq859hD18guE', false],
+			['3CDJNfdWX8m2NwuGUV3nhXHXEeLygMXoAj', false],
+			['LbTjMGN7gELw4KbeyQf6cTCq859hD18guE', false],
 			['zcc7P9dbq71WTwXi148oXGSvZC6eo2ZkMi3s57qTGLzm9Bhzt3GNVo4AzNJHtEM2gSbyvsthDkmKHCWLvTJ6ysEnfpdANVB', false],
 			['zcWGwZU7FyUgpdrWGkeFqCEnvhLRDAVuf2ZbhW4vzNMTTR6VUgfiBGkiNbkC4e38QaPtS13RKZCriqN9VcyyKNRRQxbgneC', false],
 		];

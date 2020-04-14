@@ -30,7 +30,7 @@ class EthereumAddress implements CryptocurrencyAddress {
 	}
 
 	public function toString() {
-	    return $this->address;
+		return $this->address;
 	}
 
 	/**

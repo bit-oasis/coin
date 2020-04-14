@@ -37,14 +37,14 @@ class StellarAddress implements CryptocurrencyAddress {
 	}
 
 	public function toString() {
-	    return 'Address: ' . $this->address . ($this->memo === null ? '' : (', Memo: ' . $this->memo));
+		return 'Address: ' . $this->address . ($this->memo === null ? '' : (', Memo: ' . $this->memo));
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getAddress() {
-	    return $this->address;
+		return $this->address;
 	}
 
 	/**
@@ -86,7 +86,7 @@ class StellarAddress implements CryptocurrencyAddress {
 	 * @return string|null
 	 */
 	public function getMemo() {
-	    return $this->memo;
+		return $this->memo;
 	}
 
 	/**

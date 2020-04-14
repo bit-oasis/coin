@@ -11,17 +11,17 @@ use UnitTest;
 class ToDecimalStringTest extends UnitTest {
 
 	public function providerFromInt() {
-	    return [
-	    	[100, '1', 2],
-	    	[123, '1.23', 2],
-	    	[1, '0.01', 2],
-	    	[-1, '-0.01', 2],
-	    	[0, '0', 0],
-	    	[1, '1', 0],
-	    	[-1, '-1', 0],
-	    	[-123, '-123', 0],
-	    	[123, '123', 0],
-	    ];
+		return [
+			[100, '1', 2],
+			[123, '1.23', 2],
+			[1, '0.01', 2],
+			[-1, '-0.01', 2],
+			[0, '0', 0],
+			[1, '1', 0],
+			[-1, '-1', 0],
+			[-123, '-123', 0],
+			[123, '123', 0],
+		];
 	}
 
 	/**
@@ -32,8 +32,8 @@ class ToDecimalStringTest extends UnitTest {
 	 */
 	public function testToDecimalString($intAmount, $result, $decimals) {
 		$currency = new Cryptocurrency('CUR', $decimals);
-	    $coin = Coin::fromInt($intAmount, $currency);
-	    $this->assertEquals($result, $coin->toDecimalString());
+		$coin = Coin::fromInt($intAmount, $currency);
+		$this->assertEquals($result, $coin->toDecimalString());
 	}
 
 }

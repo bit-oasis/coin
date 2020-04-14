@@ -23,8 +23,8 @@ class TransparentAddressValidatorTest extends UnitTest {
 			['t1gRHW5AYgLsNwKRTLXGcXU2wWdP3C3bEtP', false],
 			['t3eF9X6X2dSo7MCvTjfZEzwWrVzquxRLNeC', false],
 			['1QLbGuc3WGKKKpLs4pBp9H6jiQ2MgPkXRp', false],
-            ['3CDJNfdWX8m2NwuGUV3nhXHXEeLygMXoAj', false],
-            ['LbTjMGN7gELw4KbeyQf6cTCq859hD18guE', false],
+			['3CDJNfdWX8m2NwuGUV3nhXHXEeLygMXoAj', false],
+			['LbTjMGN7gELw4KbeyQf6cTCq859hD18guE', false],
 		];
 	}
 
