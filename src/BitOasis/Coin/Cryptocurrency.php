@@ -55,9 +55,12 @@ class Cryptocurrency {
 	 */
 	public function __construct($code, $decimals, $name = null, $isFiat = false) {
 		$this->code = $code;
-		$this->decimals = $decimals;
+		$this->decimals = (int)$decimals;
 		$this->name = $name;
-		$this->isFiat = $isFiat;
+		$this->isFiat = (bool)$isFiat;
+		if ($this->decimals < 0) {
+			throw new \InvalidArgumentException('Decimals must be non negative number!');
+		}
 	}
 
 	/**

@@ -47,6 +47,12 @@ class CoinFromFloatTest extends UnitTest {
 	    $this->assertEquals($result, $coin->toIntString());
 	}
 
+	public function testFromFloatZeroDecimals() {
+		$currency = new Cryptocurrency('ZER', 0);
+	    $coin = Coin::fromFloat('1.0', $currency);
+	    $this->assertEquals('1', $coin->toIntString());
+	}
+
 	public function providerFromFloatNotNumber() {
 		return [
 			['asd'],

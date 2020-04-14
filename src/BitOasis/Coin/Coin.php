@@ -121,6 +121,9 @@ class Coin extends BigInteger {
 	 * @return string
 	 */
 	protected function toFloatString() {
+		if ($this->currency->getDecimals() === 0) {
+			return $this->amount;
+		}
 		$sign = (strpos($this->amount, '-') === 0) ? '-' : '';
 		$absAmount = ltrim($this->amount, '-+');
 		$paddedAmount = $sign . str_pad($absAmount, $this->currency->getDecimals() + 1, '0', STR_PAD_LEFT);
