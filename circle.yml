@@ -1,3 +1,5 @@
-test:
-  override:
-    - php vendor/bin/codecept run unit
+version: 2
+jobs:
+  test:
+    override:
+      - php vendor/bin/codecept run unit
