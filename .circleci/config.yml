@@ -1,0 +1,8 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    steps:
+      - checkout
+      - run: php vendor/bin/codecept run unit
