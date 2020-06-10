@@ -8,6 +8,7 @@ use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\ChainlinkAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
@@ -48,6 +49,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::USDT => TetherAddress::class,
 		Cryptocurrency::NEO => NeoAddress::class,
 		Cryptocurrency::XTZ => TezosAddress::class,
+		Cryptocurrency::LINK => ChainlinkAddress::class,
 	];
 
 }

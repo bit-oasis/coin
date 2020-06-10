@@ -27,6 +27,7 @@ class Cryptocurrency {
 	const USDT = 'USDT';
 	const NEO = 'NEO';
 	const XTZ = 'XTZ';
+	const LINK = 'LINK';
 
 	const USD = 'USD';
 	const AED = 'AED';
