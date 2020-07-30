@@ -28,6 +28,10 @@ class Cryptocurrency {
 	const NEO = 'NEO';
 	const XTZ = 'XTZ';
 	const LINK = 'LINK';
+	const DAI = 'DAI';
+	const MKR = 'MKR';
+	const KNC = 'KNC';
+	const REP = 'REP';
 
 	const USD = 'USD';
 	const AED = 'AED';
