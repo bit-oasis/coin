@@ -3,16 +3,20 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AlgorandAddress;
+use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
+use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
+use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
+use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
@@ -50,6 +54,10 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::NEO => NeoAddress::class,
 		Cryptocurrency::XTZ => TezosAddress::class,
 		Cryptocurrency::LINK => ChainlinkAddress::class,
+		Cryptocurrency::DAI => DaiAddress::class,
+		Cryptocurrency::MKR => MakerAddress::class,
+		Cryptocurrency::KNC => KyberAddress::class,
+		Cryptocurrency::REP => AugurAddress::class,
 	];
 
 }
