@@ -51,11 +51,19 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	public static function fromFloat($amount, Cryptocurrency $currency) {
+		$stringAmount = null;
 		if(is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
 			$stringAmount = $amount;
-		} else if((!is_string($amount) && is_numeric($amount)) || (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount))) {
-			$stringAmount = sprintf('%.' . $currency->getDecimals() . 'F', $amount);
-		} else {
+		} else if ((!is_string($amount) && is_numeric($amount))) {
+			$stringAmount = $amount = (string)$amount;
+		}
+		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
+			list ($significand, $exponent) = explode('e', strtolower($amount));
+			$decimalPointInSignificandPos = strrpos($significand, '.');
+			$decimals = min($currency->getDecimals(), max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1))));
+			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
+		}
+		if ($stringAmount === null) {
 			throw new InvalidNumberException('Amount is not valid float number!');
 		}
 		return new static(self::getDefaultAdapter()->mul(self::getDefaultAdapter()->init($stringAmount, 10), $currency->getSubunitsInUnit()), $currency);
