@@ -36,7 +36,7 @@ class ChainllinkAddressTest extends UnitTest {
 	 * @dataProvider providerInvalidAddress
 	 */
 	public function testInvalidAddress($address) {
-		$this->tester->expectException(InvalidAddressException::class, function() use ($address) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function() use ($address) {
 			$this->createAddress($address);
 		});
 	}

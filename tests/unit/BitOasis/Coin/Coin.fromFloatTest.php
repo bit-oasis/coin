@@ -83,7 +83,7 @@ class CoinFromFloatTest extends UnitTest {
 	 */
 	public function testFromFloatNotNumber($amount) {
 		$currency = new Cryptocurrency('CUR', 10);
-		$this->tester->expectException(InvalidNumberException::class, function() use($amount, $currency) {
+		$this->tester->expectThrowable(InvalidNumberException::class, function() use($amount, $currency) {
 			Coin::fromFloat($amount, $currency);
 		});
 	}

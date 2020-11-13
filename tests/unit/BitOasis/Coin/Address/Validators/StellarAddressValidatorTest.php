@@ -60,7 +60,7 @@ class StellarAddressValidatorTest extends UnitTest {
 	public function testValidateWithExceptionsInvalidAddress($address, $memo, $expectedValue) {
 		if ($expectedValue === false) {
 			$validator = new StellarAddressValidator($address, $memo);
-			$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+			$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 				$validator->validateWithExceptions();
 			});
 		}

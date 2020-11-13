@@ -104,7 +104,7 @@ class IntegratedAddressValidatorTest extends UnitTest {
 	public function testValidateWithExceptionInvalidAddress($address, $paymentId, $expectedValue) {
 		if ($expectedValue === false) {
 			$validator = new IntegratedAddressValidator($address, $paymentId);
-			$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+			$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 				$validator->validateWithExceptions();
 			});
 		}

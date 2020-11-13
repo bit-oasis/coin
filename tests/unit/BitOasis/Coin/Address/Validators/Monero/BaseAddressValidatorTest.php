@@ -98,7 +98,7 @@ class BaseAddressValidatorTest extends UnitTest {
 	public function testValidateWithExceptionInvalidAddress($address, $paymentId, $expectedValue) {
 		if ($expectedValue === false) {
 			$validator = new BaseAddressValidator($address, $paymentId);
-			$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+			$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 				$validator->validateWithExceptions();
 			});
 		}

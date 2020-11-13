@@ -37,7 +37,7 @@ class CoinDivTest extends UnitTest {
 	public function testDivisionByZero() {
 		$currency = new Cryptocurrency('CUR', 10);
 		$coin = Coin::fromInt('1', $currency);
-		$this->tester->expectException(DivisionByZeroException::class, function() use($coin) {
+		$this->tester->expectThrowable(DivisionByZeroException::class, function() use($coin) {
 			$coin->div('0');
 		});
 	}
@@ -58,7 +58,7 @@ class CoinDivTest extends UnitTest {
 	public function testDivNotNumber($divisor) {
 		$currency = new Cryptocurrency('CUR', 10);
 		$coin = Coin::fromInt('1', $currency);
-		$this->tester->expectException(InvalidNumberException::class, function() use($coin, $divisor) {
+		$this->tester->expectThrowable(InvalidNumberException::class, function() use($coin, $divisor) {
 			$coin->div($divisor);
 		});
 	}

@@ -57,7 +57,7 @@ class CoinFromIntTest extends UnitTest {
 	 */
 	public function testFromIntNotNumber($amount) {
 		$currency = new Cryptocurrency('CUR', 10);
-		$this->tester->expectException(InvalidNumberException::class, function() use($amount, $currency) {
+		$this->tester->expectThrowable(InvalidNumberException::class, function() use($amount, $currency) {
 			Coin::fromInt($amount, $currency);
 		});
 	}

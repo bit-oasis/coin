@@ -28,7 +28,7 @@ class BitcoinSvAddressTest extends BaseBitcoinCashAddressTest {
 	 * @dataProvider providerInvalidCurrency
 	 */
 	public function testInvalidCurrency($currency) {
-		$this->tester->expectException(InvalidAddressException::class, function() use($currency) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function() use($currency) {
 			new BitcoinSvAddress($this->validAddress, UnitTestUtils::getCryptocurrency($currency));
 		});
 	}
