@@ -4,7 +4,7 @@
  * Class UnitTest
  * For common test functionality
  */
-class UnitTest extends \Codeception\TestCase\Test
+class UnitTest extends \Codeception\Test\Unit
 {
     /**
      * @var UnitTester

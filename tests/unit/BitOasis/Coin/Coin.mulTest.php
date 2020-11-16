@@ -49,7 +49,7 @@ class CoinMulTest extends UnitTest {
 	public function testMulNotNumber($multiplier) {
 		$currency = new Cryptocurrency('CUR', 10);
 		$coin = Coin::fromInt('1', $currency);
-		$this->tester->expectException(InvalidNumberException::class, function() use($coin, $multiplier) {
+		$this->tester->expectThrowable(InvalidNumberException::class, function() use($coin, $multiplier) {
 			$coin->mul($multiplier);
 		});
 	}

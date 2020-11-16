@@ -68,7 +68,7 @@ abstract class BaseBitcoinCashAddressValidatorTest extends UnitTest {
 		$validator = $this->createValidator($address, $prefix);
 		$this->assertFalse($validator->validate());
 		
-		$this->tester->expectException(InvalidAddressPrefixException::class, function() use($validator) {
+		$this->tester->expectThrowable(InvalidAddressPrefixException::class, function() use($validator) {
 			$validator->validateWithExceptions();
 		});
 	}
@@ -95,7 +95,7 @@ abstract class BaseBitcoinCashAddressValidatorTest extends UnitTest {
 		$validator = $this->createValidator($address, $prefix);
 		$this->assertFalse($validator->validate());
 		
-		$this->tester->expectException(AddressMixedCaseException::class, function() use($validator) {
+		$this->tester->expectThrowable(AddressMixedCaseException::class, function() use($validator) {
 			$validator->validateWithExceptions();
 		});
 	}
@@ -139,7 +139,7 @@ abstract class BaseBitcoinCashAddressValidatorTest extends UnitTest {
 		$validator->setCashAddressAllowed($cashAddressAllowed);
 		$this->assertFalse($validator->validate());
 		
-		$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 			$validator->validateWithExceptions();
 		});
 	}

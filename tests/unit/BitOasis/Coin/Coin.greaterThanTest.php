@@ -38,7 +38,7 @@ class CoinGreaterThanTest extends UnitTest {
 		$currency2 = new Cryptocurrency('XXX', 10);
 		$coin1 = Coin::fromInt('1', $currency1);
 		$coin2 = Coin::fromInt('2', $currency2);
-		$this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
+		$this->tester->expectThrowable(InvalidCurrencyException::class, function() use($coin1, $coin2) {
 			$coin1->greaterThan($coin2);
 		});
 	}
@@ -48,7 +48,7 @@ class CoinGreaterThanTest extends UnitTest {
 		$currency2 = new Cryptocurrency('CUR', 10);
 		$coin1 = Coin::fromInt('1', $currency1);
 		$coin2 = Coin::fromInt('2', $currency2);
-		$this->tester->expectException(InvalidCurrencyException::class, function() use($coin1, $coin2) {
+		$this->tester->expectThrowable(InvalidCurrencyException::class, function() use($coin1, $coin2) {
 			$coin1->greaterThan($coin2);
 		});
 	}

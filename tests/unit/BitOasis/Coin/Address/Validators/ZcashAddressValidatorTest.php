@@ -60,7 +60,7 @@ class ZcashAddressValidatorTest extends UnitTest {
 	public function testValidateWithExceptionInvalidAddress($address, $expectedValue) {
 		if ($expectedValue === false) {
 			$validator = new ZcashAddressValidator($address);
-			$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+			$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 				$validator->validateWithExceptions();
 			});
 		}

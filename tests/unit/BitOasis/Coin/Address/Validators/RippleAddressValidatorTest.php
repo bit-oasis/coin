@@ -59,7 +59,7 @@ class RippleAddressValidatorTest extends UnitTest {
 	public function testValidateWithExceptionsInvalidAddress($address, $tag, $expectedValue) {
 		if ($expectedValue === false) {
 			$validator = new RippleAddressValidator($address, $tag);
-			$this->tester->expectException(InvalidAddressException::class, function() use($validator) {
+			$this->tester->expectThrowable(InvalidAddressException::class, function() use($validator) {
 				$validator->validateWithExceptions();
 			});
 		}

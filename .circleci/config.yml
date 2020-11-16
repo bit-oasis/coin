@@ -5,4 +5,7 @@ jobs:
       - image: circleci/php:7.1-node-browsers
     steps:
       - checkout
-      - run: php vendor/bin/codecept run unit
+      - run: sudo apt install -y libgmp-dev
+      - run: sudo -E docker-php-ext-install gmp bcmath
+      - run: composer install --prefer-dist --no-interaction
+      - run: php ./vendor/bin/codecept run unit
