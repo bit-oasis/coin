@@ -5,11 +5,13 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
+use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
+use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
@@ -22,8 +24,11 @@ use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\StellarAddress;
+use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
+use BitOasis\Coin\Address\UniswapAddress;
+use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
@@ -58,6 +63,11 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::MKR => MakerAddress::class,
 		Cryptocurrency::KNC => KyberAddress::class,
 		Cryptocurrency::REP => AugurAddress::class,
+		Cryptocurrency::UNI => UniswapAddress::class,
+		Cryptocurrency::YFI => YearnFinanceAddress::class,
+		Cryptocurrency::BAL => BalancerAddress::class,
+		Cryptocurrency::COMP => CompoundAddress::class,
+		Cryptocurrency::SNX => SynthetixAddress::class,
 	];
 
 }

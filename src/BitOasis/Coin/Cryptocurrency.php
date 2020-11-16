@@ -32,6 +32,11 @@ class Cryptocurrency {
 	const MKR = 'MKR';
 	const KNC = 'KNC';
 	const REP = 'REP';
+	const UNI = 'UNI';
+	const YFI = 'YFI';
+	const BAL = 'BAL';
+	const COMP = 'COMP';
+	const SNX = 'SNX';
 
 	const USD = 'USD';
 	const AED = 'AED';
