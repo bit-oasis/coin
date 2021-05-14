@@ -25,7 +25,7 @@ class DogecoinAddress implements CryptocurrencyAddress {
 	 */
 	public function __construct($address, Cryptocurrency $currency) {
 		if(!$this->isValid($address)) {
-			throw new InvalidAddressException('This is not valid bitcoin address - ' . $address);
+			throw new InvalidAddressException('This is not valid dogecoin address - ' . $address);
 		}
 		$this->address = $address;
 		$this->currency = $currency;
