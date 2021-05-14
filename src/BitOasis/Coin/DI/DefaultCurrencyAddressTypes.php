@@ -13,6 +13,7 @@ use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
 use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\DaiAddress;
+use BitOasis\Coin\Address\DogecoinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
@@ -68,6 +69,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::BAL => BalancerAddress::class,
 		Cryptocurrency::COMP => CompoundAddress::class,
 		Cryptocurrency::SNX => SynthetixAddress::class,
+		Cryptocurrency::DOGE => DogecoinAddress::class,
 	];
 
 }
