@@ -37,6 +37,7 @@ class Cryptocurrency {
 	const BAL = 'BAL';
 	const COMP = 'COMP';
 	const SNX = 'SNX';
+	const DOGE = 'DOGE';
 
 	const USD = 'USD';
 	const AED = 'AED';
