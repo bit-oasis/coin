@@ -20,7 +20,8 @@ class Coin extends BigInteger {
 	/** @var Cryptocurrency */
 	protected $currency;
 
-	const MAX_DECIMALS = 10;
+	/** @var int if float value is in scientific notation and converted to string, it's rounded to 18 decimals => same will be applied to scientific notation in string */
+	const MAX_DECIMALS = 18;
 
 	/**
 	 * Coin constructor.
@@ -53,18 +54,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	public static function fromFloat($amount, Cryptocurrency $currency) {
-		$stringAmount = null;
-		if(is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
-			$stringAmount = $amount;
-		} else if ((!is_string($amount) && is_numeric($amount))) {
-			$stringAmount = $amount = (string)$amount;
-		}
-		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
-			list ($significand, $exponent) = explode('e', strtolower($amount));
-			$decimalPointInSignificandPos = strrpos($significand, '.');
-			$decimals = min($currency->getDecimals(), max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1))));
-			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
-		}
+		$stringAmount = static::convertNumericAmountToDecimalString($amount, $currency->getDecimals());
 		if ($stringAmount === null) {
 			throw new InvalidNumberException('Amount is not valid float number!');
 		}
@@ -372,14 +362,34 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	protected function initializeNumericAmount($amount) {
-		if(!is_numeric($amount)) {
+		$stringAmount = static::convertNumericAmountToDecimalString($amount);
+		if($stringAmount === null) {
 			throw new InvalidNumberException("Parameter can't be converted to number");
 		}
-		if(is_float($amount) || (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount))) {
-			$amount = rtrim(sprintf('%.' . static::MAX_DECIMALS . 'F', $amount), '0');
+
+		return $stringAmount;
+	}
+
+	/**
+	 * @param mixed $amount
+	 * @param int $maxDecimals
+	 * @return string|null if $amount is not numeric
+	 */
+	protected static function convertNumericAmountToDecimalString($amount, $maxDecimals = self::MAX_DECIMALS) {
+		$stringAmount = null;
+		if (is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
+			$stringAmount = $amount;
+		} else if ((!is_string($amount) && is_numeric($amount))) {
+			$stringAmount = $amount = (string)$amount;
+		}
+		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
+			list ($significand, $exponent) = explode('e', strtolower($amount));
+			$decimalPointInSignificandPos = strrpos($significand, '.');
+			$decimals = min($maxDecimals, max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1))));
+			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
 		}
 
-		return $amount;
+		return $stringAmount;
 	}
 
 	/**
