@@ -20,6 +20,8 @@ class Coin extends BigInteger {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	const MAX_DECIMALS = 10;
+
 	/**
 	 * Coin constructor.
 	 * @param $amount
@@ -373,6 +375,10 @@ class Coin extends BigInteger {
 		if(!is_numeric($amount)) {
 			throw new InvalidNumberException("Parameter can't be converted to number");
 		}
+		if(is_float($amount) || (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount))) {
+			$amount = rtrim(sprintf('%.' . static::MAX_DECIMALS . 'F', $amount), '0');
+		}
+
 		return $amount;
 	}
 
