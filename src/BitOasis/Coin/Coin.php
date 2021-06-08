@@ -20,9 +20,6 @@ class Coin extends BigInteger {
 	/** @var Cryptocurrency */
 	protected $currency;
 
-	/** @var int if float value is in scientific notation and converted to string, it's rounded to 18 decimals => same will be applied to scientific notation in string */
-	const MAX_DECIMALS = 18;
-
 	/**
 	 * Coin constructor.
 	 * @param $amount
@@ -372,10 +369,10 @@ class Coin extends BigInteger {
 
 	/**
 	 * @param mixed $amount
-	 * @param int $maxDecimals
+	 * @param int|null $maxDecimals
 	 * @return string|null if $amount is not numeric
 	 */
-	protected static function convertNumericAmountToDecimalString($amount, $maxDecimals = self::MAX_DECIMALS) {
+	protected static function convertNumericAmountToDecimalString($amount, $maxDecimals = null) {
 		$stringAmount = null;
 		if (is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
 			$stringAmount = $amount;
@@ -385,7 +382,10 @@ class Coin extends BigInteger {
 		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
 			list ($significand, $exponent) = explode('e', strtolower($amount));
 			$decimalPointInSignificandPos = strrpos($significand, '.');
-			$decimals = min($maxDecimals, max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1))));
+			$decimals = max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1)));
+			if ($maxDecimals !== null) {
+				$decimals = min($maxDecimals, $decimals);
+			}
 			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
 		}
 
