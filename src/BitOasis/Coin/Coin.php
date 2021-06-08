@@ -51,18 +51,7 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	public static function fromFloat($amount, Cryptocurrency $currency) {
-		$stringAmount = null;
-		if(is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
-			$stringAmount = $amount;
-		} else if ((!is_string($amount) && is_numeric($amount))) {
-			$stringAmount = $amount = (string)$amount;
-		}
-		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
-			list ($significand, $exponent) = explode('e', strtolower($amount));
-			$decimalPointInSignificandPos = strrpos($significand, '.');
-			$decimals = min($currency->getDecimals(), max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1))));
-			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
-		}
+		$stringAmount = static::convertNumericAmountToDecimalString($amount, $currency->getDecimals());
 		if ($stringAmount === null) {
 			throw new InvalidNumberException('Amount is not valid float number!');
 		}
@@ -370,10 +359,37 @@ class Coin extends BigInteger {
 	 * @throws InvalidNumberException
 	 */
 	protected function initializeNumericAmount($amount) {
-		if(!is_numeric($amount)) {
+		$stringAmount = static::convertNumericAmountToDecimalString($amount);
+		if($stringAmount === null) {
 			throw new InvalidNumberException("Parameter can't be converted to number");
 		}
-		return $amount;
+
+		return $stringAmount;
+	}
+
+	/**
+	 * @param mixed $amount
+	 * @param int|null $maxDecimals
+	 * @return string|null if $amount is not numeric
+	 */
+	protected static function convertNumericAmountToDecimalString($amount, $maxDecimals = null) {
+		$stringAmount = null;
+		if (is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
+			$stringAmount = $amount;
+		} else if ((!is_string($amount) && is_numeric($amount))) {
+			$stringAmount = $amount = (string)$amount;
+		}
+		if (is_string($amount) && preg_match('#^[+-]?([1-9]?\.?\d+)[eE][+-]?(\d+)$#', $amount)) {
+			list ($significand, $exponent) = explode('e', strtolower($amount));
+			$decimalPointInSignificandPos = strrpos($significand, '.');
+			$decimals = max(0, (-(int)$exponent) + ($decimalPointInSignificandPos === false ? 0 : (strlen($significand) - $decimalPointInSignificandPos - 1)));
+			if ($maxDecimals !== null) {
+				$decimals = min($maxDecimals, $decimals);
+			}
+			$stringAmount = sprintf('%.' . $decimals . 'F', $amount);
+		}
+
+		return $stringAmount;
 	}
 
 	/**
