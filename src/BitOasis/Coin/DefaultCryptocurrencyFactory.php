@@ -68,6 +68,16 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::COMP] = new Cryptocurrency(Cryptocurrency::COMP, 18, 'Compound');
 		$this->cryptocurrencies[Cryptocurrency::SNX] = new Cryptocurrency(Cryptocurrency::SNX, 18, 'Synthetix');
 		$this->cryptocurrencies[Cryptocurrency::DOGE] = new Cryptocurrency(Cryptocurrency::DOGE, 8, 'Dogecoin');
+		$this->cryptocurrencies[Cryptocurrency::AAVE] = new Cryptocurrency(Cryptocurrency::AAVE, 18, 'Aave');
+		$this->cryptocurrencies[Cryptocurrency::BNT] = new Cryptocurrency(Cryptocurrency::BNT, 18, 'Bancor');
+		$this->cryptocurrencies[Cryptocurrency::ENJ] = new Cryptocurrency(Cryptocurrency::ENJ, 18, 'Enjin Coin');
+		$this->cryptocurrencies[Cryptocurrency::LRC] = new Cryptocurrency(Cryptocurrency::LRC, 18, 'Loopring');
+		$this->cryptocurrencies[Cryptocurrency::MANA] = new Cryptocurrency(Cryptocurrency::MANA, 18, 'Decentraland');
+		$this->cryptocurrencies[Cryptocurrency::MATIC] = new Cryptocurrency(Cryptocurrency::MATIC, 18, 'Polygon (Matic)');
+		$this->cryptocurrencies[Cryptocurrency::STORJ] = new Cryptocurrency(Cryptocurrency::STORJ, 8, 'Storj');
+		$this->cryptocurrencies[Cryptocurrency::SUSHI] = new Cryptocurrency(Cryptocurrency::SUSHI, 18, 'Sushi');
+		$this->cryptocurrencies[Cryptocurrency::USDC] = new Cryptocurrency(Cryptocurrency::USDC, 6, 'USD Coin');
+		$this->cryptocurrencies[Cryptocurrency::WAVES] = new Cryptocurrency(Cryptocurrency::WAVES, 8, 'Waves');
 	}
 
 }

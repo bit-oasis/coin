@@ -38,6 +38,16 @@ class Cryptocurrency {
 	const COMP = 'COMP';
 	const SNX = 'SNX';
 	const DOGE = 'DOGE';
+	const AAVE = 'AAVE';
+	const BNT = 'BNT';
+	const ENJ = 'ENJ';
+	const LRC = 'LRC';
+	const MANA = 'MANA';
+	const MATIC = 'MATIC';
+	const STORJ = 'STORJ';
+	const SUSHI = 'SUSHI';
+	const USDC = 'USDC';
+	const WAVES = 'WAVES';
 
 	const USD = 'USD';
 	const AED = 'AED';

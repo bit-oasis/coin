@@ -15,6 +15,7 @@ class Base58Check {
 	const BTC_ADDRESS = 'btc';
 	const LTC_ADDRESS = 'ltc';
 	const XRP_ADDRESS = 'xrp';
+	const WAVES_ADDRESS = 'waves';
 	const BCH_LEGACY_ADDRESS = 'bchl';
 	const ZEC_TRANSPARENT_ADDRESS = 'zect';
 	const ZEC_SHIELDED_ADDRESS = 'zecz';
@@ -39,6 +40,11 @@ class Base58Check {
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 64,
 			self::CHECKSUM_HASH => 'sha256x2hash',
+		],
+		self::WAVES_ADDRESS => [
+			self::VERSION_LENGTH => 2,
+			self::HASH_LENGTH => 20,
+			self::CHECKSUM_HASH => 'blake2b256Keccak256Hash',
 		],
 	];
 
@@ -99,7 +105,7 @@ class Base58Check {
 	 */
 	public static function decodeString($value, $charset = null, $options = self::BTC_ADDRESS) {
 		$options = self::getOptions($options);
-		return self::encode($value, $charset, $options->getChecksumHashFunction());
+		return self::decode($value, $charset, $options->getChecksumHashFunction());
 	}
 
 	/**

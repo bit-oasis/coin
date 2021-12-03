@@ -16,7 +16,8 @@
 		"btccom/cashaddress": "dev-master@dev",
 		"stephenhill/base58": "^1.1.4",
 		"olegabr/keccak": "^1.0.3",
-		"christian-riesen/base32": "^1.3"
+		"christian-riesen/base32": "^1.3",
+		"paragonie/sodium_compat": "^1.17"
 	},
 	"require-dev": {
 		"kdyby/doctrine": "~3.0@dev|~2.3@dev",
