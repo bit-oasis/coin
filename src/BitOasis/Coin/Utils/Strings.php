@@ -35,12 +35,25 @@ class Strings {
 	}
 
 	/**
+	 * @param string $value
+	 * @param bool $rawOutput if true returned value is in binary string
+	 * @return string
+	 */
+	public static function blake2b256Hash($value, $rawOutput = true) {
+		$tmp = \ParagonIE_Sodium_Compat::crypto_generichash($value);
+		return $rawOutput ? $tmp : bin2hex($tmp);
+	}
+
+	public static function blake2b256Keccak256Hash($value, $rawOutput = true) {
+		return self::keccak256Hash(self::blake2b256Hash($value), $rawOutput);
+	}
+
+	/**
 	 * @param string $value as binary string
 	 * @return string in hex format
 	 */
 	public static function convertBinaryStringToHex($value) {
-		$tmp = unpack('H*', $value);
-		return reset($tmp);
+		return bin2hex($value);
 	}
 
 	/**
@@ -66,7 +79,7 @@ class Strings {
 	 * @return string as binary string
 	 */
 	public static function convertHexToBinaryString($value) {
-		return pack('H*', $value);
+		return hex2bin($value);
 	}
 
 }
