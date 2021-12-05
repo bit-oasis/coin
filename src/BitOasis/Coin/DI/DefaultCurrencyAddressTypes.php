@@ -2,9 +2,11 @@
 
 namespace BitOasis\Coin\DI;
 
+use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\BalancerAddress;
+use BitOasis\Coin\Address\BancorAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
@@ -29,10 +31,14 @@ use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\PolygonAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\StellarAddress;
+use BitOasis\Coin\Address\StorjAddress;
+use BitOasis\Coin\Address\SushiAddress;
 use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\UniswapAddress;
+use BitOasis\Coin\Address\UsdCoinAddress;
+use BitOasis\Coin\Address\WavesAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
