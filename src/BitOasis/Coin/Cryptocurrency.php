@@ -54,6 +54,7 @@ class Cryptocurrency {
 	const KWD = 'KWD';
 	const EUR = 'EUR';
 	const SAR = 'SAR';
+	const TRY = 'TRY';
 
 	/** @var string */
 	protected $code;
