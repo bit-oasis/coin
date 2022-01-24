@@ -48,6 +48,16 @@ class Cryptocurrency {
 	const SUSHI = 'SUSHI';
 	const USDC = 'USDC';
 	const WAVES = 'WAVES';
+	const DOT = 'DOT';
+	const SOL = 'SOL';
+	const ADA = 'ADA';
+	const SHIB = 'SHIB';
+	const AVAX = 'AVAX';
+	const FTM = 'FTM';
+	const WBTC = 'WBTC';
+	const LUNA = 'LUNA';
+	const ATOM = 'ATOM';
+	const NEAR = 'NEAR';
 
 	const USD = 'USD';
 	const AED = 'AED';

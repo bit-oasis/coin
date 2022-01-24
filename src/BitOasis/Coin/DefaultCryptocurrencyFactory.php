@@ -78,6 +78,16 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::SUSHI] = new Cryptocurrency(Cryptocurrency::SUSHI, 18, 'Sushi');
 		$this->cryptocurrencies[Cryptocurrency::USDC] = new Cryptocurrency(Cryptocurrency::USDC, 6, 'USD Coin');
 		$this->cryptocurrencies[Cryptocurrency::WAVES] = new Cryptocurrency(Cryptocurrency::WAVES, 8, 'Waves');
+		$this->cryptocurrencies[Cryptocurrency::DOT] = new Cryptocurrency(Cryptocurrency::DOT, 10, 'Polkadot');
+		$this->cryptocurrencies[Cryptocurrency::SOL] = new Cryptocurrency(Cryptocurrency::SOL, 9, 'Solana');
+		$this->cryptocurrencies[Cryptocurrency::ADA] = new Cryptocurrency(Cryptocurrency::ADA, 6, 'Cardano');
+		$this->cryptocurrencies[Cryptocurrency::SHIB] = new Cryptocurrency(Cryptocurrency::SHIB, 18, 'Shiba Inu');
+		$this->cryptocurrencies[Cryptocurrency::AVAX] = new Cryptocurrency(Cryptocurrency::AVAX, 18, 'Avalanche');
+		$this->cryptocurrencies[Cryptocurrency::FTM] = new Cryptocurrency(Cryptocurrency::FTM, 18, 'Fantom');
+		$this->cryptocurrencies[Cryptocurrency::WBTC] = new Cryptocurrency(Cryptocurrency::WBTC, 18, 'Wrapped Bitcoin');
+		$this->cryptocurrencies[Cryptocurrency::LUNA] = new Cryptocurrency(Cryptocurrency::LUNA, 6, 'Terra');
+		$this->cryptocurrencies[Cryptocurrency::ATOM] = new Cryptocurrency(Cryptocurrency::ATOM, 6, 'Cosmos');
+		$this->cryptocurrencies[Cryptocurrency::NEAR] = new Cryptocurrency(Cryptocurrency::NEAR, 18, 'Near Protocol');
 	}
 
 }
