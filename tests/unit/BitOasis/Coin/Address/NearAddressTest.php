@@ -22,12 +22,33 @@ class NearAddressTest extends UnitTest {
 			['efbad19288fe961664f70b03b122541b46244cb287557e26b17c2b0926c6c61b1'],
 			['1efbad19288fe961664f70b03b122541b46244cb287557e26b17c2b0926c6c61b'],
 			['efbad19288fe961664f70b03b122541b46244cb287557e26b17c2b0926c6c61t'],
+			['_invalidaddress.near'],
+			['i__nvalid.near'],
+			['i--nvalid.near'],
+			['--invalid.near'],
+			['-invalid.near'],
+			['invalid-_near'],
+			['invalid.test'],
+			['invalid.bulo'],
+			['invalid.kulo'],
+			['invalid.neard'],
+			['invalid.nears'],
+			['@invalid.near'],
+			['invalid@.near'],
+			['i@nvalid.near'],
+			['inval.id.near'],
 		];
 	}
 
 	public function providerValidate() {
 		return [
 			// Any hex string with 64 length
+			['valid_address.near'],
+			['va_li_d_address.near'],
+			['va-lid-address.near'],
+			['valid_address-1.near'],
+			['valid-a-d-d-ress-2.near'],
+			['any-address-0-9-a-z.near'],
 			['efbad19288fe961664f70b03b122541b46244cb287557e26b17c2b0926c6c61b'],
 		];
 	}

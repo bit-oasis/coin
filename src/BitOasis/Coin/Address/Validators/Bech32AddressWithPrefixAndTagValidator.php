@@ -11,7 +11,7 @@ use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-abstract class Bech32AddressWithPrefixValidator implements ValidationInterface {
+abstract class Bech32AddressWithPrefixAndTagValidator implements ValidationInterface {
 
 	/** @var string */
 	protected $address;
@@ -80,7 +80,8 @@ abstract class Bech32AddressWithPrefixValidator implements ValidationInterface {
 	 */
 	protected function validateTag() {
 		$tag = $this->tag;
-		if ($tag !== null && (!is_numeric($tag) || (int)$tag != $tag || (int)$tag <= 0 || (int)$tag > 4294967295)) {
+
+		if ($tag !== null && (strlen($tag) < 1 || strlen($tag) > 256)) {
 			throw new InvalidAddressException('This is not valid ' . $this->label .  ' tag - ' . $tag);
 		}
 		return true;

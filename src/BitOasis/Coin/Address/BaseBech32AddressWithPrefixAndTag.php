@@ -2,13 +2,13 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\CosmosAddressValidator;
-use BitOasis\Coin\Address\Validators\TerraAddressValidator;
+use BitOasis\Coin\Address\Validators\Bech32AddressWithPrefixAndTagValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 
-abstract class BaseBech32WithPrefixAddress implements CryptocurrencyAddress {
+abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddress {
+
 	/** @var string */
 	protected $address;
 
@@ -19,7 +19,6 @@ abstract class BaseBech32WithPrefixAddress implements CryptocurrencyAddress {
 	protected $currency;
 
 	/**
-	 * RippleAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
 	 * @param int|null $tag
@@ -120,18 +119,19 @@ abstract class BaseBech32WithPrefixAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 *
 	 * @param string $address
 	 * @param $tag
 	 * @return bool
 	 * @throws InvalidAddressException
 	 */
 	private function validateAddress($address, $tag = null) {
-		/** @var CosmosAddressValidator|TerraAddressValidator $validator */
-		$validator = $this->createValidator($address, $tag);
-
-		return $validator->validateWithExceptions();
+		return $this->createValidator($address, $tag)->validateWithExceptions();
 	}
 
+	/**
+	 * @param $address
+	 * @param null $tag
+	 * @return Bech32AddressWithPrefixAndTagValidator
+	 */
 	protected abstract function createValidator($address, $tag = null);
 }

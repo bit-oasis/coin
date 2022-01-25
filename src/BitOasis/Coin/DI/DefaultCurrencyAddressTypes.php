@@ -5,7 +5,7 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AugurAddress;
-use BitOasis\Coin\Address\AvalancheAddress;
+use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
@@ -24,7 +24,7 @@ use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
-use BitOasis\Coin\Address\FantomAddress;
+use BitOasis\Coin\Address\FantomERC20Address;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
@@ -104,8 +104,8 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::SOL => SolanaAddress::class,
 		Cryptocurrency::ADA => CardanoAddress::class,
 		Cryptocurrency::SHIB => ShibaInuAddress::class,
-		Cryptocurrency::AVAX => AvalancheAddress::class,
-		Cryptocurrency::FTM => FantomAddress::class,
+		Cryptocurrency::AVAX => AvalancheCChainAddress::class,
+		Cryptocurrency::FTM => FantomERC20Address::class,
 		Cryptocurrency::WBTC => WrappedBitcoinAddress::class,
 		Cryptocurrency::LUNA => TerraAddress::class,
 		Cryptocurrency::ATOM => CosmosAddress::class,

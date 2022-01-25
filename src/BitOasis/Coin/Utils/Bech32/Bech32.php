@@ -31,8 +31,7 @@ class Bech32 {
 	 * @return array - returns [$hrp, $dataChars]
 	 * @throws Bech32Exception
 	 */
-	public static function decode($sBech)
-	{
+	public static function decode($sBech) {
 		$length = strlen($sBech);
 		if ($length > 90) {
 			throw new Bech32Exception('Bech32 string cannot exceed 90 characters in length');
@@ -48,8 +47,7 @@ class Bech32 {
 	 * @param int $numValues
 	 * @return int
 	 */
-	private function polyMod(array $values, $numValues)
-	{
+	private function polyMod(array $values, $numValues) {
 		$chk = 1;
 		for ($i = 0; $i < $numValues; $i++) {
 			$top = $chk >> 25;
@@ -70,8 +68,7 @@ class Bech32 {
 	 * @param int $hrpLen
 	 * @return int[]
 	 */
-	private function hrpExpand($hrp, $hrpLen)
-	{
+	private function hrpExpand($hrp, $hrpLen) {
 		$expand1 = [];
 		$expand2 = [];
 		for ($i = 0; $i < $hrpLen; $i++) {
@@ -94,8 +91,7 @@ class Bech32 {
 	 * @return int[]
 	 * @throws Bech32Exception
 	 */
-	private function convertBits(array $data, $inLen, $fromBits, $toBits, $pad = true)
-	{
+	private function convertBits(array $data, $inLen, $fromBits, $toBits, $pad = true) {
 		$acc = 0;
 		$bits = 0;
 		$ret = [];
@@ -133,8 +129,7 @@ class Bech32 {
 	 * @param int[] $convertedDataChars
 	 * @return int[]
 	 */
-	private function createChecksum($hrp, array $convertedDataChars)
-	{
+	private function createChecksum($hrp, array $convertedDataChars) {
 		$values = \array_merge($this->hrpExpand($hrp, \strlen($hrp)), $convertedDataChars);
 		$polyMod = $this->polyMod(\array_merge($values, [0, 0, 0, 0, 0, 0]), \count($values) + 6) ^ 1;
 		$results = [];
@@ -152,8 +147,7 @@ class Bech32 {
 	 * @param int[] $convertedDataChars
 	 * @return bool
 	 */
-	private function verifyChecksum($hrp, array $convertedDataChars)
-	{
+	private function verifyChecksum($hrp, array $convertedDataChars) {
 		$expandHrp = $this->hrpExpand($hrp, \strlen($hrp));
 		$r = \array_merge($expandHrp, $convertedDataChars);
 		$poly = $this->polyMod($r, \count($r));
@@ -165,8 +159,7 @@ class Bech32 {
 	 * @param array $combinedDataChars
 	 * @return string
 	 */
-	private function encode($hrp, array $combinedDataChars)
-	{
+	private function encode($hrp, array $combinedDataChars) {
 		$checksum = $this->createChecksum($hrp, $combinedDataChars);
 		$characters = \array_merge($combinedDataChars, $checksum);
 
@@ -179,12 +172,11 @@ class Bech32 {
 	}
 
 	/**
-	 * @throws Bech32Exception
 	 * @param string $sBech - the bech32 encoded string
 	 * @return array - returns [$hrp, $dataChars]
+	 * @throws Bech32Exception
 	 */
-	private function decodeRaw($sBech)
-	{
+	private function decodeRaw($sBech) {
 		$length = \strlen($sBech);
 		if ($length < 8) {
 			throw new Bech32Exception("Bech32 string is too short");
@@ -252,8 +244,7 @@ class Bech32 {
 	 * @param string $program
 	 * @throws Bech32Exception
 	 */
-	private function validateWitnessProgram($version, $program)
-	{
+	private function validateWitnessProgram($version, $program) {
 		if ($version < 0 || $version > 16) {
 			throw new Bech32Exception("Invalid witness version");
 		}
@@ -277,9 +268,8 @@ class Bech32 {
 	 * @return string - the encoded address
 	 * @throws Bech32Exception
 	 */
-	private function encodeSegwit($hrp, $version, $program)
-	{
-		$version = (int) $version;
+	private function encodeSegwit($hrp, $version, $program) {
+		$version = (int)$version;
 		$this->validateWitnessProgram($version, $program);
 
 		$programChars = array_values(unpack('C*', $program));
@@ -295,8 +285,7 @@ class Bech32 {
 	 * @return array - [$version, $program]
 	 * @throws Bech32Exception
 	 */
-	private function decodeSegwit($hrp, $bech32)
-	{
+	private function decodeSegwit($hrp, $bech32) {
 		list ($hrpGot, $data) = $this->decode($bech32);
 		if ($hrpGot !== $hrp) {
 			throw new Bech32Exception('Invalid prefix for address');

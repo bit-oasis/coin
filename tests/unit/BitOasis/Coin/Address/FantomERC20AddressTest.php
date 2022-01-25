@@ -10,7 +10,7 @@ use UnitTestUtils;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class FantomAddressTest extends UnitTest {
+class FantomERC20AddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -56,10 +56,10 @@ class FantomAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return FantomAddress
+	 * @return FantomERC20Address
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): FantomAddress {
-		return new FantomAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+	protected function createAddress(string $address): FantomERC20Address {
+		return new FantomERC20Address($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
 	}
 }

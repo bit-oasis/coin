@@ -10,7 +10,7 @@ use UnitTestUtils;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class AvalancheAddressTest extends UnitTest {
+class AvalancheCChainAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -56,10 +56,10 @@ class AvalancheAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return AvalancheAddress
+	 * @return AvalancheCChainAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): AvalancheAddress {
-		return new AvalancheAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+	protected function createAddress(string $address): AvalancheCChainAddress {
+		return new AvalancheCChainAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
 	}
 }
