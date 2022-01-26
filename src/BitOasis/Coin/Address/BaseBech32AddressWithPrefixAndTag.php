@@ -100,6 +100,15 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	}
 
 	/**
+	 * @param string $address
+	 * @param int|null $tag
+	 * @return string
+	 */
+	public static function serializeAddress($address, $tag = null) {
+		return $address . ($tag === null ? '' : ('#' . $tag));
+	}
+
+	/**
 	 * @param CryptocurrencyAddress $address
 	 * @return bool
 	 */
