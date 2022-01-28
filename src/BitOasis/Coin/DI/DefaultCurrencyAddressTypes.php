@@ -5,6 +5,7 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AugurAddress;
+use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
@@ -12,8 +13,10 @@ use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\CardanoAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
 use BitOasis\Coin\Address\CompoundAddress;
+use BitOasis\Coin\Address\CosmosAddress;
 use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\DecentralandAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
@@ -21,24 +24,31 @@ use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
+use BitOasis\Coin\Address\FantomERC20Address;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
 use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MoneroAddress;
+use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
+use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\ShibaInuAddress;
+use BitOasis\Coin\Address\SolanaAddress;
 use BitOasis\Coin\Address\StellarAddress;
 use BitOasis\Coin\Address\StorjAddress;
 use BitOasis\Coin\Address\SushiAddress;
 use BitOasis\Coin\Address\SynthetixAddress;
+use BitOasis\Coin\Address\TerraAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\WavesAddress;
+use BitOasis\Coin\Address\WrappedBitcoinAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
@@ -90,6 +100,16 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::SUSHI => SushiAddress::class,
 		Cryptocurrency::USDC => UsdCoinAddress::class,
 		Cryptocurrency::WAVES => WavesAddress::class,
+		Cryptocurrency::DOT => PolkadotAddress::class,
+		Cryptocurrency::SOL => SolanaAddress::class,
+		Cryptocurrency::ADA => CardanoAddress::class,
+		Cryptocurrency::SHIB => ShibaInuAddress::class,
+		Cryptocurrency::AVAX => AvalancheCChainAddress::class,
+		Cryptocurrency::FTM => FantomERC20Address::class,
+		Cryptocurrency::WBTC => WrappedBitcoinAddress::class,
+		Cryptocurrency::LUNA => TerraAddress::class,
+		Cryptocurrency::ATOM => CosmosAddress::class,
+		Cryptocurrency::NEAR => NearAddress::class,
 	];
 
 }
