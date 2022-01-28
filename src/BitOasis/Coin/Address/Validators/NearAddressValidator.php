@@ -39,21 +39,19 @@ class NearAddressValidator implements ValidationInterface {
 			return false;
 		}
 
-		if (strpos($this->address, '.') === false) {
+		$exploded = explode('.', $this->address);
+
+		if (count($exploded) !== 2) {
 			return false;
 		}
 
-		list($addressName, $addressDomain) = explode('.', $this->address);
+		list($addressName, $addressDomain) = $exploded;
 
 		if (!in_array($addressDomain, self::READABLE_ADDRESS_AVAILABLE_DOMAINS)) {
 			return false;
 		}
 
-		if (preg_match('/^[a-zA-Z0-9][a-zA-Z0-9_-]*(?<!_|-)$/', $addressName) == 0) {
-			return false;
-		}
-
-		if (preg_match('/(_-|-_|__|--)/', $addressName) > 0) {
+		if (preg_match('/^[a-zA-Z0-9]([a-zA-Z0-9_-]{0,1}[a-zA-Z0-9]+)*(?<!_|-)$/', $addressName) == 0) {
 			return false;
 		}
 

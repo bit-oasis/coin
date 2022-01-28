@@ -37,6 +37,8 @@ class NearAddressTest extends UnitTest {
 			['invalid@.near'],
 			['i@nvalid.near'],
 			['inval.id.near'],
+			['inval.near.xxx'],
+			['invalaskgnadkjgbadosjhgoiadhgpiadhgpiadhgpiadhgpiadhgpiadhgoiabdgopiadhpighapodghpadihgpaihgpidahpiadhgadg.near'],
 		];
 	}
 
