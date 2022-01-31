@@ -18,4 +18,12 @@ class CosmosAddress extends BaseBech32AddressWithPrefixAndTag implements Cryptoc
 	protected function createValidator($address, $tag = null) {
 		return new CosmosAddressValidator($address, $tag);
 	}
+
+	public function toString() {
+		return 'Address: ' . $this->address . ($this->tag === null ? '' : (', Memo: ' . $this->tag));
+	}
+
+	public static function getClassAdditionalIdName() {
+		return 'memo';
+	}
 }
