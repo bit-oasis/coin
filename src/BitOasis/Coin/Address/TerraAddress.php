@@ -18,4 +18,12 @@ class TerraAddress extends BaseBech32AddressWithPrefixAndTag implements Cryptocu
 	protected function createValidator($address, $tag = null) {
 		return new TerraAddressValidator($address, $tag);
 	}
+
+	public function toString() {
+		return 'Address: ' . $this->address . ($this->tag === null ? '' : (', Memo: ' . $this->tag));
+	}
+
+	public static function getClassAdditionalIdName() {
+		return 'memo';
+	}
 }
