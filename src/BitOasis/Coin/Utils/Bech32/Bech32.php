@@ -11,6 +11,7 @@ class Bech32 {
 
 	const GENERATOR = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3];
 	const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
+	const MAX_BECH_LENGTH = 110;
 	const CHARKEY_KEY = [
 		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -33,8 +34,8 @@ class Bech32 {
 	 */
 	public static function decode($sBech) {
 		$length = strlen($sBech);
-		if ($length > 90) {
-			throw new Bech32Exception('Bech32 string cannot exceed 90 characters in length');
+		if ($length > self::MAX_BECH_LENGTH) {
+			throw new Bech32Exception('Bech32 string cannot exceed ' . self::MAX_BECH_LENGTH . ' characters in length');
 		}
 
 		$self = new static();
