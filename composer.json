@@ -9,7 +9,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0",
+		"php": ">=7.1",
 		"zendframework/zend-math": "^3.0",
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",
