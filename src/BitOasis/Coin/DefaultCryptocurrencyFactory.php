@@ -91,6 +91,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ONE_INCH] = new Cryptocurrency(Cryptocurrency::ONE_INCH, 18, '1INCH');
 		$this->cryptocurrencies[Cryptocurrency::AMPL] = new Cryptocurrency(Cryptocurrency::AMPL, 18, 'Ampleforth');
 		$this->cryptocurrencies[Cryptocurrency::ANT] = new Cryptocurrency(Cryptocurrency::ANT, 18, 'Aragon Network');
+		$this->cryptocurrencies[Cryptocurrency::AXS] = new Cryptocurrency(Cryptocurrency::AXS, 18, 'Axie Infinity');
 	}
 
 }

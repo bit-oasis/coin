@@ -8,6 +8,7 @@ use BitOasis\Coin\Address\AmpleforthAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
+use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
@@ -116,6 +117,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::ONE_INCH => OneInchAddress::class,
 		Cryptocurrency::AMPL => AmpleforthAddress::class,
 		Cryptocurrency::ANT => AragonNetworkAddress::class,
+		Cryptocurrency::AXS => AxieInfinityAddress::class,
 	];
 
 }
