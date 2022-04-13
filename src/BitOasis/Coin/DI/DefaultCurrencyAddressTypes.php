@@ -59,6 +59,7 @@ use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\TerraAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
+use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\WavesAddress;
@@ -138,6 +139,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::NEXO => NexoAddress::class,
 		Cryptocurrency::OCEAN => OceanAddress::class,
 		Cryptocurrency::SNX => SynthetixAddress::class,
+		Cryptocurrency::TUSD => TrueUsdAddress::class,
 	];
 
 }
