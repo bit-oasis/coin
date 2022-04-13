@@ -22,6 +22,7 @@ use BitOasis\Coin\Address\ChainlinkAddress;
 use BitOasis\Coin\Address\ChilizAddress;
 use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\CosmosAddress;
+use BitOasis\Coin\Address\CurveAddress;
 use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\DecentralandAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
@@ -122,6 +123,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::AXS => AxieInfinityAddress::class,
 		Cryptocurrency::BAND => BandProtocolAddress::class,
 		Cryptocurrency::CHZ => ChilizAddress::class,
+		Cryptocurrency::CRV => CurveAddress::class,
 	];
 
 }
