@@ -98,6 +98,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::FTT] = new Cryptocurrency(Cryptocurrency::FTT, 18, 'FTX Token');
 		$this->cryptocurrencies[Cryptocurrency::GALA] = new Cryptocurrency(Cryptocurrency::GALA, 18, 'Gala');
 		$this->cryptocurrencies[Cryptocurrency::GNO] = new Cryptocurrency(Cryptocurrency::GNO, 18, 'Gnosis');
+		$this->cryptocurrencies[Cryptocurrency::GRT] = new Cryptocurrency(Cryptocurrency::GRT, 18, 'The Graph');
 	}
 
 }
