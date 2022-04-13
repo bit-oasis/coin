@@ -61,4 +61,5 @@ class AragonNetworkAddressTest extends UnitTest {
 	protected function createAddress($address) {
 		return new AragonNetworkAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
 	}
+
 }

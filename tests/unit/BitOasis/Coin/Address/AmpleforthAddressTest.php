@@ -7,7 +7,6 @@ use BitOasis\Coin\Exception\InvalidAddressException;
 use UnitTest;
 use UnitTestUtils;
 
-
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
@@ -62,4 +61,5 @@ class AmpleforthAddressTest extends UnitTest {
 	protected function createAddress($address) {
 		return new AmpleforthAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
 	}
+
 }
