@@ -33,6 +33,7 @@ use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
+use BitOasis\Coin\Address\OneInchAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
 use BitOasis\Coin\Address\RippleAddress;
@@ -110,6 +111,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::LUNA => TerraAddress::class,
 		Cryptocurrency::ATOM => CosmosAddress::class,
 		Cryptocurrency::NEAR => NearAddress::class,
+		Cryptocurrency::ONE_INCH => OneInchAddress::class
 	];
 
 }
