@@ -5,6 +5,7 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AmpleforthAddress;
+use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BalancerAddress;
@@ -114,6 +115,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::NEAR => NearAddress::class,
 		Cryptocurrency::ONE_INCH => OneInchAddress::class,
 		Cryptocurrency::AMPL => AmpleforthAddress::class,
+		Cryptocurrency::ANT => AragonNetworkAddress::class,
 	];
 
 }
