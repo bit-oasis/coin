@@ -11,6 +11,7 @@ use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
+use BitOasis\Coin\Address\BandProtocolAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
@@ -118,6 +119,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::AMPL => AmpleforthAddress::class,
 		Cryptocurrency::ANT => AragonNetworkAddress::class,
 		Cryptocurrency::AXS => AxieInfinityAddress::class,
+		Cryptocurrency::BAND => BandProtocolAddress::class,
 	];
 
 }
