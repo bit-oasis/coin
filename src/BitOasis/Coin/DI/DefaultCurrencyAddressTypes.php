@@ -31,6 +31,7 @@ use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\FantomERC20Address;
+use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
@@ -124,6 +125,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::BAND => BandProtocolAddress::class,
 		Cryptocurrency::CHZ => ChilizAddress::class,
 		Cryptocurrency::CRV => CurveAddress::class,
+		Cryptocurrency::FTT => FtxAddress::class,
 	];
 
 }
