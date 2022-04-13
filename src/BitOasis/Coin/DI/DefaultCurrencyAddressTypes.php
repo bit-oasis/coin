@@ -19,6 +19,7 @@ use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\CardanoAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
+use BitOasis\Coin\Address\ChilizAddress;
 use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\CosmosAddress;
 use BitOasis\Coin\Address\DaiAddress;
@@ -120,6 +121,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::ANT => AragonNetworkAddress::class,
 		Cryptocurrency::AXS => AxieInfinityAddress::class,
 		Cryptocurrency::BAND => BandProtocolAddress::class,
+		Cryptocurrency::CHZ => ChilizAddress::class,
 	];
 
 }
