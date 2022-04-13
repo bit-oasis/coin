@@ -22,12 +22,13 @@ class Cryptocurrency {
 	const OMG = 'OMG';
 	const ZRX = 'ZRX';
 	const BAT = 'BAT';
-	const LEO = 'LEO';
 	const ALGO = 'ALGO';
 	const USDT = 'USDT';
 	const NEO = 'NEO';
 	const XTZ = 'XTZ';
 	const LINK = 'LINK';
+
+	// 2020
 	const DAI = 'DAI';
 	const MKR = 'MKR';
 	const KNC = 'KNC';
@@ -36,7 +37,6 @@ class Cryptocurrency {
 	const YFI = 'YFI';
 	const BAL = 'BAL';
 	const COMP = 'COMP';
-	const SNX = 'SNX';
 	const DOGE = 'DOGE';
 	const AAVE = 'AAVE';
 	const BNT = 'BNT';
@@ -48,6 +48,8 @@ class Cryptocurrency {
 	const SUSHI = 'SUSHI';
 	const USDC = 'USDC';
 	const WAVES = 'WAVES';
+
+	// 2022 Jan
 	const DOT = 'DOT';
 	const SOL = 'SOL';
 	const ADA = 'ADA';
@@ -59,6 +61,36 @@ class Cryptocurrency {
 	const ATOM = 'ATOM';
 	const NEAR = 'NEAR';
 
+	// 2022 Apr
+	const ONE_INCH = '1INCH';
+	const AMPL = 'AMPL';
+	const ANT = 'ANT';
+	const AXS = 'AXS';
+	const BAND = 'BAND';
+	const CHZ = 'CHZ';
+	const CRV = 'CRV';
+	const DGB = 'DGB';
+	const EGLD = 'EGLD';
+	const FIL = 'FIL';
+	const FTT = 'FTT';
+	const GALA = 'GALA';
+	const GNO = 'GNO';
+	const GRT = 'GRT';
+	const IOTA = 'IOTA';
+	const KSM = 'KSM';
+	const LEO = 'LEO';
+	const NEXO = 'NEXO';
+	const OCEAN = 'OCEAN';
+	const QTUM = 'QTUM';
+	const SNX = 'SNX';
+	const THETA = 'THETA';
+	const TRX = 'TRX';
+	const TUSD = 'TUSD';
+	const UST = 'UST';
+	const VET = 'VET';
+	const XVG = 'XVG';
+
+	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
 	const KWD = 'KWD';
