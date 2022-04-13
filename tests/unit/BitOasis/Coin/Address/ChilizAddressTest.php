@@ -59,7 +59,7 @@ class ChilizAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new ChilizAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
+		return new ChilizAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::CHZ));
 	}
 
 }

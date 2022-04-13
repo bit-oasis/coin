@@ -59,7 +59,7 @@ class BandProtocolAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new BandProtocolAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
+		return new BandProtocolAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BAND));
 	}
 
 }

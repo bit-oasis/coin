@@ -59,7 +59,7 @@ class AxieInfinityAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AxieInfinityAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
+		return new AxieInfinityAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::AXS));
 	}
 
 }

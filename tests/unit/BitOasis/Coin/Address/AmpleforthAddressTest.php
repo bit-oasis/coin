@@ -59,7 +59,7 @@ class AmpleforthAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AmpleforthAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
+		return new AmpleforthAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::AMPL));
 	}
 
 }

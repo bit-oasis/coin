@@ -59,7 +59,7 @@ class CurveAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new CurveAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ONE_INCH));
+		return new CurveAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::CRV));
 	}
 
 }
