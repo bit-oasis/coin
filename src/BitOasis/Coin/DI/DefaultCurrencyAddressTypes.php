@@ -43,6 +43,7 @@ use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
+use BitOasis\Coin\Address\NexoAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\OneInchAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
@@ -134,6 +135,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::GNO => GnosisAddress::class,
 		Cryptocurrency::GRT => GraphAddress::class,
 		Cryptocurrency::LEO => LeoAddress::class,
+		Cryptocurrency::NEXO => NexoAddress::class,
 	];
 
 }
