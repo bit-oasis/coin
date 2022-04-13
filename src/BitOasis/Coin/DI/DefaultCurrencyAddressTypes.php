@@ -102,7 +102,6 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::YFI => YearnFinanceAddress::class,
 		Cryptocurrency::BAL => BalancerAddress::class,
 		Cryptocurrency::COMP => CompoundAddress::class,
-		Cryptocurrency::SNX => SynthetixAddress::class,
 		Cryptocurrency::DOGE => DogecoinAddress::class,
 		Cryptocurrency::AAVE => AaveAddress::class,
 		Cryptocurrency::BNT => BancorAddress::class,
@@ -138,6 +137,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::LEO => LeoAddress::class,
 		Cryptocurrency::NEXO => NexoAddress::class,
 		Cryptocurrency::OCEAN => OceanAddress::class,
+		Cryptocurrency::SNX => SynthetixAddress::class,
 	];
 
 }

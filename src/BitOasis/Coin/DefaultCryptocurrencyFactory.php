@@ -65,7 +65,6 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::YFI] = new Cryptocurrency(Cryptocurrency::YFI, 18, 'Yearn Finance');
 		$this->cryptocurrencies[Cryptocurrency::BAL] = new Cryptocurrency(Cryptocurrency::BAL, 18, 'Balancer');
 		$this->cryptocurrencies[Cryptocurrency::COMP] = new Cryptocurrency(Cryptocurrency::COMP, 18, 'Compound');
-		$this->cryptocurrencies[Cryptocurrency::SNX] = new Cryptocurrency(Cryptocurrency::SNX, 18, 'Synthetix');
 		$this->cryptocurrencies[Cryptocurrency::DOGE] = new Cryptocurrency(Cryptocurrency::DOGE, 8, 'Dogecoin');
 		$this->cryptocurrencies[Cryptocurrency::AAVE] = new Cryptocurrency(Cryptocurrency::AAVE, 18, 'Aave');
 		$this->cryptocurrencies[Cryptocurrency::BNT] = new Cryptocurrency(Cryptocurrency::BNT, 18, 'Bancor');
@@ -101,6 +100,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::LEO] = new Cryptocurrency(Cryptocurrency::LEO, 18, 'UNUS SED LEO');
 		$this->cryptocurrencies[Cryptocurrency::NEXO] = new Cryptocurrency(Cryptocurrency::NEXO, 18, 'Nexo');
 		$this->cryptocurrencies[Cryptocurrency::OCEAN] = new Cryptocurrency(Cryptocurrency::OCEAN, 18, 'Ocean Protocol');
+		$this->cryptocurrencies[Cryptocurrency::SNX] = new Cryptocurrency(Cryptocurrency::SNX, 18, 'Synthetix');
 	}
 
 }
