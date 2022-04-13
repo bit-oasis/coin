@@ -33,6 +33,7 @@ use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\FantomERC20Address;
 use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\GalaAddress;
+use BitOasis\Coin\Address\GnosisAddress;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
@@ -128,6 +129,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::CRV => CurveAddress::class,
 		Cryptocurrency::FTT => FtxAddress::class,
 		Cryptocurrency::GALA => GalaAddress::class,
+		Cryptocurrency::GNO => GnosisAddress::class,
 	];
 
 }
