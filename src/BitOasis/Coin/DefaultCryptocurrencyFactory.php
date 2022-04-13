@@ -52,7 +52,6 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::OMG] = new Cryptocurrency(Cryptocurrency::OMG, 18, 'OmiseGO');
 		$this->cryptocurrencies[Cryptocurrency::ZRX] = new Cryptocurrency(Cryptocurrency::ZRX, 18, '0x');
 		$this->cryptocurrencies[Cryptocurrency::BAT] = new Cryptocurrency(Cryptocurrency::BAT, 18, 'Basic Attention Token');
-		$this->cryptocurrencies[Cryptocurrency::LEO] = new Cryptocurrency(Cryptocurrency::LEO, 18, 'LEO Token');
 		$this->cryptocurrencies[Cryptocurrency::ALGO] = new Cryptocurrency(Cryptocurrency::ALGO, 6, 'Algorand');
 		$this->cryptocurrencies[Cryptocurrency::USDT] = new Cryptocurrency(Cryptocurrency::USDT, 6, 'Tether');
 		$this->cryptocurrencies[Cryptocurrency::NEO] = new Cryptocurrency(Cryptocurrency::NEO, 0, 'NEO');
@@ -99,6 +98,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::GALA] = new Cryptocurrency(Cryptocurrency::GALA, 18, 'Gala');
 		$this->cryptocurrencies[Cryptocurrency::GNO] = new Cryptocurrency(Cryptocurrency::GNO, 18, 'Gnosis');
 		$this->cryptocurrencies[Cryptocurrency::GRT] = new Cryptocurrency(Cryptocurrency::GRT, 18, 'The Graph');
+		$this->cryptocurrencies[Cryptocurrency::LEO] = new Cryptocurrency(Cryptocurrency::LEO, 18, 'UNUS SED LEO');
 	}
 
 }

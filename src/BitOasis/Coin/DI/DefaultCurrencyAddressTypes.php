@@ -36,6 +36,7 @@ use BitOasis\Coin\Address\GalaAddress;
 use BitOasis\Coin\Address\GnosisAddress;
 use BitOasis\Coin\Address\GraphAddress;
 use BitOasis\Coin\Address\KyberAddress;
+use BitOasis\Coin\Address\LeoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
 use BitOasis\Coin\Address\MakerAddress;
@@ -132,6 +133,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::GALA => GalaAddress::class,
 		Cryptocurrency::GNO => GnosisAddress::class,
 		Cryptocurrency::GRT => GraphAddress::class,
+		Cryptocurrency::LEO => LeoAddress::class,
 	];
 
 }
