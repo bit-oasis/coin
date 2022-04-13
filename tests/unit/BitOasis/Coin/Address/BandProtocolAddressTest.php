@@ -55,7 +55,7 @@ class BandProtocolAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return BandProtocolAddress()
+	 * @return BandProtocolAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
