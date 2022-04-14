@@ -71,6 +71,7 @@ use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\VeChainAddress;
+use BitOasis\Coin\Address\VergeAddress;
 use BitOasis\Coin\Address\WavesAddress;
 use BitOasis\Coin\Address\WrappedBitcoinAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
@@ -159,6 +160,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::TRX => TronAddress::class,
 		Cryptocurrency::UST => TerraAddress::class,
 		Cryptocurrency::VET => VeChainAddress::class,
+		Cryptocurrency::XVG => VergeAddress::class,
 	];
 
 }
