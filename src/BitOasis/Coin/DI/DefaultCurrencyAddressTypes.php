@@ -33,6 +33,7 @@ use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\FantomERC20Address;
+use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\GalaAddress;
 use BitOasis\Coin\Address\GnosisAddress;
@@ -144,6 +145,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::TUSD => TrueUsdAddress::class,
 		Cryptocurrency::DGB => DigibyteAddress::class,
 		Cryptocurrency::EGLD => ElrondEgoldAddress::class,
+		Cryptocurrency::FIL => FilecoinAddress::class,
 	];
 
 }
