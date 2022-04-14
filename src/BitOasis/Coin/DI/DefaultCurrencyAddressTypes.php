@@ -38,6 +38,7 @@ use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\GalaAddress;
 use BitOasis\Coin\Address\GnosisAddress;
 use BitOasis\Coin\Address\GraphAddress;
+use BitOasis\Coin\Address\IotaAddress;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\LeoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
@@ -146,6 +147,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::DGB => DigibyteAddress::class,
 		Cryptocurrency::EGLD => ElrondEgoldAddress::class,
 		Cryptocurrency::FIL => FilecoinAddress::class,
+		Cryptocurrency::IOTA => IotaAddress::class,
 	];
 
 }
