@@ -8,7 +8,7 @@ use BitOasis\Coin\CryptocurrencyAddress;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class TerraAddress extends BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddress {
+class TerraAddress extends BaseBech32Address implements CryptocurrencyAddress {
 
 	/**
 	 * @param string $address
@@ -26,4 +26,5 @@ class TerraAddress extends BaseBech32AddressWithPrefixAndTag implements Cryptocu
 	public static function getClassAdditionalIdName() {
 		return 'memo';
 	}
+
 }

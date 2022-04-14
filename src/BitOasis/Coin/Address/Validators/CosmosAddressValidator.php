@@ -7,7 +7,7 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class CosmosAddressValidator extends Bech32AddressWithPrefixAndTagValidator implements ValidationInterface {
+class CosmosAddressValidator extends Bech32AddressValidator implements ValidationInterface {
 
 	protected $prefix = 'cosmos';
 	protected $bech32DecodedLength = 32;

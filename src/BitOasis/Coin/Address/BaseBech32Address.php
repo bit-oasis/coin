@@ -2,17 +2,17 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\Bech32AddressWithPrefixAndTagValidator;
+use BitOasis\Coin\Address\Validators\Bech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 
-abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddress {
+abstract class BaseBech32Address implements CryptocurrencyAddress {
 
 	/** @var string */
 	protected $address;
 
-	/** @var int|null */
+	/** @var int|string|null */
 	protected $tag;
 
 	/** @var Cryptocurrency */
@@ -21,15 +21,15 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
-	 * @param int|null $tag
+	 * @param int|string|null $tag
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $tag = null) {
+	public function __construct(string $address, Cryptocurrency $currency, $tag = null) {
 		$this->validateAddress($address, $tag);
 
 		$this->address = $address;
 		$this->currency = $currency;
-		$this->tag = $tag === null ? null : (int)$tag;
+		$this->tag = $tag === null ? null : $tag;
 	}
 
 	public function toString() {
@@ -68,18 +68,18 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @inheritDoc
 	 */
 	public static function supportsClassAdditionalId() {
-		return true;
+		return static::getClassAdditionalIdName() !== null;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function getClassAdditionalIdName() {
-		return 'tag';
+		return null;
 	}
 
 	/**
-	 * @return int|null
+	 * @return int|string|null
 	 */
 	public function getTag() {
 		return $this->tag;
@@ -140,7 +140,7 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	/**
 	 * @param $address
 	 * @param null $tag
-	 * @return Bech32AddressWithPrefixAndTagValidator
+	 * @return Bech32AddressValidator
 	 */
 	protected abstract function createValidator($address, $tag = null);
 }

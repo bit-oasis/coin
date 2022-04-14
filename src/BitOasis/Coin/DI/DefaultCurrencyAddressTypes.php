@@ -27,6 +27,7 @@ use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\DecentralandAddress;
 use BitOasis\Coin\Address\DigibyteAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
+use BitOasis\Coin\Address\ElrondEgoldAddress;
 use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
@@ -142,6 +143,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::SNX => SynthetixAddress::class,
 		Cryptocurrency::TUSD => TrueUsdAddress::class,
 		Cryptocurrency::DGB => DigibyteAddress::class,
+		Cryptocurrency::EGLD => ElrondEgoldAddress::class,
 	];
 
 }
