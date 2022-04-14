@@ -156,6 +156,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::QTUM => QtumAddress::class,
 		Cryptocurrency::THETA => ThetaAddress::class,
 		Cryptocurrency::TRX => TronAddress::class,
+		Cryptocurrency::UST => TerraAddress::class,
 	];
 
 }
