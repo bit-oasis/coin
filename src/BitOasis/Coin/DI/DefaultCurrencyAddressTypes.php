@@ -70,6 +70,7 @@ use BitOasis\Coin\Address\TronAddress;
 use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
+use BitOasis\Coin\Address\VeChainAddress;
 use BitOasis\Coin\Address\WavesAddress;
 use BitOasis\Coin\Address\WrappedBitcoinAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
@@ -157,6 +158,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::THETA => ThetaAddress::class,
 		Cryptocurrency::TRX => TronAddress::class,
 		Cryptocurrency::UST => TerraAddress::class,
+		Cryptocurrency::VET => VeChainAddress::class,
 	];
 
 }
