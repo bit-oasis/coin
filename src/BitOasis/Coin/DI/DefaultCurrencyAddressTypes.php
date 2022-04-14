@@ -40,6 +40,7 @@ use BitOasis\Coin\Address\GnosisAddress;
 use BitOasis\Coin\Address\GraphAddress;
 use BitOasis\Coin\Address\IotaAddress;
 use BitOasis\Coin\Address\KyberAddress;
+use BitOasis\Coin\Address\KusamaAddress;
 use BitOasis\Coin\Address\LeoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
@@ -148,6 +149,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::EGLD => ElrondEgoldAddress::class,
 		Cryptocurrency::FIL => FilecoinAddress::class,
 		Cryptocurrency::IOTA => IotaAddress::class,
+		Cryptocurrency::KSM => KusamaAddress::class,
 	];
 
 }
