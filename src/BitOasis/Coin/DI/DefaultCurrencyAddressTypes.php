@@ -54,6 +54,7 @@ use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\OneInchAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
+use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
 use BitOasis\Coin\Address\SolanaAddress;
@@ -150,6 +151,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::FIL => FilecoinAddress::class,
 		Cryptocurrency::IOTA => IotaAddress::class,
 		Cryptocurrency::KSM => KusamaAddress::class,
+		Cryptocurrency::QTUM => QtumAddress::class,
 	];
 
 }
