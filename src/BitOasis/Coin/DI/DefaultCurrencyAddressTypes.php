@@ -65,6 +65,7 @@ use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\TerraAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
+use BitOasis\Coin\Address\ThetaAddress;
 use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
@@ -152,6 +153,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::IOTA => IotaAddress::class,
 		Cryptocurrency::KSM => KusamaAddress::class,
 		Cryptocurrency::QTUM => QtumAddress::class,
+		Cryptocurrency::THETA => ThetaAddress::class,
 	];
 
 }
