@@ -63,7 +63,6 @@ class Cryptocurrency {
 
 	// 2022 Apr
 	const ONE_INCH = '1INCH';
-	const AMPL = 'AMPL';
 	const ANT = 'ANT';
 	const AXS = 'AXS';
 	const BAND = 'BAND';
