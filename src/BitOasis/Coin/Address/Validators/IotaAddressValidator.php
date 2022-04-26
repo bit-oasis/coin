@@ -9,8 +9,12 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
  */
 class IotaAddressValidator extends Bech32AddressValidator implements ValidationInterface {
 
-	protected $prefix = 'iota';
-	protected $bech32DecodedLength = 53;
-	protected $label = 'Iota';
+	public function __construct($address, $tag = null) {
+		$this->prefix = 'iota';
+		$this->bech32DecodedLength = 53;
+		$this->label = 'Iota';
+
+		parent::__construct($address, $tag);
+	}
 
 }

@@ -7,7 +7,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 
-abstract class BaseBech32Address implements CryptocurrencyAddress {
+abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 
 	/** @var string */
 	protected $address;
@@ -143,4 +143,5 @@ abstract class BaseBech32Address implements CryptocurrencyAddress {
 	 * @return Bech32AddressValidator
 	 */
 	protected abstract function createValidator($address, $tag = null);
+
 }

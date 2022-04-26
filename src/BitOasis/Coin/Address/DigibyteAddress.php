@@ -2,7 +2,8 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\DigibyteAddressValidator;
+use BitOasis\Coin\Address\Validators\DigibyteBase58AddressValidator;
+use BitOasis\Coin\Address\Validators\DigibyteBech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -72,7 +73,23 @@ class DigibyteAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address) {
-		return (new DigibyteAddressValidator($address))->validate();
+		if ($this->isValidBase58Address($address)) {
+			return true;
+		}
+
+		if ($this->isValidBech32Address($address)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	private function isValidBase58Address($address) {
+		return (new DigibyteBase58AddressValidator($address))->validate();
+	}
+
+	private function isValidBech32Address($address) {
+		return (new DigibyteBech32AddressValidator($address))->validate();
 	}
 
 	/**

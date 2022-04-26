@@ -9,8 +9,12 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
  */
 class CosmosAddressValidator extends Bech32AddressValidator implements ValidationInterface {
 
-	protected $prefix = 'cosmos';
-	protected $bech32DecodedLength = 32;
-	protected $label = 'Cosmos';
+	public function __construct($address, $tag = null) {
+		$this->prefix = 'cosmos';
+		$this->bech32DecodedLength = 32;
+		$this->label = 'Cosmos';
+
+		parent::__construct($address, $tag);
+	}
 
 }

@@ -7,10 +7,11 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class DigibyteAddressValidator extends Validation {
+class DigibyteBase58AddressValidator extends Validation {
 
 	protected $base58PrefixToHexVersion = [
 		// Supporting only legacy addresses
-        'D' => '1e'
+        'D' => '1e',
+		'S' => '3f'
     ];
 }

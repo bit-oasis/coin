@@ -8,14 +8,13 @@ use BitOasis\Coin\CryptocurrencyAddress;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class IotaAddress extends BaseBech32Address implements CryptocurrencyAddress {
+class IotaAddress extends BaseBech32AddressWithoutTag implements CryptocurrencyAddress {
 
 	/**
 	 * @param string $address
-	 * @param $tag
 	 * @return IotaAddressValidator
 	 */
-	protected function createValidator($address, $tag = null) {
+	protected function createValidator($address) {
 		return new IotaAddressValidator($address);
 	}
 

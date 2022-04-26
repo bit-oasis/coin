@@ -9,8 +9,12 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
  */
 class ElrondEgoldValidator extends Bech32AddressValidator implements ValidationInterface {
 
-	protected $prefix = 'erd';
-	protected $bech32DecodedLength = 52;
-	protected $label = 'Elrond eGold';
+	public function __construct($address, $tag = null) {
+		$this->prefix = 'erd';
+		$this->bech32DecodedLength = 52;
+		$this->label = 'Elrond eGold';
+
+		parent::__construct($address, $tag);
+	}
 
 }

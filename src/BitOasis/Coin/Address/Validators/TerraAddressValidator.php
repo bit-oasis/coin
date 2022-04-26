@@ -9,8 +9,12 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
  */
 class TerraAddressValidator extends Bech32AddressValidator implements ValidationInterface {
 
-	protected $prefix = 'terra';
-	protected $bech32DecodedLength = 32;
-	protected $label = 'Terra';
+	public function __construct($address, $tag = null) {
+		$this->prefix = 'terra';
+		$this->bech32DecodedLength = 32;
+		$this->label = 'Terra';
+
+		parent::__construct($address, $tag);
+	}
 
 }
