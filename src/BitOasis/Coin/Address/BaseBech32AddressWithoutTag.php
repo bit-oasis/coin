@@ -28,7 +28,7 @@ abstract class BaseBech32AddressWithoutTag implements CryptocurrencyAddress {
 	}
 
 	public function toString() {
-		return 'Address: ' . $this->address;
+		return $this->address;
 	}
 
 	/**
@@ -102,8 +102,7 @@ abstract class BaseBech32AddressWithoutTag implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency);
+		return new static($string, $cryptocurrency);
 	}
 
 	/**
