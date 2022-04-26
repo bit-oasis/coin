@@ -11,7 +11,7 @@ use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-abstract class Bech32AddressWithPrefixAndTagValidator implements ValidationInterface {
+abstract class Bech32AddressValidator implements ValidationInterface {
 
 	/** @var string */
 	protected $address;

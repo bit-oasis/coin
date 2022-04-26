@@ -47,10 +47,10 @@ class UniswapAddressTest extends UnitTest {
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$augurAddress = $this->createAddress($address);
-		$this->assertFalse($augurAddress->supportsAdditionalId());
-		$this->assertNull($augurAddress->getAdditionalIdName());
-		$this->assertNull($augurAddress->getAdditionalId());
+		$createdAddress = $this->createAddress($address);
+		$this->assertFalse($createdAddress->supportsAdditionalId());
+		$this->assertNull($createdAddress->getAdditionalIdName());
+		$this->assertNull($createdAddress->getAdditionalId());
 	}
 
 	/**

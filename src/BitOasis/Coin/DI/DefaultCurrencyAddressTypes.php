@@ -4,10 +4,13 @@ namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
+use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
+use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
+use BitOasis\Coin\Address\BandProtocolAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
@@ -15,26 +18,42 @@ use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\CardanoAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
+use BitOasis\Coin\Address\ChilizAddress;
 use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\CosmosAddress;
+use BitOasis\Coin\Address\CurveAddress;
 use BitOasis\Coin\Address\DaiAddress;
 use BitOasis\Coin\Address\DecentralandAddress;
+use BitOasis\Coin\Address\DigibyteAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
+use BitOasis\Coin\Address\ElrondEgoldAddress;
 use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\FantomERC20Address;
+use BitOasis\Coin\Address\FilecoinAddress;
+use BitOasis\Coin\Address\FtxAddress;
+use BitOasis\Coin\Address\GalaAddress;
+use BitOasis\Coin\Address\GnosisAddress;
+use BitOasis\Coin\Address\GraphAddress;
+use BitOasis\Coin\Address\IotaAddress;
 use BitOasis\Coin\Address\KyberAddress;
+use BitOasis\Coin\Address\KusamaAddress;
+use BitOasis\Coin\Address\LeoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
 use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
+use BitOasis\Coin\Address\NexoAddress;
+use BitOasis\Coin\Address\OceanAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
+use BitOasis\Coin\Address\OneInchAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
+use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
 use BitOasis\Coin\Address\SolanaAddress;
@@ -45,8 +64,13 @@ use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\TerraAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TezosAddress;
+use BitOasis\Coin\Address\ThetaAddress;
+use BitOasis\Coin\Address\TronAddress;
+use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
+use BitOasis\Coin\Address\VeChainAddress;
+use BitOasis\Coin\Address\VergeAddress;
 use BitOasis\Coin\Address\WavesAddress;
 use BitOasis\Coin\Address\WrappedBitcoinAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
@@ -88,7 +112,6 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::YFI => YearnFinanceAddress::class,
 		Cryptocurrency::BAL => BalancerAddress::class,
 		Cryptocurrency::COMP => CompoundAddress::class,
-		Cryptocurrency::SNX => SynthetixAddress::class,
 		Cryptocurrency::DOGE => DogecoinAddress::class,
 		Cryptocurrency::AAVE => AaveAddress::class,
 		Cryptocurrency::BNT => BancorAddress::class,
@@ -110,6 +133,32 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::LUNA => TerraAddress::class,
 		Cryptocurrency::ATOM => CosmosAddress::class,
 		Cryptocurrency::NEAR => NearAddress::class,
+		Cryptocurrency::ONE_INCH => OneInchAddress::class,
+		Cryptocurrency::ANT => AragonNetworkAddress::class,
+		Cryptocurrency::AXS => AxieInfinityAddress::class,
+		Cryptocurrency::BAND => BandProtocolAddress::class,
+		Cryptocurrency::CHZ => ChilizAddress::class,
+		Cryptocurrency::CRV => CurveAddress::class,
+		Cryptocurrency::FTT => FtxAddress::class,
+		Cryptocurrency::GALA => GalaAddress::class,
+		Cryptocurrency::GNO => GnosisAddress::class,
+		Cryptocurrency::GRT => GraphAddress::class,
+		Cryptocurrency::LEO => LeoAddress::class,
+		Cryptocurrency::NEXO => NexoAddress::class,
+		Cryptocurrency::OCEAN => OceanAddress::class,
+		Cryptocurrency::SNX => SynthetixAddress::class,
+		Cryptocurrency::TUSD => TrueUsdAddress::class,
+		Cryptocurrency::DGB => DigibyteAddress::class,
+		Cryptocurrency::EGLD => ElrondEgoldAddress::class,
+		Cryptocurrency::FIL => FilecoinAddress::class,
+		Cryptocurrency::IOTA => IotaAddress::class,
+		Cryptocurrency::KSM => KusamaAddress::class,
+		Cryptocurrency::QTUM => QtumAddress::class,
+		Cryptocurrency::THETA => ThetaAddress::class,
+		Cryptocurrency::TRX => TronAddress::class,
+		Cryptocurrency::UST => TerraAddress::class,
+		Cryptocurrency::VET => VeChainAddress::class,
+		Cryptocurrency::XVG => VergeAddress::class,
 	];
 
 }

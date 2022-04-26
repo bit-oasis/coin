@@ -54,8 +54,8 @@ class Strings {
 	 * @return string
 	 * @throws \SodiumException
 	 */
-	public static function blake2b512($value, bool $rawOutput = true): string {
-		$tmp = \ParagonIE_Sodium_Compat::crypto_generichash($value, '', 64);
+	public static function blake2b512($value, bool $rawOutput = true, $length = 64): string {
+		$tmp = \ParagonIE_Sodium_Compat::crypto_generichash($value, '', $length);
 		return $rawOutput ? $tmp : bin2hex($tmp);
 	}
 

@@ -8,7 +8,7 @@ use BitOasis\Coin\CryptocurrencyAddress;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class CosmosAddress extends BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddress {
+class CosmosAddress extends BaseBech32AddressWithTag implements CryptocurrencyAddress {
 
 	/**
 	 * @param string $address
@@ -26,4 +26,5 @@ class CosmosAddress extends BaseBech32AddressWithPrefixAndTag implements Cryptoc
 	public static function getClassAdditionalIdName() {
 		return 'memo';
 	}
+
 }

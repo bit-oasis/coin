@@ -2,18 +2,15 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\Bech32AddressWithPrefixAndTagValidator;
+use BitOasis\Coin\Address\Validators\Bech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 
-abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddress {
+abstract class BaseBech32AddressWithoutTag implements CryptocurrencyAddress {
 
 	/** @var string */
 	protected $address;
-
-	/** @var int|null */
-	protected $tag;
 
 	/** @var Cryptocurrency */
 	protected $currency;
@@ -21,19 +18,17 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
-	 * @param int|null $tag
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $tag = null) {
-		$this->validateAddress($address, $tag);
+	public function __construct(string $address, Cryptocurrency $currency) {
+		$this->validateAddress($address);
 
 		$this->address = $address;
 		$this->currency = $currency;
-		$this->tag = $tag === null ? null : (int)$tag;
 	}
 
 	public function toString() {
-		return 'Address: ' . $this->address . ($this->tag === null ? '' : (', Tag: ' . $this->tag));
+		return $this->address;
 	}
 
 	/**
@@ -47,7 +42,7 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @inheritDoc
 	 */
 	public function getAdditionalId() {
-		return $this->getTag();
+		return null;
 	}
 
 	/**
@@ -68,21 +63,14 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @inheritDoc
 	 */
 	public static function supportsClassAdditionalId() {
-		return true;
+		return false;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function getClassAdditionalIdName() {
-		return 'tag';
-	}
-
-	/**
-	 * @return int|null
-	 */
-	public function getTag() {
-		return $this->tag;
+		return null;
 	}
 
 	/**
@@ -96,16 +84,7 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @return string
 	 */
 	public function serialize() {
-		return $this->address . ($this->tag === null ? '' : ('#' . $this->tag));
-	}
-
-	/**
-	 * @param string $address
-	 * @param int|null $tag
-	 * @return string
-	 */
-	public static function serializeAddress($address, $tag = null) {
-		return $address . ($tag === null ? '' : ('#' . $tag));
+		return $this->address;
 	}
 
 	/**
@@ -113,7 +92,7 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @return bool
 	 */
 	public function equals(CryptocurrencyAddress $address) {
-		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address && $this->tag === $address->tag;
+		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address;
 	}
 
 	/**
@@ -123,24 +102,22 @@ abstract class BaseBech32AddressWithPrefixAndTag implements CryptocurrencyAddres
 	 * @throws InvalidAddressException
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, isset($addressParts[1]) ? (int)$addressParts[1] : null);
+		return new static($string, $cryptocurrency);
 	}
 
 	/**
 	 * @param string $address
-	 * @param $tag
 	 * @return bool
 	 * @throws InvalidAddressException
 	 */
-	private function validateAddress($address, $tag = null) {
-		return $this->createValidator($address, $tag)->validateWithExceptions();
+	private function validateAddress($address) {
+		return $this->createValidator($address)->validateWithExceptions();
 	}
 
 	/**
 	 * @param $address
-	 * @param null $tag
-	 * @return Bech32AddressWithPrefixAndTagValidator
+	 * @return Bech32AddressValidator
 	 */
-	protected abstract function createValidator($address, $tag = null);
+	protected abstract function createValidator($address);
+
 }
