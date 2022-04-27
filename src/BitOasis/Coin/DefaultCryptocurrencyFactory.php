@@ -110,7 +110,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::THETA] = new Cryptocurrency(Cryptocurrency::THETA, 18, 'Theta Network');
 		$this->cryptocurrencies[Cryptocurrency::TRX] = new Cryptocurrency(Cryptocurrency::TRX, 6, 'Tron');
 		$this->cryptocurrencies[Cryptocurrency::UST] = new Cryptocurrency(Cryptocurrency::UST, 6, 'Terra USD');
-		$this->cryptocurrencies[Cryptocurrency::VET] = new Cryptocurrency(Cryptocurrency::VET, 18, 'Ve Chain');
+		$this->cryptocurrencies[Cryptocurrency::VET] = new Cryptocurrency(Cryptocurrency::VET, 18, 'VeChain');
 		$this->cryptocurrencies[Cryptocurrency::XVG] = new Cryptocurrency(Cryptocurrency::XVG, 8, 'Verge');
 	}
 
