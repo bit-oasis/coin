@@ -56,7 +56,7 @@ class FilecoinAddressValidator implements ValidationInterface {
 		$st = pack('C*', ...$publicKey);
 
 		try {
-			$newCheckSum = array_values(unpack('C*', Strings::blake2b512($st, true, 4)));
+			$newCheckSum = array_values(unpack('C*', Strings::blake2b4($st)));
 		} catch (\SodiumException $e) {
 			throw new InvalidAddressException('Address has invalid characters');
 		}

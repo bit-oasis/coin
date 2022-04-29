@@ -60,6 +60,18 @@ class Strings {
 	}
 
 	/**
+	 * @param $value
+	 * @param bool $rawOutput
+	 * @return string
+	 * @throws \SodiumException
+	 */
+	public static function blake2b4($value, bool $rawOutput = true): string {
+		$tmp = \ParagonIE_Sodium_Crypto::generichash($value, '', 4);
+
+		return $rawOutput ? $tmp : bin2hex($tmp);
+	}
+
+	/**
 	 * @param string $value as binary string
 	 * @return string in hex format
 	 */
