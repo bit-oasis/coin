@@ -93,7 +93,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::CHZ] = new Cryptocurrency(Cryptocurrency::CHZ, 18, 'Chiliz');
 		$this->cryptocurrencies[Cryptocurrency::CRV] = new Cryptocurrency(Cryptocurrency::CRV, 18, 'Curve');
 		$this->cryptocurrencies[Cryptocurrency::FTT] = new Cryptocurrency(Cryptocurrency::FTT, 18, 'FTX Token');
-		$this->cryptocurrencies[Cryptocurrency::GALA] = new Cryptocurrency(Cryptocurrency::GALA, 18, 'Gala');
+		$this->cryptocurrencies[Cryptocurrency::GALA] = new Cryptocurrency(Cryptocurrency::GALA, 8, 'Gala');
 		$this->cryptocurrencies[Cryptocurrency::GNO] = new Cryptocurrency(Cryptocurrency::GNO, 18, 'Gnosis');
 		$this->cryptocurrencies[Cryptocurrency::GRT] = new Cryptocurrency(Cryptocurrency::GRT, 18, 'The Graph');
 		$this->cryptocurrencies[Cryptocurrency::LEO] = new Cryptocurrency(Cryptocurrency::LEO, 18, 'UNUS SED LEO');
@@ -105,7 +105,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::EGLD] = new Cryptocurrency(Cryptocurrency::EGLD, 18, 'Elrond eGold');
 		$this->cryptocurrencies[Cryptocurrency::FIL] = new Cryptocurrency(Cryptocurrency::FIL, 18, 'Filecoin');
 		$this->cryptocurrencies[Cryptocurrency::IOTA] = new Cryptocurrency(Cryptocurrency::IOTA, 8, 'IOTA');
-		$this->cryptocurrencies[Cryptocurrency::KSM] = new Cryptocurrency(Cryptocurrency::KSM, 10, 'Kusama');
+		$this->cryptocurrencies[Cryptocurrency::KSM] = new Cryptocurrency(Cryptocurrency::KSM, 12, 'Kusama');
 		$this->cryptocurrencies[Cryptocurrency::QTUM] = new Cryptocurrency(Cryptocurrency::QTUM, 8, 'QTUM');
 		$this->cryptocurrencies[Cryptocurrency::THETA] = new Cryptocurrency(Cryptocurrency::THETA, 18, 'Theta Network');
 		$this->cryptocurrencies[Cryptocurrency::TRX] = new Cryptocurrency(Cryptocurrency::TRX, 6, 'Tron');
