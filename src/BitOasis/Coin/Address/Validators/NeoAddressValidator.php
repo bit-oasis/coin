@@ -11,6 +11,7 @@ class NeoAddressValidator extends Validation {
 
 	protected $base58PrefixToHexVersion = [
 		'A' => '17',
+		'N' => '35'
 	];
 
 }
