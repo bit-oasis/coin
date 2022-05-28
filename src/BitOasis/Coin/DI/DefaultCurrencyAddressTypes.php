@@ -159,6 +159,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::UST => TerraAddress::class,
 		Cryptocurrency::VET => VeChainAddress::class,
 		Cryptocurrency::XVG => VergeAddress::class,
+		Cryptocurrency::LUNA2 => TerraAddress::class,
 	];
 
 }

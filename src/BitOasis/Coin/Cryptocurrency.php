@@ -89,6 +89,9 @@ class Cryptocurrency {
 	const VET = 'VET';
 	const XVG = 'XVG';
 
+	// May 2022
+	const LUNA2 = 'LUNA2';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
