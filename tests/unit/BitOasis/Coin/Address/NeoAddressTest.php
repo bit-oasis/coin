@@ -17,6 +17,7 @@ class NeoAddressTest extends UnitTest {
 			['AKxnTpwQzZNLaGpK1WhUSucM9G5e71e19Y'],
 			['AH9oFBoQn88AUXfZsjmLPBiiZ27FoQGrbC'],
 			['ATKQ2f3iHtojSrzXkESavZ1qyhLeoPX2fA'],
+			['NiTwToAuoKwE5DPLTnyvEYXuSGLuGpMJ6T'],
 		];
 	}
 
