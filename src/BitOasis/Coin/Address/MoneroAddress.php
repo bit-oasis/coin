@@ -6,6 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Address\Validators\MoneroAddressValidator;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 /**
  * @author David Fiedor <davefu@seznam.cz>
@@ -18,20 +19,25 @@ class MoneroAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/** @var string|null */
 	protected $paymentId;
 
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
-	 * @param string $paymentId
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
+	 * @param null $paymentId
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $paymentId = null) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $paymentId = null) {
 		$this->validate($address, $paymentId);
 		
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 		$this->paymentId = $paymentId;
 	}
 
@@ -99,6 +105,13 @@ class MoneroAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function serialize() {
@@ -117,12 +130,13 @@ class MoneroAddress implements CryptocurrencyAddress {
 	/**
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return \static
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, isset($addressParts[1]) ? $addressParts[1] : null);
+		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, isset($addressParts[1]) ? $addressParts[1] : null);
 	}
 
 	/**

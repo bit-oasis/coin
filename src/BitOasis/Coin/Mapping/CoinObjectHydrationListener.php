@@ -8,6 +8,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidCurrencyException;
 use BitOasis\Coin\Exception\MetadataException;
+use BitOasis\Coin\Network\CryptocurrencyNetworkMapping;
 use BitOasis\Coin\Types\CoinType;
 use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Doctrine\Common\Annotations\Reader;
@@ -85,7 +86,9 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 				if($coinClass->getFieldMapping($coinField)['type'] === CoinType::COIN) {
 					$coinClass->setFieldValue($entity, $coinField, Coin::fromInt($value, $currency));
 				} else {
-					$coinClass->setFieldValue($entity, $coinField, $this->cryptocurrencyAddressFactory->deserialize($value, $currency));
+					// TODO: Is this correct?
+					$network = $entity->cryptocurrencyNetwork ?? CryptocurrencyNetworkMapping::getDefaultNetworkForCurrency($currency);
+					$coinClass->setFieldValue($entity, $coinField, $this->cryptocurrencyAddressFactory->deserialize($value, $currency, $network));
 				}
 			}
 		}

@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -70,7 +71,11 @@ class DigibyteAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new DigibyteAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::DGB));
+		return new DigibyteAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::DGB),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::DIGIBYTE)
+		);
 	}
 
 }

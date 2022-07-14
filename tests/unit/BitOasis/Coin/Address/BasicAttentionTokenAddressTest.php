@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -40,6 +41,7 @@ class BasicAttentionTokenAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -55,7 +57,11 @@ class BasicAttentionTokenAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new BasicAttentionTokenAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BAT));
+		return new BasicAttentionTokenAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::BAT),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

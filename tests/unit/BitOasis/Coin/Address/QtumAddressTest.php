@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -67,7 +68,11 @@ class QtumAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): QtumAddress {
-		return new QtumAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::QTUM));
+		return new QtumAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::QTUM),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::QTUM)
+		);
 	}
 
 }

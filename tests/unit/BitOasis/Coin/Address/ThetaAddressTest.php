@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,8 +45,8 @@ class ThetaAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
 		$createdAddress = $this->createAddress($address);
@@ -60,7 +61,11 @@ class ThetaAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new ThetaAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::THETA));
+		return new ThetaAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::THETA),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::THETA)
+		);
 	}
 
 }

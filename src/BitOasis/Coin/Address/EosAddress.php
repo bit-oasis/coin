@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\Validators\EosAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 /**
  * @author Lukas Satin <luke.satin@gmail.com>
@@ -23,18 +24,23 @@ class EosAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * StellarAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param string|null $memo
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $memo = null) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $memo = null) {
 		$this->validateAddress($address, $memo);
 		
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 		$this->memo = $memo;
 	}
 
@@ -99,6 +105,13 @@ class EosAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function serialize() {
@@ -125,10 +138,11 @@ class EosAddress implements CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return EosAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$separatorPos = strpos($string, '#');
 		if ($separatorPos === false) {
 			$address = $string;
@@ -137,7 +151,7 @@ class EosAddress implements CryptocurrencyAddress {
 			$address = substr($string, 0, $separatorPos);
 			$memo = substr($string, $separatorPos + 1);
 		}
-		return new static($address, $cryptocurrency, $memo);
+		return new static($address, $cryptocurrency, $cryptocurrencyNetwork, $memo);
 	}
 
 	/**

@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -42,8 +43,8 @@ class PolkadotAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$polkadotAddress = $this->createAddress($address);
@@ -58,6 +59,10 @@ class PolkadotAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): PolkadotAddress {
-		return new PolkadotAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::DOT));
+		return new PolkadotAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::DOT),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::POLKADOT)
+		);
 	}
 }

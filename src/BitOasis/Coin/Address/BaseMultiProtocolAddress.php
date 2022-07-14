@@ -5,6 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 /**
  * @author David Fiedor <davefu@seznam.cz>
@@ -20,11 +21,12 @@ abstract class BaseMultiProtocolAddress implements CryptocurrencyAddress {
 	/**
 	 * @param $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$this->currency = $currency;
-		$this->createUnderlyingProtocolAddress($address, $currency);
+		$this->createUnderlyingProtocolAddress($address, $currency, $cryptocurrencyNetwork);
 	}
 
 	/**
@@ -58,6 +60,13 @@ abstract class BaseMultiProtocolAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyAddress->getNetwork();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function supportsAdditionalId() {
 		return $this->cryptocurrencyAddress->supportsAdditionalId();
 	}
@@ -86,8 +95,8 @@ abstract class BaseMultiProtocolAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**
@@ -102,5 +111,5 @@ abstract class BaseMultiProtocolAddress implements CryptocurrencyAddress {
 	 * @param Cryptocurrency $cryptocurrency
 	 * @throws InvalidAddressException
 	 */
-	abstract public function createUnderlyingProtocolAddress($address, Cryptocurrency $cryptocurrency);
+	abstract public function createUnderlyingProtocolAddress($address, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork);
 }

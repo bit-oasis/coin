@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -47,6 +48,7 @@ class WavesAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -62,6 +64,10 @@ class WavesAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new WavesAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::WAVES));
+		return new WavesAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::WAVES),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::WAVES)
+		);
 	}
 }

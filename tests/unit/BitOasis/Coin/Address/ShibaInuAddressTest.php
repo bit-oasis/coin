@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,8 +45,8 @@ class ShibaInuAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$shibaInuAddress = $this->createAddress($address);
@@ -60,6 +61,10 @@ class ShibaInuAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): ShibaInuAddress {
-		return new ShibaInuAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::SHIB));
+		return new ShibaInuAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::SHIB),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

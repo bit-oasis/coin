@@ -3,6 +3,8 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -28,10 +30,15 @@ class BitcoinAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$bitcoinAddress = new BitcoinAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BTC));
+		$bitcoinAddress = new BitcoinAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::BTC),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN)
+		);
 		$this->assertFalse($bitcoinAddress->supportsAdditionalId());
 		$this->assertNull($bitcoinAddress->getAdditionalIdName());
 		$this->assertNull($bitcoinAddress->getAdditionalId());

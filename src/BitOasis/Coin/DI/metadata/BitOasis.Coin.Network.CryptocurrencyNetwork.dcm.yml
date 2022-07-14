@@ -1,0 +1,15 @@
+BitOasis\Coin\Network\CryptocurrencyNetwork:
+  type: entity
+  table: cryptocurrency_network
+  readOnly: false
+  id:
+    code:
+      type: string
+      length: 16
+  fields:
+    name:
+      type: string
+      length: 100
+    alias:
+      type: string
+      length: 100

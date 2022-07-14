@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 class TetherAddress extends BaseMultiProtocolAddress {
 
@@ -27,9 +28,9 @@ class TetherAddress extends BaseMultiProtocolAddress {
 	/**
 	 * @inheritDoc
 	 */
-	public function createUnderlyingProtocolAddress($address, Cryptocurrency $cryptocurrency) {
+	public function createUnderlyingProtocolAddress($address, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		try {
-			$this->cryptocurrencyAddress = new EthereumAddress($address, $cryptocurrency);
+			$this->cryptocurrencyAddress = new EthereumAddress($address, $cryptocurrency, $cryptocurrencyNetwork);
 		} catch (InvalidAddressException $e) {
 		}
 		if ($this->cryptocurrencyAddress === null) {

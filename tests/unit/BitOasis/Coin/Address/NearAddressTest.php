@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -67,6 +68,7 @@ class NearAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -82,6 +84,10 @@ class NearAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new NearAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::NEAR));
+		return new NearAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::NEAR),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::NEAR)
+		);
 	}
 }

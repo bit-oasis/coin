@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -60,7 +61,11 @@ class ElrondEgoldAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): ElrondEgoldAddress {
-		return new ElrondEgoldAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::EGLD));
+		return new ElrondEgoldAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::EGLD),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ELRONG_EGOLD)
+		);
 	}
 
 }

@@ -8,6 +8,7 @@ use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\LitecoinAddressValidator;
 use BitOasis\Coin\MultiFormatAddress;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use BitOasis\Coin\Utils\Base58Check\Base58Check;
 
 /**
@@ -26,6 +27,9 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/** @var LitecoinAddressValidator */
 	protected $validator;
 
@@ -33,10 +37,11 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	 * BitcoinAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param bool $oldFormatAllowed
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $oldFormatAllowed = true) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $oldFormatAllowed = true) {
 		$this->validator = new LitecoinAddressValidator($address);
 		$this->validator->setDeprecatedAllowed($oldFormatAllowed);
 		
@@ -45,6 +50,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 		}
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
 
 	public function toString() {
@@ -56,6 +62,13 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	 */
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
 	}
 
 	/**
@@ -72,15 +85,16 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	public function equals(CryptocurrencyAddress $address) {
 		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address;
 	}
-	
+
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**
@@ -97,7 +111,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 			}
 			
 			$decodedAddress->setHexVersion($this->legacyToNewAddressHexPrefix[$version]);
-			return new static(Base58Check::encodeAddress($decodedAddress), $this->currency, false);
+			return new static(Base58Check::encodeAddress($decodedAddress), $this->currency, $this->cryptocurrencyNetwork, false);
 		}
 		
 		return $this;
@@ -118,7 +132,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 			}
 			
 			$decodedAddress->setHexVersion($newVersion);
-			return new static(Base58Check::encodeAddress($decodedAddress), $this->currency);
+			return new static(Base58Check::encodeAddress($decodedAddress), $this->currency, $this->cryptocurrencyNetwork);
 		}
 		
 		return $this;

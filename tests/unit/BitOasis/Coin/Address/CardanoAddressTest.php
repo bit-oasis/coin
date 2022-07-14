@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -55,6 +56,7 @@ class CardanoAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -70,6 +72,10 @@ class CardanoAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): CardanoAddress {
-		return new CardanoAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ADA));
+		return new CardanoAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ADA),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::CARDANO)
+		);
 	}
 }

@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\Validators\Bech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 
@@ -18,17 +19,22 @@ abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param int|string|null $tag
 	 * @throws InvalidAddressException
 	 */
-	public function __construct(string $address, Cryptocurrency $currency, $tag = null) {
+	public function __construct(string $address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $tag = null) {
 		$this->validateAddress($address, $tag);
 
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 		$this->tag = $tag === null ? null : $tag;
 	}
 
@@ -93,6 +99,13 @@ abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function serialize() {
@@ -119,12 +132,13 @@ abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, isset($addressParts[1]) ? (int)$addressParts[1] : null);
+		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, isset($addressParts[1]) ? (int)$addressParts[1] : null);
 	}
 
 	/**

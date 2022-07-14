@@ -4,6 +4,7 @@
 namespace BitOasis\Coin;
 
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 interface CryptocurrencyAddress {
 
@@ -26,6 +27,11 @@ interface CryptocurrencyAddress {
 	 * @return Cryptocurrency
 	 */
 	public function getCurrency();
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork();
 
 	/**
 	 * Supports address additional ID (e.g. tag, memo, paymentId, etc.)?
@@ -63,9 +69,10 @@ interface CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork);
 
 }

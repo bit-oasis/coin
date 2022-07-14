@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,8 +45,8 @@ class AvalancheCChainAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$avalancheAddress = $this->createAddress($address);
@@ -60,6 +61,10 @@ class AvalancheCChainAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): AvalancheCChainAddress {
-		return new AvalancheCChainAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+		return new AvalancheCChainAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::AVAX),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

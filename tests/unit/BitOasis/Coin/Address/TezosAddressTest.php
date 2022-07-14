@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -22,11 +23,15 @@ class TezosAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$neoAddress = new TezosAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XTZ));
+		$neoAddress = new TezosAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::XTZ),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::TEZOS)
+		);
 		$this->assertFalse($neoAddress->supportsAdditionalId());
 		$this->assertNull($neoAddress->getAdditionalIdName());
 		$this->assertNull($neoAddress->getAdditionalId());

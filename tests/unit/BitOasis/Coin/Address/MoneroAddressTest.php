@@ -3,6 +3,8 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Network\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -41,10 +43,11 @@ class MoneroAddressTest extends UnitTest {
 	/**
 	 * @param string $address
 	 * @param string|null $paymentId
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testValidate($address, $paymentId) {
-		$moneroAddress = new MoneroAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XMR), $paymentId);
+		$moneroAddress = new MoneroAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XMR), UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::MONERO), $paymentId);
 		$this->assertTrue($moneroAddress->supportsAdditionalId());
 		$this->assertNotNull($moneroAddress->getAdditionalIdName());
 		$this->assertEquals($paymentId, $moneroAddress->getAdditionalId());
