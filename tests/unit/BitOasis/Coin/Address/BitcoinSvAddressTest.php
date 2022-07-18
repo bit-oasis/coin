@@ -3,7 +3,7 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use BitOasis\Coin\Exception\InvalidAddressException;
 

@@ -1,4 +1,4 @@
-BitOasis\Coin\Network\CryptocurrencyNetwork:
+BitOasis\Coin\CryptocurrencyNetwork:
   type: entity
   table: cryptocurrency_network
   readOnly: false

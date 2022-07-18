@@ -6,7 +6,7 @@ use BitOasis\Coin\DefaultCryptocurrencyFactory;
 use BitOasis\Coin\DefaultCryptocurrencyNetworkFactory;
 use BitOasis\Coin\Exception\InvalidCurrencyException;
 use BitOasis\Coin\Exception\InvalidNetworkException;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author David Fiedor <davefu@seznam.cz>

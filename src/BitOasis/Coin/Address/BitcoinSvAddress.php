@@ -5,7 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\BitcoinSvAddressValidator;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * Bitcoin SV (Satoshi Vision) address

@@ -25,11 +25,9 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 	}
 
 	/**
-	 * @param $code
-	 * @return Cryptocurrency
-	 * @throws InvalidCurrencyException
+	 * @inheritDoc
 	 */
-	public function create($code) {
+	public function create(string $code): Cryptocurrency {
 		if (!isset($this->cryptocurrencies[$code])) {
 			throw new InvalidCurrencyException('Cryptocurrency ' . $code . ' not defined');
 		}

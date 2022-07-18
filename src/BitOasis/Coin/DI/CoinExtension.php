@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\CryptocurrencyAddressFactory;
+use BitOasis\Coin\CryptocurrencyNetworkProvider;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
 use BitOasis\Coin\Types\CoinType;
 use BitOasis\Coin\Types\CryptocurrencyAddressType;
@@ -22,7 +23,7 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 	public $defaults = [
 		'cache' => 'default',
 		'entityNamespaces' => null,
-		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES,
+		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES
 	];
 
 	public function loadConfiguration() {
@@ -30,6 +31,8 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix('cryptocurrencyAddressFactory'))
 			->setClass(CryptocurrencyAddressFactory::class, [$config['addressHandlers']]);
+		$builder->addDefinition($this->prefix('cryptocurrencyNetworkProvider'))
+			->setClass(CryptocurrencyNetworkProvider::class, [$config['addressHandlers']]);
 		$builder->addDefinition($this->prefix('coinHydrationListener'))
 			->setClass(CoinObjectHydrationListener::class, [$config['entityNamespaces'], Kdyby\DoctrineCache\DI\Helpers::processCache($this, $config['cache'], 'coin')])
 			->addTag(EventsExtension::TAG_SUBSCRIBER);

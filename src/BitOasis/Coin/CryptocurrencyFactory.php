@@ -10,10 +10,8 @@ use BitOasis\Coin\Exception\InvalidCurrencyException;
 interface CryptocurrencyFactory {
 
 	/**
-	 * @param $code
-	 * @return Cryptocurrency
 	 * @throws InvalidCurrencyException
 	 */
-	public function create($code);
+	public function create(string $code): Cryptocurrency;
 
 }

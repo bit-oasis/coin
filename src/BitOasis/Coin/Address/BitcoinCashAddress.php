@@ -6,7 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
 use BitOasis\Coin\MultiFormatAddress;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * Bitcoin Cash (Bitcoin ABC) address

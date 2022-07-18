@@ -2,12 +2,10 @@
 
 namespace BitOasis\Coin;
 
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
-
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class CryptocurrencyDto {
+class CryptocurrencyAndNetworksDto {
 
 	/** @var Cryptocurrency */
 	protected $cryptocurrency;
@@ -41,13 +39,7 @@ class CryptocurrencyDto {
 	 * @return bool
 	 */
 	public function hasNetwork(string $code): bool {
-		foreach ($this->networks as $network) {
-			if (strtolower($code) === strtolower($network->getCode())) {
-				return true;
-			}
-		}
-
-		return false;
+		return $this->getNetwork($code) !== null;
 	}
 
 	/**

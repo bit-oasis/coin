@@ -79,15 +79,13 @@ use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
  */
 final class DefaultCurrencyAddressTypes {
 
-	// TODO: Can be combined with CryptocurrencyNetworkMapping::MAPPINGS
-	/** @see CryptocurrencyNetworkMapping::MAPPINGS */
 	const TYPES = [
 		Cryptocurrency::BTC => [
 			CryptocurrencyNetwork::BITCOIN => BitcoinAddress::class
@@ -220,7 +218,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => ShibaInuAddress::class
 		],
 		Cryptocurrency::AVAX => [
-			// TODO: Implement AVAX map
+			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
 		],
 		Cryptocurrency::FTM => [
 			CryptocurrencyNetwork::FANTOM => FantomAddress::class

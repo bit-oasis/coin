@@ -8,7 +8,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidCurrencyException;
 use BitOasis\Coin\Exception\MetadataException;
-use BitOasis\Coin\Network\CryptocurrencyNetworkMapping;
+use BitOasis\Coin\ICryptocurrencyNetworkProvider;
 use BitOasis\Coin\Types\CoinType;
 use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Doctrine\Common\Annotations\Reader;
@@ -41,6 +41,9 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 	/** @var CryptocurrencyAddressFactory */
 	protected $cryptocurrencyAddressFactory;
 
+	/** @var ICryptocurrencyNetworkProvider */
+	protected $cryptocurrencyNetworkProvider;
+
 	/** @var \Doctrine\ORM\EntityManager */
 	protected $entityManager;
 
@@ -50,11 +53,12 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 	/** @var array */
 	protected $coinFieldsCache = [];
 
-	public function __construct($entityNamespaces, CacheProvider $cache, CryptocurrencyAddressFactory $cryptocurrencyAddressFactory, Reader $annotationReader, EntityManager $entityManager) {
+	public function __construct($entityNamespaces, CacheProvider $cache, CryptocurrencyAddressFactory $cryptocurrencyAddressFactory, ICryptocurrencyNetworkProvider $cryptocurrencyNetworkProvider, Reader $annotationReader, EntityManager $entityManager) {
 		$this->entityNamespaces = $entityNamespaces;
 		$this->cache = $cache;
 		$this->cache->setNamespace(get_called_class());
 		$this->cryptocurrencyAddressFactory = $cryptocurrencyAddressFactory;
+		$this->cryptocurrencyNetworkProvider = $cryptocurrencyNetworkProvider;
 		$this->entityManager = $entityManager;
 		$this->annotationReader = $annotationReader;
 	}
@@ -85,9 +89,9 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 
 				if($coinClass->getFieldMapping($coinField)['type'] === CoinType::COIN) {
 					$coinClass->setFieldValue($entity, $coinField, Coin::fromInt($value, $currency));
-				} else {
-					// TODO: Is this correct?
-					$network = $entity->cryptocurrencyNetwork ?? CryptocurrencyNetworkMapping::getDefaultNetworkForCurrency($currency);
+				} else if ($coinClass->getFieldMapping($coinField)['type'] === CryptocurrencyAddressType::CRYPTOCURRENCY_ADDRESS) {
+					// TODO: STILL IN PROGRESS!!!
+					$network = $entity->cryptocurrencyNetwork ?? $this->cryptocurrencyNetworkProvider->getDefaultNetworkForCurrency($currency);
 					$coinClass->setFieldValue($entity, $coinField, $this->cryptocurrencyAddressFactory->deserialize($value, $currency, $network));
 				}
 			}

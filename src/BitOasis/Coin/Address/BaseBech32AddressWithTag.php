@@ -6,7 +6,7 @@ use BitOasis\Coin\Address\Validators\Bech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 abstract class BaseBech32AddressWithTag implements CryptocurrencyAddress {
 

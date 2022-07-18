@@ -3,8 +3,6 @@
 namespace BitOasis\Coin;
 
 use BitOasis\Coin\Exception\InvalidNetworkException;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
-use BitOasis\Coin\Network\CryptocurrencyNetworkFactory;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
@@ -19,11 +17,9 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 	}
 
 	/**
-	 * @param $code
-	 * @return CryptocurrencyNetwork
-	 * @throws InvalidNetworkException
+	 * @inheritDoc
 	 */
-	public function create($code): CryptocurrencyNetwork {
+	public function create(string $code): CryptocurrencyNetwork {
 		if (!isset($this->networks[$code])) {
 			throw new InvalidNetworkException('Cryptocurrency network ' . $code . ' not defined');
 		}
@@ -53,8 +49,9 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::TERRA] = new CryptocurrencyNetwork(CryptocurrencyNetwork::TERRA, 'Terra');
 		$this->networks[CryptocurrencyNetwork::TERRA2] = new CryptocurrencyNetwork(CryptocurrencyNetwork::TERRA2, 'Terra2');
 		$this->networks[CryptocurrencyNetwork::COSMOS] = new CryptocurrencyNetwork(CryptocurrencyNetwork::COSMOS, 'Cosmos');
-		$this->networks[CryptocurrencyNetwork::NEAR] = new CryptocurrencyNetwork(CryptocurrencyNetwork::NEAR, 'Near Protocol');// TODO: Check default network for AVAX?
+		$this->networks[CryptocurrencyNetwork::NEAR] = new CryptocurrencyNetwork(CryptocurrencyNetwork::NEAR, 'Near Protocol');
 		$this->networks[CryptocurrencyNetwork::AVALANCHE_X] = new CryptocurrencyNetwork(CryptocurrencyNetwork::AVALANCHE_X, 'Avalanche X-Chain');
+		$this->networks[CryptocurrencyNetwork::AVALANCHE_C] = new CryptocurrencyNetwork(CryptocurrencyNetwork::AVALANCHE_C, 'Avalanche C-Chain');
 		$this->networks[CryptocurrencyNetwork::DIGIBYTE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::DIGIBYTE, 'Digibyte');
 		$this->networks[CryptocurrencyNetwork::ELRONG_EGOLD] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ELRONG_EGOLD, 'Elrond Egold', 'EGLD');
 		$this->networks[CryptocurrencyNetwork::FILECOIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::FILECOIN, 'Filecoin');

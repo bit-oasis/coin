@@ -4,7 +4,6 @@
 namespace BitOasis\Coin;
 
 use BitOasis\Coin\Exception\InvalidAddressException;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
 
 interface CryptocurrencyAddress {
 

@@ -6,7 +6,7 @@ use BitOasis\Coin\Address\Validators\AlgorandAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use BitOasis\Coin\Network\CryptocurrencyNetwork;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author Stanislav Fukala <stanislav.fukala@gmail.com>

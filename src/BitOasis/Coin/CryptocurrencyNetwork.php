@@ -1,10 +1,13 @@
 <?php
 
-namespace BitOasis\Coin\Network;
+namespace BitOasis\Coin;
 
+/**
+ * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
+ */
 class CryptocurrencyNetwork {
 
-	const KEY = 'cryptocurrencyNetwork';
+	/** Constants below are representing network code -> `code` */
 
 	const BITCOIN = 'bitcoin';
 	const BITCOIN_CASH = 'bitcoin_cash';
@@ -32,6 +35,7 @@ class CryptocurrencyNetwork {
 	const COSMOS = 'cosmos';
 	const NEAR = 'near';
 	const AVALANCHE_X = 'avalanche_x';
+	const AVALANCHE_C = 'avalanche_c';
 	const DIGIBYTE = 'digibyte';
 	const ELRONG_EGOLD = 'elrond_egold';
 	const FILECOIN = 'filecoin';
