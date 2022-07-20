@@ -5,6 +5,7 @@ namespace BitOasis\Coin;
 use BitOasis\Coin\DI\CoinExtension;
 use BitOasis\Coin\DI\DefaultCurrencyAddressTypes;
 use BitOasis\Coin\Exception\NetworkNotDefinedForCryptocurrency;
+use Nette\Utils\Strings;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
@@ -31,7 +32,7 @@ final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvi
 	}
 
 	public function isCryptocurrencySupportingSpecificNetwork(string $cryptocurrencyCode, string $networkCode): bool {
-		return $this->isCryptocurrencySupportingAnyNetwork($cryptocurrencyCode) && array_search($networkCode, $this->cryptocurrencyToNetworkMap[$cryptocurrencyCode], true);
+		return $this->isCryptocurrencySupportingAnyNetwork($cryptocurrencyCode) && array_search($networkCode, $this->cryptocurrencyToNetworkMap[$cryptocurrencyCode], true) !== false;
 	}
 
 	/**
