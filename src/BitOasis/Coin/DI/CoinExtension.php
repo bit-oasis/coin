@@ -35,7 +35,7 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkFactory'))
 			->setClass(DefaultCryptocurrencyNetworkFactory::class, []);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkProvider'))
-			->setClass(CryptocurrencyNetworkProvider::class, [$config['addressHandlers']]);
+			->setClass(CryptocurrencyNetworkProvider::class, []);
 		$builder->addDefinition($this->prefix('coinHydrationListener'))
 			->setClass(CoinObjectHydrationListener::class, [$config['entityNamespaces'], Kdyby\DoctrineCache\DI\Helpers::processCache($this, $config['cache'], 'coin')])
 			->addTag(EventsExtension::TAG_SUBSCRIBER);

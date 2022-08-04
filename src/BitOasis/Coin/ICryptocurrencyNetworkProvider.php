@@ -10,9 +10,9 @@ use BitOasis\Coin\Exception\NetworkNotDefinedForCryptocurrency;
  */
 interface ICryptocurrencyNetworkProvider {
 
-	public function isCryptocurrencySupportingAnyNetwork(string $cryptocurrencyCode): bool;
+	public function hasAnyNetwork(string $cryptocurrencyCode): bool;
 
-	public function isCryptocurrencySupportingSpecificNetwork(string $cryptocurrencyCode, string $networkCode): bool;
+	public function isNetworkSupportedForCryptocurrency(string $cryptocurrencyCode, string $networkCode): bool;
 
 	/**
 	 * @throws NetworkNotDefinedForCryptocurrency

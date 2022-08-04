@@ -40,14 +40,14 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 		self::ASSOCIATION_CRYPTOCURRENCY => [
 			'className' => Cryptocurrency::class,
 			'default' => 'cryptocurrency',
-			'forcedKey' => 'cryptocurrencyCode',
+			'forcedKey' => 'cryptocurrencyCode', // Not used now. Can be use as forced key from entity: example: {type="cryptocurrencyAddress", cryptocurrencyCode="BTC"}, if we want to force BTC for cryptocurrencyAddress field
 			'mappingClassKey' => 'cryptocurrencyClass',
 			'mappingAssociationKey' => 'cryptocurrencyAssociation',
 		],
 		self::ASSOCIATION_CRYPTOCURRENCY_NETWORK => [
 			'className' => CryptocurrencyNetwork::class,
 			'default' => 'cryptocurrencyNetwork',
-			'forcedKey' => 'cryptocurrencyNetworkCode',
+			'forcedKey' => 'cryptocurrencyNetworkCode', // Forced key used for forcing address field to use specific network (forced network key): example: {type="cryptocurrencyAddress", cryptocurrencyNetworkCode="Bitcoin"}, This will tell to hydrator to use Bitcoin instead of looking for cryptocurrency_network_id in the table
 			'mappingClassKey' => 'cryptocurrencyNetworkClass',
 			'mappingAssociationKey' => 'cryptocurrencyNetworkAssociation',
 			'forcedCodeKey' => 'cryptocurrencyNetworkForcedCode'
@@ -305,8 +305,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 
 	protected function buildFieldsForNetwork(ClassMetadata $class): array {
 		$networkFields = [];
-		$association = self::ASSOCIATION_CRYPTOCURRENCY_NETWORK;
-		$associationConfigs = self::ASSOCIATION_CONFIGS[$association];
+		$associationConfigs = self::ASSOCIATION_CONFIGS[self::ASSOCIATION_CRYPTOCURRENCY_NETWORK];
 
 		foreach ($class->getFieldNames() as $fieldName) {
 			$mapping = $class->getFieldMapping($fieldName);
@@ -323,18 +322,18 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			if ($forcedNetworkCode) {
 				$associationName = $associationConfigs['default'];
 			} else {
-				if (empty($column->options[$association])) {
-					if ($class->hasAssociation($association)) {
+				if (empty($column->options[self::ASSOCIATION_CRYPTOCURRENCY_NETWORK])) {
+					if ($class->hasAssociation(self::ASSOCIATION_CRYPTOCURRENCY_NETWORK)) {
 						$associationName = $associationConfigs['default'];
 					} else {
-						throw MetadataException::missingReference($property, $association);
+						throw MetadataException::missingReference($property, self::ASSOCIATION_CRYPTOCURRENCY_NETWORK);
 					}
 				} else {
-					$associationName = $column->options[$association];
+					$associationName = $column->options[self::ASSOCIATION_CRYPTOCURRENCY_NETWORK];
 				}
 
 				if (!$class->hasAssociation($associationName)) {
-					throw MetadataException::invalidReference($property, $association, $associationConfigs['className']);
+					throw MetadataException::invalidReference($property, self::ASSOCIATION_CRYPTOCURRENCY_NETWORK, $associationConfigs['className']);
 				}
 			}
 
