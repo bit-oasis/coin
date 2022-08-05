@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -23,11 +24,15 @@ class NeoAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$neoAddress = new NeoAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::NEO));
+		$neoAddress = new NeoAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::NEO),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::NEO)
+		);
 		$this->assertFalse($neoAddress->supportsAdditionalId());
 		$this->assertNull($neoAddress->getAdditionalIdName());
 		$this->assertNull($neoAddress->getAdditionalId());

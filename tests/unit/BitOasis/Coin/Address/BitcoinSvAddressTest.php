@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use BitOasis\Coin\Exception\InvalidAddressException;
 
@@ -29,7 +30,11 @@ class BitcoinSvAddressTest extends BaseBitcoinCashAddressTest {
 	 */
 	public function testInvalidCurrency($currency) {
 		$this->tester->expectThrowable(InvalidAddressException::class, function() use($currency) {
-			new BitcoinSvAddress($this->validAddress, UnitTestUtils::getCryptocurrency($currency));
+			new BitcoinSvAddress(
+				$this->validAddress,
+				UnitTestUtils::getCryptocurrency($currency),
+				UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN)
+			);
 		});
 	}
 
@@ -37,7 +42,11 @@ class BitcoinSvAddressTest extends BaseBitcoinCashAddressTest {
 	 * @inheritDoc
 	 */
 	protected function createAddress($address) {
-		return new BitcoinSvAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BSV));
+		return new BitcoinSvAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::BSV),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN)
+		);
 	}
 
 }

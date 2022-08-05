@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\Validators\StellarAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -15,24 +16,29 @@ class StellarAddress implements CryptocurrencyAddress {
 	/** @var string */
 	protected $address;
 
-	/** @var string|null */
-	protected $memo;
-
 	/** @var Cryptocurrency */
 	protected $currency;
+
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
+	/** @var string|null */
+	protected $memo;
 
 	/**
 	 * StellarAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param string|null $memo
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $memo = null) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $memo = null) {
 		$this->validateAddress($address, $memo);
 		
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 		$this->memo = $memo;
 	}
 
@@ -97,6 +103,13 @@ class StellarAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function serialize() {
@@ -123,10 +136,11 @@ class StellarAddress implements CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return StellarAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$separatorPos = strpos($string, '#');
 		if ($separatorPos === false) {
 			$address = $string;
@@ -135,7 +149,7 @@ class StellarAddress implements CryptocurrencyAddress {
 			$address = substr($string, 0, $separatorPos);
 			$memo = substr($string, $separatorPos + 1);
 		}
-		return new static($address, $cryptocurrency, $memo);
+		return new static($address, $cryptocurrency, $cryptocurrencyNetwork, $memo);
 	}
 
 	/**

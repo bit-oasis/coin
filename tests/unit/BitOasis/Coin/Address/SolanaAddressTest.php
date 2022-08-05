@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -46,8 +47,8 @@ class SolanaAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$solanaAddress = $this->createAddress($address);
@@ -62,6 +63,10 @@ class SolanaAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): SolanaAddress {
-		return new SolanaAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::SOL));
+		return new SolanaAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::SOL),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SOLANA)
+		);
 	}
 }

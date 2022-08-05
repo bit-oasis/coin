@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -59,7 +60,11 @@ class AxieInfinityAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AxieInfinityAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::AXS));
+		return new AxieInfinityAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::AXS),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

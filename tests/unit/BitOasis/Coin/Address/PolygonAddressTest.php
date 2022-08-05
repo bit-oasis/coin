@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,6 +45,7 @@ class PolygonAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -59,6 +61,10 @@ class PolygonAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new PolygonAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+		return new PolygonAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

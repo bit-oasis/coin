@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -82,7 +83,11 @@ class FilecoinAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): FilecoinAddress {
-		return new FilecoinAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::FIL));
+		return new FilecoinAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::FIL),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::FILECOIN)
+		);
 	}
 
 }

@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -40,6 +41,7 @@ class TetherAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -55,7 +57,11 @@ class TetherAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new TetherAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::USDT));
+		return new TetherAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::USDT),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

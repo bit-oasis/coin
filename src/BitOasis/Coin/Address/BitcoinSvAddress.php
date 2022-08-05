@@ -5,6 +5,7 @@ namespace BitOasis\Coin\Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\BitcoinSvAddressValidator;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * Bitcoin SV (Satoshi Vision) address
@@ -16,14 +17,15 @@ class BitcoinSvAddress extends BaseBitcoinCashAddress {
 	 * BitcoinSvAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param bool $cashAddressAllowed
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $cashAddressAllowed = true) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $cashAddressAllowed = true) {
 		if ($currency->getCode() !== Cryptocurrency::BSV) {
 			throw new InvalidAddressException($currency->getCode() . ' is not valid currency for Bitcoin SV address!');
 		}
-		parent::__construct($address, $currency, $cashAddressAllowed);
+		parent::__construct($address, $currency, $cryptocurrencyNetwork, $cashAddressAllowed);
 	}
 
 	/**

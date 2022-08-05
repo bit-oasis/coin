@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\Validators\NeoAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -18,17 +19,21 @@ class NeoAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		if (!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid NEO address - ' . $address);
 		}
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
 
 	public function toString() {
@@ -40,6 +45,13 @@ class NeoAddress implements CryptocurrencyAddress {
 	 */
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
 	}
 
 	/**
@@ -56,15 +68,16 @@ class NeoAddress implements CryptocurrencyAddress {
 	public function equals(CryptocurrencyAddress $address) {
 		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address;
 	}
-	
+
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**

@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -59,7 +60,11 @@ class BandProtocolAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new BandProtocolAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::BAND));
+		return new BandProtocolAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::BAND),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

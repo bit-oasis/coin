@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -43,6 +44,7 @@ class AugurAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -58,6 +60,10 @@ class AugurAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AugurAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::REP));
+		return new AugurAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::REP),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

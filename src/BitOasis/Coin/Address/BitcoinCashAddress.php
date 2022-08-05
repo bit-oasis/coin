@@ -6,6 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\BitcoinCashAddressValidator;
 use BitOasis\Coin\MultiFormatAddress;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * Bitcoin Cash (Bitcoin ABC) address
@@ -18,14 +19,15 @@ class BitcoinCashAddress extends BaseBitcoinCashAddress implements MultiFormatAd
 	 * BitcoinCashAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param bool $cashAddressAllowed
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $cashAddressAllowed = true) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $cashAddressAllowed = true) {
 		if ($currency->getCode() !== Cryptocurrency::BCH) {
 			throw new InvalidAddressException($currency->getCode() . ' is not valid currency for Bitcoin Cash address!');
 		}
-		parent::__construct($address, $currency, $cashAddressAllowed);
+		parent::__construct($address, $currency, $cryptocurrencyNetwork, $cashAddressAllowed);
 	}
 
 	/**

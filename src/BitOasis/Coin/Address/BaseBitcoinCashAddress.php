@@ -8,6 +8,7 @@ use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Exception\InvalidAddressPrefixException;
 use BitOasis\Coin\Address\Validators\BitcoinCash\AddressValidator;
 use BitOasis\Coin\Address\Validators\BitcoinCash\BaseBitcoinCashAddressValidator;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Utils\Strings;
 use BitOasis\Coin\Utils\Base58Check\Base58Check;
 use CashAddr\CashAddress;
@@ -25,6 +26,9 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/** @var AddressValidator */
 	protected $validator;
 
@@ -38,13 +42,15 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	 * BitcoinCashAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @param bool $cashAddressAllowed
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, $cashAddressAllowed = true) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $cashAddressAllowed = true) {
 		$this->validateAddress($address, $cashAddressAllowed);
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 		$this->validator = $this->createValidator($address);
 	}
 
@@ -57,6 +63,13 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	 */
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
 	}
 
 	/**
@@ -73,15 +86,16 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	public function equals(CryptocurrencyAddress $address) {
 		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address;
 	}
-	
+
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**
@@ -103,7 +117,7 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 			}
 			
 			$base58BHash = Base58Check::encodeHash($binaryHash, Strings::convertDecimalToBinaryString($this->cashAddressToBase58Prefixes[$scriptType]));
-			return new static($base58BHash, $this->currency, false);
+			return new static($base58BHash, $this->currency, $this->cryptocurrencyNetwork, false);
 		} catch (CashAddressException $e) {
 			$this->throwInvalidAddressException($e);
 		} catch (Base32Exception $e) {
@@ -129,7 +143,7 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 		}
 		
 		$cashAddress = CashAddress::encode(BaseBitcoinCashAddressValidator::PREFIX_MAINNET, $hashVersion, $decodedAddress->getHash());
-		return new static($cashAddress, $this->currency);
+		return new static($cashAddress, $this->currency, $this->cryptocurrencyNetwork);
 	}
 
 	/**

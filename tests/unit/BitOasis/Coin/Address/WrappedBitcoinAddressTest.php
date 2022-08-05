@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,8 +45,8 @@ class WrappedBitcoinAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$wrappedBitcoin = $this->createAddress($address);
@@ -60,6 +61,10 @@ class WrappedBitcoinAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): WrappedBitcoinAddress {
-		return new WrappedBitcoinAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+		return new WrappedBitcoinAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::WBTC),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

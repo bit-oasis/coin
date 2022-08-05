@@ -6,6 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Address\Validators\WavesAddressValidator;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author David Fiedor <davefu@seznam.cz>
@@ -18,16 +19,21 @@ class WavesAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$this->validate($address);
 
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
 
 	/**
@@ -43,6 +49,13 @@ class WavesAddress implements CryptocurrencyAddress {
 	 */
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
 	}
 
 	/**
@@ -62,11 +75,12 @@ class WavesAddress implements CryptocurrencyAddress {
 	/**
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return \static
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**

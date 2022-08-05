@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -63,7 +64,11 @@ class IotaAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): IotaAddress {
-		return new IotaAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::IOTA));
+		return new IotaAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::IOTA),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::IOTA)
+		);
 	}
 
 }

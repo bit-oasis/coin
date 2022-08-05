@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -59,7 +60,11 @@ class LeoAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new LeoAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::LEO));
+		return new LeoAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::LEO),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

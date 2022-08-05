@@ -6,6 +6,7 @@ use BitOasis\Coin\Address\Validators\AlgorandAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author Stanislav Fukala <stanislav.fukala@gmail.com>
@@ -18,15 +19,20 @@ class AlgorandAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		$this->validateAddress($address);
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
 
 	/**
@@ -88,6 +94,13 @@ class AlgorandAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function serialize() {
 		return $this->address;
 	}
@@ -102,8 +115,8 @@ class AlgorandAddress implements CryptocurrencyAddress {
 	/**
 	 * @inheritDoc
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**

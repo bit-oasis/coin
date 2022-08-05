@@ -3,6 +3,8 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -26,20 +28,24 @@ class StellarAddressTest extends UnitTest {
 	 * @param string $serializedAddress
 	 * @param string $expectedAddress
 	 * @param string|null $expectedMemo
+	 * @throws InvalidAddressException
 	 * @dataProvider providerDeserialize
 	 */
 	public function testDeserialize($serializedAddress, $expectedAddress, $expectedMemo) {
-		$stellarAddress = StellarAddress::deserialize($serializedAddress, $this->getCurrency());
+		$stellarAddress = StellarAddress::deserialize($serializedAddress, $this->getCurrency(), $this->getNetwork());
 		$this->assertEquals($expectedAddress, $stellarAddress->getAddress());
 		$this->assertEquals($expectedMemo, $stellarAddress->getMemo());
 	}
 
 	/**
 	 * @param string $serializedAddress
+	 * @param $expectedAddress
+	 * @param $expectedMemo
+	 * @throws InvalidAddressException
 	 * @dataProvider providerDeserialize
 	 */
 	public function testAdditionalId($serializedAddress, $expectedAddress, $expectedMemo) {
-		$stellarAddress = StellarAddress::deserialize($serializedAddress, $this->getCurrency());
+		$stellarAddress = StellarAddress::deserialize($serializedAddress, $this->getCurrency(), $this->getNetwork());
 		$this->assertTrue($stellarAddress->supportsAdditionalId());
 		$this->assertNotNull($stellarAddress->getAdditionalIdName());
 		$this->assertEquals($expectedMemo, $stellarAddress->getAdditionalId());
@@ -51,6 +57,13 @@ class StellarAddressTest extends UnitTest {
 	 */
 	protected static function getCurrency() {
 		return UnitTestUtils::getCryptocurrency(Cryptocurrency::XLM);
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	protected static function getNetwork() {
+		return UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::STELLAR_LUMEN);
 	}
 
 }

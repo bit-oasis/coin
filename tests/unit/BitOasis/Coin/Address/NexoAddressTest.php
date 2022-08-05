@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -59,7 +60,11 @@ class NexoAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new NexoAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::NEXO));
+		return new NexoAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::NEXO),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 
 }

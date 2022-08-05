@@ -3,6 +3,8 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -23,10 +25,16 @@ class RippleAddressTest extends UnitTest {
 	/**
 	 * @param string $address
 	 * @param $tag
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address, $tag) {
-		$rippleAddress = new RippleAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XRP), $tag);
+		$rippleAddress = new RippleAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::XRP),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::RIPPLE),
+			$tag
+		);
 		$this->assertTrue($rippleAddress->supportsAdditionalId());
 		$this->assertNotNull($rippleAddress->getAdditionalIdName());
 		$this->assertEquals($tag, $rippleAddress->getAdditionalId());

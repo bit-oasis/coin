@@ -3,6 +3,9 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Exception\InvalidAddressPrefixException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -48,32 +51,61 @@ class LitecoinAddressTest extends UnitTest {
 	/**
 	 * @param string $legacyFormat
 	 * @param string $expectedFormat
+	 * @throws InvalidAddressException
+	 * @throws InvalidAddressPrefixException
 	 * @dataProvider providerToNewAddressFormat
 	 */
 	public function testToNewAddressFormat($legacyFormat, $expectedFormat) {
-		$address = new LitecoinAddress($legacyFormat, self::getCurrency());
+		$address = new LitecoinAddress($legacyFormat, self::getCurrency(), self::getNetwork());
 		$this->assertEquals($address->toNewAddressFormat()->toString(), $expectedFormat);
 	}
 
 	/**
 	 * @param string $expectedFormat
 	 * @param string $newFormat
+	 * @throws InvalidAddressException
+	 * @throws InvalidAddressPrefixException
 	 * @dataProvider providerToNewAddressFormat
 	 */
 	public function testToLegacyAddressFormat($expectedFormat, $newFormat) {
-		$address = new LitecoinAddress($newFormat, self::getCurrency());
+		$address = new LitecoinAddress($newFormat, self::getCurrency(), self::getNetwork());
 		$this->assertEquals($address->toLegacyAddressFormat()->toString(), $expectedFormat);
 	}
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerToNewAddressFormat
 	 */
 	public function testAdditionalId($address) {
-		$litecoinAddress = new LitecoinAddress($address, self::getCurrency());
+		$litecoinAddress = new LitecoinAddress($address, self::getCurrency(), self::getNetwork());
 		$this->assertFalse($litecoinAddress->supportsAdditionalId());
 		$this->assertNull($litecoinAddress->getAdditionalIdName());
 		$this->assertNull($litecoinAddress->getAdditionalId());
+	}
+
+	/**
+	 * @param string $oldFormat
+	 * @param string $newFormat
+	 * @throws InvalidAddressException
+	 * @dataProvider providerOldFormatAddress
+	 */
+	public function testOldFormatAddress($oldFormat, $newFormat) {
+		$litecoinAddress = new LitecoinAddress($newFormat, self::getCurrency(), self::getNetwork());
+		$oldFormatAddress = $litecoinAddress->getOldFormatAddress();
+		$this->assertEquals($oldFormatAddress, $oldFormat);
+	}
+
+	/**
+	 * @param string $oldFormat
+	 * @param string $newFormat
+	 * @throws InvalidAddressException
+	 * @dataProvider providerNewFormatAddress
+	 */
+	public function testNewFormatAddress($oldFormat, $newFormat) {
+		$litecoinAddress = new LitecoinAddress($oldFormat, self::getCurrency(), self::getNetwork());
+		$newFormatAddress = $litecoinAddress->getNewFormatAddress();
+		$this->assertEquals($newFormatAddress, $newFormat);
 	}
 
 	/**
@@ -84,25 +116,10 @@ class LitecoinAddressTest extends UnitTest {
 	}
 
 	/**
-	 * @param string $oldFormat
-	 * @param string $newFormat
-	 * @dataProvider providerOldFormatAddress
+	 * @return CryptocurrencyNetwork
 	 */
-	public function testOldFormatAddress($oldFormat, $newFormat) {
-		$litecoinAddress = new LitecoinAddress($newFormat, self::getCurrency());
-		$oldFormatAddress = $litecoinAddress->getOldFormatAddress();
-		$this->assertEquals($oldFormatAddress, $oldFormat);
-	}
-
-	/**
-	 * @param string $oldFormat
-	 * @param string $newFormat
-	 * @dataProvider providerNewFormatAddress
-	 */
-	public function testNewFormatAddress($oldFormat, $newFormat) {
-		$litecoinAddress = new LitecoinAddress($oldFormat, self::getCurrency());
-		$newFormatAddress = $litecoinAddress->getNewFormatAddress();
-		$this->assertEquals($newFormatAddress, $newFormat);
+	protected static function getNetwork() {
+		return UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::LITECOIN);
 	}
 
 }

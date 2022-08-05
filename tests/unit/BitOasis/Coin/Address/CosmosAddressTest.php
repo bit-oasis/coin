@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -44,11 +45,15 @@ class CosmosAddressTest extends UnitTest {
 	 * @param string $serializedAddress
 	 * @param string $expectedAddress
 	 * @param string|null $expectedMemo
+	 * @throws InvalidAddressException
 	 * @dataProvider providerDeserialize
-	 * @throws \BitOasis\Coin\Exception\InvalidAddressException
 	 */
 	public function testDeserialize($serializedAddress, string $expectedAddress, $expectedMemo) {
-		$cosmosAddress = CosmosAddress::deserialize($serializedAddress, UnitTestUtils::getCryptocurrency(Cryptocurrency::ATOM));
+		$cosmosAddress = CosmosAddress::deserialize(
+			$serializedAddress,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ATOM),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::TERRA)
+		);
 		$this->assertEquals($expectedAddress, $cosmosAddress->getAddress());
 		$this->assertEquals($expectedMemo, $cosmosAddress->getAdditionalId());
 	}
@@ -67,8 +72,8 @@ class CosmosAddressTest extends UnitTest {
 	/**
 	 * @param string $address
 	 * @param $tag
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
-	 * @throws \BitOasis\Coin\Exception\InvalidAddressException
 	 */
 	public function testAdditionalId($address, $tag) {
 		$terraAddress = $this->createAddress($address, $tag);
@@ -85,7 +90,12 @@ class CosmosAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address, $tag = null): CosmosAddress {
-		return new CosmosAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::LUNA), $tag);
+		return new CosmosAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ATOM),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::COSMOS),
+			$tag
+		);
 	}
 
 }

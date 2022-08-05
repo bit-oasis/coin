@@ -6,6 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\Address\Validators\DogecoinAddressValidator;
+use BitOasis\Coin\CryptocurrencyNetwork;
 
 /**
  * @author David Fiedor <davefu@seznam.cz>
@@ -18,17 +19,22 @@ class DogecoinAddress implements CryptocurrencyAddress {
 	/** @var Cryptocurrency */
 	protected $currency;
 
+	/** @var CryptocurrencyNetwork */
+	protected $cryptocurrencyNetwork;
+
 	/**
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		if(!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid dogecoin address - ' . $address);
 		}
 		$this->address = $address;
 		$this->currency = $currency;
+		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
 
 	public function toString() {
@@ -40,6 +46,13 @@ class DogecoinAddress implements CryptocurrencyAddress {
 	 */
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
 	}
 
 	/**
@@ -60,11 +73,12 @@ class DogecoinAddress implements CryptocurrencyAddress {
 	/**
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency) {
-		return new static($string, $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**

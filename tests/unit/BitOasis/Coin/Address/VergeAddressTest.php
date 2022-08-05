@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -64,7 +65,11 @@ class VergeAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): VergeAddress {
-		return new VergeAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::XVG));
+		return new VergeAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::XVG),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::VERGE)
+		);
 	}
 
 }

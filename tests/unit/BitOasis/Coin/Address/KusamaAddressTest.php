@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -45,8 +46,8 @@ class KusamaAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @dataProvider providerValidate
 	 * @throws InvalidAddressException
+	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
 		$polkadotAddress = $this->createAddress($address);
@@ -61,6 +62,10 @@ class KusamaAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress(string $address): KusamaAddress {
-		return new KusamaAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::KSM));
+		return new KusamaAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::KSM),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::KUSAMA)
+		);
 	}
 }

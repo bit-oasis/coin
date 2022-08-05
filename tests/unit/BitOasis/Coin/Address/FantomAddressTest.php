@@ -4,13 +4,14 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class FantomERC20AddressTest extends UnitTest {
+class FantomAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -56,10 +57,14 @@ class FantomERC20AddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return FantomERC20Address
+	 * @return FantomAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): FantomERC20Address {
-		return new FantomERC20Address($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::MATIC));
+	protected function createAddress(string $address): FantomAddress {
+		return new FantomAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::FTM),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }

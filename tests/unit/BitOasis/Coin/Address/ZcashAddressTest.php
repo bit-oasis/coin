@@ -3,6 +3,8 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTestUtils;
 use UnitTest;
 
@@ -26,10 +28,15 @@ class ZcashAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
-		$zCashAddress = new ZcashAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ZEC));
+		$zCashAddress = new ZcashAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ZEC),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ZCASH)
+		);
 		$this->assertFalse($zCashAddress->supportsAdditionalId());
 		$this->assertNull($zCashAddress->getAdditionalIdName());
 		$this->assertNull($zCashAddress->getAdditionalId());

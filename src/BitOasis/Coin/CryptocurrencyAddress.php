@@ -28,6 +28,11 @@ interface CryptocurrencyAddress {
 	public function getCurrency();
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork();
+
+	/**
 	 * Supports address additional ID (e.g. tag, memo, paymentId, etc.)?
 	 * @return bool if TRUE, ID could be NULL anyway
 	 */
@@ -63,9 +68,10 @@ interface CryptocurrencyAddress {
 	/**
 	 * @param $string
 	 * @param Cryptocurrency $cryptocurrency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 */
-	public static function deserialize($string, Cryptocurrency $cryptocurrency);
+	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork);
 
 }

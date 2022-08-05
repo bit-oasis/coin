@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use UnitTest;
 use UnitTestUtils;
 
@@ -44,6 +45,7 @@ class VeChainAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
+	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId($address) {
@@ -59,6 +61,10 @@ class VeChainAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address): VeChainAddress {
-		return new VeChainAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::VET));
+		return new VeChainAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::VET),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::VE_CHAIN)
+		);
 	}
 }
