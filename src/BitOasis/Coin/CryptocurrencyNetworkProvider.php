@@ -2,7 +2,6 @@
 
 namespace BitOasis\Coin;
 
-use BitOasis\Coin\DI\DefaultCurrencyAddressTypes;
 use BitOasis\Coin\Exception\NetworkNotDefinedForCryptocurrency;
 
 /**
@@ -13,12 +12,24 @@ final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvi
 	/** @var array[] where key = cryptocurrency and value = array of networks */
 	protected $cryptocurrencyToNetworkMap;
 
-	/** @var DefaultCryptocurrencyNetworkFactory */
-	protected $defaultCryptocurrencyNetworkFactory;
+	/** @var CryptocurrencyNetworkFactory */
+	protected $cryptocurrencyNetworkFactory;
 
-	public function __construct(DefaultCryptocurrencyNetworkFactory $defaultCryptocurrencyNetworkFactory) {
-		$this->loadMapping();
-		$this->defaultCryptocurrencyNetworkFactory = $defaultCryptocurrencyNetworkFactory;
+	public function __construct(array $cryptocurrencyToNetworkMap, CryptocurrencyNetworkFactory $cryptocurrencyNetworkFactory) {
+		$this->cryptocurrencyToNetworkMap = $cryptocurrencyToNetworkMap;
+		$this->cryptocurrencyNetworkFactory = $cryptocurrencyNetworkFactory;
+	}
+
+	public static function fromAddressMap(array $addressMap): array {
+		$cryptocurrencyToNetworkMap = [];
+
+		foreach ($addressMap as $cryptocurrency => $map) {
+			foreach ($map as $network => $addressHandler) {
+				$cryptocurrencyToNetworkMap[$cryptocurrency][] = $network;
+			}
+		}
+
+		return $cryptocurrencyToNetworkMap;
 	}
 
 	public function hasAnyNetwork(string $cryptocurrencyCode): bool {
@@ -26,7 +37,7 @@ final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvi
 	}
 
 	public function isNetworkSupportedForCryptocurrency(string $cryptocurrencyCode, string $networkCode): bool {
-		return $this->hasAnyNetwork($cryptocurrencyCode) && array_search($networkCode, $this->cryptocurrencyToNetworkMap[$cryptocurrencyCode], true) !== false;
+		return $this->hasAnyNetwork($cryptocurrencyCode) && in_array($networkCode, $this->cryptocurrencyToNetworkMap[$cryptocurrencyCode]);
 	}
 
 	/**
@@ -37,7 +48,7 @@ final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvi
 			throw new NetworkNotDefinedForCryptocurrency('Cryptocurrency should support at least one network');
 		}
 
-		return $this->defaultCryptocurrencyNetworkFactory->create($this->cryptocurrencyToNetworkMap[$cryptocurrency->getCode()][0]);
+		return $this->cryptocurrencyNetworkFactory->create($this->cryptocurrencyToNetworkMap[$cryptocurrency->getCode()][0]);
 	}
 
 	/**
@@ -64,14 +75,6 @@ final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvi
 		}
 
 		return $this->cryptocurrencyToNetworkMap[$cryptocurrency->getCode()];
-	}
-
-	private function loadMapping(): void {
-		foreach (DefaultCurrencyAddressTypes::TYPES as $cryptocurrency => $map) {
-			foreach ($map as $network => $addressHandler) {
-				$this->cryptocurrencyToNetworkMap[$cryptocurrency][] = $network;
-			}
-		}
 	}
 
 }

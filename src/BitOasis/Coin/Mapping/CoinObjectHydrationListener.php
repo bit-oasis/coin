@@ -268,7 +268,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			return $this->networkFieldsCache[$class->name];
 		}
 
-		$cacheKey = $class->getName() . '-1' . self::ASSOCIATION_CRYPTOCURRENCY_NETWORK;
+		$cacheKey = $class->getName() . '-' . self::ASSOCIATION_CRYPTOCURRENCY_NETWORK;
 
 		if ($this->cache->contains($cacheKey)) {
 			$networkFields = Json::decode($this->cache->fetch($cacheKey), Json::FORCE_ARRAY);
