@@ -11,7 +11,7 @@ class ElrondEgoldValidator extends Bech32AddressValidator implements ValidationI
 
 	public function __construct($address, $tag = null) {
 		$this->prefix = 'erd';
-		$this->bech32DecodedLength = 52;
+		$this->bech32DecodedLengths = [52];
 		$this->label = 'Elrond eGold';
 
 		parent::__construct($address, $tag);

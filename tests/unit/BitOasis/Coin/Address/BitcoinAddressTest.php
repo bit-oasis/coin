@@ -23,6 +23,12 @@ class BitcoinAddressTest extends UnitTest {
 			['3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC'],
 			['3LDsS579y7sruadqu11beEJoTjdFiFCdX4'],
 			['31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw'],
+			['35iMHbUZeTssxBodiHwEEkb32jpBfVueEL'],
+			['bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4'],
+			['bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq'],
+			['bc1qsmkhz0mdswslqua7h25utznk2wtktl703hx7sv'],
+			['bc1qwqdg6squsna38e46795at95yu9atm8azzmyvckulcc7kytlcckxswvvzej'],
+			['bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9'],
 		];
 	}
 

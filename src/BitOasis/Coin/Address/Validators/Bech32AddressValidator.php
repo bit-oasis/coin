@@ -22,8 +22,8 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 	/** @var string */
 	protected $prefix = 'NONE';
 
-	/** @var int */
-	protected $bech32DecodedLength = 32;
+	/** @var int[] */
+	protected $bech32DecodedLengths = [32];
 
 	/** @var string */
 	protected $label = 'NONE';
@@ -61,7 +61,7 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 				throw new InvalidArgumentException();
 			}
 
-			if (count($decoded[1]) !== $this->bech32DecodedLength) {
+			if (!in_array(count($decoded[1]), $this->bech32DecodedLengths)) {
 				throw new InvalidArgumentException();
 			}
 
