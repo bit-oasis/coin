@@ -31,6 +31,7 @@ use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
+use BitOasis\Coin\Address\EthereumWAddress;
 use BitOasis\Coin\Address\FantomERC20Address;
 use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FtxAddress;
@@ -160,6 +161,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::VET => VeChainAddress::class,
 		Cryptocurrency::XVG => VergeAddress::class,
 		Cryptocurrency::LUNA2 => TerraAddress::class,
+		Cryptocurrency::ETHW => EthereumWAddress::class,
 	];
 
 }
