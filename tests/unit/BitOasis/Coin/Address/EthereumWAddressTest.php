@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\Address;
 
 use BitOasis\Coin\Cryptocurrency;
+use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use UnitTest;
 use UnitTestUtils;
@@ -60,6 +61,10 @@ class EthereumWAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new EthereumWAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ETHW));
+		return new EthereumWAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ENJ),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+		);
 	}
 }
