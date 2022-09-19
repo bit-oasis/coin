@@ -63,7 +63,7 @@ class EthereumWAddressTest extends UnitTest {
 	protected function createAddress($address) {
 		return new EthereumWAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::ENJ),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ETHW),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
