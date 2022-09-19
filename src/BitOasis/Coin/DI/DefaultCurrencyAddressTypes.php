@@ -318,7 +318,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::TERRA2 => Terra2Address::class
 		],
 		Cryptocurrency::ETHW => [
-			CryptocurrencyNetwork::THETA => EthereumPoWAddress::class
+			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPoWAddress::class
 		],
 	];
 

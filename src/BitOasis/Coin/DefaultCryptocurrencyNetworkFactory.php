@@ -30,6 +30,7 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::BITCOIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN, 'Bitcoin');
 		$this->networks[CryptocurrencyNetwork::ETHEREUM] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM, 'Ethereum', 'ERC20');
 		$this->networks[CryptocurrencyNetwork::ETHEREUM_CLASSIC] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM_CLASSIC, 'Ethereum Classic');
+		$this->networks[CryptocurrencyNetwork::ETHEREUM_POW] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM_POW, 'Ethereum PoW');
 		$this->networks[CryptocurrencyNetwork::RIPPLE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::RIPPLE, 'Ripple');
 		$this->networks[CryptocurrencyNetwork::LITECOIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::LITECOIN, 'Litecoin');
 		$this->networks[CryptocurrencyNetwork::BITCOIN_CASH] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN_CASH, 'Bitcoin Cash');

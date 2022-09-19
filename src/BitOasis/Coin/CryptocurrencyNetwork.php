@@ -13,6 +13,7 @@ class CryptocurrencyNetwork {
 	const BITCOIN_CASH = 'bitcoin_cash';
 	const ETHEREUM = 'erc20';
 	const ETHEREUM_CLASSIC = 'ethereum_classic';
+	const ETHEREUM_POW = 'ethereum_pow';
 	const TRON = 'trc20';
 	const MATIC = 'matic';
 	const RIPPLE = 'ripple';
