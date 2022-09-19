@@ -10,7 +10,7 @@ use UnitTestUtils;
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class EthereumWAddressTest extends UnitTest {
+class EthereumPoWAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -56,10 +56,10 @@ class EthereumWAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return EthereumWAddress
+	 * @return EthereumPoWAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new EthereumWAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ETHW));
+		return new EthereumPoWAddress($address, UnitTestUtils::getCryptocurrency(Cryptocurrency::ETHW));
 	}
 }
