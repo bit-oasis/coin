@@ -64,7 +64,7 @@ class EthereumPoWAddressTest extends UnitTest {
 		return new EthereumPoWAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::ETHW),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM_POW)
 		);
 	}
 }
