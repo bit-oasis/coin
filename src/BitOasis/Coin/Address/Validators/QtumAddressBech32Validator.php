@@ -9,7 +9,7 @@ class QtumAddressBech32Validator extends Bech32AddressValidator {
 
 	public function __construct($address, $tag = null) {
 		$this->prefix = 'qc';
-		$this->bech32DecodedLength = 53;
+		$this->bech32DecodedLengths = [53];
 		$this->label = 'QTUM';
 
 		parent::__construct($address, $tag);
