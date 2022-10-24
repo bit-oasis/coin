@@ -11,7 +11,7 @@ class IotaAddressValidator extends Bech32AddressValidator implements ValidationI
 
 	public function __construct($address, $tag = null) {
 		$this->prefix = 'iota';
-		$this->bech32DecodedLength = 53;
+		$this->bech32DecodedLengths = [53];
 		$this->label = 'Iota';
 
 		parent::__construct($address, $tag);
