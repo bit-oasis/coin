@@ -92,6 +92,9 @@ class Cryptocurrency {
 	// May 2022
 	const LUNA2 = 'LUNA2';
 
+	// Sep 2022
+	const ETHW = 'ETHW';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';

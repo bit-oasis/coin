@@ -57,7 +57,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::LINK] = new Cryptocurrency(Cryptocurrency::LINK, 18, 'Chainlink');
 		$this->cryptocurrencies[Cryptocurrency::DAI] = new Cryptocurrency(Cryptocurrency::DAI, 18, 'Dai');
 		$this->cryptocurrencies[Cryptocurrency::MKR] = new Cryptocurrency(Cryptocurrency::MKR, 18, 'Maker');
-		$this->cryptocurrencies[Cryptocurrency::KNC] = new Cryptocurrency(Cryptocurrency::LINK, 18, 'Kyber');
+		$this->cryptocurrencies[Cryptocurrency::KNC] = new Cryptocurrency(Cryptocurrency::KNC, 18, 'Kyber');
 		$this->cryptocurrencies[Cryptocurrency::REP] = new Cryptocurrency(Cryptocurrency::REP, 18, 'Augur');
 		$this->cryptocurrencies[Cryptocurrency::UNI] = new Cryptocurrency(Cryptocurrency::UNI, 18, 'Uniswap');
 		$this->cryptocurrencies[Cryptocurrency::YFI] = new Cryptocurrency(Cryptocurrency::YFI, 18, 'Yearn Finance');
@@ -111,6 +111,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::VET] = new Cryptocurrency(Cryptocurrency::VET, 18, 'VeChain');
 		$this->cryptocurrencies[Cryptocurrency::XVG] = new Cryptocurrency(Cryptocurrency::XVG, 8, 'Verge');
 		$this->cryptocurrencies[Cryptocurrency::LUNA2] = new Cryptocurrency(Cryptocurrency::LUNA2, 6, 'Terra 2.0');
+		$this->cryptocurrencies[Cryptocurrency::ETHW] = new Cryptocurrency(Cryptocurrency::ETHW, 18, 'EthereumPoW');
 	}
 
 }

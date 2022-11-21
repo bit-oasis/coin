@@ -11,7 +11,7 @@ class CosmosAddressValidator extends Bech32AddressValidator implements Validatio
 
 	public function __construct($address, $tag = null) {
 		$this->prefix = 'cosmos';
-		$this->bech32DecodedLength = 32;
+		$this->bech32DecodedLengths = [32];
 		$this->label = 'Cosmos';
 
 		parent::__construct($address, $tag);

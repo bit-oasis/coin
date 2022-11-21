@@ -7,6 +7,7 @@ use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\BTC as BTCValidator;
+use BitOasis\Coin\Address\Validators\BitcoinBech32AddressValidator as BTCBech32Validator;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -87,7 +88,17 @@ class BitcoinAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	private function isValid($address) {
-		return (new BTCValidator($address))->validate();
+		if ((new BTCValidator($address))->validate()) {
+			// If address is legacy or P2SH format
+			return true;
+		}
+
+		if ((new BTCBech32Validator($address))->validate()) {
+			// If address is bech32 format
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

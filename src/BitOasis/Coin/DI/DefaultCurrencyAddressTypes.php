@@ -31,6 +31,7 @@ use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
+use BitOasis\Coin\Address\EthereumPoWAddress;
 use BitOasis\Coin\Address\FantomAddress;
 use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FtxAddress;
@@ -137,7 +138,7 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::USDT => [
 			CryptocurrencyNetwork::ETHEREUM => TetherAddress::class,
-			CryptocurrencyNetwork::TRON => TetherTronAddress::class
+//			CryptocurrencyNetwork::TRON => TetherTronAddress::class
 		],
 		Cryptocurrency::NEO => [
 			CryptocurrencyNetwork::NEO => NeoAddress::class
@@ -315,6 +316,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::LUNA2 => [
 			CryptocurrencyNetwork::TERRA2 => Terra2Address::class
+		],
+		Cryptocurrency::ETHW => [
+			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPoWAddress::class
 		],
 	];
 
