@@ -138,7 +138,7 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::USDT => [
 			CryptocurrencyNetwork::ETHEREUM => TetherAddress::class,
-//			CryptocurrencyNetwork::TRON => TetherTronAddress::class
+			CryptocurrencyNetwork::TRON => TetherTronAddress::class
 		],
 		Cryptocurrency::NEO => [
 			CryptocurrencyNetwork::NEO => NeoAddress::class
