@@ -101,10 +101,19 @@ class BitcoinAddress implements CryptocurrencyAddress {
 		return false;
 	}
 
+	private function isBech32Address(): bool {
+		// Bech32 always starts with bc1
+		return 0 === stripos($this->address, 'bc1');
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function getAddress() {
+		if ($this->isBech32Address()) {
+			return strtolower($this->address);
+		}
+
 		return $this->address;
 	}
 
