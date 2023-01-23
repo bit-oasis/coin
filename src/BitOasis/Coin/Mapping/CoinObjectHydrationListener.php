@@ -236,26 +236,24 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			$coinFields = Json::decode($this->cache->fetch($cacheKey), Json::FORCE_ARRAY);
 		} else {
 			$coinFields = $this->buildFieldsForCoin($class);
-			$this->cache->save($cacheKey, $coinFields ? Json::encode($coinFields) : FALSE);
+			$this->cache->save($cacheKey, Json::encode($coinFields));
 		}
 
 		$fieldsMap = [];
 		$classKey = $associationConfigs['mappingClassKey'];
 		$assocKey = $associationConfigs['mappingAssociationKey'];
 
-		if (is_array($coinFields) && !empty($coinFields)) {
-			foreach ($coinFields as $field => $mapping) {
-				if (!isset($fieldsMap[$mapping[$assocKey]])) {
-					$fieldsMap[$mapping[$assocKey]] = array(
-						'class' => $this->entityManager->getClassMetadata($mapping[$classKey]),
-						'fields' => array($field => $this->entityManager->getClassMetadata($mapping['fieldClass'])),
-					);
+		foreach ($coinFields as $field => $mapping) {
+			if (!isset($fieldsMap[$mapping[$assocKey]])) {
+				$fieldsMap[$mapping[$assocKey]] = array(
+					'class' => $this->entityManager->getClassMetadata($mapping[$classKey]),
+					'fields' => array($field => $this->entityManager->getClassMetadata($mapping['fieldClass'])),
+				);
 
-					continue;
-				}
-
-				$fieldsMap[$mapping[$assocKey]]['fields'][$field] = $this->entityManager->getClassMetadata($mapping['fieldClass']);
+				continue;
 			}
+
+			$fieldsMap[$mapping[$assocKey]]['fields'][$field] = $this->entityManager->getClassMetadata($mapping['fieldClass']);
 		}
 
 		return $this->coinFieldsCache[$class->getName()] = $fieldsMap;
@@ -274,18 +272,16 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			$networkFields = Json::decode($this->cache->fetch($cacheKey), Json::FORCE_ARRAY);
 		} else {
 			$networkFields = $this->buildFieldsForNetwork($class);
-			$this->cache->save($cacheKey, $networkFields ? Json::encode($networkFields) : FALSE);
+			$this->cache->save($cacheKey, Json::encode($networkFields));
 		}
 
 		$res = [];
 
-		if (is_array($networkFields) && !empty($networkFields)) {
-			// Cache cannot handle the class itself
-			// That's why we need to load class name from cache and create the metadata every time
-			foreach ($networkFields as $field => $mapping) {
-				$res[$field] = $mapping;
-				$res[$field]['class'] = $this->entityManager->getClassMetadata($mapping['class']);
-			}
+		// Cache cannot handle the class itself
+		// That's why we need to load class name from cache and create the metadata every time
+		foreach ($networkFields as $field => $mapping) {
+			$res[$field] = $mapping;
+			$res[$field]['class'] = $this->entityManager->getClassMetadata($mapping['class']);
 		}
 
 		return $this->networkFieldsCache[$class->getName()] = $res;
