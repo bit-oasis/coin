@@ -2,10 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.4-node-browsers
+      - image: cimg/php:7.4-node
     steps:
       - checkout
-      - run: sudo apt --allow-releaseinfo-change update && sudo apt install -y libgmp-dev
-      - run: sudo -E docker-php-ext-install gmp bcmath
+      - run: sudo -E install-php-extensions gmp bcmath
       - run: composer install --prefer-dist --no-interaction
       - run: php ./vendor/bin/codecept run unit
