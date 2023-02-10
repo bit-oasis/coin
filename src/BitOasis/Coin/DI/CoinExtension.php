@@ -2,27 +2,24 @@
 
 namespace BitOasis\Coin\DI;
 
+use Davefu\KdybyContributteBridge\DI\Helper\MappingHelper;
 use BitOasis\Coin\Address\CryptocurrencyAddressFactory;
 use BitOasis\Coin\CryptocurrencyNetworkProvider;
 use BitOasis\Coin\DefaultCryptocurrencyNetworkFactory;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
-use BitOasis\Coin\Types\CoinType;
-use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
-use Kdyby\Doctrine\DI\IDatabaseTypeProvider;
-use Kdyby\Doctrine\DI\IEntityProvider;
 use Nette\DI\CompilerExtension;
 
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
  */
-class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, IEntityProvider {
+class CoinExtension extends CompilerExtension {
 
 	/** @var array */
 	public $defaults = [
-		'cache' => 'default',
+		'cache' => 'filesystem',
 		'entityNamespaces' => null,
 		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES
 	];
@@ -41,25 +38,8 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
-	/**
-	 * Returns array of typeName => typeClass.
-	 *
-	 * @return array
-	 */
-	public function getDatabaseTypes() {
-		return [
-			CoinType::COIN => CoinType::class,
-			CryptocurrencyAddressType::CRYPTOCURRENCY_ADDRESS => CryptocurrencyAddressType::class,
-		];
+	public function beforeCompile(): void {
+		MappingHelper::of($this)
+			->addXml('BitOasis\Coin', __DIR__ . '/metadata');
 	}
-
-	/**
-	 * Returns associative array of Namespace => mapping definition
-	 *
-	 * @return array
-	 */
-	public function getEntityMappings() {
-		return ['BitOasis\Coin' => (object)['value' => 'yaml', 'attributes' => __DIR__ . '/metadata']];
-	}
-
 }
