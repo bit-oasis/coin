@@ -22,16 +22,17 @@ class SolanaAddressTest extends UnitTest {
 			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
 			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
 			['2to3kfM6w5Z16CTbLj8N8mcxQsQKHPmNEGYTAyMPKAoX'],
-			['4yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeZ']
+			['4yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeZ'],
+			['1yhAARGVmryMueZ39XHLi1wvdgD3rc6vBRQKfLeiczeZ'],
 		];
 	}
 
 	public function providerValidate() {
 		return [
 			['5yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeZ'],
-			['1yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeZ'],
-			['1yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeX'],
-			['1yhAARGVmryMueZ39XHLi1wvdgD3rc6vBRQKfLeiczeZ']
+			['26qQTUU632js9Zszdbbjsd3WFgNmqrb9GMxRh6moeR89'],
+			['ASx1wk74GLZsxVrYiBkNKiViPLjnJQVGxKrudRgPir4A'],
+			['SoLw5ovBPNfodtAbxqEKHLGppyrdB4aZthdGwpfpQgi']
 		];
 	}
 
