@@ -2,39 +2,45 @@
 
 namespace BitOasis\Coin\DI;
 
-use Davefu\KdybyContributteBridge\DI\Helper\MappingHelper;
 use BitOasis\Coin\Address\CryptocurrencyAddressFactory;
 use BitOasis\Coin\CryptocurrencyNetworkProvider;
 use BitOasis\Coin\DefaultCryptocurrencyNetworkFactory;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
-use Kdyby;
+use Davefu\KdybyContributteBridge\Cache\Helpers as CacheHelpers;
+use Davefu\KdybyContributteBridge\DI\Helper\MappingHelper;
 use Kdyby\Events\DI\EventsExtension;
 use Nette\DI\CompilerExtension;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
+use stdClass;
 
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
+ *
+ * @property-read stdClass $config
  */
 class CoinExtension extends CompilerExtension {
 
-	/** @var array */
-	public $defaults = [
-		'cache' => 'filesystem',
-		'entityNamespaces' => null,
-		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES
-	];
+	public function getConfigSchema(): Schema {
+		return Expect::structure([
+			'cache' => Expect::string('filesystem'),
+			'entityNamespaces' => Expect::arrayOf('string')->nullable()->default(null),
+			'addressHandlers' => Expect::arrayOf(Expect::arrayOf('string', 'string'), 'string')->default(DefaultCurrencyAddressTypes::TYPES),
+		]);
+	}
 
 	public function loadConfiguration() {
-		$config = $this->getConfig($this->defaults);
+		$config = $this->config;
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix('cryptocurrencyAddressFactory'))
-			->setClass(CryptocurrencyAddressFactory::class, [$config['addressHandlers']]);
+			->setFactory(CryptocurrencyAddressFactory::class, [$config->addressHandlers]);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkFactory'))
-			->setClass(DefaultCryptocurrencyNetworkFactory::class, []);
+			->setFactory(DefaultCryptocurrencyNetworkFactory::class, []);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkProvider'))
-			->setClass(CryptocurrencyNetworkProvider::class, [CryptocurrencyNetworkProvider::fromAddressMap($config['addressHandlers'])]);
+			->setFactory(CryptocurrencyNetworkProvider::class, [CryptocurrencyNetworkProvider::fromAddressMap($config->addressHandlers)]);
 		$builder->addDefinition($this->prefix('coinHydrationListener'))
-			->setClass(CoinObjectHydrationListener::class, [$config['entityNamespaces'], Kdyby\DoctrineCache\DI\Helpers::processCache($this, $config['cache'], 'coin')])
+			->setFactory(CoinObjectHydrationListener::class, [$config->entityNamespaces, CacheHelpers::processCache($this, $config->cache, 'coin')])
 			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 

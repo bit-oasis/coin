@@ -27,10 +27,9 @@
 		"spomky-labs/cbor-php": "^1.1"
 	},
 	"require-dev": {
-		"kdyby/doctrine-cache": "^2.6.2",
-		"kdyby/events": "^3.1.1",
-		"davefu/kdyby-contributte-bridge": "@dev",
-		"nette/di": "~2.4",
+		"kdyby/events": "^5.0.1",
+		"davefu/kdyby-contributte-bridge": "0.2",
+		"nette/di": "~3.0",
 		"nette/utils": "*",
 		"codeception/codeception": "*",
 		"codeception/module-asserts": "^1.3"
