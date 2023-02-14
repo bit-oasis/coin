@@ -39,7 +39,8 @@ class BitcoinCashAddressTest extends BaseBitcoinCashAddressTest {
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param $address string
+	 * @return BitcoinCashAddress
 	 */
 	protected function createAddress($address) {
 		return new BitcoinCashAddress(

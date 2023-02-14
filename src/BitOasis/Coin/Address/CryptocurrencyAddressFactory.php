@@ -25,10 +25,10 @@ class CryptocurrencyAddressFactory {
 	}
 
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param Cryptocurrency $cryptocurrency
-	 * @param CryptocurrencyNetwork|null $cryptocurrencyNetwork
-	 * @return CryptocurrencyAddress
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
+	 * @return CryptocurrencyAddress|null
 	 * @throws InvalidAddressException
 	 * @throws InvalidCurrencyException
 	 */
@@ -37,10 +37,10 @@ class CryptocurrencyAddressFactory {
 	}
 
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param Cryptocurrency $currency
 	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
-	 * @return CryptocurrencyAddress
+	 * @return CryptocurrencyAddress|null
 	 * @throws InvalidAddressException
 	 * @throws InvalidCurrencyException
 	 */

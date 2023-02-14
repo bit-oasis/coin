@@ -131,7 +131,7 @@ class MoneroAddress implements CryptocurrencyAddress {
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
 	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressException
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
@@ -161,16 +161,6 @@ class MoneroAddress implements CryptocurrencyAddress {
 	public function isIntegratedAddress() {
 		return $this->createValidator($this->address, $this->paymentId)
 			->isIntegratedAddress();
-	}
-
-	/**
-	 * @param string $address
-	 * @param $paymentId
-	 * @return bool
-	 */
-	private function isValid($address, $paymentId = null) {
-		return $this->createValidator($address, $paymentId)
-			->validate();
 	}
 
 	/**

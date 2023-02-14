@@ -76,7 +76,7 @@ class Coin extends BigInteger {
 	 * @return static
 	 */
 	public static function zero(Cryptocurrency $currency) {
-		return new static(self::getDefaultAdapter()->init(0, 10), $currency);
+		return new static(self::getDefaultAdapter()->init('0', 10), $currency);
 	}
 
 	/**
@@ -94,11 +94,11 @@ class Coin extends BigInteger {
 	 */
 	public function toInt() {
 		if($this->isPositive()) {
-			if($this->getAdapter()->comp($this->amount, PHP_INT_MAX) > 0) {
+			if($this->getAdapter()->comp($this->amount, (string)PHP_INT_MAX) > 0) {
 				throw new InvalidNumberException('Amount is too large to be converted to int (' . $this->toIntString() . ')');
 			}
 		} else {
-			if($this->getAdapter()->comp($this->amount, PHP_INT_MIN) < 0) {
+			if($this->getAdapter()->comp($this->amount, (string)PHP_INT_MIN) < 0) {
 				throw new InvalidNumberException('Amount is too large to be converted to int (' . $this->toIntString() . ')');
 			}
 		}
@@ -183,7 +183,7 @@ class Coin extends BigInteger {
 	 * @return Coin
 	 */
 	public function negated() {
-		return $this->copyWithAmount($this->getAdapter()->mul($this->amount, -1));
+		return $this->copyWithAmount($this->getAdapter()->mul($this->amount, '-1'));
 	}
 
 	/**
@@ -235,7 +235,7 @@ class Coin extends BigInteger {
 		$trimmed = substr_replace($absAmount, '', -$trimLength);
 		if ((int)substr($absAmount, -$trimLength, 1) >= 5) {
 			$trimmedLength = strlen($trimmed);
-			$trimmed = (string)$this->getAdapter()->add($trimmed, 1);
+			$trimmed = (string)$this->getAdapter()->add($trimmed, '1');
 			if ($trimmedLength !== strlen($trimmed)) {
 				$originalLength++;
 			}
@@ -251,21 +251,21 @@ class Coin extends BigInteger {
 	 * @return bool
 	 */
 	public function isPositive() {
-		return $this->getAdapter()->comp($this->amount, 0) > 0;
+		return $this->getAdapter()->comp($this->amount, '0') > 0;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isNegative() {
-		return $this->getAdapter()->comp($this->amount, 0) < 0;
+		return $this->getAdapter()->comp($this->amount, '0') < 0;
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isZero() {
-		return $this->getAdapter()->comp($this->amount, 0) === 0;
+		return $this->getAdapter()->comp($this->amount, '0') === 0;
 	}
 
 	/**
@@ -393,7 +393,7 @@ class Coin extends BigInteger {
 	}
 
 	/**
-	 * @param string|int
+	 * @param string|int $value
 	 * @return static
 	 */
 	protected function copyWithAmount($value) {

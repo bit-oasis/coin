@@ -1,0 +1,20 @@
+includes:
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+	- vendor/phpstan/phpstan-nette/extension.neon
+	- vendor/phpstan/phpstan-nette/rules.neon
+
+parameters:
+	level: 5
+	paths:
+		- src
+		- tests
+	excludePaths:
+		analyse:
+			- tests/_*
+	ignoreErrors:
+		- '#Unsafe usage of new static\(\)#'
+	earlyTerminatingMethodCalls:
+		BitOasis\Coin\Address\BaseBitcoinCashAddress:
+			- throwInvalidAddressException
+		BitOasis\Coin\Address\Validators\BitcoinCash\BaseBitcoinCashAddressValidator:
+			- throwGeneralException

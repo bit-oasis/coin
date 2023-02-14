@@ -15,8 +15,8 @@ use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Event\PostLoadEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events as ORMEvents;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -93,7 +93,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 		);
 	}
 
-	public function postLoad($entity, LifecycleEventArgs $args) {
+	public function postLoad($entity, PostLoadEventArgs $args) {
 		$fieldsCryptocurrencyMap = $this->getEntityCoinFields($entity);
 		$fieldsNetworkMap = $this->getEntityCryptocurrencyNetworkFields($entity);
 

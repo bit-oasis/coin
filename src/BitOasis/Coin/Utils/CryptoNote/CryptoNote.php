@@ -37,11 +37,11 @@ class CryptoNote {
 	}
 
 	/**
-	 * @param CryptoNoteDecodedAddress
+	 * @param CryptoNoteDecodedAddress $address
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public static function encodeAddress(CryptonoteDecodedAddress $address) {
+	public static function encodeAddress(CryptoNoteDecodedAddress $address) {
 		return self::encodeHashParts($address->getSpendKey(), $address->getViewKey(), $address->getVersion(), $address->getPaymentId());
 	}
 
@@ -77,7 +77,7 @@ class CryptoNote {
 
 	/**
 	 * @param string $value
-	 * @return string as binary string
+	 * @return string|null as binary string
 	 * @throws InvalidArgumentException
 	 * @throws InvalidChecksumException
 	 */
@@ -123,7 +123,7 @@ class CryptoNote {
 
 	/**
 	 * @param string $value as binary string
-	 * @return string
+	 * @return string|null
 	 * @throws InvalidArgumentException
 	 */
 	public static function encode($value) {
