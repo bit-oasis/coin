@@ -29,7 +29,7 @@ class SolanaAddressValidator implements ValidationInterface {
 				return false;
 			}
 
-			sodium_crypto_sign_ed25519_pk_to_curve25519($binaryDecoded);
+			\sodium_crypto_sign_ed25519_pk_to_curve25519($binaryDecoded);
 
 			return true;
 		} catch (\SodiumException $e) {

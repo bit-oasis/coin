@@ -45,7 +45,7 @@ class CardanoAddressValidator implements ValidationInterface {
 		try {
 			$base58 = new Base58();
 			$address = $base58->decode($address);
-			$addressHex = \Sodium\bin2hex($address);
+			$addressHex = \sodium_bin2hex($address);
 
 			$otherObjectManager = new OtherObject\OtherObjectManager();
 			$otherObjectManager->add(OtherObject\SimpleObject::class);

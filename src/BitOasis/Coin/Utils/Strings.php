@@ -40,10 +40,10 @@ class Strings {
 	 * @return string
 	 */
 	public static function blake2b256Hash($value, $rawOutput = true) {
-		$tmp = \ParagonIE_Sodium_Compat::crypto_generichash($value);
+		$tmp = \sodium_crypto_generichash($value);
 		return $rawOutput ? $tmp : bin2hex($tmp);
 	}
-
+	
 	public static function blake2b256Keccak256Hash($value, $rawOutput = true) {
 		return self::keccak256Hash(self::blake2b256Hash($value), $rawOutput);
 	}
@@ -55,7 +55,7 @@ class Strings {
 	 * @throws \SodiumException
 	 */
 	public static function blake2b512($value, bool $rawOutput = true, $length = 64): string {
-		$tmp = \ParagonIE_Sodium_Compat::crypto_generichash($value, '', $length);
+		$tmp = \sodium_crypto_generichash($value, '', $length);
 		return $rawOutput ? $tmp : bin2hex($tmp);
 	}
 
