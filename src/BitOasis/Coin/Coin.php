@@ -5,9 +5,19 @@ namespace BitOasis\Coin;
 use BitOasis\Coin\Exception\DivisionByZeroException;
 use BitOasis\Coin\Exception\InvalidCurrencyException;
 use BitOasis\Coin\Exception\InvalidNumberException;
-use Zend\Math\BigInteger\Adapter\AdapterInterface;
-use Zend\Math\BigInteger\BigInteger;
-use Zend\Math\Exception\RuntimeException;
+use Laminas\Math\BigInteger\Adapter\AdapterInterface;
+use Laminas\Math\BigInteger\BigInteger;
+use Laminas\Math\Exception\RuntimeException;
+
+use function is_numeric;
+use function ltrim;
+use function preg_match;
+use function rtrim;
+use function strlen;
+use function strpos;
+use function str_pad;
+use function substr;
+use function substr_replace;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -16,13 +26,11 @@ class Coin extends BigInteger {
 
 	/** @var mixed */
 	protected $amount;
-
-	/** @var Cryptocurrency */
-	protected $currency;
+	protected Cryptocurrency $currency;
 
 	/**
 	 * Coin constructor.
-	 * @param $amount
+	 * @param mixed $amount
 	 * @param Cryptocurrency $currency
 	 */
 	protected function __construct($amount, Cryptocurrency $currency) {
@@ -30,69 +38,55 @@ class Coin extends BigInteger {
 		$this->currency = $currency;
 	}
 
-	/**
-	 * @return Cryptocurrency
-	 */
-	public function getCurrency() {
+	public function getCurrency(): Cryptocurrency {
+		return $this->currency;
+	}
+
+	public function getCryptocurrency(): Cryptocurrency {
 		return $this->currency;
 	}
 
 	/**
-	 * @return Cryptocurrency
-	 */
-	public function getCryptocurrency() {
-		return $this->currency;
-	}
-
-	/**
-	 * @param $amount
+	 * @param mixed $amount
 	 * @param Cryptocurrency $currency
-	 * @return static
 	 * @throws InvalidNumberException
 	 */
-	public static function fromFloat($amount, Cryptocurrency $currency) {
+	public static function fromFloat($amount, Cryptocurrency $currency): self {
 		$stringAmount = static::convertNumericAmountToDecimalString($amount, $currency->getDecimals());
 		if ($stringAmount === null) {
 			throw new InvalidNumberException('Amount is not valid float number!');
 		}
+
 		return new static(self::getDefaultAdapter()->mul(self::getDefaultAdapter()->init($stringAmount, 10), $currency->getSubunitsInUnit()), $currency);
 	}
 
 	/**
-	 * @param $amount
+	 * @param int|string $amount
 	 * @param Cryptocurrency $currency
-	 * @return static
 	 * @throws InvalidNumberException
 	 */
-	public static function fromInt($amount, Cryptocurrency $currency) {
-		if(!is_numeric($amount) || !preg_match('/^-?(0|[1-9]\d*)$/', $amount)) {
+	public static function fromInt($amount, Cryptocurrency $currency): self {
+		if(!is_numeric($amount) || !preg_match('/^-?(0|[1-9]\d*)$/', (string)$amount)) {
 			throw new InvalidNumberException('Initial value is not an integer value!');
 		}
-		return new static(self::getDefaultAdapter()->init($amount, 10), $currency);
+
+		return new static(self::getDefaultAdapter()->init((string)$amount, 10), $currency);
 	}
 
-	/**
-	 * @param Cryptocurrency $currency
-	 * @return static
-	 */
-	public static function zero(Cryptocurrency $currency) {
+	public static function zero(Cryptocurrency $currency): self {
 		return new static(self::getDefaultAdapter()->init('0', 10), $currency);
 	}
 
-	/**
-	 * @return float
-	 */
-	public function toFloat() {
+	public function toFloat(): float {
 		return (float)$this->toFloatString();
 	}
 
 	/**
 	 * Get number as int (satoshi for example)
 	 * In most cases use toIntString() instead
-	 * @return int
 	 * @throws InvalidNumberException
 	 */
-	public function toInt() {
+	public function toInt(): int {
 		if($this->isPositive()) {
 			if($this->getAdapter()->comp($this->amount, (string)PHP_INT_MAX) > 0) {
 				throw new InvalidNumberException('Amount is too large to be converted to int (' . $this->toIntString() . ')');
@@ -102,124 +96,107 @@ class Coin extends BigInteger {
 				throw new InvalidNumberException('Amount is too large to be converted to int (' . $this->toIntString() . ')');
 			}
 		}
+
 		return (int)$this->amount;
 	}
 
 	/**
 	 * Return value as float string
-	 * @return string
 	 */
-	public function toDecimalString() {
+	public function toDecimalString(): string {
 		return $this->toFloatString();
 	}
 
 	/**
 	 * Return value as float string
-	 * @return string
 	 */
-	protected function toFloatString() {
+	protected function toFloatString(): string {
 		if ($this->currency->getDecimals() === 0) {
 			return $this->amount;
 		}
+
 		$sign = (strpos($this->amount, '-') === 0) ? '-' : '';
 		$absAmount = ltrim($this->amount, '-+');
 		$paddedAmount = $sign . str_pad($absAmount, $this->currency->getDecimals() + 1, '0', STR_PAD_LEFT);
 		$stringAmount = substr_replace($paddedAmount, '.', -$this->currency->getDecimals(), 0);
+
 		return rtrim(rtrim($stringAmount, '0'), '.');
 	}
 
 	/**
 	 * Get number as string (satoshi for example)
-	 * @return string
 	 */
-	public function toIntString() {
+	public function toIntString(): string {
 		return $this->amount;
 	}
 
 	/**
-	 * @param Coin $amount
-	 * @return Coin
 	 * @throws InvalidCurrencyException
 	 */
-	public function add(Coin $amount) {
+	public function add(Coin $amount): self {
 		$this->validateCurrency($amount->currency);
 		return $this->copyWithAmount($this->getAdapter()->add($this->amount, $amount->amount));
 	}
 
 	/**
-	 * @param Coin $amount
-	 * @return Coin
 	 * @throws InvalidCurrencyException
 	 */
-	public function sub(Coin $amount) {
+	public function sub(Coin $amount): Coin {
 		$this->validateCurrency($amount->currency);
 		return $this->copyWithAmount($this->getAdapter()->sub($this->amount, $amount->amount));
 	}
 
 	/**
 	 * @param string|int|float $amount
-	 * @return Coin
 	 * @throws InvalidNumberException
 	 */
-	public function mul($amount) {
+	public function mul($amount): self {
 		return $this->copyWithAmount($this->getAdapter()->mul($this->amount, $this->initializeNumericAmount($amount)));
 	}
 
 	/**
 	 * @param string|int|float $amount
-	 * @return Coin
 	 * @throws InvalidNumberException
 	 * @throws DivisionByZeroException
 	 */
-	public function div($amount) {
+	public function div($amount): self {
 		try {
 			return $this->copyWithAmount($this->getAdapter()->div($this->amount, $this->initializeNumericAmount($amount)));
-		} catch (\Zend\Math\BigInteger\Exception\DivisionByZeroException $e) {
+		} catch (\Laminas\Math\BigInteger\Exception\DivisionByZeroException $e) {
 			throw new DivisionByZeroException($e->getMessage());
 		}
 	}
 
-	/**
-	 * @return Coin
-	 */
-	public function negated() {
+	public function negated(): self {
 		return $this->copyWithAmount($this->getAdapter()->mul($this->amount, '-1'));
 	}
 
-	/**
-	 * @return Coin
-	 */
-	public function abs() {
+	public function abs(): self {
 		return $this->copyWithAmount($this->getAdapter()->abs($this->amount));
 	}
 	
 	/**
-	 * @param int $decimals
-	 * @return Coin
 	 * @throws InvalidNumberException
 	 */
-	public function floor($decimals = 0) {
+	public function floor(int $decimals = 0): self {
 		if ($decimals >= $this->currency->getDecimals()) {
 			return $this->copyWithAmount($this->amount);
 		}
-		
+
 		$trimLength = $this->currency->getDecimals() - $decimals;
 		$amount = $this->toIntString();
 		$originalLength = strlen($amount);
 		if ($originalLength <= $trimLength) {
 			return $this->copyWithAmount(0);
 		}
-		
+
 		$trimmed = substr_replace($amount, '', -$trimLength);
 		$padded = str_pad($trimmed, $originalLength, '0');
+
 		return $this->copyWithAmount($padded);
 	}
 
-	/**
-	 * @param int $decimals
-	 * @return Coin
-	 */
-	public function round($decimals = 0) {
+	public function round(int $decimals = 0): self {
 		if ($decimals >= $this->currency->getDecimals()) {
 			return $this->copyWithAmount($this->amount);
 		}
@@ -247,33 +224,22 @@ class Coin extends BigInteger {
 		return $this->copyWithAmount($padded);
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isPositive() {
+	public function isPositive(): bool {
 		return $this->getAdapter()->comp($this->amount, '0') > 0;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isNegative() {
+	public function isNegative(): bool {
 		return $this->getAdapter()->comp($this->amount, '0') < 0;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isZero() {
+	public function isZero(): bool {
 		return $this->getAdapter()->comp($this->amount, '0') === 0;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return bool
 	 * @throws InvalidCurrencyException
 	 */
-	public function equals(Coin $coin) {
+	public function equals(Coin $coin): bool {
 		if(!$this->currency->equals($coin->currency)) {
 			return false; // todo: this or throw exception? Or do method named "same"?
 		}
@@ -281,61 +247,49 @@ class Coin extends BigInteger {
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return bool
 	 * @throws InvalidCurrencyException
 	 */
-	public function greaterThan(Coin $coin) {
+	public function greaterThan(Coin $coin): bool {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) > 0;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return bool
 	 * @throws InvalidCurrencyException
 	 */
-	public function lessThan(Coin $coin) {
+	public function lessThan(Coin $coin): bool {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) < 0;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return bool
 	 * @throws InvalidCurrencyException
 	 */
-	public function greaterOrEquals(Coin $coin) {
+	public function greaterOrEquals(Coin $coin): bool {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) >= 0;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return bool
 	 * @throws InvalidCurrencyException
 	 */
-	public function lessOrEquals(Coin $coin) {
+	public function lessOrEquals(Coin $coin): bool {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) <= 0;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return Coin
 	 * @throws InvalidCurrencyException
 	 */
-	public function min(Coin $coin) {
+	public function min(Coin $coin): self {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) < 0 ? $this : $coin;
 	}
 
 	/**
-	 * @param Coin $coin
-	 * @return Coin
 	 * @throws InvalidCurrencyException
 	 */
-	public function max(Coin $coin) {
+	public function max(Coin $coin): self {
 		$this->validateCurrency($coin->currency);
 		return $this->getAdapter()->comp($this->amount, $coin->amount) > 0 ? $this : $coin;
 	}
@@ -344,21 +298,19 @@ class Coin extends BigInteger {
 	}
 
 	/**
-	 * @param Cryptocurrency $currency
 	 * @throws InvalidCurrencyException
 	 */
-	protected function validateCurrency(Cryptocurrency $currency) {
+	protected function validateCurrency(Cryptocurrency $currency): void {
 		if(!$this->currency->equals($currency)) {
 			throw new InvalidCurrencyException("Can't process different currencies!");
 		}
 	}
 
 	/**
-	 * @param $amount
-	 * @return string
+	 * @param mixed $amount
 	 * @throws InvalidNumberException
 	 */
-	protected function initializeNumericAmount($amount) {
+	protected function initializeNumericAmount($amount): string {
 		$stringAmount = static::convertNumericAmountToDecimalString($amount);
 		if($stringAmount === null) {
 			throw new InvalidNumberException("Parameter can't be converted to number");
@@ -372,7 +324,7 @@ class Coin extends BigInteger {
 	 * @param int|null $maxDecimals
 	 * @return string|null if $amount is not numeric
 	 */
-	protected static function convertNumericAmountToDecimalString($amount, $maxDecimals = null) {
+	protected static function convertNumericAmountToDecimalString($amount, int $maxDecimals = null): ?string {
 		$stringAmount = null;
 		if (is_string($amount) && preg_match('#^[+-]?(\d*[.])?\d+$#', $amount)) {
 			$stringAmount = $amount;
@@ -394,29 +346,25 @@ class Coin extends BigInteger {
 
 	/**
 	 * @param string|int $value
-	 * @return static
 	 */
-	protected function copyWithAmount($value) {
+	protected function copyWithAmount($value): self {
 		return new static($value, $this->currency);
 	}
 
-	/**
-	 * @return \Zend\Math\BigInteger\Adapter\AdapterInterface
-	 */
-	public function getAdapter() {
+	public function getAdapter(): AdapterInterface {
 		return self::getDefaultAdapter();
 	}
 
 	/**
 	 * Determine and return available adapter
 	 *
-	 * @return AdapterInterface
 	 * @throws RuntimeException
 	 */
-	public static function getAvailableAdapter() {
-		if (extension_loaded('bcmath')) {
+	public static function getAvailableAdapter(): AdapterInterface {
+		if (\extension_loaded('bcmath')) {
 			return static::factory('Bcmath');
 		}
+
 		throw new RuntimeException('Big integer math support is not detected');
 	}
 

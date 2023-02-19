@@ -16,7 +16,7 @@
 	],
 	"require": {
 		"php": ">=7.4",
-		"zendframework/zend-math": "^3.0",
+		"laminas/laminas-math": "^3.5",
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",
 		"btccom/cashaddress": "dev-master@dev",
