@@ -2,6 +2,7 @@
 
 namespace BitOasis\Coin\Utils\Base58Check;
 
+use BitOasis\Coin\Utils\Hashes;
 use BitOasis\Coin\Utils\Strings;
 use StephenHill\Base58;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
@@ -29,22 +30,22 @@ class Base58Check {
 		self::BTC_ADDRESS => [
 			self::VERSION_LENGTH => 1,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::ZEC_TRANSPARENT_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::ZEC_SHIELDED_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 64,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::WAVES_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'blake2b256Keccak256Hash',
+			self::CHECKSUM_HASH => 'blake2b256Keccak256',
 		],
 	];
 
@@ -135,7 +136,7 @@ class Base58Check {
 
 			$payload = substr($decodedValue, 0, -4);
 			$checksum = Strings::convertBinaryStringToDecimal(substr($decodedValue, -4), true);
-			$newChecksum = Strings::convertBinaryStringToDecimal($checksumHash === null ? Strings::sha256x2hash($payload) : $checksumHash($payload), true);
+			$newChecksum = Strings::convertBinaryStringToDecimal($checksumHash === null ? Hashes::sha256x2($payload) : $checksumHash($payload), true);
 			for ($i = 1; $i < 5; $i++) {
 				if ($checksum[$i] !== $newChecksum[$i]) {
 					throw new InvalidChecksumException('Invalid checksum!');
@@ -157,7 +158,7 @@ class Base58Check {
 	 */
 	protected static function encode($value, $charset = null, callable $checksumHash = null) {
 		try {
-			$checksum = substr($checksumHash === null ? Strings::sha256x2hash($value) : $checksumHash($value), 0, 4);
+			$checksum = substr($checksumHash === null ? Hashes::sha256x2($value) : $checksumHash($value), 0, 4);
 			
 			$base58 = new Base58($charset);
 			return $base58->encode($value . $checksum);
@@ -186,7 +187,7 @@ class Base58Check {
 		}
 		
 		$settings = self::$addressSettings[$addressType];
-		return new Base58CheckOptions($settings[self::VERSION_LENGTH], $settings[self::HASH_LENGTH], [Strings::class, $settings[self::CHECKSUM_HASH]]);
+		return new Base58CheckOptions($settings[self::VERSION_LENGTH], $settings[self::HASH_LENGTH], [Hashes::class, $settings[self::CHECKSUM_HASH]]);
 	}
 
 	/**

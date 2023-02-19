@@ -2,6 +2,7 @@
 
 namespace BitOasis\Coin\Utils\CryptoNote;
 
+use BitOasis\Coin\Utils\Hashes;
 use BitOasis\Coin\Utils\Strings;
 use StephenHill\Base58;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
@@ -108,7 +109,7 @@ class CryptoNote {
 			$decodedValue = implode('', $buffer);
 			$payload = substr($decodedValue, 0, -4);
 			$checksum = Strings::convertBinaryStringToDecimal(substr($decodedValue, -4), true);
-			$newChecksum = Strings::convertBinaryStringToDecimal(Strings::keccak256Hash($payload), true);
+			$newChecksum = Strings::convertBinaryStringToDecimal(Hashes::keccak256($payload), true);
 			for ($i = 1; $i < 5; $i++) {
 				if ($checksum[$i] !== $newChecksum[$i]) {
 					throw new InvalidChecksumException('Invalid checksum!');
@@ -135,7 +136,7 @@ class CryptoNote {
 			$valueLength += 4; //add checksum length
 			
 			
-			$value .= substr(Strings::keccak256Hash($value), 0, 4);
+			$value .= substr(Hashes::keccak256($value), 0, 4);
 			$fullBlockSizeCount = (int)($valueLength / self::FULL_BLOCK_SIZE);
 			$lastBlockSize = $valueLength % self::FULL_BLOCK_SIZE;
 			$buffer = [];
