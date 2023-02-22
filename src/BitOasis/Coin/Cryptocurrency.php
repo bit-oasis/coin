@@ -95,6 +95,9 @@ class Cryptocurrency {
 	// Sep 2022
 	const ETHW = 'ETHW';
 
+	// Feb 2023
+	const XAUT = 'XAUT';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
