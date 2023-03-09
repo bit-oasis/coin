@@ -68,6 +68,7 @@ use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
+use BitOasis\Coin\Address\TetherGoldAddress;
 use BitOasis\Coin\Address\TronAddress;
 use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
@@ -319,6 +320,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::ETHW => [
 			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPoWAddress::class
+		],
+		Cryptocurrency::XAUT => [
+			CryptocurrencyNetwork::ETHEREUM => TetherGoldAddress::class
 		],
 	];
 
