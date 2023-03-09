@@ -7,5 +7,5 @@ jobs:
       - checkout
       - run: sudo apt --allow-releaseinfo-change update && sudo apt install -y libgmp-dev
       - run: sudo -E docker-php-ext-install gmp bcmath
-      - run: composer install --prefer-dist --no-interaction
+      - run: COMPOSER_MEMORY_LIMIT=2G composer install --prefer-dist --no-interaction
       - run: php ./vendor/bin/codecept run unit
