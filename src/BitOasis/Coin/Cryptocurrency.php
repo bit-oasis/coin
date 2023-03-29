@@ -97,6 +97,7 @@ class Cryptocurrency {
 
 	// MAR 2023
 	const XAUT = 'XAUT';
+	const ARB = 'ARB';
 
 	// Fiat
 	const USD = 'USD';
