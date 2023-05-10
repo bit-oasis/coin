@@ -106,6 +106,9 @@ class Cryptocurrency {
 	const EUR = 'EUR';
 	const SAR = 'SAR';
 	const TRY = 'TRY';
+	const OMR = 'OMR';
+	const BHD = 'BHD';
+	const QAR = 'QAR';
 
 	/** @var string */
 	protected $code;
