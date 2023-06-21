@@ -114,6 +114,17 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ETHW] = new Cryptocurrency(Cryptocurrency::ETHW, 18, 'EthereumPoW');
 		$this->cryptocurrencies[Cryptocurrency::XAUT] = new Cryptocurrency(Cryptocurrency::XAUT, 6, 'Tether Gold');
 		$this->cryptocurrencies[Cryptocurrency::ARB] = new Cryptocurrency(Cryptocurrency::ARB, 18, 'Arbitrum');
+		$this->cryptocurrencies[Cryptocurrency::APE] = new Cryptocurrency(Cryptocurrency::APE, 18, 'ApeCoin');
+		$this->cryptocurrencies[Cryptocurrency::SAND] = new Cryptocurrency(Cryptocurrency::SAND, 18, 'Sandbox');
+		$this->cryptocurrencies[Cryptocurrency::LDO] = new Cryptocurrency(Cryptocurrency::LDO, 18, 'Lido DAO');
+		$this->cryptocurrencies[Cryptocurrency::FET] = new Cryptocurrency(Cryptocurrency::FET, 18, 'Fetch.ai');
+		$this->cryptocurrencies[Cryptocurrency::XDC] = new Cryptocurrency(Cryptocurrency::XDC, 8, 'XDC Network');
+		$this->cryptocurrencies[Cryptocurrency::BTG] = new Cryptocurrency(Cryptocurrency::BTG, 8, 'Bitcoin Gold');
+		$this->cryptocurrencies[Cryptocurrency::RLY] = new Cryptocurrency(Cryptocurrency::RLY, 18, 'Rally');
+		$this->cryptocurrencies[Cryptocurrency::RBTC] = new Cryptocurrency(Cryptocurrency::RBTC, 18, 'Rootstock');
+		$this->cryptocurrencies[Cryptocurrency::VRA] = new Cryptocurrency(Cryptocurrency::VRA, 18, 'Verasity');
+		$this->cryptocurrencies[Cryptocurrency::UTK] = new Cryptocurrency(Cryptocurrency::UTK, 18, 'Utrust');
+		$this->cryptocurrencies[Cryptocurrency::SGB] = new Cryptocurrency(Cryptocurrency::SGB, 18, 'Songbird');
 	}
 
 }
