@@ -47,7 +47,7 @@ class CryptocurrencyNetwork {
 	const VE_CHAIN = 've_chain';
 	const VERGE = 'verge';
 	const BITCOIN_GOLD = 'bitcoin_gold';
-	const ROOTSTOCK_BITCOIN = 'rootstock_bitcoin';
+	const ROOTSTOCK_BITCOIN = 'rsk_bitcoin';
 	const XDC_NETWORK = 'xdc_network';
 	const SONGBIRD = 'songbird';
 
