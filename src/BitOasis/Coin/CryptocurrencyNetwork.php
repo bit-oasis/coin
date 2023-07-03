@@ -46,6 +46,10 @@ class CryptocurrencyNetwork {
 	const THETA = 'theta';
 	const VE_CHAIN = 've_chain';
 	const VERGE = 'verge';
+	const BITCOIN_GOLD = 'bitcoin_gold';
+	const ROOTSTOCK_BITCOIN = 'rsk_bitcoin';
+	const XDC_NETWORK = 'xdc_network';
+	const SONGBIRD = 'songbird';
 
 	/** @var string */
 	protected $code;

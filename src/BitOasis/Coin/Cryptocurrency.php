@@ -97,6 +97,20 @@ class Cryptocurrency {
 
 	// MAR 2023
 	const XAUT = 'XAUT';
+	const ARB = 'ARB';
+
+	// JUNE 2023
+	const APE = 'APE';
+	const SAND = 'SAND';
+	const LDO = 'LDO';
+	const FET = 'FET';
+	const XDC = 'XDC';
+	const BTG = 'BTG';
+	const RLY = 'RLY';
+	const RBTC = 'RBTC';
+	const VRA = 'VRA';
+	const UTK = 'UTK';
+	const SGB = 'SGB';
 
 	// Fiat
 	const USD = 'USD';
@@ -105,6 +119,9 @@ class Cryptocurrency {
 	const EUR = 'EUR';
 	const SAR = 'SAR';
 	const TRY = 'TRY';
+	const OMR = 'OMR';
+	const BHD = 'BHD';
+	const QAR = 'QAR';
 
 	/** @var string */
 	protected $code;

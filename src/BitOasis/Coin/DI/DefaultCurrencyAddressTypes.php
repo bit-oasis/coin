@@ -5,8 +5,10 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
+use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
+use BitOasis\Coin\Address\AvalancheXChainAddress;
 use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
@@ -220,7 +222,8 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => ShibaInuAddress::class
 		],
 		Cryptocurrency::AVAX => [
-			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
+//			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
+			CryptocurrencyNetwork::AVALANCHE_X => AvalancheXChainAddress::class,
 		],
 		Cryptocurrency::FTM => [
 			CryptocurrencyNetwork::FANTOM => FantomAddress::class
@@ -323,6 +326,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::XAUT => [
 			CryptocurrencyNetwork::ETHEREUM => TetherGoldAddress::class
+		],
+		Cryptocurrency::ARB => [
+			CryptocurrencyNetwork::ETHEREUM => ArbitrumAddress::class
 		],
 	];
 
