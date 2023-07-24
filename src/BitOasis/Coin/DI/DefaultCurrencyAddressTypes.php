@@ -16,6 +16,7 @@ use BitOasis\Coin\Address\BandProtocolAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
+use BitOasis\Coin\Address\BitcoinGoldAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
 use BitOasis\Coin\Address\CardanoAddress;
@@ -330,6 +331,9 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::ARB => [
 			CryptocurrencyNetwork::ETHEREUM => ArbitrumAddress::class
 		],
+		Cryptocurrency::BTG => [
+			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
+		]
 	];
 
 }
