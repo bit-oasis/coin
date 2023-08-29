@@ -159,9 +159,21 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	}
 
 	/**
+	 * @return bool
+	 */
+	private function isBech32Address(): bool {
+		// Bech32 always starts with ltc1
+		return 0 === stripos($this->address, 'ltc1');
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getAddress() {
+		if ($this->isBech32Address()) {
+			return strtolower($this->address);
+		}
+
 		return $this->address;
 	}
 

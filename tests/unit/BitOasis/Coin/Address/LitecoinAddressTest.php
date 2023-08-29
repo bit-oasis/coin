@@ -22,6 +22,10 @@ class LitecoinAddressTest extends UnitTest {
 			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
 			['LP8A3cjNAXsMBQvy9s4ptavo7owhS2XPr1', 'LP8A3cjNAXsMBQvy9s4ptavo7owhS2XPr1'],
 			['Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm', 'Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm'],
+			['ltc1q3wty34sqf4jxghqzeg6g98wuff052d6hh2q8ue', 'ltc1q3wty34sqf4jxghqzeg6g98wuff052d6hh2q8ue'],
+			['ltc1qzvcgmntglcuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw', 'ltc1qzvcgmntglcuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw'],
+			['ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vf', 'ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vf'],
+			['ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakadhsqs6eq9', 'ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakadhsqs6eq9'],
 		];
 	}
 
@@ -34,6 +38,11 @@ class LitecoinAddressTest extends UnitTest {
 			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', '3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC'],
 			[null, 'LP8A3cjNAXsMBQvy9s4ptavo7owhS2XPr1'],
 			[null, 'Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm'],
+			[null, 'ltc1q3wty34sqf4jxghqzeg6g98wuff052d6hh2q8ue'],
+			[null, 'ltc1qzvcgmntglcuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw'],
+			[null, 'ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vf'],
+			[null, 'ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakadhsqs6eq9'],
+
 		];
 	}
 
@@ -45,6 +54,10 @@ class LitecoinAddressTest extends UnitTest {
 			['3KwSLET9P3WZNKAjXRTKQYo7w4tZ8qEUaC', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
 			['MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY', 'MS9ae7s7LAMzApSddJSfEC3XFmV17kMZjY'],
 			['Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm', 'Lciocvp1PvQyMH9Srmxn7dSC94Gk2YtCLm'],
+			['ltc1q3wty34sqf4jxghqzeg6g98wuff052d6hh2q8ue', 'ltc1q3wty34sqf4jxghqzeg6g98wuff052d6hh2q8ue'],
+			['ltc1qzvcgmntglcuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw', 'ltc1qzvcgmntglcuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw'],
+			['ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vf', 'ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vf'],
+			['ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakadhsqs6eq9', 'ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakadhsqs6eq9'],
 		];
 	}
 
