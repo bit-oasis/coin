@@ -61,6 +61,18 @@ class LitecoinAddressTest extends UnitTest {
 		];
 	}
 
+	public function providerInvalidAddress() {
+		return [
+			['39JXi45Nkgzk8hxz6aHYuef23Dp7qnf4fx'],
+			['MS9ae7s7LAMzApSddJSfEC3XFMV17kMZjY'],
+			['Lciocvp1PvQyMH9SrmxN7dSC94Gk2YtCLm'],
+			['ltc1qzvcgmn111cuv4smv3lzj6k8szcvsrmvk0phrr9wfq8w493r096ssm2fgsw'],
+			['ltc1q6x5el5d6tqe8c7cfrajwukd5ynmtww5vrrh6vfsw'],
+			['ltc1q3wty34sqf4jxghqzeg6g982fff052d6hh2q8ue'],
+			['ltc1qskcl06l0auxxyat05zehhqd8ssq9hgq30uyw02k50xxrxtakkkksqs6eq9'],
+		];
+	}
+
 	/**
 	 * @param string $legacyFormat
 	 * @param string $expectedFormat
@@ -119,6 +131,29 @@ class LitecoinAddressTest extends UnitTest {
 		$litecoinAddress = new LitecoinAddress($oldFormat, self::getCurrency(), self::getNetwork());
 		$newFormatAddress = $litecoinAddress->getNewFormatAddress();
 		$this->assertEquals($newFormatAddress, $newFormat);
+	}
+
+	/**
+	 * @param string $address
+	 * @dataProvider providerInvalidAddress
+	 */
+	public function testInvalidAddress($address) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function() use ($address) {
+			$this->createAddress($address);
+		});
+	}
+
+	/**
+	 * @param string $address
+	 * @return LitecoinAddress
+	 * @throws InvalidAddressException
+	 */
+	protected function createAddress($address) {
+		return new LitecoinAddress(
+			$address,
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::LTC),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::LITECOIN)
+		);
 	}
 
 	/**
