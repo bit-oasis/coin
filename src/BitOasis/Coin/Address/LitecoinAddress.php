@@ -2,6 +2,7 @@
 
 namespace BitOasis\Coin\Address;
 
+use BitOasis\Coin\Address\Validators\LitecoinBech32AddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -33,6 +34,9 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	/** @var LitecoinAddressValidator */
 	protected $validator;
 
+	/** @var LitecoinBech32AddressValidator */
+	protected $bech32Validator;
+
 	/**
 	 * BitcoinAddress constructor.
 	 * @param string $address
@@ -43,6 +47,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	 */
 	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, $oldFormatAllowed = true) {
 		$this->validator = new LitecoinAddressValidator($address);
+		$this->bech32Validator = new LitecoinBech32AddressValidator($address);
 		$this->validator->setDeprecatedAllowed($oldFormatAllowed);
 		
 		if(!$this->isValid()) {
@@ -142,13 +147,33 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	 * @return bool
 	 */
 	private function isValid() {
-		return $this->validator->validate();
+		if ($this->validator->validate()) {
+			return true;
+		}
+
+		if ($this->bech32Validator->validate()) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isBech32Address(): bool {
+		// Bech32 always starts with ltc1
+		return 0 === stripos($this->address, 'ltc1');
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getAddress() {
+		if ($this->isBech32Address()) {
+			return strtolower($this->address);
+		}
+
 		return $this->address;
 	}
 
