@@ -11,6 +11,12 @@ use function mb_strlen;
  */
 class StringStream implements Stream {
 
+	const ENCODING = '8bit';
+
+	const MIN_LENGTH = 0;
+
+	const MAX_LENGTH = 1024;
+
 	/** @var resource */
 	private $resource;
 
@@ -40,7 +46,7 @@ class StringStream implements Stream {
 	 * @throws RuntimeException
 	 */
 	public function read(int $length): string {
-		if ($length === 0) {
+		if ($length === self::MIN_LENGTH) {
 			return '';
 		}
 
@@ -48,20 +54,20 @@ class StringStream implements Stream {
 		$data = '';
 		while ($alreadyRead < $length) {
 			$left = $length - $alreadyRead;
-			$sizeToRead = $left < 1024 && $left > 0 ? $left : 1024;
+			$sizeToRead = $left < self::MAX_LENGTH && $left > self::MIN_LENGTH ? $left : self::MAX_LENGTH;
 			$newData = \fread($this->resource, $sizeToRead);
 			$alreadyRead += $sizeToRead;
 
 			if ($newData === false) {
 				throw new RuntimeException('Unable to read the memory');
 			}
-			if (mb_strlen($newData, '8bit') < $sizeToRead) {
+			if (mb_strlen($newData, self::ENCODING) < $sizeToRead) {
 				$this->throwInvalidDataLengthException($data, $length);
 			}
 			$data .= $newData;
 		}
 
-		if (mb_strlen($data, '8bit') !== $length) {
+		if (mb_strlen($data, self::ENCODING) !== $length) {
 			$this->throwInvalidDataLengthException($data, $length);
 		}
 
@@ -72,7 +78,7 @@ class StringStream implements Stream {
 	 * @throws InvalidArgumentException
 	 */
 	protected function throwInvalidDataLengthException(string $data, int $expectedLength): void {
-		$message = \sprintf('Out of range. Expected: %d, read: %d.', $expectedLength, mb_strlen($data, '8bit'));
+		$message = \sprintf('Out of range. Expected: %d, read: %d.', $expectedLength, mb_strlen($data, self::ENCODING));
 		throw new InvalidArgumentException($message);
 	}
 }

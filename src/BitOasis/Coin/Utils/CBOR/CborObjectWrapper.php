@@ -27,9 +27,9 @@ class CborObjectWrapper implements CborObject {
 	}
 
 	/**
-     * @inheritDoc
-     */
-    public function getNormalizedData(bool $ignoreTags = false) {
+	 * @inheritDoc
+	 */
+	public function getNormalizedData(bool $ignoreTags = false) {
 		return $this->cborObject->getNormalizedData($ignoreTags);
 	}
 }
