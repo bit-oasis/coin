@@ -125,6 +125,16 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::VRA] = new Cryptocurrency(Cryptocurrency::VRA, 18, 'Verasity');
 		$this->cryptocurrencies[Cryptocurrency::UTK] = new Cryptocurrency(Cryptocurrency::UTK, 18, 'Utrust');
 		$this->cryptocurrencies[Cryptocurrency::SGB] = new Cryptocurrency(Cryptocurrency::SGB, 18, 'Songbird');
+		$this->cryptocurrencies[Cryptocurrency::BLUR] = new Cryptocurrency(Cryptocurrency::BLUR, 18, 'Blur');
+		$this->cryptocurrencies[Cryptocurrency::OP] = new Cryptocurrency(Cryptocurrency::OP, 18, 'Optimism');
+		$this->cryptocurrencies[Cryptocurrency::QRDO] = new Cryptocurrency(Cryptocurrency::QRDO, 18, 'QREDO');
+		$this->cryptocurrencies[Cryptocurrency::BOSON] = new Cryptocurrency(Cryptocurrency::BOSON, 18, 'BOSON');
+		$this->cryptocurrencies[Cryptocurrency::FLOKI] = new Cryptocurrency(Cryptocurrency::FLOKI, 18, 'FLOKI');
+		$this->cryptocurrencies[Cryptocurrency::WILD] = new Cryptocurrency(Cryptocurrency::WILD, 18, 'Wilder World');
+		$this->cryptocurrencies[Cryptocurrency::SUI] = new Cryptocurrency(Cryptocurrency::SUI, 9, 'Sui');
+		$this->cryptocurrencies[Cryptocurrency::SEI] = new Cryptocurrency(Cryptocurrency::SEI, 6, 'Sei Network');
+		$this->cryptocurrencies[Cryptocurrency::TON] = new Cryptocurrency(Cryptocurrency::TON, 9, 'Toncoin');
+
 	}
 
 }
