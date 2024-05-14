@@ -64,6 +64,10 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::VE_CHAIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::VE_CHAIN, 'VeChain');
 		$this->networks[CryptocurrencyNetwork::VERGE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::VERGE, 'Verge');
 		$this->networks[CryptocurrencyNetwork::BITCOIN_GOLD] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BITCOIN_GOLD, 'Bitcoin Gold');
+		$this->networks[CryptocurrencyNetwork::SUI] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SUI, 'Sui');
+		$this->networks[CryptocurrencyNetwork::SEI] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SEI, 'Sei');
+		$this->networks[CryptocurrencyNetwork::XDC_NETWORK] = new CryptocurrencyNetwork(CryptocurrencyNetwork::XDC_NETWORK, 'XinFin');
+		$this->networks[CryptocurrencyNetwork::TON] = new CryptocurrencyNetwork(CryptocurrencyNetwork::TON, 'The Open Network');
 	}
 
 }

@@ -112,6 +112,17 @@ class Cryptocurrency {
 	const UTK = 'UTK';
 	const SGB = 'SGB';
 
+	// MAY 2024
+	const BLUR = 'BLUR';
+	const OP = 'OP';
+	const QRDO = 'QRDO';
+	const BOSON = 'BOSON';
+	const FLOKI = 'FLOKI';
+	const WILD = 'WILD';
+	const SUI = 'SUI';
+	const SEI = 'SEI';
+	const TON = 'TON';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
