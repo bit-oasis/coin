@@ -19,6 +19,8 @@ use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinGoldAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\BlurAddress;
+use BitOasis\Coin\Address\BosonAddress;
 use BitOasis\Coin\Address\CardanoAddress;
 use BitOasis\Coin\Address\ChainlinkAddress;
 use BitOasis\Coin\Address\ChilizAddress;
@@ -37,6 +39,7 @@ use BitOasis\Coin\Address\EthereumClassicAddress;
 use BitOasis\Coin\Address\EthereumPoWAddress;
 use BitOasis\Coin\Address\FantomAddress;
 use BitOasis\Coin\Address\FilecoinAddress;
+use BitOasis\Coin\Address\FlokiAddress;
 use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\GalaAddress;
 use BitOasis\Coin\Address\GnosisAddress;
@@ -55,14 +58,18 @@ use BitOasis\Coin\Address\NexoAddress;
 use BitOasis\Coin\Address\OceanAddress;
 use BitOasis\Coin\Address\OmiseGoAddress;
 use BitOasis\Coin\Address\OneInchAddress;
+use BitOasis\Coin\Address\OptimismAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
+use BitOasis\Coin\Address\QredoAddress;
 use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\SeiAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
 use BitOasis\Coin\Address\SolanaAddress;
 use BitOasis\Coin\Address\StellarAddress;
 use BitOasis\Coin\Address\StorjAddress;
+use BitOasis\Coin\Address\SuiAddress;
 use BitOasis\Coin\Address\SushiAddress;
 use BitOasis\Coin\Address\SynthetixAddress;
 use BitOasis\Coin\Address\Terra2Address;
@@ -72,14 +79,18 @@ use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
 use BitOasis\Coin\Address\TetherGoldAddress;
+use BitOasis\Coin\Address\ToncoinAddress;
 use BitOasis\Coin\Address\TronAddress;
 use BitOasis\Coin\Address\TrueUsdAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\VeChainAddress;
+use BitOasis\Coin\Address\VerasityAddress;
 use BitOasis\Coin\Address\VergeAddress;
 use BitOasis\Coin\Address\WavesAddress;
+use BitOasis\Coin\Address\WilderWorldAddress;
 use BitOasis\Coin\Address\WrappedBitcoinAddress;
+use BitOasis\Coin\Address\XdcNetworkAddress;
 use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
@@ -333,6 +344,39 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
+		],
+		Cryptocurrency::BLUR => [
+			CryptocurrencyNetwork::ETHEREUM => BlurAddress::class
+		],
+		Cryptocurrency::OP => [
+			CryptocurrencyNetwork::ETHEREUM => OptimismAddress::class
+		],
+		Cryptocurrency::QRDO => [
+			CryptocurrencyNetwork::ETHEREUM => QredoAddress::class
+		],
+		Cryptocurrency::BOSON => [
+			CryptocurrencyNetwork::ETHEREUM => BosonAddress::class
+		],
+		Cryptocurrency::FLOKI => [
+			CryptocurrencyNetwork::ETHEREUM => FlokiAddress::class
+		],
+		Cryptocurrency::VRA => [
+			CryptocurrencyNetwork::ETHEREUM => VerasityAddress::class
+		],
+		Cryptocurrency::WILD => [
+			CryptocurrencyNetwork::ETHEREUM => WilderWorldAddress::class
+		],
+		Cryptocurrency::SUI => [
+			CryptocurrencyNetwork::SUI => SuiAddress::class
+		],
+		Cryptocurrency::SEI => [
+			CryptocurrencyNetwork::SEI => SeiAddress::class
+		],
+		Cryptocurrency::XDC => [
+			CryptocurrencyNetwork::XDC_NETWORK => XdcNetworkAddress::class
+		],
+		Cryptocurrency::TON => [
+			CryptocurrencyNetwork::TON => ToncoinAddress::class
 		]
 	];
 
