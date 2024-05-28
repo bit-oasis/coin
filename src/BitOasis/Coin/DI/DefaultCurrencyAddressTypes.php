@@ -61,7 +61,7 @@ use BitOasis\Coin\Address\OneInchAddress;
 use BitOasis\Coin\Address\OptimismAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
-use BitOasis\Coin\Address\QredoAddress;
+use BitOasis\Coin\Address\OpenAddress;
 use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RippleAddress;
 use BitOasis\Coin\Address\SeiAddress;
@@ -351,8 +351,8 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::OP => [
 			CryptocurrencyNetwork::ETHEREUM => OptimismAddress::class
 		],
-		Cryptocurrency::QRDO => [
-			CryptocurrencyNetwork::ETHEREUM => QredoAddress::class
+		Cryptocurrency::OPEN => [
+			CryptocurrencyNetwork::ETHEREUM => OpenAddress::class
 		],
 		Cryptocurrency::BOSON => [
 			CryptocurrencyNetwork::ETHEREUM => BosonAddress::class
