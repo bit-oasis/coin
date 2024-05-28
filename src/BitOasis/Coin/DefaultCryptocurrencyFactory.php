@@ -127,7 +127,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::SGB] = new Cryptocurrency(Cryptocurrency::SGB, 18, 'Songbird');
 		$this->cryptocurrencies[Cryptocurrency::BLUR] = new Cryptocurrency(Cryptocurrency::BLUR, 18, 'Blur');
 		$this->cryptocurrencies[Cryptocurrency::OP] = new Cryptocurrency(Cryptocurrency::OP, 18, 'Optimism');
-		$this->cryptocurrencies[Cryptocurrency::QRDO] = new Cryptocurrency(Cryptocurrency::QRDO, 8, 'QREDO');
+		$this->cryptocurrencies[Cryptocurrency::OPEN] = new Cryptocurrency(Cryptocurrency::OPEN, 8, 'Open Custody Protocol');
 		$this->cryptocurrencies[Cryptocurrency::BOSON] = new Cryptocurrency(Cryptocurrency::BOSON, 18, 'BOSON');
 		$this->cryptocurrencies[Cryptocurrency::FLOKI] = new Cryptocurrency(Cryptocurrency::FLOKI, 9, 'FLOKI');
 		$this->cryptocurrencies[Cryptocurrency::WILD] = new Cryptocurrency(Cryptocurrency::WILD, 18, 'Wilder World');

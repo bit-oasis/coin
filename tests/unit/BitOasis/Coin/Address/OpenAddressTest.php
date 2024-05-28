@@ -11,7 +11,7 @@ use UnitTestUtils;
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class QredoAddressTest extends UnitTest {
+class OpenAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -57,13 +57,13 @@ class QredoAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return QredoAddress
+	 * @return OpenAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new QredoAddress(
+		return new OpenAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::QRDO),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::OPEN),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}

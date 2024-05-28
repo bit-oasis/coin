@@ -115,7 +115,7 @@ class Cryptocurrency {
 	// MAY 2024
 	const BLUR = 'BLUR';
 	const OP = 'OP';
-	const QRDO = 'QRDO';
+	const OPEN = 'OPEN';
 	const BOSON = 'BOSON';
 	const FLOKI = 'FLOKI';
 	const WILD = 'WILD';
