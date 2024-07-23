@@ -68,6 +68,11 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::SEI] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SEI, 'Sei');
 		$this->networks[CryptocurrencyNetwork::XDC_NETWORK] = new CryptocurrencyNetwork(CryptocurrencyNetwork::XDC_NETWORK, 'XinFin');
 		$this->networks[CryptocurrencyNetwork::TON] = new CryptocurrencyNetwork(CryptocurrencyNetwork::TON, 'The Open Network');
+		$this->networks[CryptocurrencyNetwork::CELO] = new CryptocurrencyNetwork(CryptocurrencyNetwork::CELO, 'Celo');
+		$this->networks[CryptocurrencyNetwork::FLARE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::FLARE, 'Flare');
+		$this->networks[CryptocurrencyNetwork::INJECTIVE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::INJECTIVE, 'Injective');
+		$this->networks[CryptocurrencyNetwork::KAVA] = new CryptocurrencyNetwork(CryptocurrencyNetwork::KAVA, 'Kava');
+		$this->networks[CryptocurrencyNetwork::SONGBIRD] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SONGBIRD, 'Songbird');
 	}
 
 }
