@@ -3,6 +3,7 @@
 namespace unit\BitOasis\Coin\Address;
 
 use BitOasis\Coin\Address\DeversifiTokenAddress;
+use BitOasis\Coin\Address\DuskNetworkAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -57,8 +58,8 @@ class DuskNetworkAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): DeversifiTokenAddress {
-		return new DeversifiTokenAddress(
+	protected function createAddress(string $address): DuskNetworkAddress {
+		return new DuskNetworkAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::DUSK),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
