@@ -134,7 +134,34 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::SUI] = new Cryptocurrency(Cryptocurrency::SUI, 9, 'Sui');
 		$this->cryptocurrencies[Cryptocurrency::SEI] = new Cryptocurrency(Cryptocurrency::SEI, 18, 'Sei Network');
 		$this->cryptocurrencies[Cryptocurrency::TON] = new Cryptocurrency(Cryptocurrency::TON, 9, 'Toncoin');
-
+		$this->cryptocurrencies[Cryptocurrency::AMP] = new Cryptocurrency(Cryptocurrency::AMP, 9, 'Ampleforth');
+		$this->cryptocurrencies[Cryptocurrency::BEST] = new Cryptocurrency(Cryptocurrency::BEST, 8, 'Bitpanda');
+		$this->cryptocurrencies[Cryptocurrency::CELO] = new Cryptocurrency(Cryptocurrency::CELO, 18, 'Celo');
+		$this->cryptocurrencies[Cryptocurrency::DUSK] = new Cryptocurrency(Cryptocurrency::DUSK, 18, 'Dusk Network');
+		$this->cryptocurrencies[Cryptocurrency::DVF] = new Cryptocurrency(Cryptocurrency::DVF, 18, 'Deversifi Token');
+		$this->cryptocurrencies[Cryptocurrency::FCL] = new Cryptocurrency(Cryptocurrency::FCL, 18, 'Fractal');
+		$this->cryptocurrencies[Cryptocurrency::FLR] = new Cryptocurrency(Cryptocurrency::FLR, 18, 'Flare');
+		$this->cryptocurrencies[Cryptocurrency::FORTH] = new Cryptocurrency(Cryptocurrency::FORTH, 18, 'FORTH');
+		$this->cryptocurrencies[Cryptocurrency::FUN] = new Cryptocurrency(Cryptocurrency::FUN, 8, 'FunFair');
+		$this->cryptocurrencies[Cryptocurrency::HMT] = new Cryptocurrency(Cryptocurrency::HMT, 18, 'Human');
+		$this->cryptocurrencies[Cryptocurrency::INJ] = new Cryptocurrency(Cryptocurrency::INJ, 18, 'Injective');
+		$this->cryptocurrencies[Cryptocurrency::JUP] = new Cryptocurrency(Cryptocurrency::JUP, 6, 'Jupiter');
+		$this->cryptocurrencies[Cryptocurrency::KAVA] = new Cryptocurrency(Cryptocurrency::KAVA, 18, 'KAVA');
+		$this->cryptocurrencies[Cryptocurrency::MEME] = new Cryptocurrency(Cryptocurrency::MEME, 18, 'Memecoin');
+		$this->cryptocurrencies[Cryptocurrency::MIM] = new Cryptocurrency(Cryptocurrency::MIM, 18, 'Magic Internet Money');
+		$this->cryptocurrencies[Cryptocurrency::MLN] = new Cryptocurrency(Cryptocurrency::MLN, 18, 'Melon');
+		$this->cryptocurrencies[Cryptocurrency::OGN] = new Cryptocurrency(Cryptocurrency::OGN, 18, 'Origin Protocol');
+		$this->cryptocurrencies[Cryptocurrency::PAX] = new Cryptocurrency(Cryptocurrency::PAX, 18, 'Paxos');
+		$this->cryptocurrencies[Cryptocurrency::PLU] = new Cryptocurrency(Cryptocurrency::PLU, 18, 'Pluton');
+		$this->cryptocurrencies[Cryptocurrency::PNK] = new Cryptocurrency(Cryptocurrency::PNK, 18, 'Kleros');
+		$this->cryptocurrencies[Cryptocurrency::REQ] = new Cryptocurrency(Cryptocurrency::REQ, 18, 'Request Network');
+		$this->cryptocurrencies[Cryptocurrency::SIDUS] = new Cryptocurrency(Cryptocurrency::SIDUS, 18, 'SIDUS');
+		$this->cryptocurrencies[Cryptocurrency::SPELL] = new Cryptocurrency(Cryptocurrency::SPELL, 18, 'SPELL');
+		$this->cryptocurrencies[Cryptocurrency::STG] = new Cryptocurrency(Cryptocurrency::STG, 18, 'Stargate Finance');
+		$this->cryptocurrencies[Cryptocurrency::SUKU] = new Cryptocurrency(Cryptocurrency::SUKU, 18, 'SUKU');
+		$this->cryptocurrencies[Cryptocurrency::UOS] = new Cryptocurrency(Cryptocurrency::UOS, 4, 'Ultra');
+		$this->cryptocurrencies[Cryptocurrency::WOO] = new Cryptocurrency(Cryptocurrency::WOO, 18, 'WOO');
+		$this->cryptocurrencies[Cryptocurrency::XTP] = new Cryptocurrency(Cryptocurrency::XTP, 18, 'Tap');
 	}
 
 }

@@ -53,6 +53,10 @@ class CryptocurrencyNetwork {
 	const SUI = 'sui';
 	const SEI = 'sei';
 	const TON = 'ton';
+	const CELO = 'celo';
+	const FLARE = 'flare';
+	const INJECTIVE = 'injective';
+	const KAVA = 'kava';
 
 	/** @var string */
 	protected $code;

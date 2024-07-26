@@ -123,6 +123,36 @@ class Cryptocurrency {
 	const SEI = 'SEI';
 	const TON = 'TON';
 
+	// July 2024
+	const AMP = 'AMP';
+	const BEST = 'BEST';
+	const CELO = 'CELO';
+	const DUSK = 'DUSK';
+	const DVF = 'DVF';
+	const FCL = 'FCL';
+	const FLR = 'FLR';
+	const FORTH = 'FORTH';
+	const FUN = 'FUN';
+	const HMT = 'HMT';
+	const INJ = 'INJ';
+	const JUP = 'JUP';
+	const KAVA = 'KAVA';
+	const MEME = 'MEME';
+	const MIM = 'MIM';
+	const MLN = 'MLN';
+	const OGN = 'OGN';
+	const PAX = 'PAX';
+	const PLU = 'PLU';
+	const PNK = 'PNK';
+	const REQ = 'REQ';
+	const SIDUS = 'SIDUS';
+	const SPELL = 'SPELL';
+	const STG = 'STG';
+	const SUKU = 'SUKU';
+	const UOS = 'UOS';
+	const WOO = 'WOO';
+	const XTP = 'XTP';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
