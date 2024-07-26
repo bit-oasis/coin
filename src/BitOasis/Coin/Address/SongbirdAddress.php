@@ -2,11 +2,11 @@
 
 namespace BitOasis\Coin\Address;
 
+use BitOasis\Coin\Address\Validators\SongbirdAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
 
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
@@ -110,6 +110,6 @@ class SongbirdAddress implements CryptocurrencyAddress {
 	}
 
 	public function isValid(string $address): bool {
-		return (new ETHValidator($address))->validate();
+		return (new SongbirdAddressValidator($address))->validate();
 	}
 }

@@ -14,7 +14,7 @@ use UnitTestUtils;
  */
 class JupiterAddressTest extends UnitTest {
 
-	public function providerInvalidAddress() {
+	public function providerInvalidAddress(): array {
 		return [
 			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
 			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRW1'],
