@@ -407,7 +407,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::TON => [
 			CryptocurrencyNetwork::TON => ToncoinAddress::class
 		],
-		Cryptocurrency::AMP => [
+		Cryptocurrency::AMPL => [
 			CryptocurrencyNetwork::ETHEREUM => AmpleforthAddress::class
 		],
 		Cryptocurrency::BEST => [

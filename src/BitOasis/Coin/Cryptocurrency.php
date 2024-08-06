@@ -124,7 +124,7 @@ class Cryptocurrency {
 	const TON = 'TON';
 
 	// July 2024
-	const AMP = 'AMP';
+	const AMPL = 'AMPL';
 	const BEST = 'BEST';
 	const CELO = 'CELO';
 	const DUSK = 'DUSK';
