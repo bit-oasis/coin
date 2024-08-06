@@ -60,7 +60,7 @@ class AmpleforthAddressTest extends UnitTest {
 	protected function createAddress(string $address): AmpleforthAddress {
 		return new AmpleforthAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::AMP),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::AMPL),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
