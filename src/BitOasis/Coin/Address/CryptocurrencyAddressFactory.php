@@ -13,7 +13,7 @@ use BitOasis\Coin\Exception\InvalidCurrencyException;
  */
 class CryptocurrencyAddressFactory {
 
-	/** @var CryptocurrencyAddress[] keys are currency codes */
+	/** @var CryptocurrencyAddress[] keys are currency network codes */
 	protected $types;
 
 	/**
@@ -25,39 +25,28 @@ class CryptocurrencyAddressFactory {
 	}
 
 	/**
-	 * @param string $value
-	 * @param Cryptocurrency $cryptocurrency
-	 * @param CryptocurrencyNetwork|null $cryptocurrencyNetwork
-	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 * @throws InvalidCurrencyException
 	 */
-	public function create($value, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+	public function create(?string $value, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork): ?CryptocurrencyAddress {
 		return $this->deserialize($value, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
 	/**
-	 * @param string $value
-	 * @param Cryptocurrency $currency
-	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
-	 * @return CryptocurrencyAddress
 	 * @throws InvalidAddressException
 	 * @throws InvalidCurrencyException
 	 */
-	public function deserialize($value, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+	public function deserialize(?string $value, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork): ?CryptocurrencyAddress {
 		if ($value === null) {
 			return null;
 		}
-		if (!isset($this->types[$currency->getCode()])) {
-			throw new InvalidCurrencyException('Address handler for currency ' . $currency->getCode() . ' not found!');
+
+		if (!isset($this->types[$cryptocurrencyNetwork->getCode()])) {
+			throw new InvalidAddressException(count($this->types));
+			throw new InvalidCurrencyException('Address handler for network ' . $cryptocurrencyNetwork->getCode() . ' not found!');
 		}
 
-		if (!isset($this->types[$currency->getCode()][$cryptocurrencyNetwork->getCode()])) {
-			throw new InvalidCurrencyException('Address handler for ' . $currency->getCode() . ' network ' . $cryptocurrencyNetwork->getCode() . ' not found!');
-		}
-
-		/** @var CryptocurrencyAddress $cryptocurrencyAddressClass */
-		$cryptocurrencyAddressClass = $this->types[$currency->getCode()][$cryptocurrencyNetwork->getCode()];
+		$cryptocurrencyAddressClass = $this->types[$cryptocurrencyNetwork->getCode()];
 		return $cryptocurrencyAddressClass::deserialize($value, $currency, $cryptocurrencyNetwork);
 	}
 
