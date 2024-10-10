@@ -153,6 +153,9 @@ class Cryptocurrency {
 	const WOO = 'WOO';
 	const XTP = 'XTP';
 
+	// October 2024
+	const POL = 'POL';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
