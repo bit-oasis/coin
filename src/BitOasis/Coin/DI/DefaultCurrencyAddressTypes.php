@@ -82,6 +82,7 @@ use BitOasis\Coin\Address\PlutonAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\PolygonAddress;
 use BitOasis\Coin\Address\OpenAddress;
+use BitOasis\Coin\Address\PolygonEcosystemTokenAddress;
 use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
@@ -493,6 +494,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::XTP => [
 			CryptocurrencyNetwork::ETHEREUM => TapAddress::class
+		],
+		Cryptocurrency::POL => [
+			CryptocurrencyNetwork::ETHEREUM => PolygonEcosystemTokenAddress::class
 		]
 	];
 
