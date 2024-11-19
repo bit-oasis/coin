@@ -10,6 +10,8 @@ use StephenHill\Base58;
  */
 class SolanaAddressValidator implements ValidationInterface {
 
+	const HEX_BYTE_LENGTH = 32;
+
 	protected $address;
 
 	public function __construct($address) {
@@ -25,18 +27,13 @@ class SolanaAddressValidator implements ValidationInterface {
 			$binaryDecoded = $base58->decode($this->address);
 			$hexDecoded = bin2hex($binaryDecoded);
 
-			if (!\ctype_xdigit($hexDecoded) || strlen($hexDecoded) % 2 !== 0) {
+			if (!\ctype_xdigit($hexDecoded) || strlen($hexDecoded) % 2 !== 0 || strlen($binaryDecoded) !== self::HEX_BYTE_LENGTH) {
 				return false;
 			}
 
-			sodium_crypto_sign_ed25519_pk_to_curve25519($binaryDecoded);
-
 			return true;
-		} catch (\SodiumException $e) {
-		} catch (\InvalidArgumentException $e) {
 		} catch (\Exception $e) {
+			return false;
 		}
-
-		return false;
 	}
 }
