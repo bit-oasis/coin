@@ -5,8 +5,10 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AmpleforthAddress;
+use BitOasis\Coin\Address\ApeCoinAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
+use BitOasis\Coin\Address\ArtificialSuperintelligenceAllianceAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
@@ -84,8 +86,10 @@ use BitOasis\Coin\Address\PolygonAddress;
 use BitOasis\Coin\Address\OpenAddress;
 use BitOasis\Coin\Address\PolygonEcosystemTokenAddress;
 use BitOasis\Coin\Address\QtumAddress;
+use BitOasis\Coin\Address\RallyAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\TheSandboxAddress;
 use BitOasis\Coin\Address\SeiAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
 use BitOasis\Coin\Address\SidusAddress;
@@ -497,6 +501,18 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::POL => [
 			CryptocurrencyNetwork::ETHEREUM => PolygonEcosystemTokenAddress::class
+		],
+		Cryptocurrency::APE => [
+			CryptocurrencyNetwork::ETHEREUM => ApeCoinAddress::class
+		],
+		Cryptocurrency::FET => [
+			CryptocurrencyNetwork::ETHEREUM => ArtificialSuperintelligenceAllianceAddress::class
+		],
+		Cryptocurrency::RLY => [
+			CryptocurrencyNetwork::ETHEREUM => RallyAddress::class
+		],
+		Cryptocurrency::SAND => [
+			CryptocurrencyNetwork::ETHEREUM => TheSandboxAddress::class
 		]
 	];
 
