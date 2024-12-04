@@ -22,8 +22,7 @@ class JupiterAddressTest extends UnitTest {
 			['058empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWm'],
 			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
 			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
-			['2to3kfM6w5Z16CTbLj8N8mcxQsQKHPmNEGYTAyMPKAoX'],
-			['4yhAARGVmryMueZ39XHLi1wvdgQ1rc6vBRQKfLeiczeZ']
+			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifp'],
 		];
 	}
 
