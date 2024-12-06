@@ -156,6 +156,16 @@ class Cryptocurrency {
 	// October 2024
 	const POL = 'POL';
 
+	// December 2024
+	const PEPE = 'PEPE';
+	const BONK = 'BONK';
+	const TOMI = 'TOMI';
+	const TURBO = 'TURBO';
+	const WBT = 'WBT';
+	const ENA = 'ENA';
+	const MEW = 'MEW';
+	const TIA = 'TIA';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';

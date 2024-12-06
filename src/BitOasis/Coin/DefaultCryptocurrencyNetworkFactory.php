@@ -73,6 +73,7 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::INJECTIVE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::INJECTIVE, 'Injective');
 		$this->networks[CryptocurrencyNetwork::KAVA] = new CryptocurrencyNetwork(CryptocurrencyNetwork::KAVA, 'Kava');
 		$this->networks[CryptocurrencyNetwork::SONGBIRD] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SONGBIRD, 'Songbird');
+		$this->networks[CryptocurrencyNetwork::CELESTIA] = new CryptocurrencyNetwork(CryptocurrencyNetwork::CELESTIA, 'Celestia');
 	}
 
 }
