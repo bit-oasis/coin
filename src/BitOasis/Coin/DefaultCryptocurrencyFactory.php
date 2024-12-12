@@ -83,7 +83,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::WBTC] = new Cryptocurrency(Cryptocurrency::WBTC, 8, 'Wrapped Bitcoin');
 		$this->cryptocurrencies[Cryptocurrency::LUNA] = new Cryptocurrency(Cryptocurrency::LUNA, 6, 'Terra');
 		$this->cryptocurrencies[Cryptocurrency::ATOM] = new Cryptocurrency(Cryptocurrency::ATOM, 6, 'Cosmos');
-		$this->cryptocurrencies[Cryptocurrency::NEAR] = new Cryptocurrency(Cryptocurrency::NEAR, 18, 'Near Protocol');
+		$this->cryptocurrencies[Cryptocurrency::NEAR] = new Cryptocurrency(Cryptocurrency::NEAR, 24, 'Near Protocol');
 		$this->cryptocurrencies[Cryptocurrency::ONE_INCH] = new Cryptocurrency(Cryptocurrency::ONE_INCH, 18, '1INCH');
 		$this->cryptocurrencies[Cryptocurrency::ANT] = new Cryptocurrency(Cryptocurrency::ANT, 18, 'Aragon');
 		$this->cryptocurrencies[Cryptocurrency::AXS] = new Cryptocurrency(Cryptocurrency::AXS, 18, 'Axie Infinity');
@@ -163,6 +163,14 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::WOO] = new Cryptocurrency(Cryptocurrency::WOO, 18, 'WOO');
 		$this->cryptocurrencies[Cryptocurrency::XTP] = new Cryptocurrency(Cryptocurrency::XTP, 18, 'Tap');
 		$this->cryptocurrencies[Cryptocurrency::POL] = new Cryptocurrency(Cryptocurrency::POL, 18, 'Polygon Ecosystem Token');
+		$this->cryptocurrencies[Cryptocurrency::PEPE] = new Cryptocurrency(Cryptocurrency::PEPE, 18, 'Pepe');
+		$this->cryptocurrencies[Cryptocurrency::BONK] = new Cryptocurrency(Cryptocurrency::BONK, 5, 'Bonk');
+		$this->cryptocurrencies[Cryptocurrency::TOMI] = new Cryptocurrency(Cryptocurrency::TOMI, 18, 'Tomi');
+		$this->cryptocurrencies[Cryptocurrency::TURBO] = new Cryptocurrency(Cryptocurrency::TURBO, 18, 'Turbo');
+		$this->cryptocurrencies[Cryptocurrency::WBT] = new Cryptocurrency(Cryptocurrency::WBT, 8, 'WhiteBIT Coin');
+		$this->cryptocurrencies[Cryptocurrency::ENA] = new Cryptocurrency(Cryptocurrency::ENA, 18, 'Ethena');
+		$this->cryptocurrencies[Cryptocurrency::MEW] = new Cryptocurrency(Cryptocurrency::MEW, 5, 'Cat in a dogs world');
+		$this->cryptocurrencies[Cryptocurrency::TIA] = new Cryptocurrency(Cryptocurrency::TIA, 6, 'Celestia');
 	}
 
 }

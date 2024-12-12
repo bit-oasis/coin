@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\JupiterAddress;
+use BitOasis\Coin\Address\TomiAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -12,27 +12,25 @@ use UnitTestUtils;
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class JupiterAddressTest extends UnitTest {
+class TomiAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
 			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRW1'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWt'],
-			['058empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWm'],
-			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
-			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
-			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifp'],
+			['0x6c3e4cb2e96b01f4b866965a91ed4437839a121g'],
+			['tz1fhW886WYc5PQuGu7M3TRjwVTjrtQnKoqM'],
+			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx'],
+			['44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A'],
 		];
 	}
 
 	public function providerValidate(): array {
 		return [
-			['9U1wkWJHp8mcM8ym1XLWXMA59joVQkVmEFmzMHDJUs5N'],
-			['BBqy6gAVMzRH1S7y9XvBNaS3axRovqe2VgNrgwYc3mYM'],
-			['4qWht7gPqJSZtXkKFPG2F1SiU3rF9mLyGGkBpc65x89A'],
-			['F5yjFizPn67RYothrP6bCDzGDRhvp4AZdbR8zRafmccE'],
-			['4sSqDkbxEcJmiP4J1NqQja98KSwux3KR8XtLQSUyLECY'],
+			['0xA3222357a0eCCF60C73606170be6c99ADeCb59b3'],
+			['0x8631dc5c5B3485c177A89b9D4Ee99fB8A5EDf303'],
+			['0xb2bE6744A14173912D087E37C94073C6cCD951cb'],
+			['0xC30a437a94ec6c98be0Abbd2fF2f6b29a7aBE1D9'],
+			['0xf89d7b9c864f589bbF53a82105107622B35EaA40'],
 		];
 	}
 
@@ -59,12 +57,11 @@ class JupiterAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): JupiterAddress {
-		return new JupiterAddress(
+	protected function createAddress(string $address): TomiAddress {
+		return new TomiAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::JUP),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SOLANA)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::TOMI),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
-
 }

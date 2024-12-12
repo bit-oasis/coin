@@ -1,7 +1,8 @@
 <?php
 
-namespace BitOasis\Coin\Address;
+namespace unit\BitOasis\Coin\Address;
 
+use BitOasis\Coin\Address\BonkAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -9,9 +10,9 @@ use UnitTest;
 use UnitTestUtils;
 
 /**
- * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
+ * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class SolanaAddressTest extends UnitTest {
+class BonkAddressTest extends UnitTest {
 
 	public function providerInvalidAddress() {
 		return [
@@ -27,10 +28,10 @@ class SolanaAddressTest extends UnitTest {
 
 	public function providerValidate() {
 		return [
-			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifpto'],
-			['8xW2s6Fgvkry7LCj9iysHpEKd65JqgV3QUaArGgXbFau'],
-			['AmbcqD1BDrREBGHtRgcCjVe5JsEFTQ8T2r4Hi82ETP9e'],
-			['3U5H7KoAi7jYothucy47vZqh5N3NYCPh436Tsghukw62'] // off-curve address
+			['7WQX98AWmbn6keR2vVHdZ3dfwzaLuUyAnr2DZ4rGhh3o'],
+			['MfDuWeqSHEqTFVYZ7LoexgAK9dxk7cy4DFJWjWMGVWa'],
+			['4WbJQHEENjrFxpgS3pvvcUSd9SnJCpWvSdFFXHjdx44C'],
+			['4WbJQHEENjrFxpgS3pvvcUSd9SnJCpWvSdFFXHjdx44C']
 		];
 	}
 
@@ -39,7 +40,7 @@ class SolanaAddressTest extends UnitTest {
 	 * @dataProvider providerInvalidAddress
 	 */
 	public function testInvalidAddress(string $address) {
-		$this->tester->expectThrowable(InvalidAddressException::class, function() use ($address) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address) {
 			$this->createAddress($address);
 		});
 	}
@@ -50,21 +51,19 @@ class SolanaAddressTest extends UnitTest {
 	 * @dataProvider providerValidate
 	 */
 	public function testAdditionalId(string $address) {
-		$solanaAddress = $this->createAddress($address);
-		$this->assertFalse($solanaAddress->supportsAdditionalId());
-		$this->assertNull($solanaAddress->getAdditionalIdName());
-		$this->assertNull($solanaAddress->getAdditionalId());
+		$createdAddress = $this->createAddress($address);
+		$this->assertFalse($createdAddress->supportsAdditionalId());
+		$this->assertNull($createdAddress->getAdditionalIdName());
+		$this->assertNull($createdAddress->getAdditionalId());
 	}
 
 	/**
-	 * @param string $address
-	 * @return SolanaAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): SolanaAddress {
-		return new SolanaAddress(
+	protected function createAddress(string $address): BonkAddress {
+		return new BonkAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::SOL),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::BONK),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SOLANA)
 		);
 	}

@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\JupiterAddress;
+use BitOasis\Coin\Address\EthenaAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -12,27 +12,25 @@ use UnitTestUtils;
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class JupiterAddressTest extends UnitTest {
+class EthenaAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
 			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRW1'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWt'],
-			['058empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWm'],
-			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
-			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
-			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifp'],
+			['0x6c3e4cb2e96b01f4b866965a91ed4437839a121g'],
+			['tz1fhW886WYc5PQuGu7M3TRjwVTjrtQnKoqM'],
+			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx'],
+			['44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A'],
 		];
 	}
 
 	public function providerValidate(): array {
 		return [
-			['9U1wkWJHp8mcM8ym1XLWXMA59joVQkVmEFmzMHDJUs5N'],
-			['BBqy6gAVMzRH1S7y9XvBNaS3axRovqe2VgNrgwYc3mYM'],
-			['4qWht7gPqJSZtXkKFPG2F1SiU3rF9mLyGGkBpc65x89A'],
-			['F5yjFizPn67RYothrP6bCDzGDRhvp4AZdbR8zRafmccE'],
-			['4sSqDkbxEcJmiP4J1NqQja98KSwux3KR8XtLQSUyLECY'],
+			['0xDFd5293D8e347dFe59E90eFd55b2956a1343963d'],
+			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
+			['0x22F9dCF4647084d6C31b2765F6910cd85C178C18'],
+			['0x22F1153DF3FF6b8336a7193271Ca5316B6C9824D'],
+			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
 		];
 	}
 
@@ -59,12 +57,11 @@ class JupiterAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): JupiterAddress {
-		return new JupiterAddress(
+	protected function createAddress(string $address): EthenaAddress {
+		return new EthenaAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::JUP),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SOLANA)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ENA),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
-
 }

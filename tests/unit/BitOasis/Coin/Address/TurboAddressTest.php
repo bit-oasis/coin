@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\JupiterAddress;
+use BitOasis\Coin\Address\TurboAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -12,27 +12,25 @@ use UnitTestUtils;
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class JupiterAddressTest extends UnitTest {
+class TurboAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
 			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRW1'],
-			['158empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWt'],
-			['058empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWm'],
-			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
-			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
-			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifp'],
+			['0x6c3e4cb2e96b01f4b866965a91ed4437839a121g'],
+			['tz1fhW886WYc5PQuGu7M3TRjwVTjrtQnKoqM'],
+			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx'],
+			['44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A'],
 		];
 	}
 
 	public function providerValidate(): array {
 		return [
-			['9U1wkWJHp8mcM8ym1XLWXMA59joVQkVmEFmzMHDJUs5N'],
-			['BBqy6gAVMzRH1S7y9XvBNaS3axRovqe2VgNrgwYc3mYM'],
-			['4qWht7gPqJSZtXkKFPG2F1SiU3rF9mLyGGkBpc65x89A'],
-			['F5yjFizPn67RYothrP6bCDzGDRhvp4AZdbR8zRafmccE'],
-			['4sSqDkbxEcJmiP4J1NqQja98KSwux3KR8XtLQSUyLECY'],
+			['0xf2614A233c7C3e7f08b1F887Ba133a13f1eb2c55'],
+			['0x7baecE5d47f1BC5E1953FBE0E9931D54DAB6D810'],
+			['0xDEdDEE0019045D044B3430e3c8879cf8815BF2C9'],
+			['0x8107fcA5494375Fc743A9Fc4d4844353a1AF3D94'],
+			['0x9557C31D649fE33329c09CE8B3DA2A2661b4C988'],
 		];
 	}
 
@@ -59,12 +57,11 @@ class JupiterAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): JupiterAddress {
-		return new JupiterAddress(
+	protected function createAddress(string $address): TurboAddress {
+		return new TurboAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::JUP),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SOLANA)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::TURBO),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
-
 }
