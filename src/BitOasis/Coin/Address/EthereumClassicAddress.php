@@ -6,6 +6,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
+use BitOasis\Coin\Utils\Erc20AddressNormalizer;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
 
 /**
@@ -32,7 +33,7 @@ class EthereumClassicAddress implements CryptocurrencyAddress {
 		if(!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid ethereum classic address - ' . $address);
 		}
-		$this->address = $address;
+		$this->address = Erc20AddressNormalizer::normalize($address);
 		$this->currency = $currency;
 		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}

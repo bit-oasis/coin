@@ -7,6 +7,8 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Utils\Erc20AddressNormalizer;
+use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
 
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
@@ -29,10 +31,13 @@ class XdcNetworkAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
-		if (!$this->isValid($address)) {
+		$validErc20Address = $this->isValidErc20Address($address);
+		$validXdcNetworkAddress = $this->isValidXdcNativeAddress($address);
+
+		if (!$validErc20Address && !$validXdcNetworkAddress) {
 			throw new InvalidAddressException('This is not valid xdc network address - ' . $address);
 		}
-		$this->address = $address;
+		$this->address = $validErc20Address ? Erc20AddressNormalizer::normalize($address) : $address;
 		$this->currency = $currency;
 		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
@@ -126,11 +131,11 @@ class XdcNetworkAddress implements CryptocurrencyAddress {
 		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
 	}
 
-	/**
-	 * @param string $address
-	 * @return bool
-	 */
-	public function isValid(string $address): bool {
+	protected function isValidErc20Address(string $address): bool {
+		return (new ETHValidator($address))->validate();
+	}
+
+	protected function isValidXdcNativeAddress(string $address): bool {
 		return (new XdcNetworkAddressValidator($address))->validate();
 	}
 
