@@ -120,6 +120,7 @@ class InjectiveAddress implements CryptocurrencyAddress {
 	}
 
 	public function isValid(string $address, ?string $memo): bool {
+		// TODO: Move memo part validation inside validators
 		return $this->isValidBech32Address($address) || $this->isValidEvmAddress($address) && $memo === null;
 	}
 
