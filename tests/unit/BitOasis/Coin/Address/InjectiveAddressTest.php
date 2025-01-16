@@ -29,11 +29,12 @@ class InjectiveAddressTest extends UnitTest {
 
 	public function providerValidate(): array {
 		return [
-			['inj19za42zcxjewgn8wny65t44ey2l3muh62pa6wyj'],
-			['inj1y9vkk3ga59gq96amj9np7l67nuhnwg6rv4a06j'],
-			['inj1wtlqvv3zy7v9j6eyzyulvgafzqnp8hzy7ar4az'],
-			['0x3eaDb84Db9317f6cFc21D7203D3dB854F16200ca'],
-			['0xf5213a6a2f0890321712520b8048D9886c1A9900'],
+			['inj19za42zcxjewgn8wny65t44ey2l3muh62pa6wyj', 1234556],
+			['inj1y9vkk3ga59gq96amj9np7l67nuhnwg6rv4a06j', 1234556],
+			['inj1wtlqvv3zy7v9j6eyzyulvgafzqnp8hzy7ar4az', 1234556],
+			['inj1u2rajhqtptzvu23leheta9yg99k3hazf4waf43', null],
+			['0x3eaDb84Db9317f6cFc21D7203D3dB854F16200ca', null],
+			['0xf5213a6a2f0890321712520b8048D9886c1A9900', null],
 		];
 	}
 
@@ -50,21 +51,23 @@ class InjectiveAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
-	public function testAdditionalId(string $address): void {
-		$createdAddress = $this->createAddress($address);
-		$this->assertFalse($createdAddress->supportsAdditionalId());
-		$this->assertNull($createdAddress->getAdditionalIdName());
-		$this->assertNull($createdAddress->getAdditionalId());
+	public function testAdditionalId(string $address, $memo = null): void {
+		$createdAddress = $this->createAddress($address, $memo);
+		$this->assertTrue($createdAddress->supportsAdditionalId());
+		$this->assertNotNull($createdAddress->getAdditionalIdName());
+		$this->assertEquals($memo, $createdAddress->getAdditionalId());
+		$this->assertEquals($createdAddress->getMemo(), $createdAddress->getAdditionalId());
 	}
 
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): InjectiveAddress {
+	protected function createAddress(string $address, $memo = null): InjectiveAddress {
 		return new InjectiveAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::INJ),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::INJECTIVE)
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::INJECTIVE),
+			$memo
 		);
 	}
 }
