@@ -17,6 +17,8 @@ class InjectiveAddressTest extends UnitTest {
 	public function providerInvalidAddress(): array {
 		return [
 			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
+			['0xf5213a6a2f0890321712520b8048D9886c1A9900'],
+			['0x3eaDb84Db9317f6cFc21D7203D3dB854F16200ca'],
 			['0x6c3e4cb2e96b01f4b866965a91ed4437839a121g'],
 			['tz1fhW886WYc5PQuGu7M3TRjwVTjrtQnKoqM'],
 			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx'],
@@ -33,8 +35,6 @@ class InjectiveAddressTest extends UnitTest {
 			['inj1y9vkk3ga59gq96amj9np7l67nuhnwg6rv4a06j', 1234556],
 			['inj1wtlqvv3zy7v9j6eyzyulvgafzqnp8hzy7ar4az', 1234556],
 			['inj1u2rajhqtptzvu23leheta9yg99k3hazf4waf43', null],
-			['0x3eaDb84Db9317f6cFc21D7203D3dB854F16200ca', null],
-			['0xf5213a6a2f0890321712520b8048D9886c1A9900', null],
 		];
 	}
 
@@ -56,7 +56,7 @@ class InjectiveAddressTest extends UnitTest {
 		$this->assertTrue($createdAddress->supportsAdditionalId());
 		$this->assertNotNull($createdAddress->getAdditionalIdName());
 		$this->assertEquals($memo, $createdAddress->getAdditionalId());
-		$this->assertEquals($createdAddress->getMemo(), $createdAddress->getAdditionalId());
+		$this->assertEquals($createdAddress->getTag(), $createdAddress->getAdditionalId());
 	}
 
 	/**
