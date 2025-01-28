@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\AethirAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AmpleforthAddress;
 use BitOasis\Coin\Address\ApeCoinAddress;
@@ -22,6 +23,7 @@ use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinGoldAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\BitgetTokenAddress;
 use BitOasis\Coin\Address\BitpandaAddress;
 use BitOasis\Coin\Address\BlurAddress;
 use BitOasis\Coin\Address\BonkAddress;
@@ -41,6 +43,7 @@ use BitOasis\Coin\Address\DeversifiTokenAddress;
 use BitOasis\Coin\Address\DigibyteAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
 use BitOasis\Coin\Address\DuskNetworkAddress;
+use BitOasis\Coin\Address\EigenLayerAddress;
 use BitOasis\Coin\Address\ElrondEgoldAddress;
 use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
@@ -62,7 +65,9 @@ use BitOasis\Coin\Address\GraphAddress;
 use BitOasis\Coin\Address\HumanAddress;
 use BitOasis\Coin\Address\InjectiveAddress;
 use BitOasis\Coin\Address\IotaAddress;
+use BitOasis\Coin\Address\JasmyCoinAddress;
 use BitOasis\Coin\Address\JupiterAddress;
+use BitOasis\Coin\Address\KarateCombatAddress;
 use BitOasis\Coin\Address\KavaAddress;
 use BitOasis\Coin\Address\KlerosAddress;
 use BitOasis\Coin\Address\KyberAddress;
@@ -75,6 +80,7 @@ use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MelonAddress;
 use BitOasis\Coin\Address\MemecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
+use BitOasis\Coin\Address\MultiversxEgldAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\NexoAddress;
@@ -94,6 +100,7 @@ use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RallyAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\StarknetAddress;
 use BitOasis\Coin\Address\TheSandboxAddress;
 use BitOasis\Coin\Address\SeiAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
@@ -116,6 +123,7 @@ use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
 use BitOasis\Coin\Address\TetherGoldAddress;
+use BitOasis\Coin\Address\TokenFiAddress;
 use BitOasis\Coin\Address\TomiAddress;
 use BitOasis\Coin\Address\ToncoinAddress;
 use BitOasis\Coin\Address\TronAddress;
@@ -545,6 +553,30 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::TIA => [
 			CryptocurrencyNetwork::CELESTIA => CelestiaAddress::class
+		],
+		Cryptocurrency::TOKEN => [
+			CryptocurrencyNetwork::ETHEREUM => TokenFiAddress::class
+		],
+		Cryptocurrency::EIGEN => [
+			CryptocurrencyNetwork::ETHEREUM => EigenLayerAddress::class
+		],
+		Cryptocurrency::JASMY => [
+			CryptocurrencyNetwork::ETHEREUM => JasmyCoinAddress::class
+		],
+		Cryptocurrency::STRK => [
+			CryptocurrencyNetwork::ETHEREUM => StarknetAddress::class
+		],
+		Cryptocurrency::ATH => [
+			CryptocurrencyNetwork::ETHEREUM => AethirAddress::class
+		],
+		Cryptocurrency::BGB => [
+			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
+		],
+		Cryptocurrency::XEGLD => [
+			CryptocurrencyNetwork::ETHEREUM => MultiversxEgldAddress::class
+		],
+		Cryptocurrency::KARATE => [
+			CryptocurrencyNetwork::ETHEREUM => KarateCombatAddress::class
 		],
 	];
 
