@@ -30,7 +30,6 @@ class CosmosAddressTest extends UnitTest {
 			['1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht513513', 4294967295],
 			['1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5cosmos', 4294967295],
 			['cosmos1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht3', null],
-			['cosmos1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht3', 'some-stupid-memo'],
 		];
 	}
 
@@ -38,6 +37,7 @@ class CosmosAddressTest extends UnitTest {
 		return [
 			['cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74#3140149957', 'cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74', '3140149957'],
 			['cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74#4294967295', 'cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74', '4294967295'],
+			['cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74#ABCD123', 'cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74', 'ABCD123'],
 		];
 	}
 

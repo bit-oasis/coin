@@ -50,6 +50,14 @@ class CryptocurrencyNetwork {
 	const ROOTSTOCK_BITCOIN = 'rsk_bitcoin';
 	const XDC_NETWORK = 'xdc_network';
 	const SONGBIRD = 'songbird';
+	const SUI = 'sui';
+	const SEI = 'sei';
+	const TON = 'ton';
+	const CELO = 'celo';
+	const FLARE = 'flare';
+	const INJECTIVE = 'injective';
+	const KAVA = 'kava';
+	const CELESTIA = 'celestia';
 
 	/** @var string */
 	protected $code;

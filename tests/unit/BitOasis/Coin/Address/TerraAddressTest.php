@@ -30,7 +30,6 @@ class TerraAddressTest extends UnitTest {
 			['1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht513513', 4294967295],
 			['1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5terra', 4294967295],
 			['terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht3', null],
-			['terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht3', 'some-stupid-memo'],
 		];
 	}
 
@@ -38,6 +37,7 @@ class TerraAddressTest extends UnitTest {
 		return [
 			['terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5#3140149957', 'terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5', '3140149957'],
 			['terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5#4294967295', 'terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5', '4294967295'],
+			['terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5#ABCD123', 'terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5', 'ABCD123'],
 		];
 	}
 

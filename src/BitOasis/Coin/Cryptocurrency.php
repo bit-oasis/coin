@@ -112,6 +112,60 @@ class Cryptocurrency {
 	const UTK = 'UTK';
 	const SGB = 'SGB';
 
+	// MAY 2024
+	const BLUR = 'BLUR';
+	const OP = 'OP';
+	const OPEN = 'OPEN';
+	const BOSON = 'BOSON';
+	const FLOKI = 'FLOKI';
+	const WILD = 'WILD';
+	const SUI = 'SUI';
+	const SEI = 'SEI';
+	const TON = 'TON';
+
+	// July 2024
+	const AMPL = 'AMPL';
+	const BEST = 'BEST';
+	const CELO = 'CELO';
+	const DUSK = 'DUSK';
+	const DVF = 'DVF';
+	const FCL = 'FCL';
+	const FLR = 'FLR';
+	const FORTH = 'FORTH';
+	const FUN = 'FUN';
+	const HMT = 'HMT';
+	const INJ = 'INJ';
+	const JUP = 'JUP';
+	const KAVA = 'KAVA';
+	const MEME = 'MEME';
+	const MIM = 'MIM';
+	const MLN = 'MLN';
+	const OGN = 'OGN';
+	const PAX = 'PAX';
+	const PLU = 'PLU';
+	const PNK = 'PNK';
+	const REQ = 'REQ';
+	const SIDUS = 'SIDUS';
+	const SPELL = 'SPELL';
+	const STG = 'STG';
+	const SUKU = 'SUKU';
+	const UOS = 'UOS';
+	const WOO = 'WOO';
+	const XTP = 'XTP';
+
+	// October 2024
+	const POL = 'POL';
+
+	// December 2024
+	const PEPE = 'PEPE';
+	const BONK = 'BONK';
+	const TOMI = 'TOMI';
+	const TURBO = 'TURBO';
+	const WBT = 'WBT';
+	const ENA = 'ENA';
+	const MEW = 'MEW';
+	const TIA = 'TIA';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
