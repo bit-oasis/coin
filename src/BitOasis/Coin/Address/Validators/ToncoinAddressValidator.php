@@ -102,6 +102,10 @@ class ToncoinAddressValidator implements ValidationInterface {
 		}
 
 		$decoded = Base64Url::decode($address, true);
+		if ($decoded === false) {
+			throw new InvalidAddressException('This is not valid toncoin address - ' . $this->address, 0);
+		}
+
 		$checksum = ord($decoded[34]) << 8 | ord($decoded[35]);
 		$checksumData = substr($decoded, 0, 34);
 		if ($checksum !== $this->calculateChecksum($checksumData)) {
