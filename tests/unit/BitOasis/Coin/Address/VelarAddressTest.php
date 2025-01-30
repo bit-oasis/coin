@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
+use BitOasis\Coin\Address\VelarAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -57,8 +57,8 @@ class VelarAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): MagicInternetMoneyAddress {
-		return new MagicInternetMoneyAddress(
+	protected function createAddress(string $address): VelarAddress {
+		return new VelarAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::VELAR),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)

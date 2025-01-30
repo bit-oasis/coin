@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
+use BitOasis\Coin\Address\GominingAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -57,8 +57,8 @@ class GominingAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): MagicInternetMoneyAddress {
-		return new MagicInternetMoneyAddress(
+	protected function createAddress(string $address): GominingAddress {
+		return new GominingAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::GOMINING),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)

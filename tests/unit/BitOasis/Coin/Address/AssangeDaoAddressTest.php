@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
+use BitOasis\Coin\Address\AssangeDaoAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -57,8 +57,8 @@ class AssangeDaoAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): MagicInternetMoneyAddress {
-		return new MagicInternetMoneyAddress(
+	protected function createAddress(string $address): AssangeDaoAddress {
+		return new AssangeDaoAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::JUSTICE),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)

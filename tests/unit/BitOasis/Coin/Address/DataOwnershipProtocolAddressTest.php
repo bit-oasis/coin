@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
+use BitOasis\Coin\Address\DataOwnershipProtocolAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -57,8 +57,8 @@ class DataOwnershipProtocolAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): MagicInternetMoneyAddress {
-		return new MagicInternetMoneyAddress(
+	protected function createAddress(string $address): DataOwnershipProtocolAddress {
+		return new DataOwnershipProtocolAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::DOP),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
