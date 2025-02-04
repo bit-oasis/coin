@@ -2,9 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/php:7.4-node
+      - image: cimg/php:8.3
     steps:
       - checkout
+      - run: sudo apt-get update && sudo apt-get install -y libgmp-dev
       - run: sudo -E install-php-extensions gmp bcmath
       - run: COMPOSER_MEMORY_LIMIT=2G composer install --prefer-dist --no-interaction
       - run: php ./vendor/bin/codecept run unit
