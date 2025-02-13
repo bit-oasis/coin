@@ -73,6 +73,7 @@ use BitOasis\Coin\Address\KlerosAddress;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\KusamaAddress;
 use BitOasis\Coin\Address\LeoAddress;
+use BitOasis\Coin\Address\LidoDaoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
 use BitOasis\Coin\Address\MagicInternetMoneyAddress;
@@ -394,6 +395,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
+		],
+		Cryptocurrency::LDO => [
+			CryptocurrencyNetwork::ETHEREUM => LidoDaoAddress::class
 		],
 		Cryptocurrency::BLUR => [
 			CryptocurrencyNetwork::ETHEREUM => BlurAddress::class
