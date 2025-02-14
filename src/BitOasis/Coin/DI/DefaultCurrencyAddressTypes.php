@@ -583,7 +583,7 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::KAN => [
 			CryptocurrencyNetwork::ETHEREUM => BitKanAddress::class
 		],
-		Cryptocurrency::SONIC => [
+		Cryptocurrency::S => [
 			CryptocurrencyNetwork::SONIC => SonicAddress::class
 		],
 	];

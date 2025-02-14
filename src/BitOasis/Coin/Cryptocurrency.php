@@ -175,7 +175,7 @@ class Cryptocurrency {
 	const VELAR = 'VELAR';
 	const JUSTICE = 'JUSTICE';
 	const KAN = 'KAN';
-	const SONIC = 'SONIC';
+	const S = 'S';
 
 	// Fiat
 	const USD = 'USD';

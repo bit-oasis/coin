@@ -64,7 +64,7 @@ class SonicAddressTest extends UnitTest {
 	protected function createAddress(string $address): SonicAddress {
 		return new SonicAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::SONIC),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::S),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SONIC)
 		);
 	}
