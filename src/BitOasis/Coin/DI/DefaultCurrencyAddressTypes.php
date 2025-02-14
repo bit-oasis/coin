@@ -100,6 +100,7 @@ use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RallyAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\SonicAddress;
 use BitOasis\Coin\Address\SpectralAddress;
 use BitOasis\Coin\Address\SweatEconomyAddress;
 use BitOasis\Coin\Address\TheSandboxAddress;
@@ -581,6 +582,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::KAN => [
 			CryptocurrencyNetwork::ETHEREUM => BitKanAddress::class
+		],
+		Cryptocurrency::S => [
+			CryptocurrencyNetwork::SONIC => SonicAddress::class
 		],
 	];
 
