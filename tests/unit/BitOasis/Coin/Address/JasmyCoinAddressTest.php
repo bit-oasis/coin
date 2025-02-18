@@ -2,10 +2,10 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\JasmyCoinAddress;
 use BitOasis\Coin\Cryptocurrency;
-use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
+use BitOasis\Coin\Exception\InvalidAddressException;
 use UnitTest;
 use UnitTestUtils;
 
@@ -58,11 +58,11 @@ class JasmyCoinAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return AaveAddress
+	 * @return JasmyCoinAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AaveAddress(
+		return new JasmyCoinAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::JASMY),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)

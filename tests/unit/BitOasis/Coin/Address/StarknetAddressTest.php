@@ -2,10 +2,10 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\StarknetAddress;
 use BitOasis\Coin\Cryptocurrency;
-use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
+use BitOasis\Coin\Exception\InvalidAddressException;
 use UnitTest;
 use UnitTestUtils;
 
@@ -58,11 +58,11 @@ class StarknetAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return AaveAddress
+	 * @return StarknetAddress
 	 * @throws InvalidAddressException
 	 */
 	protected function createAddress($address) {
-		return new AaveAddress(
+		return new StarknetAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::STRK),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
