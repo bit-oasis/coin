@@ -166,6 +166,17 @@ class Cryptocurrency {
 	const MEW = 'MEW';
 	const TIA = 'TIA';
 
+	// February 2025
+	const SWEAT = 'SWEAT';
+	const DOP = 'DOP';
+	const SPEC = 'SPEC';
+	const AIOZ = 'AIOZ';
+	const GOMINING = 'GOMINING';
+	const VELAR = 'VELAR';
+	const JUSTICE = 'JUSTICE';
+	const KAN = 'KAN';
+	const S = 'S';
+
 	// February 2025 Batch 2
 	const TOKEN = 'TOKEN';
 	const EIGEN = 'EIGEN';
