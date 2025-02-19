@@ -184,7 +184,6 @@ class Cryptocurrency {
 	const STRK = 'STRK';
 	const ATH = 'ATH';
 	const BGB = 'BGB';
-	const XEGLD = 'XEGLD';
 	const KARATE = 'KARATE';
 
 	// Fiat

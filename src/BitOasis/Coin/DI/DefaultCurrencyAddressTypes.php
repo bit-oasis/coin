@@ -86,7 +86,6 @@ use BitOasis\Coin\Address\MakerAddress;
 use BitOasis\Coin\Address\MelonAddress;
 use BitOasis\Coin\Address\MemecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
-use BitOasis\Coin\Address\MultiversxEgldAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\NexoAddress;
@@ -611,9 +610,6 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BGB => [
 			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
-		],
-		Cryptocurrency::XEGLD => [
-			CryptocurrencyNetwork::ETHEREUM => MultiversxEgldAddress::class
 		],
 		Cryptocurrency::KARATE => [
 			CryptocurrencyNetwork::ETHEREUM => KarateCombatAddress::class
