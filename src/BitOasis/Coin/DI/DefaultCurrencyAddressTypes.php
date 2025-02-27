@@ -609,7 +609,7 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BGB => [
 			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
-		]
+		],
 	];
 
 }
