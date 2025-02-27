@@ -72,7 +72,6 @@ use BitOasis\Coin\Address\InjectiveAddress;
 use BitOasis\Coin\Address\IotaAddress;
 use BitOasis\Coin\Address\JasmyCoinAddress;
 use BitOasis\Coin\Address\JupiterAddress;
-use BitOasis\Coin\Address\KarateCombatAddress;
 use BitOasis\Coin\Address\KavaAddress;
 use BitOasis\Coin\Address\KlerosAddress;
 use BitOasis\Coin\Address\KyberAddress;
@@ -610,9 +609,6 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BGB => [
 			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
-		],
-		Cryptocurrency::KARATE => [
-			CryptocurrencyNetwork::ETHEREUM => KarateCombatAddress::class
 		],
 	];
 
