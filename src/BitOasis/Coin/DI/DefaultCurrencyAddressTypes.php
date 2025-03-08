@@ -3,12 +3,15 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\AethirAddress;
+use BitOasis\Coin\Address\AiozNetworkProtocolAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AmpleforthAddress;
 use BitOasis\Coin\Address\ApeCoinAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\ArtificialSuperintelligenceAllianceAddress;
+use BitOasis\Coin\Address\AssangeDaoAddress;
 use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
@@ -22,6 +25,8 @@ use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinGoldAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
+use BitOasis\Coin\Address\BitgetTokenAddress;
+use BitOasis\Coin\Address\BitKanAddress;
 use BitOasis\Coin\Address\BitpandaAddress;
 use BitOasis\Coin\Address\BlurAddress;
 use BitOasis\Coin\Address\BonkAddress;
@@ -36,11 +41,13 @@ use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\CosmosAddress;
 use BitOasis\Coin\Address\CurveAddress;
 use BitOasis\Coin\Address\DaiAddress;
+use BitOasis\Coin\Address\DataOwnershipProtocolAddress;
 use BitOasis\Coin\Address\DecentralandAddress;
 use BitOasis\Coin\Address\DeversifiTokenAddress;
 use BitOasis\Coin\Address\DigibyteAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
 use BitOasis\Coin\Address\DuskNetworkAddress;
+use BitOasis\Coin\Address\EigenLayerAddress;
 use BitOasis\Coin\Address\ElrondEgoldAddress;
 use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
@@ -58,16 +65,19 @@ use BitOasis\Coin\Address\FtxAddress;
 use BitOasis\Coin\Address\FunFairAddress;
 use BitOasis\Coin\Address\GalaAddress;
 use BitOasis\Coin\Address\GnosisAddress;
+use BitOasis\Coin\Address\GominingAddress;
 use BitOasis\Coin\Address\GraphAddress;
 use BitOasis\Coin\Address\HumanAddress;
 use BitOasis\Coin\Address\InjectiveAddress;
 use BitOasis\Coin\Address\IotaAddress;
+use BitOasis\Coin\Address\JasmyCoinAddress;
 use BitOasis\Coin\Address\JupiterAddress;
 use BitOasis\Coin\Address\KavaAddress;
 use BitOasis\Coin\Address\KlerosAddress;
 use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\KusamaAddress;
 use BitOasis\Coin\Address\LeoAddress;
+use BitOasis\Coin\Address\LidoDaoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
 use BitOasis\Coin\Address\LoopringAddress;
 use BitOasis\Coin\Address\MagicInternetMoneyAddress;
@@ -94,6 +104,10 @@ use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RallyAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\StarknetAddress;
+use BitOasis\Coin\Address\SonicAddress;
+use BitOasis\Coin\Address\SpectralAddress;
+use BitOasis\Coin\Address\SweatEconomyAddress;
 use BitOasis\Coin\Address\TheSandboxAddress;
 use BitOasis\Coin\Address\SeiAddress;
 use BitOasis\Coin\Address\ShibaInuAddress;
@@ -116,6 +130,7 @@ use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
 use BitOasis\Coin\Address\TetherGoldAddress;
+use BitOasis\Coin\Address\TokenFiAddress;
 use BitOasis\Coin\Address\TomiAddress;
 use BitOasis\Coin\Address\ToncoinAddress;
 use BitOasis\Coin\Address\TronAddress;
@@ -125,6 +140,7 @@ use BitOasis\Coin\Address\UltraAddress;
 use BitOasis\Coin\Address\UniswapAddress;
 use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\VeChainAddress;
+use BitOasis\Coin\Address\VelarAddress;
 use BitOasis\Coin\Address\VerasityAddress;
 use BitOasis\Coin\Address\VergeAddress;
 use BitOasis\Coin\Address\WavesAddress;
@@ -387,6 +403,9 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
 		],
+		Cryptocurrency::LDO => [
+			CryptocurrencyNetwork::ETHEREUM => LidoDaoAddress::class
+		],
 		Cryptocurrency::BLUR => [
 			CryptocurrencyNetwork::ETHEREUM => BlurAddress::class
 		],
@@ -545,6 +564,51 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::TIA => [
 			CryptocurrencyNetwork::CELESTIA => CelestiaAddress::class
+		],
+		Cryptocurrency::SWEAT => [
+			CryptocurrencyNetwork::ETHEREUM => SweatEconomyAddress::class
+		],
+		Cryptocurrency::DOP => [
+			CryptocurrencyNetwork::ETHEREUM => DataOwnershipProtocolAddress::class
+		],
+		Cryptocurrency::SPEC => [
+			CryptocurrencyNetwork::ETHEREUM => SpectralAddress::class
+		],
+		Cryptocurrency::AIOZ => [
+			CryptocurrencyNetwork::ETHEREUM => AiozNetworkProtocolAddress::class
+		],
+		Cryptocurrency::GOMINING => [
+			CryptocurrencyNetwork::ETHEREUM => GominingAddress::class
+		],
+		Cryptocurrency::VELAR => [
+			CryptocurrencyNetwork::ETHEREUM => VelarAddress::class
+		],
+		Cryptocurrency::JUSTICE => [
+			CryptocurrencyNetwork::ETHEREUM => AssangeDaoAddress::class
+		],
+		Cryptocurrency::KAN => [
+			CryptocurrencyNetwork::ETHEREUM => BitKanAddress::class
+		],
+		Cryptocurrency::S => [
+			CryptocurrencyNetwork::SONIC => SonicAddress::class
+		],
+		Cryptocurrency::TOKEN => [
+			CryptocurrencyNetwork::ETHEREUM => TokenFiAddress::class
+		],
+		Cryptocurrency::EIGEN => [
+			CryptocurrencyNetwork::ETHEREUM => EigenLayerAddress::class
+		],
+		Cryptocurrency::JASMY => [
+			CryptocurrencyNetwork::ETHEREUM => JasmyCoinAddress::class
+		],
+		Cryptocurrency::STRK => [
+			CryptocurrencyNetwork::ETHEREUM => StarknetAddress::class
+		],
+		Cryptocurrency::ATH => [
+			CryptocurrencyNetwork::ETHEREUM => AethirAddress::class
+		],
+		Cryptocurrency::BGB => [
+			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
 		],
 	];
 
