@@ -13,6 +13,7 @@ parameters:
 			- tests/_*
 	ignoreErrors:
 		- '#Unsafe usage of new static\(\)#'
+		- '#Method BitOasis\\Coin\\Utils\\Bech32\\Bech32::.+ is unused#'
 	earlyTerminatingMethodCalls:
 		BitOasis\Coin\Address\BaseBitcoinCashAddress:
 			- throwInvalidAddressException
