@@ -13,7 +13,7 @@ use BitOasis\Coin\Exception\InvalidCurrencyException;
  */
 class CryptocurrencyAddressFactory {
 
-	/** @var CryptocurrencyAddress[] keys are currency network codes */
+	/** @var CryptocurrencyAddress[] keys are currency codes */
 	protected $types;
 
 	/**
@@ -41,8 +41,11 @@ class CryptocurrencyAddressFactory {
 			return null;
 		}
 
+		if (!isset($this->types[$currency->getCode()])) {
+			throw new InvalidCurrencyException('Address handler for currency ' . $currency->getCode() . ' not found!');
+		}
+
 		if (!isset($this->types[$cryptocurrencyNetwork->getCode()])) {
-			throw new InvalidAddressException(count($this->types));
 			throw new InvalidCurrencyException('Address handler for network ' . $cryptocurrencyNetwork->getCode() . ' not found!');
 		}
 

@@ -23,7 +23,7 @@ class CoinExtension extends CompilerExtension implements IDatabaseTypeProvider, 
 	public $defaults = [
 		'cache' => 'default',
 		'entityNamespaces' => null,
-		'addressHandlers' => DefaultCurrencyAddressTypes::NETWORKS_ADDRESS_MAP
+		'addressHandlers' => DefaultCurrencyAddressTypes::TYPES
 	];
 
 	public function loadConfiguration() {
