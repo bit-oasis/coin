@@ -5,11 +5,9 @@ namespace BitOasis\Coin\Address\Validators;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
 
 /**
- * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
+ * @author Shawki.Alassi <shawki.alassi@bitoasis.net>
  */
-class XdcNetworkAddressValidator implements ValidationInterface {
-
-	const NEW_ADDRESSES_PREFIX = "xdc";
+class SonicAddressValidator implements ValidationInterface {
 
 	/** @var string */
 	protected $address;
@@ -22,7 +20,6 @@ class XdcNetworkAddressValidator implements ValidationInterface {
 	 * @inheritDoc
 	 */
 	public function validate(): bool {
-		return substr($this->address, 0, strlen(static::NEW_ADDRESSES_PREFIX)) === static::NEW_ADDRESSES_PREFIX;
+		return preg_match('/^(0x)?[0-9a-f]{40}$/i', $this->address);
 	}
-
 }

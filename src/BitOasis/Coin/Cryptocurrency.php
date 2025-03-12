@@ -153,6 +153,38 @@ class Cryptocurrency {
 	const WOO = 'WOO';
 	const XTP = 'XTP';
 
+	// October 2024
+	const POL = 'POL';
+
+	// December 2024
+	const PEPE = 'PEPE';
+	const BONK = 'BONK';
+	const TOMI = 'TOMI';
+	const TURBO = 'TURBO';
+	const WBT = 'WBT';
+	const ENA = 'ENA';
+	const MEW = 'MEW';
+	const TIA = 'TIA';
+
+	// February 2025
+	const SWEAT = 'SWEAT';
+	const DOP = 'DOP';
+	const SPEC = 'SPEC';
+	const AIOZ = 'AIOZ';
+	const GOMINING = 'GOMINING';
+	const VELAR = 'VELAR';
+	const JUSTICE = 'JUSTICE';
+	const KAN = 'KAN';
+	const S = 'S';
+
+	// February 2025 Batch 2
+	const TOKEN = 'TOKEN';
+	const EIGEN = 'EIGEN';
+	const JASMY = 'JASMY';
+	const STRK = 'STRK';
+	const ATH = 'ATH';
+	const BGB = 'BGB';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';

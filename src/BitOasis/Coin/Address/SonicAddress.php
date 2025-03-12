@@ -2,17 +2,19 @@
 
 namespace BitOasis\Coin\Address;
 
+use BitOasis\Coin\Address\Validators\SonicAddressValidator;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
-use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
-use BitOasis\Coin\Utils\Erc20AddressNormalizer;
-use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
+use BitOasis\Coin\Exception\InvalidAddressException;
+use Nette\Utils\Strings;
 
 /**
- * @author Daniel Robenek <daniel.robenek@me.com>
+ * @author Shawki Alassi <shawki.alassi@bitoasis.net>
  */
-class EthereumClassicAddress implements CryptocurrencyAddress {
+class SonicAddress implements CryptocurrencyAddress {
+
+	const ADDRESS_PREFIX = '0x';
 
 	/** @var string */
 	protected $address;
@@ -24,16 +26,14 @@ class EthereumClassicAddress implements CryptocurrencyAddress {
 	protected $cryptocurrencyNetwork;
 
 	/**
-	 * EthereumClassicAddress constructor.
 	 * @param string $address
 	 * @param Cryptocurrency $currency
+	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
-		if(!$this->isValid($address)) {
-			throw new InvalidAddressException('This is not valid ethereum classic address - ' . $address);
-		}
-		$this->address = Erc20AddressNormalizer::normalize($address);
+		$this->validateAddress($address, $currency);
+		$this->address = $this->normalize($address);
 		$this->currency = $currency;
 		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}
@@ -83,11 +83,11 @@ class EthereumClassicAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @param $address
+	 * @param string $address
 	 * @return bool
 	 */
-	private function isValid($address) {
-		return (new ETHValidator($address))->validate();
+	protected function isValid($address) {
+		return (new SonicAddressValidator($address))->validate();
 	}
 
 	/**
@@ -130,6 +130,25 @@ class EthereumClassicAddress implements CryptocurrencyAddress {
 	 */
 	public static function getClassAdditionalIdName() {
 		return null;
+	}
+
+	/**
+	 * @param string $address
+	 * @param Cryptocurrency $currency
+	 * @throws InvalidAddressException
+	 */
+	protected function validateAddress($address, Cryptocurrency $currency) {
+		if (!$this->isValid($address)) {
+			throw new InvalidAddressException("'{$address}' is not valid {$currency->getName()} address");
+		}
+	}
+
+	public function normalize(string $address): string {
+		if (Strings::startsWith($address, self::ADDRESS_PREFIX)) {
+			return $address;
+		}
+
+		return self::ADDRESS_PREFIX . $address;
 	}
 
 }

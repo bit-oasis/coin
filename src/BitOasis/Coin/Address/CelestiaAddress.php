@@ -2,21 +2,16 @@
 
 namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\Validators\SeiAddressValidator;
+use BitOasis\Coin\Address\Validators\CelestiaAddressValidator;
 use BitOasis\Coin\CryptocurrencyAddress;
 
 /**
  * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
  */
-class SeiAddress extends BaseBech32AddressWithTag implements CryptocurrencyAddress {
+class CelestiaAddress extends BaseBech32AddressWithTag implements CryptocurrencyAddress {
 
-	/**
-	 * @param $address
-	 * @param null $tag
-	 * @return SeiAddressValidator
-	 */
-	protected function createValidator($address, $tag = null): SeiAddressValidator {
-		return new SeiAddressValidator($address, $tag);
+	protected function createValidator($address, $tag = null): CelestiaAddressValidator {
+		return new CelestiaAddressValidator($address, $tag);
 	}
 
 	public function toString(): string {

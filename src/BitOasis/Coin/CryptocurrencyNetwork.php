@@ -58,6 +58,8 @@ class CryptocurrencyNetwork {
 	const FLARE = 'flare';
 	const INJECTIVE = 'injective';
 	const KAVA = 'kava';
+	const CELESTIA = 'celestia';
+	const SONIC = 'sonic';
 
 	/** @var string */
 	protected $code;
