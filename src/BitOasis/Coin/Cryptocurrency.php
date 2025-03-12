@@ -134,7 +134,7 @@ class Cryptocurrency {
 	const FORTH = 'FORTH';
 	const FUN = 'FUN';
 	const HMT = 'HMT';
-	const INJ = 'INJ'; // USED
+	const INJ = 'INJ';
 	const JUP = 'JUP';
 	const KAVA = 'KAVA';
 	const MEME = 'MEME';

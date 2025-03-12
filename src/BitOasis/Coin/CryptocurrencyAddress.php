@@ -24,9 +24,6 @@ interface CryptocurrencyAddress {
 
 	/**
 	 * @return Cryptocurrency
-	 * TODO: Do we need to keep cryptocurrency in address class?
-	 * For any ERC20 token address and class would be the same, but currency not,
-	 * Is it considered as a same address? (probably yes)
 	 */
 	public function getCurrency();
 
