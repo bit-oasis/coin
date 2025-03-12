@@ -10,8 +10,6 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
- *
- * TODO: Missing address test, please add address test, if you are going to change anything in this class.
  */
 class EthereumAddress implements CryptocurrencyAddress {
 
