@@ -56,7 +56,7 @@ class ArbitrumAddressTest extends UnitTest {
 		return new ArbitrumAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::ARB),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ARBITRUM)
 		);
 	}
 
