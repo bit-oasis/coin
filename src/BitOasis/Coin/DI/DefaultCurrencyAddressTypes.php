@@ -13,7 +13,6 @@ use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\ArtificialSuperintelligenceAllianceAddress;
 use BitOasis\Coin\Address\AssangeDaoAddress;
 use BitOasis\Coin\Address\AugurAddress;
-use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
 use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
@@ -398,7 +397,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => TetherGoldAddress::class
 		],
 		Cryptocurrency::ARB => [
-			CryptocurrencyNetwork::ETHEREUM => ArbitrumAddress::class
+			CryptocurrencyNetwork::ARBITRUM => ArbitrumAddress::class
 		],
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
