@@ -60,6 +60,7 @@ class CryptocurrencyNetwork {
 	const KAVA = 'kava';
 	const CELESTIA = 'celestia';
 	const SONIC = 'sonic';
+	const ARBITRUM = 'arbitrum';
 
 	/** @var string */
 	protected $code;
