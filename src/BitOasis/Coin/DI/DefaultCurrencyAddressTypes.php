@@ -19,6 +19,7 @@ use BitOasis\Coin\Address\ElrondEgoldAddress;
 use BitOasis\Coin\Address\EosAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
+use BitOasis\Coin\Address\EthereumPowAddress;
 use BitOasis\Coin\Address\FantomAddress;
 use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FlareAddress;
@@ -292,7 +293,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::TERRA2 => Terra2Address::class
 		],
 		Cryptocurrency::ETHW => [
-			CryptocurrencyNetwork::ETHEREUM_POW => EthereumAddress::class
+			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPowAddress::class
 		],
 		Cryptocurrency::XAUT => [
 			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
