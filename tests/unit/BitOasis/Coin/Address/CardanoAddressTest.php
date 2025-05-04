@@ -26,6 +26,12 @@ class CardanoAddressTest extends UnitTest {
 			['addr2vx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzers66hrl8'],
 			['addre1vx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzers66hrl8'],
 			['addrvx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzers66hrl8'],
+			['rDjMmFWNyAA1oCpKr197y2i58f3vBbrWsw'],
+			['39JXi45Nkgzk8hxz6aHYuefnsDp7qnf4fx'],
+			['9y992i9uQjr3PJFS1EPmVrd6FahsJjhuk3'],
+			['DJtCUTgitjdxXTUQK78BVm93AmrfFLAiWy'],
+			['0x6c3e4cb2e96b01f4b866965a91ed4437839a121a'],
+			['GAWPTHY6233GRWZZ7JXDMVXDUDCVQVVQ2SXCSTG3R3CNP5LQPDAHNBKL'],
 		];
 	}
 
