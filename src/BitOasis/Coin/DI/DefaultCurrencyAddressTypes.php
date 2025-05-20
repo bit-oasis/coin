@@ -299,7 +299,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ARB => [
-			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
+			CryptocurrencyNetwork::ARBITRUM => EthereumAddress::class
 		],
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
