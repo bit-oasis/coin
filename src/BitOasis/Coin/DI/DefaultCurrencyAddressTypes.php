@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AlgorandAddress;
+use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
@@ -299,7 +300,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ARB => [
-			CryptocurrencyNetwork::ARBITRUM => EthereumAddress::class
+			CryptocurrencyNetwork::ARBITRUM => ArbitrumAddress::class
 		],
 		Cryptocurrency::BTG => [
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
