@@ -2,155 +2,58 @@
 
 namespace BitOasis\Coin\DI;
 
-use BitOasis\Coin\Address\AaveAddress;
-use BitOasis\Coin\Address\AethirAddress;
-use BitOasis\Coin\Address\AiozNetworkProtocolAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
-use BitOasis\Coin\Address\AmpleforthAddress;
-use BitOasis\Coin\Address\ApeCoinAddress;
-use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
-use BitOasis\Coin\Address\ArtificialSuperintelligenceAllianceAddress;
-use BitOasis\Coin\Address\AssangeDaoAddress;
-use BitOasis\Coin\Address\AugurAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
-use BitOasis\Coin\Address\AxieInfinityAddress;
-use BitOasis\Coin\Address\BalancerAddress;
-use BitOasis\Coin\Address\BancorAddress;
-use BitOasis\Coin\Address\BandProtocolAddress;
-use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinGoldAddress;
 use BitOasis\Coin\Address\BitcoinSvAddress;
 use BitOasis\Coin\Address\BitcoinTestnetAddress;
-use BitOasis\Coin\Address\BitgetTokenAddress;
-use BitOasis\Coin\Address\BitKanAddress;
-use BitOasis\Coin\Address\BitpandaAddress;
-use BitOasis\Coin\Address\BlurAddress;
-use BitOasis\Coin\Address\BonkAddress;
-use BitOasis\Coin\Address\BosonAddress;
 use BitOasis\Coin\Address\CardanoAddress;
-use BitOasis\Coin\Address\CatInADogsWorldAddress;
 use BitOasis\Coin\Address\CelestiaAddress;
 use BitOasis\Coin\Address\CeloAddress;
-use BitOasis\Coin\Address\ChainlinkAddress;
-use BitOasis\Coin\Address\ChilizAddress;
-use BitOasis\Coin\Address\CompoundAddress;
 use BitOasis\Coin\Address\CosmosAddress;
-use BitOasis\Coin\Address\CurveAddress;
-use BitOasis\Coin\Address\DaiAddress;
-use BitOasis\Coin\Address\DataOwnershipProtocolAddress;
-use BitOasis\Coin\Address\DecentralandAddress;
-use BitOasis\Coin\Address\DeversifiTokenAddress;
 use BitOasis\Coin\Address\DigibyteAddress;
 use BitOasis\Coin\Address\DogecoinAddress;
-use BitOasis\Coin\Address\DuskNetworkAddress;
-use BitOasis\Coin\Address\EigenLayerAddress;
 use BitOasis\Coin\Address\ElrondEgoldAddress;
-use BitOasis\Coin\Address\EnjinAddress;
 use BitOasis\Coin\Address\EosAddress;
-use BitOasis\Coin\Address\EthenaAddress;
 use BitOasis\Coin\Address\EthereumAddress;
 use BitOasis\Coin\Address\EthereumClassicAddress;
-use BitOasis\Coin\Address\EthereumPoWAddress;
+use BitOasis\Coin\Address\EthereumPowAddress;
 use BitOasis\Coin\Address\FantomAddress;
 use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FlareAddress;
-use BitOasis\Coin\Address\FlokiAddress;
-use BitOasis\Coin\Address\ForthAddress;
-use BitOasis\Coin\Address\FractalAddress;
-use BitOasis\Coin\Address\FtxAddress;
-use BitOasis\Coin\Address\FunFairAddress;
-use BitOasis\Coin\Address\GalaAddress;
-use BitOasis\Coin\Address\GnosisAddress;
-use BitOasis\Coin\Address\GominingAddress;
-use BitOasis\Coin\Address\GraphAddress;
-use BitOasis\Coin\Address\HumanAddress;
 use BitOasis\Coin\Address\InjectiveAddress;
 use BitOasis\Coin\Address\IotaAddress;
-use BitOasis\Coin\Address\JasmyCoinAddress;
-use BitOasis\Coin\Address\JupiterAddress;
 use BitOasis\Coin\Address\KavaAddress;
-use BitOasis\Coin\Address\KlerosAddress;
-use BitOasis\Coin\Address\KyberAddress;
 use BitOasis\Coin\Address\KusamaAddress;
-use BitOasis\Coin\Address\LeoAddress;
-use BitOasis\Coin\Address\LidoDaoAddress;
 use BitOasis\Coin\Address\LitecoinAddress;
-use BitOasis\Coin\Address\LoopringAddress;
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
-use BitOasis\Coin\Address\MakerAddress;
-use BitOasis\Coin\Address\MelonAddress;
-use BitOasis\Coin\Address\MemecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
-use BitOasis\Coin\Address\NexoAddress;
-use BitOasis\Coin\Address\OceanAddress;
-use BitOasis\Coin\Address\OmiseGoAddress;
-use BitOasis\Coin\Address\OneInchAddress;
-use BitOasis\Coin\Address\OptimismAddress;
-use BitOasis\Coin\Address\OriginProtocolAddress;
-use BitOasis\Coin\Address\PaxosAddress;
-use BitOasis\Coin\Address\PepeAddress;
-use BitOasis\Coin\Address\PlutonAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
-use BitOasis\Coin\Address\PolygonAddress;
-use BitOasis\Coin\Address\OpenAddress;
-use BitOasis\Coin\Address\PolygonEcosystemTokenAddress;
 use BitOasis\Coin\Address\QtumAddress;
-use BitOasis\Coin\Address\RallyAddress;
-use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
-use BitOasis\Coin\Address\StarknetAddress;
-use BitOasis\Coin\Address\SonicAddress;
-use BitOasis\Coin\Address\SpectralAddress;
-use BitOasis\Coin\Address\SweatEconomyAddress;
-use BitOasis\Coin\Address\TheSandboxAddress;
 use BitOasis\Coin\Address\SeiAddress;
-use BitOasis\Coin\Address\ShibaInuAddress;
-use BitOasis\Coin\Address\SidusAddress;
 use BitOasis\Coin\Address\SolanaAddress;
 use BitOasis\Coin\Address\SongbirdAddress;
-use BitOasis\Coin\Address\SpellAddress;
-use BitOasis\Coin\Address\StargateFinanceAddress;
+use BitOasis\Coin\Address\SonicAddress;
 use BitOasis\Coin\Address\StellarAddress;
-use BitOasis\Coin\Address\StorjAddress;
 use BitOasis\Coin\Address\SuiAddress;
-use BitOasis\Coin\Address\SukuAddress;
-use BitOasis\Coin\Address\SushiAddress;
-use BitOasis\Coin\Address\SynthetixAddress;
-use BitOasis\Coin\Address\TapAddress;
 use BitOasis\Coin\Address\Terra2Address;
 use BitOasis\Coin\Address\TerraAddress;
 use BitOasis\Coin\Address\TetherAddress;
 use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
-use BitOasis\Coin\Address\TetherGoldAddress;
-use BitOasis\Coin\Address\TokenFiAddress;
-use BitOasis\Coin\Address\TomiAddress;
 use BitOasis\Coin\Address\ToncoinAddress;
 use BitOasis\Coin\Address\TronAddress;
-use BitOasis\Coin\Address\TrueUsdAddress;
-use BitOasis\Coin\Address\TurboAddress;
-use BitOasis\Coin\Address\UltraAddress;
-use BitOasis\Coin\Address\UniswapAddress;
-use BitOasis\Coin\Address\UsdCoinAddress;
 use BitOasis\Coin\Address\VeChainAddress;
-use BitOasis\Coin\Address\VelarAddress;
-use BitOasis\Coin\Address\VerasityAddress;
 use BitOasis\Coin\Address\VergeAddress;
 use BitOasis\Coin\Address\WavesAddress;
-use BitOasis\Coin\Address\WhiteBitAddress;
-use BitOasis\Coin\Address\WilderWorldAddress;
-use BitOasis\Coin\Address\WooAddress;
-use BitOasis\Coin\Address\WrappedBitcoinAddress;
 use BitOasis\Coin\Address\XdcNetworkAddress;
-use BitOasis\Coin\Address\YearnFinanceAddress;
 use BitOasis\Coin\Address\ZcashAddress;
-use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 
@@ -197,13 +100,13 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::EOS => EosAddress::class
 		],
 		Cryptocurrency::OMG => [
-			CryptocurrencyNetwork::ETHEREUM => OmiseGoAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ZRX => [
-			CryptocurrencyNetwork::ETHEREUM => ZeroXAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BAT => [
-			CryptocurrencyNetwork::ETHEREUM => BasicAttentionTokenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ALGO => [
 			CryptocurrencyNetwork::ALGORAND => AlgorandAddress::class
@@ -219,61 +122,61 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::TEZOS => TezosAddress::class
 		],
 		Cryptocurrency::LINK => [
-			CryptocurrencyNetwork::ETHEREUM => ChainlinkAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::DAI => [
-			CryptocurrencyNetwork::ETHEREUM => DaiAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MKR => [
-			CryptocurrencyNetwork::ETHEREUM => MakerAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::KNC => [
-			CryptocurrencyNetwork::ETHEREUM => KyberAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::REP => [
-			CryptocurrencyNetwork::ETHEREUM => AugurAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::UNI => [
-			CryptocurrencyNetwork::ETHEREUM => UniswapAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::YFI => [
-			CryptocurrencyNetwork::ETHEREUM => YearnFinanceAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BAL => [
-			CryptocurrencyNetwork::ETHEREUM => BalancerAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::COMP => [
-			CryptocurrencyNetwork::ETHEREUM => CompoundAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::DOGE => [
 			CryptocurrencyNetwork::DOGECOIN => DogecoinAddress::class
 		],
 		Cryptocurrency::AAVE => [
-			CryptocurrencyNetwork::ETHEREUM => AaveAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BNT => [
-			CryptocurrencyNetwork::ETHEREUM => BancorAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ENJ => [
-			CryptocurrencyNetwork::ETHEREUM => EnjinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::LRC => [
-			CryptocurrencyNetwork::ETHEREUM => LoopringAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MANA => [
-			CryptocurrencyNetwork::ETHEREUM => DecentralandAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MATIC => [
-			CryptocurrencyNetwork::ETHEREUM => PolygonAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::STORJ => [
-			CryptocurrencyNetwork::ETHEREUM => StorjAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SUSHI => [
-			CryptocurrencyNetwork::ETHEREUM => SushiAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::USDC => [
-			CryptocurrencyNetwork::ETHEREUM => UsdCoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::WAVES => [
 			CryptocurrencyNetwork::WAVES => WavesAddress::class
@@ -288,7 +191,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::CARDANO => CardanoAddress::class
 		],
 		Cryptocurrency::SHIB => [
-			CryptocurrencyNetwork::ETHEREUM => ShibaInuAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::AVAX => [
 //			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
@@ -298,7 +201,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::FANTOM => FantomAddress::class
 		],
 		Cryptocurrency::WBTC => [
-			CryptocurrencyNetwork::ETHEREUM => WrappedBitcoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::LUNA => [
 			CryptocurrencyNetwork::TERRA => TerraAddress::class
@@ -310,49 +213,49 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::NEAR => NearAddress::class
 		],
 		Cryptocurrency::ONE_INCH => [
-			CryptocurrencyNetwork::ETHEREUM => OneInchAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ANT => [
-			CryptocurrencyNetwork::ETHEREUM => AragonNetworkAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::AXS => [
-			CryptocurrencyNetwork::ETHEREUM => AxieInfinityAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BAND => [
-			CryptocurrencyNetwork::ETHEREUM => BandProtocolAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::CHZ => [
-			CryptocurrencyNetwork::ETHEREUM => ChilizAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::CRV => [
-			CryptocurrencyNetwork::ETHEREUM => CurveAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FTT => [
-			CryptocurrencyNetwork::ETHEREUM => FtxAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::GALA => [
-			CryptocurrencyNetwork::ETHEREUM => GalaAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::GNO => [
-			CryptocurrencyNetwork::ETHEREUM => GnosisAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::GRT => [
-			CryptocurrencyNetwork::ETHEREUM => GraphAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::LEO => [
-			CryptocurrencyNetwork::ETHEREUM => LeoAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::NEXO => [
-			CryptocurrencyNetwork::ETHEREUM => NexoAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::OCEAN => [
-			CryptocurrencyNetwork::ETHEREUM => OceanAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SNX => [
-			CryptocurrencyNetwork::ETHEREUM => SynthetixAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::TUSD => [
-			CryptocurrencyNetwork::ETHEREUM => TrueUsdAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::DGB => [
 			CryptocurrencyNetwork::DIGIBYTE => DigibyteAddress::class
@@ -391,10 +294,10 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::TERRA2 => Terra2Address::class
 		],
 		Cryptocurrency::ETHW => [
-			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPoWAddress::class
+			CryptocurrencyNetwork::ETHEREUM_POW => EthereumPowAddress::class
 		],
 		Cryptocurrency::XAUT => [
-			CryptocurrencyNetwork::ETHEREUM => TetherGoldAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ARB => [
 			CryptocurrencyNetwork::ARBITRUM => ArbitrumAddress::class
@@ -403,28 +306,28 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::BITCOIN_GOLD => BitcoinGoldAddress::class
 		],
 		Cryptocurrency::LDO => [
-			CryptocurrencyNetwork::ETHEREUM => LidoDaoAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BLUR => [
-			CryptocurrencyNetwork::ETHEREUM => BlurAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::OP => [
-			CryptocurrencyNetwork::ETHEREUM => OptimismAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::OPEN => [
-			CryptocurrencyNetwork::ETHEREUM => OpenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BOSON => [
-			CryptocurrencyNetwork::ETHEREUM => BosonAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FLOKI => [
-			CryptocurrencyNetwork::ETHEREUM => FlokiAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::VRA => [
-			CryptocurrencyNetwork::ETHEREUM => VerasityAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::WILD => [
-			CryptocurrencyNetwork::ETHEREUM => WilderWorldAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SUI => [
 			CryptocurrencyNetwork::SUI => SuiAddress::class
@@ -439,176 +342,175 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::TON => ToncoinAddress::class
 		],
 		Cryptocurrency::AMPL => [
-			CryptocurrencyNetwork::ETHEREUM => AmpleforthAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BEST => [
-			CryptocurrencyNetwork::ETHEREUM => BitpandaAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::CELO => [
 			CryptocurrencyNetwork::CELO => CeloAddress::class
 		],
 		Cryptocurrency::DUSK => [
-			CryptocurrencyNetwork::ETHEREUM => DuskNetworkAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::DVF => [
-			CryptocurrencyNetwork::ETHEREUM => DeversifiTokenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FCL => [
-			CryptocurrencyNetwork::ETHEREUM => FractalAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FLR => [
 			CryptocurrencyNetwork::FLARE => FlareAddress::class
 		],
 		Cryptocurrency::FORTH => [
-			CryptocurrencyNetwork::ETHEREUM => ForthAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FUN => [
-			CryptocurrencyNetwork::ETHEREUM => FunFairAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::HMT => [
-			CryptocurrencyNetwork::ETHEREUM => HumanAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::INJ => [
 			CryptocurrencyNetwork::INJECTIVE => InjectiveAddress::class
 		],
 		Cryptocurrency::JUP => [
-			CryptocurrencyNetwork::SOLANA => JupiterAddress::class
+			CryptocurrencyNetwork::SOLANA => SolanaAddress::class
 		],
 		Cryptocurrency::KAVA => [
 			CryptocurrencyNetwork::KAVA => KavaAddress::class
 		],
 		Cryptocurrency::MEME => [
-			CryptocurrencyNetwork::ETHEREUM => MemecoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MIM => [
-			CryptocurrencyNetwork::ETHEREUM => MagicInternetMoneyAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MLN => [
-			CryptocurrencyNetwork::ETHEREUM => MelonAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::OGN => [
-			CryptocurrencyNetwork::ETHEREUM => OriginProtocolAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::PAX => [
-			CryptocurrencyNetwork::ETHEREUM => PaxosAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::PLU => [
-			CryptocurrencyNetwork::ETHEREUM => PlutonAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::PNK => [
-			CryptocurrencyNetwork::ETHEREUM => KlerosAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::REQ => [
-			CryptocurrencyNetwork::ETHEREUM => RequestNetworkAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SGB => [
 			CryptocurrencyNetwork::SONGBIRD => SongbirdAddress::class
 		],
 		Cryptocurrency::SIDUS => [
-			CryptocurrencyNetwork::ETHEREUM => SidusAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SPELL => [
-			CryptocurrencyNetwork::ETHEREUM => SpellAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::STG => [
-			CryptocurrencyNetwork::ETHEREUM => StargateFinanceAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SUKU => [
-			CryptocurrencyNetwork::ETHEREUM => SukuAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::UOS => [
-			CryptocurrencyNetwork::ETHEREUM => UltraAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::WOO => [
-			CryptocurrencyNetwork::ETHEREUM => WooAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::XTP => [
-			CryptocurrencyNetwork::ETHEREUM => TapAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::POL => [
-			CryptocurrencyNetwork::ETHEREUM => PolygonEcosystemTokenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::APE => [
-			CryptocurrencyNetwork::ETHEREUM => ApeCoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::FET => [
-			CryptocurrencyNetwork::ETHEREUM => ArtificialSuperintelligenceAllianceAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::RLY => [
-			CryptocurrencyNetwork::ETHEREUM => RallyAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SAND => [
-			CryptocurrencyNetwork::ETHEREUM => TheSandboxAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::PEPE => [
-			CryptocurrencyNetwork::ETHEREUM => PepeAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BONK => [
-			CryptocurrencyNetwork::SOLANA => BonkAddress::class
+			CryptocurrencyNetwork::SOLANA => SolanaAddress::class
 		],
 		Cryptocurrency::TOMI => [
-			CryptocurrencyNetwork::ETHEREUM => TomiAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::TURBO => [
-			CryptocurrencyNetwork::ETHEREUM => TurboAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::WBT => [
-			CryptocurrencyNetwork::ETHEREUM => WhiteBitAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ENA => [
-			CryptocurrencyNetwork::ETHEREUM => EthenaAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MEW => [
-			CryptocurrencyNetwork::SOLANA => CatInADogsWorldAddress::class
+			CryptocurrencyNetwork::SOLANA => SolanaAddress::class
 		],
 		Cryptocurrency::TIA => [
 			CryptocurrencyNetwork::CELESTIA => CelestiaAddress::class
 		],
 		Cryptocurrency::SWEAT => [
-			CryptocurrencyNetwork::ETHEREUM => SweatEconomyAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::DOP => [
-			CryptocurrencyNetwork::ETHEREUM => DataOwnershipProtocolAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SPEC => [
-			CryptocurrencyNetwork::ETHEREUM => SpectralAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::AIOZ => [
-			CryptocurrencyNetwork::ETHEREUM => AiozNetworkProtocolAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::GOMINING => [
-			CryptocurrencyNetwork::ETHEREUM => GominingAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::VELAR => [
-			CryptocurrencyNetwork::ETHEREUM => VelarAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::JUSTICE => [
-			CryptocurrencyNetwork::ETHEREUM => AssangeDaoAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::KAN => [
-			CryptocurrencyNetwork::ETHEREUM => BitKanAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::S => [
 			CryptocurrencyNetwork::SONIC => SonicAddress::class
 		],
 		Cryptocurrency::TOKEN => [
-			CryptocurrencyNetwork::ETHEREUM => TokenFiAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::EIGEN => [
-			CryptocurrencyNetwork::ETHEREUM => EigenLayerAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::JASMY => [
-			CryptocurrencyNetwork::ETHEREUM => JasmyCoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::STRK => [
-			CryptocurrencyNetwork::ETHEREUM => StarknetAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ATH => [
-			CryptocurrencyNetwork::ETHEREUM => AethirAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::BGB => [
-			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 	];
-
 }
