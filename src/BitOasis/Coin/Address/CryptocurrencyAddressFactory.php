@@ -45,11 +45,11 @@ class CryptocurrencyAddressFactory {
 			throw new InvalidCurrencyException('Address handler for currency ' . $currency->getCode() . ' not found!');
 		}
 
-		if (!isset($this->types[$cryptocurrencyNetwork->getCode()])) {
-			throw new InvalidCurrencyException('Address handler for network ' . $cryptocurrencyNetwork->getCode() . ' not found!');
+		if (!isset($this->types[$currency->getCode()][$cryptocurrencyNetwork->getCode()])) {
+			throw new InvalidCurrencyException('Address handler for ' . $currency->getCode() . ' network ' . $cryptocurrencyNetwork->getCode() . ' not found!');
 		}
 
-		$cryptocurrencyAddressClass = $this->types[$cryptocurrencyNetwork->getCode()];
+		$cryptocurrencyAddressClass = $this->types[$currency->getCode()][$cryptocurrencyNetwork->getCode()];;
 		return $cryptocurrencyAddressClass::deserialize($value, $currency, $cryptocurrencyNetwork);
 	}
 
