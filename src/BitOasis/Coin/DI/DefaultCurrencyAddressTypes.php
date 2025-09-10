@@ -103,6 +103,7 @@ use BitOasis\Coin\Address\QtumAddress;
 use BitOasis\Coin\Address\RallyAddress;
 use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
+use BitOasis\Coin\Address\SkyAddress;
 use BitOasis\Coin\Address\StarknetAddress;
 use BitOasis\Coin\Address\SonicAddress;
 use BitOasis\Coin\Address\SpectralAddress;
@@ -608,6 +609,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BGB => [
 			CryptocurrencyNetwork::ETHEREUM => BitgetTokenAddress::class
+		],
+		Cryptocurrency::SKY => [
+			CryptocurrencyNetwork::ETHEREUM => SkyAddress::class
 		],
 	];
 
