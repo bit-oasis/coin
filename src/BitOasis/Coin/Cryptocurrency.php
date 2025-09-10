@@ -185,6 +185,9 @@ class Cryptocurrency {
 	const ATH = 'ATH';
 	const BGB = 'BGB';
 
+	// September 2025
+	const SKY = 'SKY';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
