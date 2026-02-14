@@ -4,11 +4,8 @@ namespace BitOasis\Coin\Address\Validators;
 
 use BitOasis\Coin\Utils\Bech32\Bech32;
 use BitOasis\Coin\Utils\Bech32\Bech32Exception;
+use BitOasis\Coin\Utils\CBOR\Decoder;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
-use CBOR\Decoder;
-use CBOR\OtherObject;
-use CBOR\Tag;
-use CBOR\StringStream;
 use StephenHill\Base58;
 
 /**
@@ -44,19 +41,10 @@ class CardanoAddressValidator implements ValidationInterface {
 	public function isValidV1($address) {
 		try {
 			$base58 = new Base58();
-			$address = $base58->decode($address);
-			$addressHex = \Sodium\bin2hex($address);
+			$addressBin = $base58->decode($address);
 
-			$otherObjectManager = new OtherObject\OtherObjectManager();
-			$otherObjectManager->add(OtherObject\SimpleObject::class);
-
-			$tagManager = new Tag\TagObjectManager();
-			$tagManager->add(Tag\PositiveBigIntegerTag::class);
-
-			$decoder = new Decoder($tagManager, $otherObjectManager);
-			$data = hex2bin($addressHex);
-			$stream = new StringStream($data);
-			$object = $decoder->decode($stream);
+			$decoder = new Decoder();
+			$object = $decoder->decode($addressBin);
 
 			$normalizedData = $object->getNormalizedData();
 			if ($object->getMajorType() != 4) {
