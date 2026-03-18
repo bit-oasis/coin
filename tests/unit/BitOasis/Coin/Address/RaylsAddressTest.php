@@ -50,10 +50,10 @@ class RaylsAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$raylsAddress = $this->createAddress($address);
+		$this->assertFalse($raylsAddress->supportsAdditionalId());
+		$this->assertNull($raylsAddress->getAdditionalIdName());
+		$this->assertNull($raylsAddress->getAdditionalId());
 	}
 
 	/**

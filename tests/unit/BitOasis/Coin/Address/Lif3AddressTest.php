@@ -50,10 +50,10 @@ class Lif3AddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$lif3Address = $this->createAddress($address);
+		$this->assertFalse($lif3Address->supportsAdditionalId());
+		$this->assertNull($lif3Address->getAdditionalIdName());
+		$this->assertNull($lif3Address->getAdditionalId());
 	}
 
 	/**

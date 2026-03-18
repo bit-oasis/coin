@@ -50,10 +50,10 @@ class MantleAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$mantleAddress = $this->createAddress($address);
+		$this->assertFalse($mantleAddress->supportsAdditionalId());
+		$this->assertNull($mantleAddress->getAdditionalIdName());
+		$this->assertNull($mantleAddress->getAdditionalId());
 	}
 
 	/**

@@ -50,10 +50,10 @@ class Bit2MeAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$bit2MeAddress = $this->createAddress($address);
+		$this->assertFalse($bit2MeAddress->supportsAdditionalId());
+		$this->assertNull($bit2MeAddress->getAdditionalIdName());
+		$this->assertNull($bit2MeAddress->getAdditionalId());
 	}
 
 	/**

@@ -50,10 +50,10 @@ class GateTokenAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$gateTokenAddress = $this->createAddress($address);
+		$this->assertFalse($gateTokenAddress->supportsAdditionalId());
+		$this->assertNull($gateTokenAddress->getAdditionalIdName());
+		$this->assertNull($gateTokenAddress->getAdditionalId());
 	}
 
 	/**

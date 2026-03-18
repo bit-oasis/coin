@@ -50,10 +50,10 @@ class LayerZeroAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address) {
-		$fantomAddress = $this->createAddress($address);
-		$this->assertFalse($fantomAddress->supportsAdditionalId());
-		$this->assertNull($fantomAddress->getAdditionalIdName());
-		$this->assertNull($fantomAddress->getAdditionalId());
+		$layerZeroAddress = $this->createAddress($address);
+		$this->assertFalse($layerZeroAddress->supportsAdditionalId());
+		$this->assertNull($layerZeroAddress->getAdditionalIdName());
+		$this->assertNull($layerZeroAddress->getAdditionalId());
 	}
 
 	/**
