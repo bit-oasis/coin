@@ -188,6 +188,15 @@ class Cryptocurrency {
 	// September 2025
 	const SKY = 'SKY';
 
+	// March 2026
+	const MNT = 'MNT';
+	const GTX = 'GTX';
+	const ZRO = 'ZRO';
+	const USAT = 'USAT';
+	const RLS = 'RLS';
+	const LIFIII = 'LIFIII';
+	const B2M = 'B2M';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
