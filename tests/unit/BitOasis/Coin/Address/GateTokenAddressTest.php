@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\SonicAddress;
+use BitOasis\Coin\Address\GateTokenAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
@@ -58,14 +58,14 @@ class GateTokenAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return SonicAddress
+	 * @return GateTokenAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): SonicAddress {
-		return new SonicAddress(
+	protected function createAddress(string $address): GateTokenAddress {
+		return new GateTokenAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::S),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SONIC)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::GTX),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
 }

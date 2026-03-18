@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\SonicAddress;
+use BitOasis\Coin\Address\Lif3Address;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
@@ -58,14 +58,14 @@ class Lif3AddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return SonicAddress
+	 * @return Lif3Address
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): SonicAddress {
-		return new SonicAddress(
+	protected function createAddress(string $address): Lif3Address {
+		return new Lif3Address(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::S),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SONIC)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::LIFIII),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
 }

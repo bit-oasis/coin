@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\SonicAddress;
+use BitOasis\Coin\Address\LayerZeroAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
@@ -58,14 +58,14 @@ class LayerZeroAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return SonicAddress
+	 * @return LayerZeroAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): SonicAddress {
-		return new SonicAddress(
+	protected function createAddress(string $address): LayerZeroAddress {
+		return new LayerZeroAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::S),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SONIC)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ZRO),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
 }

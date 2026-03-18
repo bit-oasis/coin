@@ -2,7 +2,7 @@
 
 namespace unit\BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\SonicAddress;
+use BitOasis\Coin\Address\Bit2MeAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\Exception\InvalidAddressException;
 use BitOasis\Coin\CryptocurrencyNetwork;
@@ -58,14 +58,14 @@ class Bit2MeAddressTest extends UnitTest {
 
 	/**
 	 * @param string $address
-	 * @return SonicAddress
+	 * @return Bit2MeAddress
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): SonicAddress {
-		return new SonicAddress(
+	protected function createAddress(string $address): Bit2MeAddress {
+		return new Bit2MeAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::S),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::SONIC)
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::B2M),
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}
 }
