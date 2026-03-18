@@ -187,6 +187,13 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ATH] = new Cryptocurrency(Cryptocurrency::ATH, 18, 'Aethir');
 		$this->cryptocurrencies[Cryptocurrency::BGB] = new Cryptocurrency(Cryptocurrency::BGB, 18, 'Bitget Token');
 		$this->cryptocurrencies[Cryptocurrency::SKY] = new Cryptocurrency(Cryptocurrency::SKY, 18, 'SKY Governance Token');
+		$this->cryptocurrencies[Cryptocurrency::MNT] = new Cryptocurrency(Cryptocurrency::MNT, 18, 'Mantle');
+		$this->cryptocurrencies[Cryptocurrency::GTX] = new Cryptocurrency(Cryptocurrency::GTX, 18, 'Gate Token');
+		$this->cryptocurrencies[Cryptocurrency::ZRO] = new Cryptocurrency(Cryptocurrency::ZRO, 18, 'Layer Zero');
+		$this->cryptocurrencies[Cryptocurrency::USAT] = new Cryptocurrency(Cryptocurrency::USAT, 6, 'Tether USAT');
+		$this->cryptocurrencies[Cryptocurrency::RLS] = new Cryptocurrency(Cryptocurrency::RLS, 18, 'Rayls');
+		$this->cryptocurrencies[Cryptocurrency::LIFIII] = new Cryptocurrency(Cryptocurrency::LIFIII, 18, 'LIF3');
+		$this->cryptocurrencies[Cryptocurrency::B2M] = new Cryptocurrency(Cryptocurrency::B2M, 18, 'Bit2Me');
 	}
 
 }
