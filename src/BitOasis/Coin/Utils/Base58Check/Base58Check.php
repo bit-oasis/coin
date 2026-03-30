@@ -2,6 +2,7 @@
 
 namespace BitOasis\Coin\Utils\Base58Check;
 
+use BitOasis\Coin\Utils\Hashes;
 use BitOasis\Coin\Utils\Strings;
 use StephenHill\Base58;
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
@@ -29,22 +30,22 @@ class Base58Check {
 		self::BTC_ADDRESS => [
 			self::VERSION_LENGTH => 1,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::ZEC_TRANSPARENT_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::ZEC_SHIELDED_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 64,
-			self::CHECKSUM_HASH => 'sha256x2hash',
+			self::CHECKSUM_HASH => 'sha256x2',
 		],
 		self::WAVES_ADDRESS => [
 			self::VERSION_LENGTH => 2,
 			self::HASH_LENGTH => 20,
-			self::CHECKSUM_HASH => 'blake2b256Keccak256Hash',
+			self::CHECKSUM_HASH => 'blake2b256Keccak256',
 		],
 	];
 
@@ -71,7 +72,7 @@ class Base58Check {
 	}
 
 	/**
-	 * @param Base58DecodedAddress
+	 * @param Base58DecodedAddress $address
 	 * @param string $charset if null default Bitcoin charset is used
 	 * @param string|Base58CheckOptions $options
 	 * @return string
@@ -135,7 +136,7 @@ class Base58Check {
 
 			$payload = substr($decodedValue, 0, -4);
 			$checksum = Strings::convertBinaryStringToDecimal(substr($decodedValue, -4), true);
-			$newChecksum = Strings::convertBinaryStringToDecimal($checksumHash === null ? self::sha256x2hash($payload) : $checksumHash($payload), true);
+			$newChecksum = Strings::convertBinaryStringToDecimal($checksumHash === null ? Hashes::sha256x2($payload) : $checksumHash($payload), true);
 			for ($i = 1; $i < 5; $i++) {
 				if ($checksum[$i] !== $newChecksum[$i]) {
 					throw new InvalidChecksumException('Invalid checksum!');
@@ -157,61 +158,13 @@ class Base58Check {
 	 */
 	protected static function encode($value, $charset = null, callable $checksumHash = null) {
 		try {
-			$checksum = substr($checksumHash === null ? Strings::sha256x2hash($value) : $checksumHash($value), 0, 4);
+			$checksum = substr($checksumHash === null ? Hashes::sha256x2($value) : $checksumHash($value), 0, 4);
 			
 			$base58 = new Base58($charset);
 			return $base58->encode($value . $checksum);
 		} catch (\InvalidArgumentException $e) {
 			throw new InvalidArgumentException($e->getMessage(), 0, $e);
 		}
-	}
-
-	/**
-	 * Hashes input $value two times with SHA256 algorithm
-	 * @param string $value
-	 * @param bool $rawOutput if true returned value is in binary string
-	 * @return string
-	 * @deprecated 1.2.1 use {@see BitOasis\Coin\Utils\Strings::sha256x2hash}
-	 */
-	public static function sha256x2hash($value, $rawOutput = true) {
-		return Strings::sha256x2hash($value, $rawOutput);
-	}
-
-	/**
-	 * @param string $value as binary string
-	 * @return string in hex format
-	 * @deprecated 1.2.1 use {@see BitOasis\Coin\Utils\Strings::convertBinaryStringToHex}
-	 */
-	public static function convertBinaryStringToHex($value) {
-		return Strings::convertBinaryStringToHex($value);
-	}
-
-	/**
-	 * @param string $value as binary string
-	 * @param bool $forceArray
-	 * @return false|int|int[] if there is more than one char, function returns whole array, or false if there is no char
-	 * @deprecated 1.2.1 use {@see BitOasis\Coin\Utils\Strings::convertBinaryStringToDecimal}
-	 */
-	public static function convertBinaryStringToDecimal($value, $forceArray = false) {
-		return Strings::convertBinaryStringToDecimal($value, $forceArray);
-	}
-
-	/**
-	 * @param int $value
-	 * @return string as binary string
-	 * @deprecated 1.2.1 use {@see BitOasis\Coin\Utils\Strings::convertDecimalToBinaryString}
-	 */
-	public static function convertDecimalToBinaryString($value) {
-		return Strings::convertDecimalToBinaryString($value);
-	}
-
-	/**
-	 * @param string $value in hex foramt
-	 * @return string as binary string
-	 * @deprecated 1.2.1 use {@see BitOasis\Coin\Utils\Strings::convertHexToBinaryString}
-	 */
-	public static function convertHexToBinaryString($value) {
-		return Strings::convertHexToBinaryString($value);
 	}
 
 	/**
@@ -234,7 +187,7 @@ class Base58Check {
 		}
 		
 		$settings = self::$addressSettings[$addressType];
-		return new Base58CheckOptions($settings[self::VERSION_LENGTH], $settings[self::HASH_LENGTH], [Strings::class, $settings[self::CHECKSUM_HASH]]);
+		return new Base58CheckOptions($settings[self::VERSION_LENGTH], $settings[self::HASH_LENGTH], [Hashes::class, $settings[self::CHECKSUM_HASH]]);
 	}
 
 	/**

@@ -4,7 +4,7 @@ namespace BitOasis\Coin\Address\Validators;
 
 use Base32\Base32;
 use BitOasis\Coin\Exception\InvalidAddressException;
-use BitOasis\Coin\Utils\Strings;
+use BitOasis\Coin\Utils\Hashes;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
 
 /**
@@ -56,7 +56,7 @@ class FilecoinAddressValidator implements ValidationInterface {
 		$st = pack('C*', ...$publicKey);
 
 		try {
-			$newCheckSum = array_values(unpack('C*', Strings::blake2b4($st)));
+			$newCheckSum = array_values(unpack('C*', Hashes::blake2b32($st)));
 		} catch (\SodiumException $e) {
 			throw new InvalidAddressException('Address has invalid characters');
 		}

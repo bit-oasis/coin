@@ -125,4 +125,7 @@ class BitcoinTestnetAddress implements CryptocurrencyAddress {
 		return null;
 	}
 
+	public function getNetwork(): CryptocurrencyNetwork {
+		return $this->cryptocurrencyNetwork;
+	}
 }

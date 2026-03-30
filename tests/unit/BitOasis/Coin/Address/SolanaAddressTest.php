@@ -21,6 +21,7 @@ class SolanaAddressTest extends UnitTest {
 			['058empuh8qY17bsnK65kmnYPsmbT1TDgzS9euVZYBkgKTRWm'],
 			['1dagojg92h4t439dKLGNKhngoiwqehgOIGNOIGHpibT1TDgzS9euVZYBkgKTRWm'],
 			['3o1rj0INDIAHge0i3tb08POFO9fj39h9r3hr0Hhet0ibT3r5FTTGr5gGt35r3gG'],
+			['1yhAARGVmryMueZ39XHLi1wvdgD3rc6vBRQKfLeiczeZ'],
 			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifp'],
 		];
 	}
@@ -30,7 +31,7 @@ class SolanaAddressTest extends UnitTest {
 			['DSgwK2mZUmJHaZqBKrcC2SSadRtoUFgv1qdaZPUifpto'],
 			['8xW2s6Fgvkry7LCj9iysHpEKd65JqgV3QUaArGgXbFau'],
 			['AmbcqD1BDrREBGHtRgcCjVe5JsEFTQ8T2r4Hi82ETP9e'],
-			['3U5H7KoAi7jYothucy47vZqh5N3NYCPh436Tsghukw62'] // off-curve address
+			['3U5H7KoAi7jYothucy47vZqh5N3NYCPh436Tsghukw62'], // off-curve address
 		];
 	}
 

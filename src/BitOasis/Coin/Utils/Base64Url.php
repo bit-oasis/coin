@@ -13,6 +13,9 @@ class Base64Url {
 		return rtrim($url, '=');
 	}
 
+	/**
+	 * @return string|bool returns the decoded data or false on failure.
+	 */
 	public static function decode(string $string, bool $strict = false) {
 		$b64 = strtr($string, '-_', '+/');
 		return base64_decode($b64, $strict);

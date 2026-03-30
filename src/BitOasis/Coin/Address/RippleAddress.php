@@ -146,16 +146,6 @@ class RippleAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @param string $address
-	 * @param $tag
-	 * @return bool
-	 */
-	private function isValid($address, $tag = null) {
-		return $this->createValidator($address, $tag)
-			->validate();
-	}
-
-	/**
 	 * 
 	 * @param string $address
 	 * @param $tag

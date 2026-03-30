@@ -31,7 +31,7 @@ class CryptocurrencyAddressType extends Type {
 	 * @return string
 	 */
 	public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform) {
-		return $platform->getVarcharTypeDeclarationSQL(['length' => self::FIELD_LENGTH]);
+		return $platform->getStringTypeDeclarationSQL(['length' => self::FIELD_LENGTH]);
 	}
 
 	/**

@@ -13,7 +13,7 @@ use BitOasis\Coin\Exception\AddressMixedCaseException;
 interface AddressValidator extends ValidationInterface {
 
 	/**
-	 * @return boolean only true or exception is thrown
+	 * @return bool only true or exception is thrown
 	 * @throws InvalidAddressException
 	 * @throws InvalidAddressPrefixException
 	 * @throws AddressMixedCaseException

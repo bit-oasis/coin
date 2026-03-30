@@ -44,7 +44,7 @@ class CryptoNoteDecodedAddress {
 
 	/**
 	 * @param string $payload as binary string
-	 * @return \static
+	 * @return static
 	 * @throws InvalidArgumentException
 	 */
 	public static function fromPayload($payload) {

@@ -99,7 +99,7 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressPrefixException
 	 */
 	public function toBase58() {
@@ -126,7 +126,7 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	}
 
 	/**
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressPrefixException
 	 */
 	public function toCashAddress() {
@@ -177,16 +177,6 @@ abstract class BaseBitcoinCashAddress implements CryptocurrencyAddress {
 	 */
 	protected function getCashAddressPrefixWithSeparator() {
 		return BaseBitcoinCashAddressValidator::PREFIX_MAINNET . BaseBitcoinCashAddressValidator::BASE32_SEPARATOR;
-	}
-
-	/**
-	 * @param $address
-	 * @param bool $cashAddressAllowed
-	 * @return bool
-	 */
-	private function isValid($address, $cashAddressAllowed = true) {
-		return $this->crateValidator($address, $cashAddressAllowed)
-			->validate();
 	}
 
 	/**

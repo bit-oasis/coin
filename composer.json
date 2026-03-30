@@ -8,24 +8,35 @@
 			"email": "daniel.robenek@me.com"
 		}
 	],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/davefu/KdybyEvents-ContributteDoctrine-Proxy"
+		}
+	],
 	"require": {
-		"php": ">=7.1",
-		"zendframework/zend-math": "^3.0",
+		"php": ">=7.4",
+		"laminas/laminas-math": "^3.5",
 		"linusu/bitcoin-address-validator": "dev-master@dev",
 		"murich/php-cryptocurrency-address-validation": "dev-master@dev",
 		"btccom/cashaddress": "dev-master@dev",
 		"stephenhill/base58": "^1.1.4",
 		"olegabr/keccak": "^1.0.3",
 		"christian-riesen/base32": "^1.3",
-		"paragonie/sodium_compat": "^1.17",
+		"paragonie/sodium_compat": "^1.21|^2.1",
 		"spomky-labs/cbor-php": "^1.1"
 	},
 	"require-dev": {
-		"kdyby/doctrine": "~3.0@dev|~2.3@dev",
-		"nette/di": "~2.2@dev",
+		"kdyby/events": "^5.0.1",
+		"davefu/kdyby-contributte-bridge": ">=0.2",
+		"nette/di": "~3.0",
 		"nette/utils": "*",
 		"codeception/codeception": "*",
-		"codeception/module-asserts": "^1.3"
+		"codeception/module-asserts": "^1.3",
+		"behat/gherkin": "<4.13",
+		"phpstan/phpstan": "^1.9",
+		"phpstan/phpstan-nette": "^1.2.3",
+		"phpstan/phpstan-deprecation-rules": "^1.1.1"
 	},
 	"autoload": {
 		"psr-0": {

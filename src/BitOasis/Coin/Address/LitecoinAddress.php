@@ -103,7 +103,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	}
 
 	/**
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressPrefixException
 	 */
 	public function toNewAddressFormat() {
@@ -123,7 +123,7 @@ class LitecoinAddress implements CryptocurrencyAddress, MultiFormatAddress {
 	}
 
 	/**
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressPrefixException
 	 */
 	public function toLegacyAddressFormat() {

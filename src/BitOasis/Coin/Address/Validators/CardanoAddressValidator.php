@@ -32,7 +32,8 @@ class CardanoAddressValidator implements ValidationInterface {
 		if (!$valid) {
 			// maybe it's a bech32 address
 			try {
-				$valid = is_array($decoded = Bech32::decode($this->address)) && 'addr' === $decoded[0];
+				$decoded = Bech32::decode($this->address);
+				$valid = 'addr' === $decoded[0];
 			} catch (Bech32Exception $exception) {
 				$valid = false;
 			}
@@ -45,7 +46,7 @@ class CardanoAddressValidator implements ValidationInterface {
 		try {
 			$base58 = new Base58();
 			$address = $base58->decode($address);
-			$addressHex = \Sodium\bin2hex($address);
+			$addressHex = \sodium_bin2hex($address);
 
 			$otherObjectManager = new OtherObject\OtherObjectManager();
 			$otherObjectManager->add(OtherObject\SimpleObject::class);
