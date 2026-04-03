@@ -22,7 +22,6 @@ use stdClass;
  * @property-read stdClass $config
  */
 class CoinExtension extends CompilerExtension {
-	//blabal
 
 	public function getConfigSchema(): Schema {
 		return Expect::structure([
