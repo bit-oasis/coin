@@ -70,15 +70,20 @@ class CryptocurrencyNetwork {
 	/** @var string */
 	protected $alias;
 
+	/** @var Cryptocurrency */
+	protected $nativeCryptocurrency;
+
 	/**
 	 * Cryptocurrency network constructor.
 	 * @param string $code
 	 * @param string $name
+	 * @param Cryptocurrency $nativeCryptocurrency
 	 * @param string|null $alias
 	 */
-	public function __construct(string $code, string $name, string $alias = null) {
+	public function __construct(string $code, string $name, Cryptocurrency $nativeCryptocurrency, string $alias = null) {
 		$this->code = $code;
 		$this->name = $name;
+		$this->nativeCryptocurrency = $nativeCryptocurrency;
 		$this->alias = $alias;
 	}
 
@@ -101,6 +106,10 @@ class CryptocurrencyNetwork {
 	 */
 	public function getAlias(): ?string {
 		return $this->alias;
+	}
+
+	public function getNativeCryptocurrency(): Cryptocurrency {
+		return $this->nativeCryptocurrency;
 	}
 
 	public function toString(): string {

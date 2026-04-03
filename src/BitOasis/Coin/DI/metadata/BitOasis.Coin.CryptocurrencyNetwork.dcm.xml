@@ -4,5 +4,8 @@
 		<id name="code" type="string" column="code" length="16"/>
 		<field name="name" type="string" length="100" nullable="false"/>
 		<field name="alias" type="string" length="100" nullable="false"/>
+		<many-to-one field="nativeCryptocurrency" target-entity="BitOasis\Coin\Cryptocurrency">
+			<join-column name="native_cryptocurrency_code" referenced-column-name="code" nullable="false"/>
+		</many-to-one>
 	</entity>
 </doctrine-mapping>

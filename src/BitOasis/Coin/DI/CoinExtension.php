@@ -36,7 +36,7 @@ class CoinExtension extends CompilerExtension {
 		$builder->addDefinition($this->prefix('cryptocurrencyAddressFactory'))
 			->setFactory(CryptocurrencyAddressFactory::class, [$config->addressHandlers]);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkFactory'))
-			->setFactory(DefaultCryptocurrencyNetworkFactory::class, []);
+			->setFactory(DefaultCryptocurrencyNetworkFactory::class);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkProvider'))
 			->setFactory(CryptocurrencyNetworkProvider::class, [CryptocurrencyNetworkProvider::fromAddressMap($config->addressHandlers)]);
 		$builder->addDefinition($this->prefix('coinHydrationListener'))
