@@ -4,6 +4,7 @@ namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\CryptocurrencyAddressFactory;
 use BitOasis\Coin\CryptocurrencyNetworkProvider;
+use BitOasis\Coin\DefaultCryptocurrencyFactory;
 use BitOasis\Coin\DefaultCryptocurrencyNetworkFactory;
 use BitOasis\Coin\Mapping\CoinObjectHydrationListener;
 use Davefu\KdybyContributteBridge\Cache\Helpers as CacheHelpers;
@@ -21,6 +22,7 @@ use stdClass;
  * @property-read stdClass $config
  */
 class CoinExtension extends CompilerExtension {
+	//blabal
 
 	public function getConfigSchema(): Schema {
 		return Expect::structure([
@@ -35,6 +37,8 @@ class CoinExtension extends CompilerExtension {
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix('cryptocurrencyAddressFactory'))
 			->setFactory(CryptocurrencyAddressFactory::class, [$config->addressHandlers]);
+		$builder->addDefinition($this->prefix('cryptocurrencyFactory'))
+			->setFactory(DefaultCryptocurrencyFactory::class);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkFactory'))
 			->setFactory(DefaultCryptocurrencyNetworkFactory::class);
 		$builder->addDefinition($this->prefix('cryptocurrencyNetworkProvider'))
