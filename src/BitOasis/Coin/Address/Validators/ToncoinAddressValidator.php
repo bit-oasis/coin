@@ -17,18 +17,18 @@ class ToncoinAddressValidator implements ValidationInterface {
 	private const USER_FRIENDLY_ADDRESS_BYTE_LENGTH = 36;
 	private const USER_FRIENDLY_ADDRESS_FORMAT_PREFIX = ['E', 'U'];
 
-	private const PAYLOAD_MIN_LENGTH = 4;
-	private const PAYLOAD_MAX_LENGTH = 64;
+	private const MEMO_MIN_LENGTH = 4;
+	private const MEMO_MAX_LENGTH = 64;
 
 	/** @var string */
 	protected $address;
 
 	/** @var string|null */
-	protected $payload;
+	protected $memo;
 
-	public function __construct($address, $payload = null) {
+	public function __construct($address, $memo = null) {
 		$this->address = $address;
-		$this->payload = $payload;
+		$this->memo = $memo;
 	}
 
 	/**
@@ -57,8 +57,8 @@ class ToncoinAddressValidator implements ValidationInterface {
 			$this->validateRawFormat($rawFormat);
 		}
 
-		if ($this->payload !== null) {
-			$this->validatePayload($this->payload);
+		if ($this->memo !== null) {
+			$this->validateMemo($this->memo);
 		}
 
 		return true;
@@ -167,15 +167,15 @@ class ToncoinAddressValidator implements ValidationInterface {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	private function validatePayload(string $payload): void {
-		$length = strlen($payload);
-		$min = self::PAYLOAD_MIN_LENGTH;
-		$max = self::PAYLOAD_MAX_LENGTH;
+	private function validateMemo(string $memo): void {
+		$length = strlen($memo);
+		$min = self::MEMO_MIN_LENGTH;
+		$max = self::MEMO_MAX_LENGTH;
 		if ($length < $min || $length > $max) {
-			throw new InvalidAddressException("Payload must be between $min and $max characters - $payload");
+			throw new InvalidAddressException("Tag/Memo must be between $min and $max characters - $memo");
 		}
-		if (!ctype_alnum($payload)) {
-			throw new InvalidAddressException('Payload must be alphanumeric - ' . $payload);
+		if (!ctype_alnum($memo)) {
+			throw new InvalidAddressException('Tag/Memo must be alphanumeric - ' . $memo);
 		}
 	}
 }

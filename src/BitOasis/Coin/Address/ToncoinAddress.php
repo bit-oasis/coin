@@ -17,7 +17,7 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	protected $address;
 
 	/** @var string|null */
-	protected $payload;
+	protected $memo;
 
 	/** @var Cryptocurrency */
 	protected $currency;
@@ -29,17 +29,17 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 * @param string $address
 	 * @param Cryptocurrency $currency
 	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
-	 * @param string|null $payload
+	 * @param string|null $memo
 	 * @throws InvalidAddressException
 	 */
-	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, ?string $payload = null) {
-		if (!$this->isValid($address, $payload)) {
+	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork, ?string $memo = null) {
+		if (!$this->isValid($address, $memo)) {
 			throw new InvalidAddressException('This is not valid toncoin address - ' . $address);
 		}
 		$this->address = $address;
 		$this->currency = $currency;
 		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
-		$this->payload = $payload;
+		$this->memo = $memo;
 	}
 
 	/**
@@ -53,7 +53,7 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function toString(): string {
-		return 'Address: ' . $this->address . ($this->payload === null ? '' : (', Payload: ' . $this->payload));
+		return 'Address: ' . $this->address . ($this->memo === null ? '' : (', Memo: ' . $this->memo));
 	}
 
 	/**
@@ -77,8 +77,8 @@ class ToncoinAddress implements CryptocurrencyAddress {
 		return $this->cryptocurrencyNetwork;
 	}
 
-	public function getPayload(): ?string {
-		return $this->payload;
+	public function getMemo(): ?string {
+		return $this->memo;
 	}
 
 	/**
@@ -106,14 +106,14 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public static function getClassAdditionalIdName(): ?string {
-		return 'payload';
+		return 'memo';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getAdditionalId() {
-		return $this->getPayload();
+		return $this->getMemo();
 	}
 
 	/**
@@ -121,7 +121,7 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 * @return bool
 	 */
 	public function equals(CryptocurrencyAddress $address): bool {
-		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address && $this->payload === $address->payload;
+		return $address instanceof static && $this->currency->equals($address->currency) && $this->address === $address->address && $this->memo === $address->memo;
 	}
 
 	/**
@@ -132,8 +132,8 @@ class ToncoinAddress implements CryptocurrencyAddress {
 		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, $addressParts[1] ?? null);
 	}
 
-	public function isValid(string $address, ?string $payload = null): bool {
-		return (new ToncoinAddressValidator($address, $payload))->validate();
+	public function isValid(string $address, ?string $memo = null): bool {
+		return (new ToncoinAddressValidator($address, $memo))->validate();
 	}
 
 }

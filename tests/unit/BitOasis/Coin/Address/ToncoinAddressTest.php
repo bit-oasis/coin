@@ -31,7 +31,7 @@ class ToncoinAddressTest extends UnitTest {
 			// Invalid: Length is not 36 byte
 			['UQDS46qzjIuiiBcZ2y_IK1xfIXfASQ0wYf3rg9n8vziLaC12A'],
 			// Invalid: Checksum mismatch
-			['EQB3ncyBXTjZUA5EnFKR5_EnOMI9V1tTEAAPaiU71gc4TiUt', 'gdagadg']
+			['EQB3ncyBXTjZUA5EnFKR5_EnOMI9V1tTEAAPaiU71gc4TiUt']
 		];
 	}
 
@@ -46,15 +46,16 @@ class ToncoinAddressTest extends UnitTest {
 			['UQApDXClejVz1RzuWt0zwInOEX9BTAgZ7Iu1dBXXkvCGHdhM'],
 			['UQDS46qzjIuiiBcZ2y_IK1xfIXfASQ0wYf3rg9n8vziLaC12'],
 			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', 'EF97BA021ACDC4E48F56'],
+			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', '123456'],
 		];
 	}
 
 	/**
 	 * @dataProvider providerInvalidAddress
 	 */
-	public function testInvalidAddress(string$address, ?string $payload = null) {
-		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address, $payload) {
-			$this->createAddress($address, $payload);
+	public function testInvalidAddress(string$address, ?string $memo = null) {
+		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address, $memo) {
+			$this->createAddress($address, $memo);
 		});
 	}
 
@@ -62,23 +63,23 @@ class ToncoinAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
-	public function testAdditionalId(string $address, ?string $payload = null) {
-		$createdAddress = $this->createAddress($address, $payload);
+	public function testAdditionalId(string $address, ?string $memo = null) {
+		$createdAddress = $this->createAddress($address, $memo);
 		$this->assertTrue($createdAddress->supportsAdditionalId());
 		$this->assertNotNull($createdAddress->getAdditionalIdName());
-		$this->assertEquals($createdAddress->getAdditionalId(), $payload);
-		$this->assertEquals($createdAddress->getAdditionalId(), $createdAddress->getPayload());
+		$this->assertEquals($createdAddress->getAdditionalId(), $memo);
+		$this->assertEquals($createdAddress->getAdditionalId(), $createdAddress->getMemo());
 	}
 
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address, ?string $payload = null): ToncoinAddress {
+	protected function createAddress(string $address, ?string $memo = null): ToncoinAddress {
 		return new ToncoinAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::TON),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::TON),
-			$payload
+			$memo
 		);
 	}
 }
