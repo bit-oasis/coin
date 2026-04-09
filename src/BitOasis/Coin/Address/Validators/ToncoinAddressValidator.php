@@ -13,12 +13,12 @@ use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
  */
 class ToncoinAddressValidator implements ValidationInterface {
 
-	private const int ACCOUNT_ID_BYTE_LENGTH = 32;
-	private const int USER_FRIENDLY_ADDRESS_BYTE_LENGTH = 36;
-	private const array USER_FRIENDLY_ADDRESS_FORMAT_PREFIX = ['E', 'U'];
+	private const ACCOUNT_ID_BYTE_LENGTH = 32;
+	private const USER_FRIENDLY_ADDRESS_BYTE_LENGTH = 36;
+	private const USER_FRIENDLY_ADDRESS_FORMAT_PREFIX = ['E', 'U'];
 
-	private const int PAYLOAD_MIN_LENGTH = 4;
-	private const int PAYLOAD_MAX_LENGTH = 32;
+	private const PAYLOAD_MIN_LENGTH = 4;
+	private const PAYLOAD_MAX_LENGTH = 64;
 
 	/** @var string */
 	protected $address;
@@ -169,8 +169,10 @@ class ToncoinAddressValidator implements ValidationInterface {
 	 */
 	private function validatePayload(string $payload): void {
 		$length = strlen($payload);
-		if ($length < self::PAYLOAD_MIN_LENGTH || $length > self::PAYLOAD_MAX_LENGTH) {
-			throw new InvalidAddressException('Payload must be between 4 and 64 characters - ' . $payload);
+		$min = self::PAYLOAD_MIN_LENGTH;
+		$max = self::PAYLOAD_MAX_LENGTH;
+		if ($length < $min || $length > $max) {
+			throw new InvalidAddressException("Payload must be between $min and $max characters - $payload");
 		}
 		if (!ctype_alnum($payload)) {
 			throw new InvalidAddressException('Payload must be alphanumeric - ' . $payload);
