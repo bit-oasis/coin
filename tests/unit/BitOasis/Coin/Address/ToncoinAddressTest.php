@@ -31,7 +31,14 @@ class ToncoinAddressTest extends UnitTest {
 			// Invalid: Length is not 36 byte
 			['UQDS46qzjIuiiBcZ2y_IK1xfIXfASQ0wYf3rg9n8vziLaC12A'],
 			// Invalid: Checksum mismatch
-			['EQB3ncyBXTjZUA5EnFKR5_EnOMI9V1tTEAAPaiU71gc4TiUt']
+			['EQB3ncyBXTjZUA5EnFKR5_EnOMI9V1tTEAAPaiU71gc4TiUt'],
+			// Invalid: Memo too short (less than 4 characters)
+			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', 'abc'],
+			// Invalid: Memo too long (more than 64 characters)
+			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', 'abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01234'],
+			// Invalid: Memo contains non-alphanumeric characters
+			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', 'memo!@#$'],
+			['UQAmnEhjsVhyJ4-Qx3apAn8-8N-TQRvc3Oh9PeY3sJTgLc3a', 'memo with spaces'],
 		];
 	}
 

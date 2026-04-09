@@ -60,7 +60,7 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function serialize(): string {
-		return $this->address . ($this->tag === null ? '' : ('#' . $this->tag));
+		return $this->address . ($this->memo === null ? '' : ('#' . $this->memo));
 	}
 
 	/**
