@@ -129,7 +129,7 @@ class ToncoinAddress implements CryptocurrencyAddress {
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork): CryptocurrencyAddress {
 		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, isset($addressParts[1]) ? (int)$addressParts[1] : null);
+		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, $addressParts[1] ?? null);
 	}
 
 	public function isValid(string $address, ?string $payload = null): bool {
