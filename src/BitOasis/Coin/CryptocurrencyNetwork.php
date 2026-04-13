@@ -60,6 +60,7 @@ class CryptocurrencyNetwork {
 	const CELESTIA = 'celestia';
 	const SONIC = 'sonic';
 	const ARBITRUM = 'arbitrum';
+	const BASE_CHAIN = 'base_chain';
 
 	/** @var string */
 	protected $code;

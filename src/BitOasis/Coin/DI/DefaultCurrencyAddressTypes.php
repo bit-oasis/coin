@@ -18,6 +18,7 @@ use BitOasis\Coin\Address\AxieInfinityAddress;
 use BitOasis\Coin\Address\BalancerAddress;
 use BitOasis\Coin\Address\BancorAddress;
 use BitOasis\Coin\Address\BandProtocolAddress;
+use BitOasis\Coin\Address\BaseChainAddress;
 use BitOasis\Coin\Address\BasicAttentionTokenAddress;
 use BitOasis\Coin\Address\Bit2MeAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
@@ -280,7 +281,8 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => SushiAddress::class
 		],
 		Cryptocurrency::USDC => [
-			CryptocurrencyNetwork::ETHEREUM => UsdCoinAddress::class
+			CryptocurrencyNetwork::ETHEREUM => UsdCoinAddress::class,
+			CryptocurrencyNetwork::BASE_CHAIN => BaseChainAddress::class
 		],
 		Cryptocurrency::WAVES => [
 			CryptocurrencyNetwork::WAVES => WavesAddress::class
