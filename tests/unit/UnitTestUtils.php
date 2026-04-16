@@ -33,7 +33,7 @@ class UnitTestUtils {
 	 * @throws InvalidArgumentException
 	 */
 	public static function getCryptocurrencyNetwork($code) {
-		$factory = new DefaultCryptocurrencyNetworkFactory();
+		$factory = new DefaultCryptocurrencyNetworkFactory(new DefaultCryptocurrencyFactory());
 		try {
 			return $factory->create($code);
 		} catch (InvalidNetworkException $e) {
