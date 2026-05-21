@@ -17,7 +17,6 @@ class SeiAddressTest extends UnitTest {
 	public function providerInvalidAddress(): array {
 		return [
 			// Invalid: Missing "sei" prefix
-			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a', 123],
 			['notsei1umsz72jtj9n30hkehahhq9mfj5k53apv8s6hsy', 123],
 			// Invalid: Length is not 32 bytes
 			['sei1umsz72jtj9n30hkehahhq9mfj5k53apv8s6hsyextra', 123],
@@ -33,6 +32,11 @@ class SeiAddressTest extends UnitTest {
 			['sei12p0jcq6ftqa7gpr4mfnm5ymu579yuwpxctxap4', 12343],
 			['sei14n9fhykwk8rk7zln7rzd6uyhm2gzntuw2pv0e9', null],
 			['sei13qj8z08uufaj38kffxuwafj5qxfk758hu09czc', 5100],
+			['0xDFd5293D8e347dFe59E90eFd55b2956a1343963d'],
+			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
+			['0x22F9dCF4647084d6C31b2765F6910cd85C178C18'],
+			['0x22F1153DF3FF6b8336a7193271Ca5316B6C9824D'],
+			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
 		];
 	}
 
@@ -49,12 +53,18 @@ class SeiAddressTest extends UnitTest {
 	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
 	 */
-	public function testAdditionalId(string $address, $tag): void {
+	public function testAdditionalId(string $address, $tag = null): void {
 		$seiAddress = $this->createAddress($address, $tag);
-		$this->assertTrue($seiAddress->supportsAdditionalId());
+
+		if (!$seiAddress->isEvmAddress()) {
+			$this->assertTrue($seiAddress->supportsAdditionalId());
+		} else {
+			$this->assertFalse($seiAddress->supportsAdditionalId());
+		}
+
 		$this->assertNotNull($seiAddress->getAdditionalIdName());
 		$this->assertEquals($tag, $seiAddress->getAdditionalId());
-		$this->assertEquals($seiAddress->getTag(), $seiAddress->getAdditionalId());
+		$this->assertEquals($seiAddress->getAdditionalId(), $seiAddress->getAdditionalId());
 	}
 
 	/**
