@@ -16,8 +16,9 @@ class SeiAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
-			// Invalid: EVM address with tag
-			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a', 123],
+			// Invalid: EVM address with and without tag
+			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a'],
+			['0xDFd5293D8e347dFe59E90eFd55b2956a1343963d', 123],
 			// Invalid: Missing "sei" prefix
 			['notsei1umsz72jtj9n30hkehahhq9mfj5k53apv8s6hsy', 123],
 			// Invalid: Length is not 32 bytes
@@ -44,9 +45,9 @@ class SeiAddressTest extends UnitTest {
 	/**
 	 * @dataProvider providerInvalidAddress
 	 */
-	public function testInvalidAddress(string $address): void {
-		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address) {
-			$this->createAddress($address);
+	public function testInvalidAddress(string $address, $tag = null): void {
+		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address, $tag) {
+			$this->createAddress($address, $tag);
 		});
 	}
 
