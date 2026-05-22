@@ -111,7 +111,7 @@ class SeiAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public static function supportsClassAdditionalId(): bool {
-		return false;
+		return true;
 	}
 
 	public static function getClassAdditionalIdName(): string {
