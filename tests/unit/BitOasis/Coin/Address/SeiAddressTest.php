@@ -16,6 +16,8 @@ class SeiAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
+			// Invalid: EVM address with tag
+			['0x6c3e4cb2e96bO1f4b866965a91ed4437839a121a', 123],
 			// Invalid: Missing "sei" prefix
 			['notsei1umsz72jtj9n30hkehahhq9mfj5k53apv8s6hsy', 123],
 			// Invalid: Length is not 32 bytes
@@ -36,7 +38,6 @@ class SeiAddressTest extends UnitTest {
 			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
 			['0x22F9dCF4647084d6C31b2765F6910cd85C178C18'],
 			['0x22F1153DF3FF6b8336a7193271Ca5316B6C9824D'],
-			['0xD8D6fFE342210057BF4DCc31DA28D006f253cEF0'],
 		];
 	}
 
@@ -62,7 +63,11 @@ class SeiAddressTest extends UnitTest {
 			$this->assertFalse($seiAddress->supportsAdditionalId());
 		}
 
-		$this->assertNotNull($seiAddress->getAdditionalIdName());
+		if (!$seiAddress->isEvmAddress()) {
+			$this->assertNotNull($seiAddress->getAdditionalIdName());
+		} else {
+			$this->assertNull($seiAddress->getAdditionalIdName());
+		}
 		$this->assertEquals($tag, $seiAddress->getAdditionalId());
 		$this->assertEquals($seiAddress->getAdditionalId(), $seiAddress->getAdditionalId());
 	}

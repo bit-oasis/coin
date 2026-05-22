@@ -7,6 +7,7 @@ use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyAddress;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
+use BitOasis\Coin\Utils\Erc20AddressNormalizer;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ETH as ETHValidator;
 
 /**
@@ -42,6 +43,10 @@ class SeiAddress implements CryptocurrencyAddress {
 		$this->tag = $tag;
 
 		$this->validateAddress();
+
+		if ($this->isEvmAddress()) {
+			$this->address = Erc20AddressNormalizer::normalize($this->address);
+		}
 	}
 
 	public function toString(): string {
@@ -70,7 +75,7 @@ class SeiAddress implements CryptocurrencyAddress {
 
 	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork): SeiAddress {
 		$addressParts = explode('#', $string);
-		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, isset($addressParts[1]) ? (int)$addressParts[1] : null);
+		return new static($addressParts[0], $cryptocurrency, $cryptocurrencyNetwork, $addressParts[1] ?? null);
 	}
 
 	public function equals(CryptocurrencyAddress $address): bool {
@@ -99,14 +104,14 @@ class SeiAddress implements CryptocurrencyAddress {
 	 * @inheritDoc
 	 */
 	public function getAdditionalIdName(): ?string {
-		return static::getClassAdditionalIdName();
+		return $this->isEvmAddress() ? null : static::getClassAdditionalIdName();
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function supportsClassAdditionalId(): bool {
-		return true;
+		return false;
 	}
 
 	public static function getClassAdditionalIdName(): string {
@@ -114,12 +119,7 @@ class SeiAddress implements CryptocurrencyAddress {
 	}
 
 	public function isEvmAddress(): bool {
-		try {
-			$this->validateEvmAddress();
-			return true;
-		} catch (InvalidAddressException $ex) {
-			return false;
-		}
+		return (new ETHValidator($this->address))->validate();
 	}
 
 	/**
@@ -130,9 +130,9 @@ class SeiAddress implements CryptocurrencyAddress {
 			throw new InvalidAddressException("Tag is not supported on EVM based {$this->currency->getName()} address");
 		}
 
-		if (!(new ETHValidator($this->address))->validate()) {
+		if (!($this->isEvmAddress())) {
 			throw new InvalidAddressException("'{$this->address}' is not valid {$this->currency->getName()} address");
-		};
+		}
 	}
 
 	/**
@@ -147,9 +147,9 @@ class SeiAddress implements CryptocurrencyAddress {
 	 */
 	private function validateAddress() {
 		if ($this->isEvmAddress()) {
+			$this->validateEvmAddress();
 			return;
 		}
-
 		$this->validateCosmosAddress();
 	}
 }
