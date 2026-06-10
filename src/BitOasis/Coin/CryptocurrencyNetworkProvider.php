@@ -6,6 +6,7 @@ use BitOasis\Coin\Exception\NetworkNotDefinedForCryptocurrency;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
+ * @deprecated DO NOT USE!
  */
 final class CryptocurrencyNetworkProvider implements ICryptocurrencyNetworkProvider {
 

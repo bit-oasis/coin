@@ -1,8 +1,7 @@
 <?php
 
-namespace unit\BitOasis\Coin\Address;
+namespace BitOasis\Coin\Address;
 
-use BitOasis\Coin\Address\MemecoinAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
 use BitOasis\Coin\Exception\InvalidAddressException;
@@ -10,9 +9,9 @@ use UnitTest;
 use UnitTestUtils;
 
 /**
- * @author ahmad.yousef <ahmad.yousef@bitoasis.net>
+ * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
  */
-class MemecoinAddressTest extends UnitTest {
+class EthereumAddressTest extends UnitTest {
 
 	public function providerInvalidAddress(): array {
 		return [
@@ -26,11 +25,11 @@ class MemecoinAddressTest extends UnitTest {
 
 	public function providerValidate(): array {
 		return [
-			['0x71a41517Fe65890fE835d67fce17a9747112696C'],
-			['0xE6f3494E839F3D3Fb36c407eB35cd85D90Dc3704'],
-			['0x6cC5F688a315f3dC28A7781717a9A798a59fDA7b'],
-			['0x7Ec0b470f826b168C2baEfd0e2912cb343512006'],
-			['0x33D003deB7C69E272aeF9893407CedF0F6b6f462'],
+			['0xad2cc05dbde36e3b21fe4692e432be3074adb729'],
+			['0xa1d8d972560c2f8144af871db508f0b0b10a3fbf'],
+			['0x21a31ee1afc51d94c2efccaa2092ad1028285549'],
+			['0x70dba826182e04a4fef97cdc87f5228d71a0b5e0'],
+			['0x77696bb39917c91a0c3908d577d5e322095425ca'],
 		];
 	}
 
@@ -38,14 +37,14 @@ class MemecoinAddressTest extends UnitTest {
 	 * @dataProvider providerInvalidAddress
 	 */
 	public function testInvalidAddress(string $address): void {
-		$this->tester->expectThrowable(InvalidAddressException::class, function () use ($address): void {
+		$this->tester->expectThrowable(InvalidAddressException::class, function() use ($address) {
 			$this->createAddress($address);
 		});
 	}
 
 	/**
-	 * @throws InvalidAddressException
 	 * @dataProvider providerValidate
+	 * @throws InvalidAddressException
 	 */
 	public function testAdditionalId(string $address): void {
 		$createdAddress = $this->createAddress($address);
@@ -57,10 +56,10 @@ class MemecoinAddressTest extends UnitTest {
 	/**
 	 * @throws InvalidAddressException
 	 */
-	protected function createAddress(string $address): MemecoinAddress {
-		return new MemecoinAddress(
+	protected function createAddress(string $address): EthereumAddress {
+		return new EthereumAddress(
 			$address,
-			UnitTestUtils::getCryptocurrency(Cryptocurrency::MEME),
+			UnitTestUtils::getCryptocurrency(Cryptocurrency::ETH),
 			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
 		);
 	}

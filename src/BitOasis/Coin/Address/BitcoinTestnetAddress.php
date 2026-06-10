@@ -50,6 +50,13 @@ class BitcoinTestnetAddress implements CryptocurrencyAddress {
 	}
 
 	/**
+	 * @return CryptocurrencyNetwork
+	 */
+	public function getNetwork() {
+		return $this->cryptocurrencyNetwork;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function serialize() {
@@ -125,7 +132,4 @@ class BitcoinTestnetAddress implements CryptocurrencyAddress {
 		return null;
 	}
 
-	public function getNetwork(): CryptocurrencyNetwork {
-		return $this->cryptocurrencyNetwork;
-	}
 }
