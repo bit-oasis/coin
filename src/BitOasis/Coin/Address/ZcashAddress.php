@@ -92,20 +92,11 @@ class ZcashAddress implements CryptocurrencyAddress {
 	 * @param string $string
 	 * @param Cryptocurrency $cryptocurrency
 	 * @param CryptocurrencyNetwork $cryptocurrencyNetwork
-	 * @return \static
+	 * @return static
 	 * @throws InvalidAddressException
 	 */
 	public static function deserialize($string, Cryptocurrency $cryptocurrency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
 		return new static($string, $cryptocurrency, $cryptocurrencyNetwork);
-	}
-
-	/**
-	 * @param string $address
-	 * @return bool
-	 */
-	private function isValid($address) {
-		return $this->createValidator($address)
-			->validate();
 	}
 
 	/**

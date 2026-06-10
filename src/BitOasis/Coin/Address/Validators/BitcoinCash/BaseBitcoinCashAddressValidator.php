@@ -44,7 +44,7 @@ abstract class BaseBitcoinCashAddressValidator implements AddressValidator {
 	}
 
 	/**
-	 * @return boolean
+	 * @return bool
 	 */
 	public function validate() {
 		try {

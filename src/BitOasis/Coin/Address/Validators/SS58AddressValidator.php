@@ -4,6 +4,7 @@ namespace BitOasis\Coin\Address\Validators;
 
 use BitOasis\Coin\Utils\Exception\InvalidArgumentException;
 use BitOasis\Coin\Utils\Exception\InvalidChecksumException;
+use BitOasis\Coin\Utils\Hashes;
 use BitOasis\Coin\Utils\Strings;
 use Murich\PhpCryptocurrencyAddressValidation\Validation\ValidationInterface;
 use StephenHill\Base58;
@@ -57,7 +58,7 @@ abstract class SS58AddressValidator implements ValidationInterface {
 			$payload =  self::SUBSTRATE_PREFIX . substr($decodedValue, 0, 0 - self::CHECKSUM_LENGTH);
 
 			$checksum = Strings::convertBinaryStringToDecimal(substr($decodedValue, 0 - self::CHECKSUM_LENGTH), true);
-			$newChecksum = Strings::convertBinaryStringToDecimal(Strings::blake2b512($payload), true);
+			$newChecksum = Strings::convertBinaryStringToDecimal(Hashes::blake2b512($payload), true);
 
 			for ($i = 1; $i <= self::CHECKSUM_LENGTH; $i++) {
 				if ($checksum[$i] !== $newChecksum[$i]) {

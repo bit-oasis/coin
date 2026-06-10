@@ -14,14 +14,13 @@ use BitOasis\Coin\Types\CoinType;
 use BitOasis\Coin\Types\CryptocurrencyAddressType;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\CacheProvider;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Event\PostLoadEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events as ORMEvents;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Kdyby;
-use Kdyby\Doctrine\Events;
 use Nette\Utils\Json;
 
 
@@ -66,7 +65,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 	/** @var CryptocurrencyNetworkFactory */
 	protected $cryptocurrencyNetworkFactory;
 
-	/** @var EntityManager */
+	/** @var EntityManagerInterface */
 	protected $entityManager;
 
 	/** @var Reader */
@@ -78,7 +77,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 	/** @var array */
 	protected $networkFieldsCache = [];
 
-	public function __construct($entityNamespaces, CacheProvider $cache, CryptocurrencyAddressFactory $cryptocurrencyAddressFactory, CryptocurrencyNetworkFactory $cryptocurrencyNetworkFactory, Reader $annotationReader, EntityManager $entityManager) {
+	public function __construct($entityNamespaces, CacheProvider $cache, CryptocurrencyAddressFactory $cryptocurrencyAddressFactory, CryptocurrencyNetworkFactory $cryptocurrencyNetworkFactory, Reader $annotationReader, EntityManagerInterface $entityManager) {
 		$this->entityNamespaces = $entityNamespaces;
 		$this->cache = $cache;
 		$this->cache->setNamespace(get_called_class());
@@ -90,11 +89,11 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 
 	public function getSubscribedEvents() {
 		return array(
-			Events::loadClassMetadata => 'loadClassMetadata',
+			ORMEvents::class . '::' . ORMEvents::loadClassMetadata => 'loadClassMetadata',
 		);
 	}
 
-	public function postLoad($entity, LifecycleEventArgs $args) {
+	public function postLoad($entity, PostLoadEventArgs $args) {
 		$fieldsCryptocurrencyMap = $this->getEntityCoinFields($entity);
 		$fieldsNetworkMap = $this->getEntityCryptocurrencyNetworkFields($entity);
 
@@ -236,26 +235,24 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			$coinFields = Json::decode($this->cache->fetch($cacheKey), Json::FORCE_ARRAY);
 		} else {
 			$coinFields = $this->buildFieldsForCoin($class);
-			$this->cache->save($cacheKey, $coinFields ? Json::encode($coinFields) : FALSE);
+			$this->cache->save($cacheKey, Json::encode($coinFields));
 		}
 
 		$fieldsMap = [];
 		$classKey = $associationConfigs['mappingClassKey'];
 		$assocKey = $associationConfigs['mappingAssociationKey'];
 
-		if (is_array($coinFields) && !empty($coinFields)) {
-			foreach ($coinFields as $field => $mapping) {
-				if (!isset($fieldsMap[$mapping[$assocKey]])) {
-					$fieldsMap[$mapping[$assocKey]] = array(
-						'class' => $this->entityManager->getClassMetadata($mapping[$classKey]),
-						'fields' => array($field => $this->entityManager->getClassMetadata($mapping['fieldClass'])),
-					);
+		foreach ($coinFields as $field => $mapping) {
+			if (!isset($fieldsMap[$mapping[$assocKey]])) {
+				$fieldsMap[$mapping[$assocKey]] = array(
+					'class' => $this->entityManager->getClassMetadata($mapping[$classKey]),
+					'fields' => array($field => $this->entityManager->getClassMetadata($mapping['fieldClass'])),
+				);
 
-					continue;
-				}
-
-				$fieldsMap[$mapping[$assocKey]]['fields'][$field] = $this->entityManager->getClassMetadata($mapping['fieldClass']);
+				continue;
 			}
+
+			$fieldsMap[$mapping[$assocKey]]['fields'][$field] = $this->entityManager->getClassMetadata($mapping['fieldClass']);
 		}
 
 		return $this->coinFieldsCache[$class->getName()] = $fieldsMap;
@@ -274,18 +271,16 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 			$networkFields = Json::decode($this->cache->fetch($cacheKey), Json::FORCE_ARRAY);
 		} else {
 			$networkFields = $this->buildFieldsForNetwork($class);
-			$this->cache->save($cacheKey, $networkFields ? Json::encode($networkFields) : FALSE);
+			$this->cache->save($cacheKey, Json::encode($networkFields));
 		}
 
 		$res = [];
 
-		if (is_array($networkFields) && !empty($networkFields)) {
-			// Cache cannot handle the class itself
-			// That's why we need to load class name from cache and create the metadata every time
-			foreach ($networkFields as $field => $mapping) {
-				$res[$field] = $mapping;
-				$res[$field]['class'] = $this->entityManager->getClassMetadata($mapping['class']);
-			}
+		// Cache cannot handle the class itself
+		// That's why we need to load class name from cache and create the metadata every time
+		foreach ($networkFields as $field => $mapping) {
+			$res[$field] = $mapping;
+			$res[$field]['class'] = $this->entityManager->getClassMetadata($mapping['class']);
 		}
 
 		return $this->networkFieldsCache[$class->getName()] = $res;

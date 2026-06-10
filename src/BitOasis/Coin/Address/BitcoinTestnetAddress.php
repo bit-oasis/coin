@@ -131,4 +131,5 @@ class BitcoinTestnetAddress implements CryptocurrencyAddress {
 	public static function getClassAdditionalIdName() {
 		return null;
 	}
+
 }

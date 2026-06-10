@@ -32,7 +32,6 @@ abstract class BaseBitcoinCashAddressTest extends UnitTest {
 
 	/**
 	 * @param string $base58Address
-	 * @param string $cashAddress
 	 * @dataProvider providerBase58ToCashAddress
 	 */
 	public function testToBase58Same($base58Address) {

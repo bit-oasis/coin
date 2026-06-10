@@ -41,7 +41,7 @@ class Base58DecodedAddress {
 	 * @param string $payload as binary string
 	 * @param int $versionLength expected version length
 	 * @param int $hashLength expected hash length
-	 * @return \static
+	 * @return static
 	 * @throws InvalidArgumentException
 	 */
 	public static function fromPayload($payload, $versionLength = 1, $hashLength = 20) {
