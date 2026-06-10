@@ -11,7 +11,6 @@ class CryptocurrencyNetwork {
 
 	const BITCOIN = 'bitcoin';
 	const BITCOIN_CASH = 'bitcoin_cash';
-	const BITCOIN_SV = 'bitcoin_sv';
 	const ETHEREUM = 'erc20';
 	const ETHEREUM_CLASSIC = 'ethereum_classic';
 	const ETHEREUM_POW = 'ethereum_pow';
