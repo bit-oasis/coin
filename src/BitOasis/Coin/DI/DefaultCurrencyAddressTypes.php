@@ -5,13 +5,7 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\AvalancheXChainAddress;
-use BitOasis\Coin\Address\AxieInfinityAddress;
-use BitOasis\Coin\Address\BalancerAddress;
-use BitOasis\Coin\Address\BancorAddress;
-use BitOasis\Coin\Address\BandProtocolAddress;
 use BitOasis\Coin\Address\BaseChainAddress;
-use BitOasis\Coin\Address\BasicAttentionTokenAddress;
-use BitOasis\Coin\Address\Bit2MeAddress;
 use BitOasis\Coin\Address\BitcoinAddress;
 use BitOasis\Coin\Address\BitcoinCashAddress;
 use BitOasis\Coin\Address\BitcoinGoldAddress;
@@ -31,47 +25,17 @@ use BitOasis\Coin\Address\EthereumPowAddress;
 use BitOasis\Coin\Address\FantomAddress;
 use BitOasis\Coin\Address\FilecoinAddress;
 use BitOasis\Coin\Address\FlareAddress;
-use BitOasis\Coin\Address\FlokiAddress;
-use BitOasis\Coin\Address\ForthAddress;
-use BitOasis\Coin\Address\FractalAddress;
-use BitOasis\Coin\Address\FtxAddress;
-use BitOasis\Coin\Address\FunFairAddress;
-use BitOasis\Coin\Address\GalaAddress;
-use BitOasis\Coin\Address\GateTokenAddress;
-use BitOasis\Coin\Address\GnosisAddress;
-use BitOasis\Coin\Address\GominingAddress;
-use BitOasis\Coin\Address\GraphAddress;
-use BitOasis\Coin\Address\HumanAddress;
 use BitOasis\Coin\Address\InjectiveAddress;
 use BitOasis\Coin\Address\IotaAddress;
 use BitOasis\Coin\Address\KavaAddress;
 use BitOasis\Coin\Address\KusamaAddress;
-use BitOasis\Coin\Address\LayerZeroAddress;
-use BitOasis\Coin\Address\LeoAddress;
-use BitOasis\Coin\Address\LidoDaoAddress;
-use BitOasis\Coin\Address\Lif3Address;
 use BitOasis\Coin\Address\LitecoinAddress;
-use BitOasis\Coin\Address\LoopringAddress;
-use BitOasis\Coin\Address\MagicInternetMoneyAddress;
-use BitOasis\Coin\Address\MakerAddress;
-use BitOasis\Coin\Address\MantleAddress;
-use BitOasis\Coin\Address\MelonAddress;
-use BitOasis\Coin\Address\MemecoinAddress;
 use BitOasis\Coin\Address\MoneroAddress;
 use BitOasis\Coin\Address\NearAddress;
 use BitOasis\Coin\Address\NeoAddress;
 use BitOasis\Coin\Address\PolkadotAddress;
 use BitOasis\Coin\Address\QtumAddress;
-use BitOasis\Coin\Address\RallyAddress;
-use BitOasis\Coin\Address\RaylsAddress;
-use BitOasis\Coin\Address\RequestNetworkAddress;
 use BitOasis\Coin\Address\RippleAddress;
-use BitOasis\Coin\Address\SkyAddress;
-use BitOasis\Coin\Address\StarknetAddress;
-use BitOasis\Coin\Address\SonicAddress;
-use BitOasis\Coin\Address\SpectralAddress;
-use BitOasis\Coin\Address\SweatEconomyAddress;
-use BitOasis\Coin\Address\TheSandboxAddress;
 use BitOasis\Coin\Address\SeiAddress;
 use BitOasis\Coin\Address\SolanaAddress;
 use BitOasis\Coin\Address\SongbirdAddress;
@@ -80,8 +44,6 @@ use BitOasis\Coin\Address\StellarAddress;
 use BitOasis\Coin\Address\SuiAddress;
 use BitOasis\Coin\Address\Terra2Address;
 use BitOasis\Coin\Address\TerraAddress;
-use BitOasis\Coin\Address\TetherAddress;
-use BitOasis\Coin\Address\TetherTronAddress;
 use BitOasis\Coin\Address\TezosAddress;
 use BitOasis\Coin\Address\ThetaAddress;
 use BitOasis\Coin\Address\ToncoinAddress;
@@ -149,8 +111,8 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ALGORAND => AlgorandAddress::class
 		],
 		Cryptocurrency::USDT => [
-			CryptocurrencyNetwork::ETHEREUM => TetherAddress::class,
-			CryptocurrencyNetwork::TRON => TetherTronAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class,
+			CryptocurrencyNetwork::TRON => TronAddress::class
 		],
 		Cryptocurrency::NEO => [
 			CryptocurrencyNetwork::NEO => NeoAddress::class
@@ -551,28 +513,28 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::SKY => [
-			CryptocurrencyNetwork::ETHEREUM => SkyAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::MNT => [
-			CryptocurrencyNetwork::ETHEREUM => MantleAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::GTX => [
-			CryptocurrencyNetwork::ETHEREUM => GateTokenAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::ZRO => [
-			CryptocurrencyNetwork::ETHEREUM => LayerZeroAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::USAT => [
-			CryptocurrencyNetwork::ETHEREUM => TetherAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::RLS => [
-			CryptocurrencyNetwork::ETHEREUM => RaylsAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::LIFIII => [
-			CryptocurrencyNetwork::ETHEREUM => Lif3Address::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 		Cryptocurrency::B2M => [
-			CryptocurrencyNetwork::ETHEREUM => Bit2MeAddress::class
+			CryptocurrencyNetwork::ETHEREUM => EthereumAddress::class
 		],
 	];
 }
