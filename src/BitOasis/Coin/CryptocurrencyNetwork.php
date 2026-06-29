@@ -61,6 +61,7 @@ class CryptocurrencyNetwork {
 	const SONIC = 'sonic';
 	const ARBITRUM = 'arbitrum';
 	const BASE_CHAIN = 'base_chain';
+	const BNB_SMART_CHAIN = 'bnb_smart_chain';
 
 	/** @var string */
 	protected $code;

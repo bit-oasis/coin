@@ -3,6 +3,11 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\BnbAddress;
+use BitOasis\Coin\Address\EthereumNameServiceAddress;
+use BitOasis\Coin\Address\OndoFinanceAddress;
+use BitOasis\Coin\Address\PaxGoldAddress;
+use BitOasis\Coin\Address\QuantAddress;
 use BitOasis\Coin\Address\AethirAddress;
 use BitOasis\Coin\Address\AiozNetworkProtocolAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
@@ -641,6 +646,21 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::B2M => [
 			CryptocurrencyNetwork::ETHEREUM => Bit2MeAddress::class
+		],
+		Cryptocurrency::ENS => [
+			CryptocurrencyNetwork::ETHEREUM => EthereumNameServiceAddress::class
+		],
+		Cryptocurrency::ONDO => [
+			CryptocurrencyNetwork::ETHEREUM => OndoFinanceAddress::class
+		],
+		Cryptocurrency::PAXG => [
+			CryptocurrencyNetwork::ETHEREUM => PaxGoldAddress::class
+		],
+		Cryptocurrency::QNT => [
+			CryptocurrencyNetwork::ETHEREUM => QuantAddress::class
+		],
+		Cryptocurrency::BNB => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => BnbAddress::class
 		],
 	];
 

@@ -197,6 +197,13 @@ class Cryptocurrency {
 	const LIFIII = 'LIFIII';
 	const B2M = 'B2M';
 
+	// June 2026
+	const ENS = 'ENS';
+	const ONDO = 'ONDO';
+	const PAXG = 'PAXG';
+	const QNT = 'QNT';
+	const BNB = 'BNB';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';

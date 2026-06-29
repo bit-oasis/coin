@@ -77,6 +77,7 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::SONIC] = new CryptocurrencyNetwork(CryptocurrencyNetwork::SONIC, 'Sonic');
 		$this->networks[CryptocurrencyNetwork::ARBITRUM] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ARBITRUM, 'Arbitrum');
 		$this->networks[CryptocurrencyNetwork::BASE_CHAIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BASE_CHAIN, 'Base Chain');
+		$this->networks[CryptocurrencyNetwork::BNB_SMART_CHAIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BNB_SMART_CHAIN, 'BNB Smart Chain', 'BEP20');
 	}
 
 }
