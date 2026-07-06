@@ -4,14 +4,21 @@ namespace BitOasis\Coin\Utils\Bech32;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
- * @original Bit Wasp
- * @see https://github.com/Bit-Wasp/bech32
  */
 class Bech32 {
 
 	const GENERATOR = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3];
 	const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
 	const MAX_BECH_LENGTH = 110;
+
+	/** Encoding names returned by decode(). */
+	const ENCODING_BECH32 = 'bech32';
+	const ENCODING_BECH32M = 'bech32m';
+
+	/** polyMod checksum constants - 1 for bech32 (BIP173), 0x2bc830a3 for bech32m (BIP350). */
+	const CHECKSUM_BECH32 = 1;
+	const CHECKSUM_BECH32M = 0x2bc830a3;
+
 	const CHARKEY_KEY = [
 		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -24,15 +31,19 @@ class Bech32 {
 	];
 
 	/**
-	 * Validates a bech32 string and returns [$hrp, $dataChars] if
-	 * the conversion was successful. An exception is thrown on invalid
-	 * data.
+	 * Validates a bech32/bech32m string and returns [$hrp, $dataChars, $encoding]
+	 * if the conversion was successful. An exception is thrown on invalid data.
 	 *
-	 * @param string $sBech - the bech32 encoded string
-	 * @return array - returns [$hrp, $dataChars]
+	 * By default only bech32 (BIP173) checksums are accepted so existing callers
+	 * keep their behaviour. Pass a list containing self::ENCODING_BECH32M to also
+	 * accept bech32m (BIP350) - required for SegWit v1+ (e.g. Taproot) addresses.
+	 *
+	 * @param string $sBech - the bech32/bech32m encoded string
+	 * @param string[] $allowedEncodings - encodings to accept (defaults to bech32 only)
+	 * @return array - returns [$hrp, $dataChars, $encoding]
 	 * @throws Bech32Exception
 	 */
-	public static function decode($sBech) {
+	public static function decode($sBech, array $allowedEncodings = [self::ENCODING_BECH32]) {
 		$length = strlen($sBech);
 		if ($length > self::MAX_BECH_LENGTH) {
 			throw new Bech32Exception('Bech32 string cannot exceed ' . self::MAX_BECH_LENGTH . ' characters in length');
@@ -40,7 +51,7 @@ class Bech32 {
 
 		$self = new static();
 
-		return $self->decodeRaw($sBech);
+		return $self->decodeRaw($sBech, $allowedEncodings);
 	}
 
 	/**
@@ -82,102 +93,34 @@ class Bech32 {
 	}
 
 	/**
-	 * Converts words of $fromBits bits to $toBits bits in size.
-	 *
-	 * @param int[] $data - character array of data to convert
-	 * @param int $inLen - number of elements in array
-	 * @param int $fromBits - word (bit count) size of provided data
-	 * @param int $toBits - requested word size (bit count)
-	 * @param bool $pad - whether to pad (only when encoding)
-	 * @return int[]
-	 * @throws Bech32Exception
-	 */
-	private function convertBits(array $data, $inLen, $fromBits, $toBits, $pad = true) {
-		$acc = 0;
-		$bits = 0;
-		$ret = [];
-		$maxv = (1 << $toBits) - 1;
-		$maxacc = (1 << ($fromBits + $toBits - 1)) - 1;
-
-		for ($i = 0; $i < $inLen; $i++) {
-			$value = $data[$i];
-			if ($value < 0 || $value >> $fromBits) {
-				throw new Bech32Exception('Invalid value for convert bits');
-			}
-
-			$acc = (($acc << $fromBits) | $value) & $maxacc;
-			$bits += $fromBits;
-
-			while ($bits >= $toBits) {
-				$bits -= $toBits;
-				$ret[] = (($acc >> $bits) & $maxv);
-			}
-		}
-
-		if ($pad) {
-			if ($bits) {
-				$ret[] = ($acc << $toBits - $bits) & $maxv;
-			}
-		} else if ($bits >= $fromBits || ((($acc << ($toBits - $bits))) & $maxv)) {
-			throw new Bech32Exception('Invalid data');
-		}
-
-		return $ret;
-	}
-
-	/**
-	 * @param string $hrp
-	 * @param int[] $convertedDataChars
-	 * @return int[]
-	 */
-	private function createChecksum($hrp, array $convertedDataChars) {
-		$values = \array_merge($this->hrpExpand($hrp, \strlen($hrp)), $convertedDataChars);
-		$polyMod = $this->polyMod(\array_merge($values, [0, 0, 0, 0, 0, 0]), \count($values) + 6) ^ 1;
-		$results = [];
-		for ($i = 0; $i < 6; $i++) {
-			$results[$i] = ($polyMod >> 5 * (5 - $i)) & 31;
-		}
-
-		return $results;
-	}
-
-	/**
-	 * Verifies the checksum given $hrp and $convertedDataChars.
+	 * Verifies the checksum given $hrp and $convertedDataChars and returns the
+	 * detected encoding (self::ENCODING_BECH32 or self::ENCODING_BECH32M), or
+	 * null when the checksum matches neither.
 	 *
 	 * @param string $hrp
 	 * @param int[] $convertedDataChars
-	 * @return bool
+	 * @return string|null
 	 */
-	private function verifyChecksum($hrp, array $convertedDataChars) {
+	private function getCheckSumEncoding($hrp, array $convertedDataChars) {
 		$expandHrp = $this->hrpExpand($hrp, \strlen($hrp));
 		$r = \array_merge($expandHrp, $convertedDataChars);
 		$poly = $this->polyMod($r, \count($r));
-		return $poly === 1;
-	}
-
-	/**
-	 * @param string $hrp
-	 * @param array $combinedDataChars
-	 * @return string
-	 */
-	private function encode($hrp, array $combinedDataChars) {
-		$checksum = $this->createChecksum($hrp, $combinedDataChars);
-		$characters = \array_merge($combinedDataChars, $checksum);
-
-		$encoded = [];
-		for ($i = 0, $n = count($characters); $i < $n; $i++) {
-			$encoded[$i] = self::CHARSET[$characters[$i]];
+		if ($poly === self::CHECKSUM_BECH32) {
+			return self::ENCODING_BECH32;
 		}
-
-		return "{$hrp}1" . \implode('', $encoded);
+		if ($poly === self::CHECKSUM_BECH32M) {
+			return self::ENCODING_BECH32M;
+		}
+		return null;
 	}
 
 	/**
-	 * @param string $sBech - the bech32 encoded string
-	 * @return array - returns [$hrp, $dataChars]
+	 * @param string $sBech - the bech32/bech32m encoded string
+	 * @param string[] $allowedEncodings - encodings to accept
+	 * @return array - returns [$hrp, $dataChars, $encoding]
 	 * @throws Bech32Exception
 	 */
-	private function decodeRaw($sBech) {
+	private function decodeRaw($sBech, array $allowedEncodings) {
 		$length = \strlen($sBech);
 		if ($length < 8) {
 			throw new Bech32Exception("Bech32 string is too short");
@@ -233,75 +176,12 @@ class Bech32 {
 			$data[] = ($chars[$i] & 0x80) ? -1 : self::CHARKEY_KEY[$chars[$i]];
 		}
 
-		if (!$this->verifyChecksum($hrp, $data)) {
+		$encoding = $this->getCheckSumEncoding($hrp, $data);
+		if ($encoding === null || !in_array($encoding, $allowedEncodings, true)) {
 			throw new Bech32Exception('Invalid bech32 checksum');
 		}
 
-		return [$hrp, array_slice($data, 0, -6)];
+		return [$hrp, array_slice($data, 0, -6), $encoding];
 	}
 
-	/**
-	 * @param int $version
-	 * @param string $program
-	 * @throws Bech32Exception
-	 */
-	private function validateWitnessProgram($version, $program) {
-		if ($version < 0 || $version > 16) {
-			throw new Bech32Exception("Invalid witness version");
-		}
-
-		$sizeProgram = strlen($program);
-		if ($version === 0) {
-			if ($sizeProgram !== 20 && $sizeProgram !== 32) {
-				throw new Bech32Exception("Invalid size for V0 witness program");
-			}
-		}
-
-		if ($sizeProgram < 2 || $sizeProgram > 40) {
-			throw new Bech32Exception("Witness program size was out of valid range");
-		}
-	}
-
-	/**
-	 * @param string $hrp - human readable part
-	 * @param int $version - segwit script version
-	 * @param string $program - segwit witness program
-	 * @return string - the encoded address
-	 * @throws Bech32Exception
-	 */
-	private function encodeSegwit($hrp, $version, $program) {
-		$version = (int)$version;
-		$this->validateWitnessProgram($version, $program);
-
-		$programChars = array_values(unpack('C*', $program));
-		$programBits = $this->convertBits($programChars, count($programChars), 8, 5, true);
-		$encodeData = array_merge([$version], $programBits);
-
-		return $this->encode($hrp, $encodeData);
-	}
-
-	/**
-	 * @param string $hrp - human readable part
-	 * @param string $bech32 - Bech32 string to be decoded
-	 * @return array - [$version, $program]
-	 * @throws Bech32Exception
-	 */
-	private function decodeSegwit($hrp, $bech32) {
-		list ($hrpGot, $data) = $this->decode($bech32);
-		if ($hrpGot !== $hrp) {
-			throw new Bech32Exception('Invalid prefix for address');
-		}
-
-		$dataLen = count($data);
-		if ($dataLen === 0 || $dataLen > 65) {
-			throw new Bech32Exception("Invalid length for segwit address");
-		}
-
-		$decoded = $this->convertBits(array_slice($data, 1), count($data) - 1, 5, 8, false);
-		$program = pack("C*", ...$decoded);
-
-		$this->validateWitnessProgram($data[0], $program);
-
-		return [$data[0], $program];
-	}
 }
