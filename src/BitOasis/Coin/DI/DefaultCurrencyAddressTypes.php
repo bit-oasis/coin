@@ -3,6 +3,7 @@
 namespace BitOasis\Coin\DI;
 
 use BitOasis\Coin\Address\AaveAddress;
+use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BnbAddress;
 use BitOasis\Coin\Address\EthereumNameServiceAddress;
 use BitOasis\Coin\Address\OndoFinanceAddress;
@@ -305,7 +306,7 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => ShibaInuAddress::class
 		],
 		Cryptocurrency::AVAX => [
-//			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
+			CryptocurrencyNetwork::AVALANCHE_C => AvalancheCChainAddress::class,
 			CryptocurrencyNetwork::AVALANCHE_X => AvalancheXChainAddress::class,
 		],
 		Cryptocurrency::FTM => [

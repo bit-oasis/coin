@@ -64,7 +64,7 @@ class AvalancheCChainAddressTest extends UnitTest {
 		return new AvalancheCChainAddress(
 			$address,
 			UnitTestUtils::getCryptocurrency(Cryptocurrency::AVAX),
-			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::ETHEREUM)
+			UnitTestUtils::getCryptocurrencyNetwork(CryptocurrencyNetwork::AVALANCHE_C)
 		);
 	}
 }
