@@ -4,11 +4,12 @@ namespace BitOasis\Coin\Utils\Bech32;
 
 /**
  * @author Robert Mkrtchyan <mkrtchyanrobert@gmail.com>
+ * @original Bit Wasp
+ * @see https://github.com/Bit-Wasp/bech32
  */
 class Bech32 {
 
 	const GENERATOR = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3];
-	const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
 	const MAX_BECH_LENGTH = 110;
 
 	/** Encoding names returned by decode(). */
@@ -93,6 +94,50 @@ class Bech32 {
 	}
 
 	/**
+	 * Converts words of $fromBits bits to $toBits bits in size.
+	 *
+	 * @param int[] $data - character array of data to convert
+	 * @param int $inLen - number of elements in array
+	 * @param int $fromBits - word (bit count) size of provided data
+	 * @param int $toBits - requested word size (bit count)
+	 * @param bool $pad - whether to pad (only when encoding)
+	 * @return int[]
+	 * @throws Bech32Exception
+	 */
+	private function convertBits(array $data, $inLen, $fromBits, $toBits, $pad = true) {
+		$acc = 0;
+		$bits = 0;
+		$ret = [];
+		$maxv = (1 << $toBits) - 1;
+		$maxacc = (1 << ($fromBits + $toBits - 1)) - 1;
+
+		for ($i = 0; $i < $inLen; $i++) {
+			$value = $data[$i];
+			if ($value < 0 || $value >> $fromBits) {
+				throw new Bech32Exception('Invalid value for convert bits');
+			}
+
+			$acc = (($acc << $fromBits) | $value) & $maxacc;
+			$bits += $fromBits;
+
+			while ($bits >= $toBits) {
+				$bits -= $toBits;
+				$ret[] = (($acc >> $bits) & $maxv);
+			}
+		}
+
+		if ($pad) {
+			if ($bits) {
+				$ret[] = ($acc << $toBits - $bits) & $maxv;
+			}
+		} else if ($bits >= $fromBits || ((($acc << ($toBits - $bits))) & $maxv)) {
+			throw new Bech32Exception('Invalid data');
+		}
+
+		return $ret;
+	}
+
+	/**
 	 * Verifies the checksum given $hrp and $convertedDataChars and returns the
 	 * detected encoding (self::ENCODING_BECH32 or self::ENCODING_BECH32M), or
 	 * null when the checksum matches neither.
@@ -112,6 +157,52 @@ class Bech32 {
 			return self::ENCODING_BECH32M;
 		}
 		return null;
+	}
+
+	/**
+	 * Validates the decoded data part of a native SegWit address per BIP173/BIP350.
+	 *
+	 * BIP350 requires that:
+	 *  - the data part is non-empty and its first element is the witness version (0-16)
+	 *  - witness version 0 (P2WPKH/P2WSH) must use the bech32 checksum, while versions
+	 *    1-16 (e.g. Taproot/P2TR) must use the bech32m checksum
+	 *  - the remaining data, once repacked from 5-bit words into 8-bit bytes, must not
+	 *    have been padded with non-zero bits, and the resulting witness program must be
+	 *    between 2 and 40 bytes, with version 0 additionally restricted to 20 or 32 bytes
+	 *
+	 * @param int[] $dataChars - decoded data chars (first element is the witness version)
+	 * @param string $encoding - encoding reported by Bech32::decode() (self::ENCODING_BECH32 or self::ENCODING_BECH32M)
+	 * @return int[] - the witness program bytes
+	 * @throws Bech32Exception
+	 */
+	public static function validateSegwitDataPart(array $dataChars, $encoding) {
+		if (count($dataChars) === 0) {
+			throw new Bech32Exception('Empty segwit data');
+		}
+
+		$version = $dataChars[0];
+		if ($version < 0 || $version > 16) {
+			throw new Bech32Exception('Invalid witness version');
+		}
+
+		$expected = $version === 0 ? self::ENCODING_BECH32 : self::ENCODING_BECH32M;
+		if ($encoding !== $expected) {
+			throw new Bech32Exception('Invalid checksum variant for witness version ' . $version);
+		}
+
+		$self = new static();
+		$program = $self->convertBits(array_slice($dataChars, 1), count($dataChars) - 1, 5, 8, false);
+
+		$size = count($program);
+		if ($size < 2 || $size > 40) {
+			throw new Bech32Exception('Witness program size was out of valid range');
+		}
+
+		if ($version === 0 && $size !== 20 && $size !== 32) {
+			throw new Bech32Exception('Invalid size for V0 witness program');
+		}
+
+		return $program;
 	}
 
 	/**
@@ -173,11 +264,15 @@ class Bech32 {
 
 		$data = [];
 		for ($i = $positionOne + 1; $i < $length; $i++) {
-			$data[] = ($chars[$i] & 0x80) ? -1 : self::CHARKEY_KEY[$chars[$i]];
+			$value = ($chars[$i] & 0x80) ? -1 : self::CHARKEY_KEY[$chars[$i]];
+			if ($value === -1) {
+				throw new Bech32Exception('Invalid character in bech32 string');
+			}
+			$data[] = $value;
 		}
 
 		$encoding = $this->getCheckSumEncoding($hrp, $data);
-		if ($encoding === null || !in_array($encoding, $allowedEncodings, true)) {
+		if (!in_array($encoding, $allowedEncodings, true)) {
 			throw new Bech32Exception('Invalid bech32 checksum');
 		}
 
