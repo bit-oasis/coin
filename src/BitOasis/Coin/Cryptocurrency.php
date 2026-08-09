@@ -204,6 +204,11 @@ class Cryptocurrency {
 	const QNT = 'QNT';
 	const BNB = 'BNB';
 
+	// August 2026
+	const ANKR = 'ANKR';
+	const WLD = 'WLD';
+	const HBAR = 'HBAR';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';

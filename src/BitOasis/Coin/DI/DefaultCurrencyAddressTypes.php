@@ -13,7 +13,10 @@ use BitOasis\Coin\Address\AethirAddress;
 use BitOasis\Coin\Address\AiozNetworkProtocolAddress;
 use BitOasis\Coin\Address\AlgorandAddress;
 use BitOasis\Coin\Address\AmpleforthAddress;
+use BitOasis\Coin\Address\AnkrAddress;
 use BitOasis\Coin\Address\ApeCoinAddress;
+use BitOasis\Coin\Address\HederaAddress;
+use BitOasis\Coin\Address\WorldcoinAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
 use BitOasis\Coin\Address\ArtificialSuperintelligenceAllianceAddress;
@@ -545,6 +548,15 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::APE => [
 			CryptocurrencyNetwork::ETHEREUM => ApeCoinAddress::class
+		],
+		Cryptocurrency::ANKR => [
+			CryptocurrencyNetwork::ETHEREUM => AnkrAddress::class
+		],
+		Cryptocurrency::WLD => [
+			CryptocurrencyNetwork::ETHEREUM => WorldcoinAddress::class
+		],
+		Cryptocurrency::HBAR => [
+			CryptocurrencyNetwork::HEDERA => HederaAddress::class
 		],
 		Cryptocurrency::FET => [
 			CryptocurrencyNetwork::ETHEREUM => ArtificialSuperintelligenceAllianceAddress::class
