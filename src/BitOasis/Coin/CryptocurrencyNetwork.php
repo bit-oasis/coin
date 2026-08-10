@@ -62,6 +62,7 @@ class CryptocurrencyNetwork {
 	const ARBITRUM = 'arbitrum';
 	const BASE_CHAIN = 'base_chain';
 	const BNB_SMART_CHAIN = 'bnb_smart_chain';
+	const HEDERA = 'hedera';
 
 	/** @var string */
 	protected $code;
