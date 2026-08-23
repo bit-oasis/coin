@@ -202,6 +202,7 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ANKR] = new Cryptocurrency(Cryptocurrency::ANKR, 18, 'Ankr');
 		$this->cryptocurrencies[Cryptocurrency::WLD] = new Cryptocurrency(Cryptocurrency::WLD, 18, 'Worldcoin');
 		$this->cryptocurrencies[Cryptocurrency::HBAR] = new Cryptocurrency(Cryptocurrency::HBAR, 8, 'Hedera');
+		$this->cryptocurrencies[Cryptocurrency::HYPE] = new Cryptocurrency(Cryptocurrency::HYPE, 18, 'Hyperliquid');
 	}
 
 }
