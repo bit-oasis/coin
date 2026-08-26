@@ -63,6 +63,7 @@ class CryptocurrencyNetwork {
 	const BASE_CHAIN = 'base_chain';
 	const BNB_SMART_CHAIN = 'bnb_smart_chain';
 	const HEDERA = 'hedera';
+	const HYPER_EVM = 'hyper_evm';
 
 	/** @var string */
 	protected $code;

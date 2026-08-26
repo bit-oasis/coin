@@ -16,6 +16,7 @@ use BitOasis\Coin\Address\AmpleforthAddress;
 use BitOasis\Coin\Address\AnkrAddress;
 use BitOasis\Coin\Address\ApeCoinAddress;
 use BitOasis\Coin\Address\HederaAddress;
+use BitOasis\Coin\Address\HyperEvmAddress;
 use BitOasis\Coin\Address\WorldcoinAddress;
 use BitOasis\Coin\Address\AragonNetworkAddress;
 use BitOasis\Coin\Address\ArbitrumAddress;
@@ -674,6 +675,9 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::BNB => [
 			CryptocurrencyNetwork::BNB_SMART_CHAIN => BnbAddress::class
+		],
+		Cryptocurrency::HYPE => [
+			CryptocurrencyNetwork::HYPER_EVM => HyperEvmAddress::class
 		],
 	];
 

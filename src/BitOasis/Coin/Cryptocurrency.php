@@ -208,6 +208,7 @@ class Cryptocurrency {
 	const ANKR = 'ANKR';
 	const WLD = 'WLD';
 	const HBAR = 'HBAR';
+	const HYPE = 'HYPE';
 
 	// Fiat
 	const USD = 'USD';
