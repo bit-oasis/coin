@@ -17,7 +17,7 @@ class ToncoinAddressValidator implements ValidationInterface {
 	private const USER_FRIENDLY_ADDRESS_BYTE_LENGTH = 36;
 	private const USER_FRIENDLY_ADDRESS_FORMAT_PREFIX = ['E', 'U'];
 
-	private const MEMO_MIN_LENGTH = 4;
+	private const MEMO_MIN_LENGTH = 1;
 	private const MEMO_MAX_LENGTH = 64;
 
 	/** @var string */
