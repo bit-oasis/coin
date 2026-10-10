@@ -25,6 +25,9 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 	/** @var int[] */
 	protected $bech32DecodedLengths = [32];
 
+	/** @var string[] */
+	protected $allowedEncodings = [Bech32::ENCODING_BECH32];
+
 	/** @var string */
 	protected $label = 'NONE';
 
@@ -55,7 +58,7 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 	 */
 	public function validateWithExceptions(): bool {
 		try {
-			$decoded = Bech32::decode($this->address);
+			$decoded = Bech32::decode($this->address, $this->allowedEncodings);
 
 			if ($decoded[0] !== $this->prefix) {
 				throw new InvalidArgumentException();
@@ -65,6 +68,8 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 				throw new InvalidArgumentException();
 			}
 
+			$this->validateDecodedAddress($decoded);
+
 			$this->validateTag();
 			return true;
 		} catch (InvalidArgumentException $e) {
@@ -72,6 +77,18 @@ abstract class Bech32AddressValidator implements ValidationInterface {
 		} catch (Bech32Exception $e) {
 			throw new InvalidAddressException('This is not valid ' . $this->label .  ' address - ' . $this->address, 0, $e);
 		}
+	}
+
+	/**
+	 * Hook for subclasses to perform additional validation on the decoded
+	 * [$hrp, $dataChars, $encoding] tuple returned by Bech32::decode(). No-op by default.
+	 *
+	 * @param array $decoded - [$hrp, $dataChars, $encoding]
+	 * @return void
+	 * @throws InvalidArgumentException
+	 * @throws Bech32Exception
+	 */
+	protected function validateDecodedAddress(array $decoded): void {
 	}
 
 	/**
