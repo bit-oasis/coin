@@ -210,6 +210,51 @@ class Cryptocurrency {
 	const HBAR = 'HBAR';
 	const HYPE = 'HYPE';
 
+	// November 2026 - Binance token listing
+	const AEVO = 'AEVO';
+	const AGLD = 'AGLD';
+	const AI = 'AI';
+	const ALT = 'ALT';
+	const AMP = 'AMP';
+	const AR = 'AR';
+	const ARKM = 'ARKM';
+	const AUDIO = 'AUDIO';
+	const BEAMX = 'BEAMX';
+	const BEL = 'BEL';
+	const CAKE = 'CAKE';
+	const CATI = 'CATI';
+	const COTI = 'COTI';
+	const CTK = 'CTK';
+	const CVC = 'CVC';
+	const DYDX = 'DYDX';
+	const FLOW = 'FLOW';
+	const GMT = 'GMT';
+	const HFT = 'HFT';
+	const HMSTR = 'HMSTR';
+	const ID = 'ID';
+	const IMX = 'IMX';
+	const IO = 'IO';
+	const IQ = 'IQ';
+	const JOE = 'JOE';
+	const LPT = 'LPT';
+	const PHA = 'PHA';
+	const PIXEL = 'PIXEL';
+	const RARE = 'RARE';
+	const RAY = 'RAY';
+	const RENDER = 'RENDER';
+	const RPL = 'RPL';
+	const RSR = 'RSR';
+	const SKL = 'SKL';
+	const SUN = 'SUN';
+	const SYN = 'SYN';
+	const TRB = 'TRB';
+	const TWT = 'TWT';
+	const WAXP = 'WAXP';
+	const WIN = 'WIN';
+	const XAI = 'XAI';
+	const YGG = 'YGG';
+	const ZK = 'ZK';
+
 	// Fiat
 	const USD = 'USD';
 	const AED = 'AED';
