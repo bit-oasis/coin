@@ -80,6 +80,9 @@ class DefaultCryptocurrencyNetworkFactory implements CryptocurrencyNetworkFactor
 		$this->networks[CryptocurrencyNetwork::BNB_SMART_CHAIN] = new CryptocurrencyNetwork(CryptocurrencyNetwork::BNB_SMART_CHAIN, 'BNB Smart Chain', 'BEP20');
 		$this->networks[CryptocurrencyNetwork::HEDERA] = new CryptocurrencyNetwork(CryptocurrencyNetwork::HEDERA, 'Hedera');
 		$this->networks[CryptocurrencyNetwork::HYPER_EVM] = new CryptocurrencyNetwork(CryptocurrencyNetwork::HYPER_EVM, 'HyperEVM');
+		$this->networks[CryptocurrencyNetwork::ARWEAVE] = new CryptocurrencyNetwork(CryptocurrencyNetwork::ARWEAVE, 'Arweave');
+		$this->networks[CryptocurrencyNetwork::FLOW] = new CryptocurrencyNetwork(CryptocurrencyNetwork::FLOW, 'Flow');
+		$this->networks[CryptocurrencyNetwork::WAX] = new CryptocurrencyNetwork(CryptocurrencyNetwork::WAX, 'WAX');
 	}
 
 }

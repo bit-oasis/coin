@@ -245,6 +245,9 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::XAI] = new Cryptocurrency(Cryptocurrency::XAI, 18, 'Xai');
 		$this->cryptocurrencies[Cryptocurrency::YGG] = new Cryptocurrency(Cryptocurrency::YGG, 18, 'Yield Guild Games');
 		$this->cryptocurrencies[Cryptocurrency::ZK] = new Cryptocurrency(Cryptocurrency::ZK, 18, 'ZKsync');
+		$this->cryptocurrencies[Cryptocurrency::AR] = new Cryptocurrency(Cryptocurrency::AR, 12, 'Arweave');
+		$this->cryptocurrencies[Cryptocurrency::FLOW] = new Cryptocurrency(Cryptocurrency::FLOW, 8, 'Flow');
+		$this->cryptocurrencies[Cryptocurrency::WAXP] = new Cryptocurrency(Cryptocurrency::WAXP, 8, 'WAX');
 
 	}
 
