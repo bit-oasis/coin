@@ -202,7 +202,8 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ANKR] = new Cryptocurrency(Cryptocurrency::ANKR, 18, 'Ankr');
 		$this->cryptocurrencies[Cryptocurrency::WLD] = new Cryptocurrency(Cryptocurrency::WLD, 18, 'Worldcoin');
 		$this->cryptocurrencies[Cryptocurrency::HBAR] = new Cryptocurrency(Cryptocurrency::HBAR, 8, 'Hedera');
-		$this->cryptocurrencies[Cryptocurrency::HYPE] = new Cryptocurrency(Cryptocurrency::HYPE, 18, 'Hyperliquid');		$this->cryptocurrencies[Cryptocurrency::AEVO] = new Cryptocurrency(Cryptocurrency::AEVO, 18, 'Aevo');
+		$this->cryptocurrencies[Cryptocurrency::HYPE] = new Cryptocurrency(Cryptocurrency::HYPE, 18, 'Hyperliquid');
+		$this->cryptocurrencies[Cryptocurrency::AEVO] = new Cryptocurrency(Cryptocurrency::AEVO, 18, 'Aevo');
 		$this->cryptocurrencies[Cryptocurrency::AGLD] = new Cryptocurrency(Cryptocurrency::AGLD, 18, 'Adventure Gold');
 		$this->cryptocurrencies[Cryptocurrency::AI] = new Cryptocurrency(Cryptocurrency::AI, 18, 'Sleepless AI');
 		$this->cryptocurrencies[Cryptocurrency::ALT] = new Cryptocurrency(Cryptocurrency::ALT, 18, 'AltLayer');
@@ -245,7 +246,6 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::XAI] = new Cryptocurrency(Cryptocurrency::XAI, 18, 'Xai');
 		$this->cryptocurrencies[Cryptocurrency::YGG] = new Cryptocurrency(Cryptocurrency::YGG, 18, 'Yield Guild Games');
 		$this->cryptocurrencies[Cryptocurrency::ZK] = new Cryptocurrency(Cryptocurrency::ZK, 18, 'ZKsync');
-
 	}
 
 }

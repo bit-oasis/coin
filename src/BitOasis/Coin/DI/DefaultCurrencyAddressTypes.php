@@ -211,6 +211,9 @@ use BitOasis\Coin\Address\WinkLinkAddress;
 use BitOasis\Coin\Address\XaiAddress;
 use BitOasis\Coin\Address\YieldGuildGamesAddress;
 use BitOasis\Coin\Address\ZkSyncAddress;
+use BitOasis\Coin\Address\ArweaveAddress;
+use BitOasis\Coin\Address\FlowAddress;
+use BitOasis\Coin\Address\WaxAddress;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -839,9 +842,15 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::ZK => [
 			CryptocurrencyNetwork::ETHEREUM => ZkSyncAddress::class
 		],
-		// AR, FLOW, WAXP are listed for trading only. Their chains are not in
-		// CryptocurrencyNetwork, so they have no address type - this needs fixing before deposits
-		// or withdrawals can be enabled for them.
+		Cryptocurrency::AR => [
+			CryptocurrencyNetwork::ARWEAVE => ArweaveAddress::class
+		],
+		Cryptocurrency::FLOW => [
+			CryptocurrencyNetwork::FLOW => FlowAddress::class
+		],
+		Cryptocurrency::WAXP => [
+			CryptocurrencyNetwork::WAX => WaxAddress::class
+		],
 	];
 
 }

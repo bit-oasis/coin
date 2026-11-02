@@ -64,6 +64,9 @@ class CryptocurrencyNetwork {
 	const BNB_SMART_CHAIN = 'bnb_smart_chain';
 	const HEDERA = 'hedera';
 	const HYPER_EVM = 'hyper_evm';
+	const ARWEAVE = 'arweave';
+	const FLOW = 'flow';
+	const WAX = 'wax';
 
 	/** @var string */
 	protected $code;
