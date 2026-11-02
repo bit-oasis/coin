@@ -29,10 +29,13 @@ class FlowAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		if (!is_string($address)) {
+			throw new InvalidAddressException('Flow address must be a string, ' . gettype($address) . ' given');
+		}
 		if (!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid flow address - ' . $address);
 		}
-		$this->address = $address;
+		$this->address = FlowAddressValidator::normalize($address);
 		$this->currency = $currency;
 		$this->cryptocurrencyNetwork = $cryptocurrencyNetwork;
 	}

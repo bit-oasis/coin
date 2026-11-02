@@ -29,6 +29,9 @@ class ArweaveAddress implements CryptocurrencyAddress {
 	 * @throws InvalidAddressException
 	 */
 	public function __construct($address, Cryptocurrency $currency, CryptocurrencyNetwork $cryptocurrencyNetwork) {
+		if (!is_string($address)) {
+			throw new InvalidAddressException('Arweave address must be a string, ' . gettype($address) . ' given');
+		}
 		if (!$this->isValid($address)) {
 			throw new InvalidAddressException('This is not valid arweave address - ' . $address);
 		}
