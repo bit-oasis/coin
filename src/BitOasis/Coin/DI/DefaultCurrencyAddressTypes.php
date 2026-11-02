@@ -171,6 +171,46 @@ use BitOasis\Coin\Address\ZcashAddress;
 use BitOasis\Coin\Address\ZeroXAddress;
 use BitOasis\Coin\Cryptocurrency;
 use BitOasis\Coin\CryptocurrencyNetwork;
+use BitOasis\Coin\Address\AdventureGoldAddress;
+use BitOasis\Coin\Address\AevoAddress;
+use BitOasis\Coin\Address\AltLayerAddress;
+use BitOasis\Coin\Address\AmpAddress;
+use BitOasis\Coin\Address\ArkhamAddress;
+use BitOasis\Coin\Address\AudiusAddress;
+use BitOasis\Coin\Address\BeamAddress;
+use BitOasis\Coin\Address\BellaProtocolAddress;
+use BitOasis\Coin\Address\CatizenAddress;
+use BitOasis\Coin\Address\CivicAddress;
+use BitOasis\Coin\Address\CotiAddress;
+use BitOasis\Coin\Address\DydxAddress;
+use BitOasis\Coin\Address\HamsterKombatAddress;
+use BitOasis\Coin\Address\HashflowAddress;
+use BitOasis\Coin\Address\ImmutableXAddress;
+use BitOasis\Coin\Address\IoNetAddress;
+use BitOasis\Coin\Address\IqAddress;
+use BitOasis\Coin\Address\LivepeerAddress;
+use BitOasis\Coin\Address\PancakeSwapAddress;
+use BitOasis\Coin\Address\PhalaNetworkAddress;
+use BitOasis\Coin\Address\PixelsAddress;
+use BitOasis\Coin\Address\RaydiumAddress;
+use BitOasis\Coin\Address\RenderAddress;
+use BitOasis\Coin\Address\ReserveRightsAddress;
+use BitOasis\Coin\Address\RocketPoolAddress;
+use BitOasis\Coin\Address\ShentuAddress;
+use BitOasis\Coin\Address\SkaleAddress;
+use BitOasis\Coin\Address\SleeplessAiAddress;
+use BitOasis\Coin\Address\SpaceIdAddress;
+use BitOasis\Coin\Address\StepnAddress;
+use BitOasis\Coin\Address\SunTokenAddress;
+use BitOasis\Coin\Address\SuperRareAddress;
+use BitOasis\Coin\Address\SynapseAddress;
+use BitOasis\Coin\Address\TellorAddress;
+use BitOasis\Coin\Address\TraderJoeAddress;
+use BitOasis\Coin\Address\TrustWalletTokenAddress;
+use BitOasis\Coin\Address\WinkLinkAddress;
+use BitOasis\Coin\Address\XaiAddress;
+use BitOasis\Coin\Address\YieldGuildGamesAddress;
+use BitOasis\Coin\Address\ZkSyncAddress;
 
 /**
  * @author Daniel Robenek <daniel.robenek@me.com>
@@ -679,6 +719,129 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::HYPE => [
 			CryptocurrencyNetwork::HYPER_EVM => HyperEvmAddress::class
 		],
+		Cryptocurrency::AEVO => [
+			CryptocurrencyNetwork::ETHEREUM => AevoAddress::class
+		],
+		Cryptocurrency::AGLD => [
+			CryptocurrencyNetwork::ETHEREUM => AdventureGoldAddress::class
+		],
+		Cryptocurrency::AI => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => SleeplessAiAddress::class
+		],
+		Cryptocurrency::ALT => [
+			CryptocurrencyNetwork::ETHEREUM => AltLayerAddress::class
+		],
+		Cryptocurrency::AMP => [
+			CryptocurrencyNetwork::ETHEREUM => AmpAddress::class
+		],
+		Cryptocurrency::ARKM => [
+			CryptocurrencyNetwork::ETHEREUM => ArkhamAddress::class
+		],
+		Cryptocurrency::AUDIO => [
+			CryptocurrencyNetwork::ETHEREUM => AudiusAddress::class
+		],
+		Cryptocurrency::BEAMX => [
+			CryptocurrencyNetwork::AVALANCHE_C => BeamAddress::class
+		],
+		Cryptocurrency::BEL => [
+			CryptocurrencyNetwork::ETHEREUM => BellaProtocolAddress::class
+		],
+		Cryptocurrency::CAKE => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => PancakeSwapAddress::class
+		],
+		Cryptocurrency::CATI => [
+			CryptocurrencyNetwork::TON => CatizenAddress::class
+		],
+		Cryptocurrency::COTI => [
+			CryptocurrencyNetwork::ETHEREUM => CotiAddress::class
+		],
+		Cryptocurrency::CTK => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => ShentuAddress::class
+		],
+		Cryptocurrency::CVC => [
+			CryptocurrencyNetwork::ETHEREUM => CivicAddress::class
+		],
+		Cryptocurrency::DYDX => [
+			CryptocurrencyNetwork::ETHEREUM => DydxAddress::class
+		],
+		Cryptocurrency::GMT => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => StepnAddress::class
+		],
+		Cryptocurrency::HFT => [
+			CryptocurrencyNetwork::ETHEREUM => HashflowAddress::class
+		],
+		Cryptocurrency::HMSTR => [
+			CryptocurrencyNetwork::TON => HamsterKombatAddress::class
+		],
+		Cryptocurrency::ID => [
+			CryptocurrencyNetwork::ETHEREUM => SpaceIdAddress::class
+		],
+		Cryptocurrency::IMX => [
+			CryptocurrencyNetwork::ETHEREUM => ImmutableXAddress::class
+		],
+		Cryptocurrency::IO => [
+			CryptocurrencyNetwork::SOLANA => IoNetAddress::class
+		],
+		Cryptocurrency::IQ => [
+			CryptocurrencyNetwork::ETHEREUM => IqAddress::class
+		],
+		Cryptocurrency::JOE => [
+			CryptocurrencyNetwork::AVALANCHE_C => TraderJoeAddress::class
+		],
+		Cryptocurrency::LPT => [
+			CryptocurrencyNetwork::ETHEREUM => LivepeerAddress::class
+		],
+		Cryptocurrency::PHA => [
+			CryptocurrencyNetwork::ETHEREUM => PhalaNetworkAddress::class
+		],
+		Cryptocurrency::PIXEL => [
+			CryptocurrencyNetwork::ETHEREUM => PixelsAddress::class
+		],
+		Cryptocurrency::RARE => [
+			CryptocurrencyNetwork::ETHEREUM => SuperRareAddress::class
+		],
+		Cryptocurrency::RAY => [
+			CryptocurrencyNetwork::SOLANA => RaydiumAddress::class
+		],
+		Cryptocurrency::RENDER => [
+			CryptocurrencyNetwork::SOLANA => RenderAddress::class
+		],
+		Cryptocurrency::RPL => [
+			CryptocurrencyNetwork::ETHEREUM => RocketPoolAddress::class
+		],
+		Cryptocurrency::RSR => [
+			CryptocurrencyNetwork::ETHEREUM => ReserveRightsAddress::class
+		],
+		Cryptocurrency::SKL => [
+			CryptocurrencyNetwork::ETHEREUM => SkaleAddress::class
+		],
+		Cryptocurrency::SUN => [
+			CryptocurrencyNetwork::TRON => SunTokenAddress::class
+		],
+		Cryptocurrency::SYN => [
+			CryptocurrencyNetwork::ETHEREUM => SynapseAddress::class
+		],
+		Cryptocurrency::TRB => [
+			CryptocurrencyNetwork::ETHEREUM => TellorAddress::class
+		],
+		Cryptocurrency::TWT => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TrustWalletTokenAddress::class
+		],
+		Cryptocurrency::WIN => [
+			CryptocurrencyNetwork::TRON => WinkLinkAddress::class
+		],
+		Cryptocurrency::XAI => [
+			CryptocurrencyNetwork::ARBITRUM => XaiAddress::class
+		],
+		Cryptocurrency::YGG => [
+			CryptocurrencyNetwork::ETHEREUM => YieldGuildGamesAddress::class
+		],
+		Cryptocurrency::ZK => [
+			CryptocurrencyNetwork::ETHEREUM => ZkSyncAddress::class
+		],
+		// AR, FLOW, WAXP are listed for trading only. Their chains are not in
+		// CryptocurrencyNetwork, so they have no address type - this needs fixing before deposits
+		// or withdrawals can be enabled for them.
 	];
 
 }

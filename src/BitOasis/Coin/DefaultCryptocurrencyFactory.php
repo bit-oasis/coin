@@ -202,7 +202,50 @@ class DefaultCryptocurrencyFactory implements CryptocurrencyFactory {
 		$this->cryptocurrencies[Cryptocurrency::ANKR] = new Cryptocurrency(Cryptocurrency::ANKR, 18, 'Ankr');
 		$this->cryptocurrencies[Cryptocurrency::WLD] = new Cryptocurrency(Cryptocurrency::WLD, 18, 'Worldcoin');
 		$this->cryptocurrencies[Cryptocurrency::HBAR] = new Cryptocurrency(Cryptocurrency::HBAR, 8, 'Hedera');
-		$this->cryptocurrencies[Cryptocurrency::HYPE] = new Cryptocurrency(Cryptocurrency::HYPE, 18, 'Hyperliquid');
+		$this->cryptocurrencies[Cryptocurrency::HYPE] = new Cryptocurrency(Cryptocurrency::HYPE, 18, 'Hyperliquid');		$this->cryptocurrencies[Cryptocurrency::AEVO] = new Cryptocurrency(Cryptocurrency::AEVO, 18, 'Aevo');
+		$this->cryptocurrencies[Cryptocurrency::AGLD] = new Cryptocurrency(Cryptocurrency::AGLD, 18, 'Adventure Gold');
+		$this->cryptocurrencies[Cryptocurrency::AI] = new Cryptocurrency(Cryptocurrency::AI, 18, 'Sleepless AI');
+		$this->cryptocurrencies[Cryptocurrency::ALT] = new Cryptocurrency(Cryptocurrency::ALT, 18, 'AltLayer');
+		$this->cryptocurrencies[Cryptocurrency::AMP] = new Cryptocurrency(Cryptocurrency::AMP, 18, 'Amp');
+		$this->cryptocurrencies[Cryptocurrency::AR] = new Cryptocurrency(Cryptocurrency::AR, 12, 'Arweave');
+		$this->cryptocurrencies[Cryptocurrency::ARKM] = new Cryptocurrency(Cryptocurrency::ARKM, 18, 'Arkham');
+		$this->cryptocurrencies[Cryptocurrency::AUDIO] = new Cryptocurrency(Cryptocurrency::AUDIO, 18, 'Audius');
+		$this->cryptocurrencies[Cryptocurrency::BEAMX] = new Cryptocurrency(Cryptocurrency::BEAMX, 18, 'Beam');
+		$this->cryptocurrencies[Cryptocurrency::BEL] = new Cryptocurrency(Cryptocurrency::BEL, 18, 'Bella Protocol');
+		$this->cryptocurrencies[Cryptocurrency::CAKE] = new Cryptocurrency(Cryptocurrency::CAKE, 18, 'PancakeSwap');
+		$this->cryptocurrencies[Cryptocurrency::CATI] = new Cryptocurrency(Cryptocurrency::CATI, 9, 'Catizen');
+		$this->cryptocurrencies[Cryptocurrency::COTI] = new Cryptocurrency(Cryptocurrency::COTI, 18, 'COTI');
+		$this->cryptocurrencies[Cryptocurrency::CTK] = new Cryptocurrency(Cryptocurrency::CTK, 18, 'Shentu');
+		$this->cryptocurrencies[Cryptocurrency::CVC] = new Cryptocurrency(Cryptocurrency::CVC, 8, 'Civic');
+		$this->cryptocurrencies[Cryptocurrency::DYDX] = new Cryptocurrency(Cryptocurrency::DYDX, 18, 'dYdX');
+		$this->cryptocurrencies[Cryptocurrency::FLOW] = new Cryptocurrency(Cryptocurrency::FLOW, 8, 'Flow');
+		$this->cryptocurrencies[Cryptocurrency::GMT] = new Cryptocurrency(Cryptocurrency::GMT, 8, 'STEPN');
+		$this->cryptocurrencies[Cryptocurrency::HFT] = new Cryptocurrency(Cryptocurrency::HFT, 18, 'Hashflow');
+		$this->cryptocurrencies[Cryptocurrency::HMSTR] = new Cryptocurrency(Cryptocurrency::HMSTR, 9, 'Hamster Kombat');
+		$this->cryptocurrencies[Cryptocurrency::ID] = new Cryptocurrency(Cryptocurrency::ID, 18, 'SPACE ID');
+		$this->cryptocurrencies[Cryptocurrency::IMX] = new Cryptocurrency(Cryptocurrency::IMX, 18, 'Immutable X');
+		$this->cryptocurrencies[Cryptocurrency::IO] = new Cryptocurrency(Cryptocurrency::IO, 8, 'io.net');
+		$this->cryptocurrencies[Cryptocurrency::IQ] = new Cryptocurrency(Cryptocurrency::IQ, 18, 'IQ');
+		$this->cryptocurrencies[Cryptocurrency::JOE] = new Cryptocurrency(Cryptocurrency::JOE, 18, 'Trader Joe');
+		$this->cryptocurrencies[Cryptocurrency::LPT] = new Cryptocurrency(Cryptocurrency::LPT, 18, 'Livepeer');
+		$this->cryptocurrencies[Cryptocurrency::PHA] = new Cryptocurrency(Cryptocurrency::PHA, 18, 'Phala Network');
+		$this->cryptocurrencies[Cryptocurrency::PIXEL] = new Cryptocurrency(Cryptocurrency::PIXEL, 18, 'Pixels');
+		$this->cryptocurrencies[Cryptocurrency::RARE] = new Cryptocurrency(Cryptocurrency::RARE, 18, 'SuperRare');
+		$this->cryptocurrencies[Cryptocurrency::RAY] = new Cryptocurrency(Cryptocurrency::RAY, 6, 'Raydium');
+		$this->cryptocurrencies[Cryptocurrency::RENDER] = new Cryptocurrency(Cryptocurrency::RENDER, 8, 'Render');
+		$this->cryptocurrencies[Cryptocurrency::RPL] = new Cryptocurrency(Cryptocurrency::RPL, 18, 'Rocket Pool');
+		$this->cryptocurrencies[Cryptocurrency::RSR] = new Cryptocurrency(Cryptocurrency::RSR, 18, 'Reserve Rights');
+		$this->cryptocurrencies[Cryptocurrency::SKL] = new Cryptocurrency(Cryptocurrency::SKL, 18, 'SKALE');
+		$this->cryptocurrencies[Cryptocurrency::SUN] = new Cryptocurrency(Cryptocurrency::SUN, 18, 'Sun Token');
+		$this->cryptocurrencies[Cryptocurrency::SYN] = new Cryptocurrency(Cryptocurrency::SYN, 18, 'Synapse');
+		$this->cryptocurrencies[Cryptocurrency::TRB] = new Cryptocurrency(Cryptocurrency::TRB, 18, 'Tellor');
+		$this->cryptocurrencies[Cryptocurrency::TWT] = new Cryptocurrency(Cryptocurrency::TWT, 18, 'Trust Wallet Token');
+		$this->cryptocurrencies[Cryptocurrency::WAXP] = new Cryptocurrency(Cryptocurrency::WAXP, 8, 'WAX');
+		$this->cryptocurrencies[Cryptocurrency::WIN] = new Cryptocurrency(Cryptocurrency::WIN, 6, 'WINkLink');
+		$this->cryptocurrencies[Cryptocurrency::XAI] = new Cryptocurrency(Cryptocurrency::XAI, 18, 'Xai');
+		$this->cryptocurrencies[Cryptocurrency::YGG] = new Cryptocurrency(Cryptocurrency::YGG, 18, 'Yield Guild Games');
+		$this->cryptocurrencies[Cryptocurrency::ZK] = new Cryptocurrency(Cryptocurrency::ZK, 18, 'ZKsync');
+
 	}
 
 }
