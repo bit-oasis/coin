@@ -114,7 +114,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 				}
 
 				if ($coinClass->getFieldMapping($coinField)['type'] === CoinType::COIN) {
-					$coinClass->setFieldValue($entity, $coinField, Coin::fromInt($value, $currency));
+					$this->setHydratedFieldValue($coinClass, $entity, $coinField, Coin::fromInt($value, $currency));
 				} else if ($coinClass->getFieldMapping($coinField)['type'] === CryptocurrencyAddressType::CRYPTOCURRENCY_ADDRESS) {
 					if (!isset($fieldsNetworkMap[$coinField])) {
 						throw new \InvalidArgumentException('Invalid CryptocurrencyNetwork value for CryptocurrencyAddress class!');
@@ -127,7 +127,7 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 						? $this->cryptocurrencyNetworkFactory->create($fieldsNetworkMap[$coinField][$forceCodeKey])
 						: $fieldsNetworkMap[$coinField]['class']->getFieldValue($entity, $fieldsNetworkMap[$coinField][$associationKey]);
 
-					$coinClass->setFieldValue($entity, $coinField, $this->cryptocurrencyAddressFactory->deserialize($value, $currency, $network));
+					$this->setHydratedFieldValue($coinClass, $entity, $coinField, $this->cryptocurrencyAddressFactory->deserialize($value, $currency, $network));
 				}
 			}
 		}
@@ -219,6 +219,19 @@ class CoinObjectHydrationListener implements Kdyby\Events\Subscriber {
 		if (!self::hasRegisteredListener($class, ORMEvents::preFlush, get_called_class())) {
 			$class->addEntityListener(ORMEvents::preFlush, get_called_class(), ORMEvents::preFlush);
 		}
+	}
+
+	/**
+	 * Assigns a hydrated value object and syncs Doctrine's original data snapshot.
+	 *
+	 * The snapshot is captured during hydration, before postLoad runs, so it still holds the raw
+	 * scalar read from the database. UnitOfWork::computeChangeSet() compares it against the current
+	 * property using strict identity, so without this sync every loaded entity stays permanently
+	 * dirty and gets written back on the next flush by a no-op UPDATE.
+	 */
+	protected function setHydratedFieldValue(ClassMetadata $class, object $entity, string $field, object $value): void {
+		$class->setFieldValue($entity, $field, $value);
+		$this->entityManager->getUnitOfWork()->setOriginalEntityProperty(spl_object_id($entity), $field, $value);
 	}
 
 	protected function getEntityCoinFields($entity, ClassMetadata $class = NULL) {
