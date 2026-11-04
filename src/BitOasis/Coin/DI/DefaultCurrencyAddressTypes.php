@@ -5,6 +5,10 @@ namespace BitOasis\Coin\DI;
 use BitOasis\Coin\Address\AaveAddress;
 use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BnbAddress;
+use BitOasis\Coin\Address\TetherBnbAddress;
+use BitOasis\Coin\Address\SolanaBnbAddress;
+use BitOasis\Coin\Address\DogecoinBnbAddress;
+use BitOasis\Coin\Address\CardanoBnbAddress;
 use BitOasis\Coin\Address\EthereumNameServiceAddress;
 use BitOasis\Coin\Address\OndoFinanceAddress;
 use BitOasis\Coin\Address\PaxGoldAddress;
@@ -271,7 +275,8 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::USDT => [
 			CryptocurrencyNetwork::ETHEREUM => TetherAddress::class,
-			CryptocurrencyNetwork::TRON => TetherTronAddress::class
+			CryptocurrencyNetwork::TRON => TetherTronAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TetherBnbAddress::class
 		],
 		Cryptocurrency::NEO => [
 			CryptocurrencyNetwork::NEO => NeoAddress::class
@@ -307,7 +312,8 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::ETHEREUM => CompoundAddress::class
 		],
 		Cryptocurrency::DOGE => [
-			CryptocurrencyNetwork::DOGECOIN => DogecoinAddress::class
+			CryptocurrencyNetwork::DOGECOIN => DogecoinAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => DogecoinBnbAddress::class
 		],
 		Cryptocurrency::AAVE => [
 			CryptocurrencyNetwork::ETHEREUM => AaveAddress::class
@@ -344,10 +350,12 @@ final class DefaultCurrencyAddressTypes {
 			CryptocurrencyNetwork::POLKADOT => PolkadotAddress::class
 		],
 		Cryptocurrency::SOL => [
-			CryptocurrencyNetwork::SOLANA => SolanaAddress::class
+			CryptocurrencyNetwork::SOLANA => SolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => SolanaBnbAddress::class
 		],
 		Cryptocurrency::ADA => [
-			CryptocurrencyNetwork::CARDANO => CardanoAddress::class
+			CryptocurrencyNetwork::CARDANO => CardanoAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => CardanoBnbAddress::class
 		],
 		Cryptocurrency::SHIB => [
 			CryptocurrencyNetwork::ETHEREUM => ShibaInuAddress::class
