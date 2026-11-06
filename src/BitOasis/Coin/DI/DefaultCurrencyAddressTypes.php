@@ -9,6 +9,7 @@ use BitOasis\Coin\Address\TetherBnbAddress;
 use BitOasis\Coin\Address\SolanaBnbAddress;
 use BitOasis\Coin\Address\DogecoinBnbAddress;
 use BitOasis\Coin\Address\CardanoBnbAddress;
+use BitOasis\Coin\Address\UsdCoinBnbAddress;
 use BitOasis\Coin\Address\EthereumNameServiceAddress;
 use BitOasis\Coin\Address\OndoFinanceAddress;
 use BitOasis\Coin\Address\PaxGoldAddress;
@@ -341,7 +342,8 @@ final class DefaultCurrencyAddressTypes {
 		],
 		Cryptocurrency::USDC => [
 			CryptocurrencyNetwork::ETHEREUM => UsdCoinAddress::class,
-			CryptocurrencyNetwork::BASE_CHAIN => BaseChainAddress::class
+			CryptocurrencyNetwork::BASE_CHAIN => BaseChainAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => UsdCoinBnbAddress::class
 		],
 		Cryptocurrency::WAVES => [
 			CryptocurrencyNetwork::WAVES => WavesAddress::class
