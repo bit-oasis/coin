@@ -7,6 +7,8 @@ use BitOasis\Coin\Address\AvalancheCChainAddress;
 use BitOasis\Coin\Address\BnbAddress;
 use BitOasis\Coin\Address\TetherBnbAddress;
 use BitOasis\Coin\Address\SolanaBnbAddress;
+use BitOasis\Coin\Address\TokenizedStockSolanaAddress;
+use BitOasis\Coin\Address\TokenizedStockBnbAddress;
 use BitOasis\Coin\Address\DogecoinBnbAddress;
 use BitOasis\Coin\Address\CardanoBnbAddress;
 use BitOasis\Coin\Address\UsdCoinBnbAddress;
@@ -861,6 +863,434 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::WAXP => [
 			CryptocurrencyNetwork::WAX => WaxAddress::class
 		],
+
+		// Tokenized stocks - xStocks are SPL tokens on Solana, bStocks are BEP-20 on BNB Smart Chain.
+		Cryptocurrency::CRCL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MSTR => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SPCX => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SNDK => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SKHY => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::TSLA => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MU => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::INTC => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::NBIS => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::GOOGL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::LITE => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::RKLB => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::NVDA => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::QQQ => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::DELL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::COIN => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MRVL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AMD => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::TSM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::META => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::IREN => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::CRWV => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::CBRS => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AAPL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SPY => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ORCL => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AMZN => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BE => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::HOOD => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AVGO => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BMNR => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::WDC => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ARM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::PLTR => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::EWY => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BOT => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::QCOM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SMCI => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::APLD => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::ASML => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SHAZ => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::GEV => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::ASTS => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::HIMS => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::JNJ => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::NOW => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::CRWD => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AAOI => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::VRT => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::IBM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::NFLX => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ONDS => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::USAR => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ADBE => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::APP => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::KO => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::UNH => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::RDDT => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AMAT => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MSFT => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::LLY => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::GME => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::OKTA => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::GLW => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ZM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::CRM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SMH => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::XLE => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::ISRG => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::CSCO => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::IWM => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::RIVN => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::KLAC => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::TWLO => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::LRCX => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::SNOW => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::HPE => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BX => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::STRC => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::ROK => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::TER => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::TWO => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::XIAOMI => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::ON => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::POPMART => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::DKNG => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::BSP => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::CIEN => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class
+		],
+		Cryptocurrency::COHR => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::ALAB => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BNC => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::DRAM => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::BABA => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SOXL => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::TQQQ => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SOXS => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::KORU => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SNXX => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AXTI => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AGPU => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::PDD => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::NOK => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MRNA => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::INTW => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::DJT => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MUU => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SQQQ => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::FLNC => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::STX => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::CYPH => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::SECZ => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::MVLL => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::GS => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::GPRO => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::QNTM => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::CRDO => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::PYPL => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::JPM => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::AMC => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::FWDI => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::USDE => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+		Cryptocurrency::WEN => [
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
+
 	];
 
 }
