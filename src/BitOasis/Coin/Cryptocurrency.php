@@ -379,6 +379,7 @@ class Cryptocurrency {
 	const FWDI = 'FWDI';
 	const USDE = 'USDE';
 	const WEN = 'WEN';
+	const ANTH = 'ANTH';
 
 	// Fiat
 	const USD = 'USD';
