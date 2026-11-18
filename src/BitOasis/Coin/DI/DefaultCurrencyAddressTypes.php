@@ -1290,6 +1290,10 @@ final class DefaultCurrencyAddressTypes {
 		Cryptocurrency::WEN => [
 			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
 		],
+		Cryptocurrency::ANTH => [
+			CryptocurrencyNetwork::SOLANA => TokenizedStockSolanaAddress::class,
+			CryptocurrencyNetwork::BNB_SMART_CHAIN => TokenizedStockBnbAddress::class
+		],
 
 	];
 
